@@ -9,6 +9,15 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: 'https://math-doc.pages.dev',
   integrations: [starlight({
+    head:[
+      {
+        tag:'meta',
+        attrs:{
+          name: 'google-site-verification',
+          content: 'EC7D-cNrvKzXzsz8OePb5W1ZKSZ_-Bb5pTv9iMELkRE'
+        },
+      },
+    ],
     title: '数学の主張',
     social: {
       github: 'https://github.com/tomohikoseven',
