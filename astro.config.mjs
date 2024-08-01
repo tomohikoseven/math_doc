@@ -7,6 +7,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://math-doc.pages.dev',
   integrations: [starlight({
     title: '数学の主張',
     social: {
