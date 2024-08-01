@@ -10,17 +10,18 @@ export default defineConfig({
 			title: '数学の主張',
 			social: {
 				github: 'https://github.com/tomohikoseven',
+				'x.com': 'https://x.com/tomohikoseven',
 			},
 			sidebar: [
 				{
-					label: 'Guides',
+					label: '実数論',
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Example Guide', slug: 'guides/example' },
 					],
 				},
 				{
-					label: 'Reference',
+					label: 'Software',
 					autogenerate: { directory: 'reference' },
 				},
 			],
