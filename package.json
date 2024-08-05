@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.1",
-    "@astrojs/sitemap": "^3.1.6",
     "@astrojs/starlight": "^0.25.3",
     "astro": "^4.13.0",
     "rehype-katex": "^7.0.0",
