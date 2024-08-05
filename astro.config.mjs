@@ -26,17 +26,19 @@ export default defineConfig({
     sidebar: [{
       label: '実数論',
       autogenerate : {
-        directory: 'real_number'
+        directory: 'real_number',
+        collapsed: true,
       }
     }, {
       label: 'Software',
       autogenerate: {
-        directory: 'software'
+        directory: 'software',
+        collapsed: true,
       }
     }]
   }), sitemap()],
   markdown: {
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex]
+    rehypePlugins: [rehypeKatex],
   }
 });
