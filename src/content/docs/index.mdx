@@ -1,19 +1,16 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: 数学の主張
+description: 命題の証明、問題の解答、理論の整理をデジタルノートとしてまとめる。
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: 命題の証明、問題の解答、理論の整理をデジタルノートとしてまとめる。
   image:
     file: ../../assets/houston.webp
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: 実数論
+      link: /real_number/example/
       icon: right-arrow
       variant: primary
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
@@ -21,16 +18,10 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 ## Next steps
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="実数論" icon="pencil">
+    [Real Number](/real_number/example/).
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="ソフトウェア" icon="open-book">
+		[Software](/software/astro_sitemap_site/).
 	</Card>
 </CardGrid>

@@ -25,16 +25,13 @@ export default defineConfig({
     },
     sidebar: [{
       label: '実数論',
-      items: [
-      // Each item here is one entry in the navigation menu.
-      {
-        label: 'Example Guide',
-        slug: 'guides/example'
-      }]
+      autogenerate : {
+        directory: 'real_number'
+      }
     }, {
       label: 'Software',
       autogenerate: {
-        directory: 'reference'
+        directory: 'software'
       }
     }]
   }), sitemap()],
