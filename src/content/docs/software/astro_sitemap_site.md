@@ -2,9 +2,12 @@
 title: "[WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping."
 description: Astroでのサイトマップ作成時に忘れがちな設定．
 ---
+## 参考サイト
+- [【astro-sitemap】Astroサイトでサイトマップ生成したいならこのプラグインを使おう](https://frontworks.dev/articles/astro-sitemap/)
 
+### サイトマップ作成できず．
 　Astroを使ってサイトマップを作成し，インデックス登録しようとした．[参考](https://frontworks.dev/articles/astro-sitemap/)より，手順を進めてCloudflare上にsitemap-index.xmlが作成されているか確認したら，無さそうだった．ビルドログを確認したところ下記警告が出力されていた．
- ```sh
+ ```bash frame="none"
  [WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping.
  ```
  `site`がないからスキップしたようだ．
