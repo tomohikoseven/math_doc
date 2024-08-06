@@ -11,13 +11,6 @@ export default defineConfig({
   integrations: [starlight({
     head:[
       {
-        tag:'meta',
-        attrs:{
-          name: 'google-site-verification',
-          content: 'EC7D-cNrvKzXzsz8OePb5W1ZKSZ_-Bb5pTv9iMELkRE'
-        },
-      },
-      {
         tag:'link',
         attrs:{
           rel: 'stylesheet',
