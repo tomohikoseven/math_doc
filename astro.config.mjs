@@ -3,7 +3,7 @@ import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
-import sitemap from "@astrojs/sitemap";
+import starlightLinksValidator from 'starlight-links-validator';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +20,7 @@ export default defineConfig({
         }
       },
     ],
+    plugins: [starlightLinksValidator()],
     title: '数学の主張',
     social: {
       github: 'https://github.com/tomohikoseven',
@@ -38,7 +39,7 @@ export default defineConfig({
         collapsed: true,
       }
     }]
-  }), sitemap()],
+  })],
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
