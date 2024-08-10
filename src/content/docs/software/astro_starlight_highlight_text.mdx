@@ -1,0 +1,14 @@
+---
+title: Astro(Starlight)でテキストにハイライトする．
+description: Astro(Starlight)でテキストにハイライトする． 
+---
+import { Code } from '@astrojs/starlight/components';
+
+　Astroを使って静的なWebページを作っている．Markdownを使ってテキストにハイライトするにはどうするのか，調べて試してもできなくて，1日くらい調べてやっとわかったので，結果を記す．
+
+## テキストにハイライトする方法
+　`<mark>`タグを入れる．ただし，ファイルは`.mdx`にすること．
+<Code code="abc <mark>def</mark>" title="xxx.mdx" />
+abc <mark>def</mark>
+
+***
