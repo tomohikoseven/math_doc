@@ -1,0 +1,1 @@
+cwebp -q 75 -metadata icc -sharp_yuv -o $1 $2
