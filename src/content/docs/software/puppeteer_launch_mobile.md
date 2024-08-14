@@ -21,3 +21,6 @@ description: Puppeteerでchromeを起動するとき，モバイル対応表示�
     platformVersion: '13.0.0',
  });
 ```
+
+**環境情報**
+- puppeteer@22.12.1
