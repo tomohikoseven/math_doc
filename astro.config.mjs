@@ -19,6 +19,13 @@ export default defineConfig({
           crossorigin: 'anonymous'
         }
       },
+      {
+        tag: 'meta',
+        attrs: {
+          name: 'google-adsense-account',
+          content: 'ca-pub-7031713239242378'
+        }
+      }
     ],
     plugins: [starlightLinksValidator()],
     title: '数学の主張',
