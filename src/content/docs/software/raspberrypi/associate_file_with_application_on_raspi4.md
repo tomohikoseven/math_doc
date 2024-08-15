@@ -10,9 +10,9 @@ description: ラズパイ上でファイル（拡張子）と関連付けて，�
 ## ファイルと関連付け
 1. ファイルマネージャーから該当ファイルを右クリックし，プロパティを開く．
 1. `一般`タブ > 開くアプリケーション の`カスタマイズ`を選択する．
-![ファイルのプロパティ](../../../assets/software/associate_file_with_application_on_raspi4/01_file_property_open_application_customize.webp)
+![ファイルのプロパティ](../../../../assets/software/associate_file_with_application_on_raspi4/01_file_property_open_application_customize.webp)
 1. `コマンドラインを指定`タブの`実行するコマンドライン`に`/usr/bin/vwebp %f`を入力する．
-![アプリケーションの選択](../../../assets/software/associate_file_with_application_on_raspi4/02_execute_command_and_application_name.webp)
+![アプリケーションの選択](../../../../assets/software/associate_file_with_application_on_raspi4/02_execute_command_and_application_name.webp)
 1. `アプリケーションの名前`にわかりやすい名前を入力する．（入力後，OKを押す．）
 1. ファイルのプロパティの`OK`ボタンを押し，完了する．
 
