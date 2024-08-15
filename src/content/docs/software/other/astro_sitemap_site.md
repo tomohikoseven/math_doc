@@ -5,10 +5,10 @@ description: Astroでのサイトマップ作成時に必要な設定．
 
 　タイトルにある警告は，cloudflare pages上でビルドしたときのログに出力されたもの．
 
-## 参考サイト
+**参考サイト**
 - [公式ドキュメント - サイトマップを有効化する](https://starlight.astro.build/ja/guides/customization/)
 
-## 環境
+**環境**
 - node : v20.15.1
 - astro: 4.13.1
 - @astrojs/starlight: 0.25.4
