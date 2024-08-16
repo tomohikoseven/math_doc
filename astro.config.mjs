@@ -18,17 +18,32 @@ export default defineConfig({
     ],
     plugins: [starlightLinksValidator()],
     title: '数学の主張',
+    defaultLocale: 'ja',
+    locales: {
+      ja: {
+        label: '日本語'
+      }
+    }, 
     social: {
       github: 'https://github.com/tomohikoseven',
       'x.com': 'https://x.com/tomohikoseven'
     },
-    sidebar: [{
+    sidebar: [
+    {
       label: '実数論',
       autogenerate : {
         directory: 'real_number',
         collapsed: true,
       }
-    }, {
+    }, 
+    {
+      label: '線形代数',
+      autogenerate: {
+        directory: 'linear_algebra',
+        collapsed: true,
+      }
+    },
+    {
       label: 'Software',
       autogenerate: {
         directory: 'software',
