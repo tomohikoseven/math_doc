@@ -10,6 +10,7 @@ export default defineConfig({
   site: 'https://math-doc.pages.dev',
   integrations: [starlight({
     head:[
+      // Katex css
       {
         tag:'link',
         attrs:{
@@ -19,6 +20,25 @@ export default defineConfig({
           crossorigin: 'anonymous'
         }
       },
+      // Google Analytics 
+      {
+        tag: `script`,
+        attrs: {
+          async: true,
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-5RMK9LFJWN',
+        }
+      },
+      {
+        tag: 'script',
+        content: `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5RMK9LFJWN');
+ `
+      },
+      // Google Adsence 
       {
         tag: 'meta',
         attrs: {
