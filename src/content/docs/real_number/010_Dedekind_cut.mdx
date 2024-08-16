@@ -1,10 +1,12 @@
 ---
 title: 有理数の切断と実数(定義1.1)
 description: 有理数の切断について，その主張を解説する．
-lastUpdated: 2024-08-15
+lastUpdated: 2024-08-16
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from "@astrojs/starlight/components";
+import { Image } from "astro:assets";
+import image_01 from "../../../assets/real_number/010/dedekind_cut_and_real_number_conditions_1.webp";
 
 <Card title="定義1.0 (有理数の切断)">
 　有理直線$\mathbb{Q}$をつぎの2つの条件を満たすように空集合でない2つの部分集合$A$と$A^{\prime}$に分割したとき，$A$と$A^{\prime}$の組を**有理数の切断**とよび，$\langle A,A^{\prime} \rangle$で表わす．
@@ -15,8 +17,19 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 <Card title="定義1.1（実数）">
 　有理数の切断を**実数**とよぶ．
 </Card>
-***
+
 ### 有理数の切断の主張
 　有理数を適当に２つに分けた集合の組が有理数の切断と言っているのではない．**有理数の大小関係を考慮し，一直線上に並べた有理直線を２つに分けたときの，有理数の無限集合の組を有理数の切断とよぶ**と主張している．
 
-　ただ，これだと数学的にあいまいなので，この２つに分けた有理数の無限集合の組$A, A^{\prime}$は定義の1.,2.を満たすものとする．
+　ただ，これだと数学的にあいまいなので，この２つに分けた有理数の無限集合の組$\langle A, A^{\prime} \rangle$は定義の1.,2.を満たすものとする．
+
+<figure>
+    <Image 
+        src={image_01}
+        alt="1.の図的表現"
+        width="420" 
+        height="210" 
+        class="img-center"
+    />
+    <figcaption>1.の図的表現</figcaption>
+</figure>
