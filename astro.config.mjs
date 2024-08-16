@@ -4,48 +4,17 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 import starlightLinksValidator from 'starlight-links-validator';
+import { KATEX, GOOGLE_ADSENSE, GOOGLE_ANALYTICS, BUY_ME_A_COFFEE } from './src/libs/head';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://math-doc.pages.dev',
   integrations: [starlight({
     head:[
-      // Katex css
-      {
-        tag:'link',
-        attrs:{
-          rel: 'stylesheet',
-          href: 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css',
-          integrity: 'sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+',
-          crossorigin: 'anonymous'
-        }
-      },
-      // Google Analytics 
-      {
-        tag: `script`,
-        attrs: {
-          async: true,
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-5RMK9LFJWN',
-        }
-      },
-      {
-        tag: 'script',
-        content: `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5RMK9LFJWN');
- `
-      },
-      // Google Adsence 
-      {
-        tag: 'meta',
-        attrs: {
-          name: 'google-adsense-account',
-          content: 'ca-pub-7031713239242378'
-        }
-      }
+     KATEX, 
+     GOOGLE_ADSENSE, 
+     ...GOOGLE_ANALYTICS,
+      BUY_ME_A_COFFEE,
     ],
     plugins: [starlightLinksValidator()],
     title: '数学の主張',
