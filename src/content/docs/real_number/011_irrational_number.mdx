@@ -1,0 +1,72 @@
+---
+title: 循環しない無限小数は無理数を表わす．
+description: 循環しない無限小数は無理数であることの行間の少ない証明を記す．
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+<Card title="定理(無理数)">
+　循環しない無限小数は無理数を表わす。
+</Card>
+
+## 定理の主張
+　循環する無限小数は有理数だが，**循環しない無限小数は実数であり，そのすべてが無理数である**．
+
+　有理数と実数の違いは定義から明らかだが，それ以外に実数には無理数があることが挙げられる．
+
+## 証明の考え方
+　任意の循環しない無限小数を$k.k_1k_2 \cdots k_n \cdots $とする．$k$は整数で，$k_n$は$0$〜$9$のいずれかである．
+
+　無限小数が実数であることを示したいので，有理数の切断を準備する．
+
+$$
+\begin{aligned}
+    a_n &= k.k_1k_2\cdots k_n \\ &= k + \frac{k_1}{10} + \frac{k_2}{10^2} + \cdots + \frac{k_n}{10^n} \\
+    b_n &= a_n + \frac{1}{10^n}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+    A^{\prime} &= \{ r \in \mathbb{Q} \space | \space \text{すべての自然数nについて} a_n \le r \}  \\
+    A &= \{ r \in \mathbb{Q} \space | \space \text{少なくとも１つの自然数nについて}r \lt a_n \}.
+\end{aligned}
+$$
+
+　この有理数の無限集合の組$\langle A, A^{\prime} \rangle$が無理数であることを示す．
+
+### 実数であること
+　[定義](./010_Dedekind_cut.mdx)に従って，まず実数であることを示す．
+
+　$a_1 \in A, b_1 \in A^{\prime}$なので，$A, A^{\prime}$は空集合ではない．
+
+　また，$A^{\prime}$は有理数の切断の条件3'.を満たす．なぜなら，$r \in A^{\prime}$のとき，$r \le s, s \in \mathbb{Q}$ならば，$\forall n \in \mathbb{N}, a_n < r \le s$なので，$\forall n \in \mathbb{N}, a_n < s$となるから．
+
+　そして，$A$に最大の有理数はない．なぜなら，$A$に属する有理数$r$はある自然数$n$が存在して，$r < a_n$で$a_n \in \mathbb{Q} \cap A$なので．
+
+　以上から，$\langle A, A^{\prime} \rangle$は実数である．
+
+### $k.k_1k_2 \cdots k_n \cdots = \langle A,A^{\prime} \rangle$である．
+
+　$\alpha = k.k_1k_2\cdots k_n \cdots $とおく．$A, A^{\prime}$の元が$\alpha$を境界としていることを示す．
+
+　$r \in A$を任意でとる．すると，ある自然数$N$があり，$r < a_N$を満たす．$a_n$の性質からすべての自然数$n$において，$a_n < \alpha \text{だから} r < \alpha$．
+よって，$A = \{r \in \mathbb{Q} \space | \space r < \alpha \}$．
+
+　$r \in A^{\prime}$を任意でとる．するとすべての自然数nにおいて，$a_n \leq r$．また，$a_n < \alpha$である．$r,\alpha$を比較すると，$r < \alpha$はありえない．$r < \alpha$なら，$r \in A$でもあるが，$A \cap A^{\prime} = \emptyset$なので，ありえない．よって，$\alpha \leq r$である．
+
+　よって，$A^{\prime} = \{ r \in \mathbb{Q} \space | \space \alpha \leq r \}$．
+
+　以上から，$k.k_1k_2 \cdots k_n \cdots = \alpha = \langle A, A^{\prime} \rangle$．
+
+### 無理数である
+　$A^{\prime}$に最小の有理数がないことを示す．
+
+　すべての自然数$n$において，$\alpha < b_n, b_n \in A^{\prime}$であり，$b_{n+1} < b_n$なので，$A^{\prime}$に最小の有理数は存在しない．
+
+***
+
+## 復習ノート
+- 有理数の切断の定義は何か．
+  - 同値な条件は何か．
+- 有理数の切断$\langle A, A^{\prime} \rangle$における，有理数と無理数の違いは何か．
