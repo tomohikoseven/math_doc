@@ -6,6 +6,7 @@ lastUpdated: 2024-08-17
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
 import { Image } from "astro:assets";
+import  ImageWithCaption  from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/real_number/010/dedekind_cut_and_real_number_conditions_1.webp";
 import image_02 from "/src/assets/real_number/010/dedekind_cut_and_real_number_conditions_2.webp";
 import image_03 from "/src/assets/real_number/010/dedekind_cut_and_real_number_conditions_3.webp";
@@ -14,27 +15,21 @@ import image_03_2 from "/src/assets/real_number/010/dedekind_cut_and_real_number
 <Card title="定義1.0 (有理数の切断)">
 　有理直線$\mathbb{Q}$をつぎの2つの条件を満たすように空集合でない2つの部分集合$A$と$A^{\prime}$に分割したとき，$A$と$A^{\prime}$の組を**有理数の切断**とよび，$\langle A,A^{\prime} \rangle$で表わす．
 1. $r \in A$のとき，$s \in A^{ \prime }$ならば，$r < s$.
-    <figure>
-        <Image 
-            src={image_01}
-            alt="1.の図的表現"
-            width="420" 
-            height="210" 
-            class="img-center"
-        />
-        <figcaption>1.の図的表現</figcaption>
-    </figure>
+    <ImageWithCaption
+        src={image_01}
+        alt="1.の図的表現"
+        width="420"
+        height="210"
+        figcaption="1.の図的表現"
+    />
 1. $A$に属する**最大の有理数はない**．すなわち，$r \in A$ならば，$t>r$なる有理数$t \in A$が存在する.
-    <figure>
-        <Image
-            src={image_02}
-            alt="2.図的表現"
-            width="420"
-            height="210" 
-            class="img-center" 
-        />
-        <figcaption>2.の図的表現</figcaption> 
-    </figure>
+    <ImageWithCaption
+        src={image_02}
+        alt="2.の図的表現"
+        width="420"
+        height="210" 
+        figcaption="2.の図的表現" 
+    />
 </Card>
 
 <Card title="定義1.1（実数）">
@@ -63,28 +58,22 @@ import image_03_2 from "/src/assets/real_number/010/dedekind_cut_and_real_number
 　切断$\langle A,A^{\prime} \rangle$の$A$の性質について述べている．すなわち，どんな$r \in A$に対しても，$s < r$である有理数$s$は$A$に属する．
 
 　逆に考えると，$A$の性質は$s \le r$で$A$に属さない有理数$s$は存在しないということ．つまり，以下の図のような切断はない．
-    <figure>
-        <Image 
-            src={image_03}
-            alt="3.の図的表現"
-            width="420" 
-            height="210" 
-            class="img-center"
-        />
-        <figcaption>3.の図的表現</figcaption>
-    </figure>
+    <ImageWithCaption 
+        src={image_03}
+        alt="3.の図的表現"
+        width="420" 
+        height="210" 
+        figcaption="3.の図的表現" 
+    />
 
 #### 3'.の主張
  　3.の主張を$A^{\prime}$側で考えればよい．すなわち，どんな$r \in A^{\prime}$に対しても，$r \le s$である有理数$s$は$A^{\prime}$に属する．
 
 　こちらも逆に考えると，$A^{\prime}$の性質は$r \le s$で$A^{\prime}$に属さない有理数$s$は存在しないということ．つまり，以下の図のような切断はない．
-    <figure>
-        <Image 
-            src={image_03_2}
-            alt="3'.の図的表現"
-            width="420" 
-            height="210" 
-            class="img-center"
-        />
-        <figcaption>3'.の図的表現</figcaption>
-    </figure>
+    <ImageWithCaption
+        src={image_03_2}
+        alt="3'.の図的表現"
+        width="420" 
+        height="210" 
+        figcaption="3'.の図的表現" 
+    />
