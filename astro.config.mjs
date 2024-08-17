@@ -18,6 +18,7 @@ export default defineConfig({
     ],
     plugins: [starlightLinksValidator()],
     title: '数学の主張',
+    tableOfContents: false, 
     customCss: [ './src/styles/custom.css' ] ,
     defaultLocale: 'ja',
     locales: {
