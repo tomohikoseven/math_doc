@@ -1,7 +1,9 @@
+/* 画像の中央寄せ */
 .img-center {
     margin : auto;
 }
 
+/* 画像のキャプション */
 figcaption {
     text-align: center; 
     caption-side: bottom; 
@@ -11,4 +13,21 @@ figcaption {
     font-size: 0.8em;
     opacity: 0.8;
     padding: 0 6px; 
+}
+
+/*KaTeXの日本語フォント設定*/
+/*本文と一致させる*/
+.cjk_fallback {
+    font-family: var(--__sl-font); 
+    font-size: var(--sl-text-body); 
+}
+/*KaTeXブロックのモバイル表示対応*/
+/*画面からはみ出すときは横スクロールが表示される*/
+.katex-html {
+	overflow-y: hidden;
+	overflow-x: auto;
+}
+/*行内数式の前後にスペースを入れる*/
+span.katex::before, span.katex::after {
+	content: " ";
 }
