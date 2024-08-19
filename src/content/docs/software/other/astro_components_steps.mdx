@@ -1,0 +1,39 @@
+---
+title: AstroのStepsコンポーネント使用時のルール
+description: AstroのStepsコンポーネント使用時にはドキュメントにないルール(注意点)がある．それを明記する．
+---
+import { Code } from '@astrojs/starlight/components';
+import importedCode from '/src/raw/steps_example.md?raw';
+
+**環境情報**
+- "astro": "^4.14.2"
+- "@astrojs/starlight": "^0.26.1"
+
+***
+
+　AstroのStepsコンポーネントを使用したら，下記のような意味不明なエラーに遭遇した．
+
+```bash frame="none"
+The <Steps> component expects its content to be a single ordered list (<ol>) but found multiple child elements: <ol>, <p>, <ol>.
+```
+
+　エラーの内容はいいとして，このようなエラーが発生する原因は，`<Steps>`内の記述を**3,4個のスペースでインデントしていない**ことによる
+（順序付きリスト要素に該当する1.〜，2.〜はインデントしない．）.
+
+　具体的にどうすればいいのか，[ドキュメントの例](https://starlight.astro.build/guides/components/#steps)を参考に下記に記す．
+
+
+```diff title="example.mdx" lang="mdx" ins="   "
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+
+1. Import the component into your MDX file:
+
+   ← 4つのスペースをいれて始めよ．
+   4 spaces inputs to left.
+
+2. Wrap `<Steps>` around your ordered list items.
+
+</Steps>
+```
