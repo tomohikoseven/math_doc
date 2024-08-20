@@ -1,0 +1,28 @@
+---
+title: 実数は稠密である．（定理1.4）
+description: 実数は稠密であることを示す．
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+<Card title="定理1.4">
+　任意の２つの実数$\alpha, \beta, \alpha < \beta$に対して，$\alpha < r < \beta$なる有理数$r$が無数に存在する．
+</Card>
+
+## 定理の主張
+　異なる２つの実数の間には，有理数が無数に存在する．有理数を実数とみなせば，実数が無数に存在することにもなる．
+
+## 証明の考え方
+　$\alpha = \langle A, A^{\prime} \rangle, \beta = \langle B, B^{\prime} \rangle$とする．$\alpha < \beta$より，$A \subsetneqq B$．つまり，$r \in B, r \notin A$なる有理数$r$が存在する．
+
+<Steps>
+
+1. 無数に存在することを示す．
+
+    [有理数の切断](/real_number/010_dedekind_cut/)の条件(2)より，$B$には最大の有理数は存在しない．つまり，$B$の最大値になる可能性がある有理数$r$には最大のものがなく，無数に存在する．
+
+
+</Steps>
+
+## 復習ノート
+- 実数の大小関係はどのように定義しているか．
