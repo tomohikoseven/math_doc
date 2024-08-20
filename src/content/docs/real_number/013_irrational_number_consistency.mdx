@@ -24,4 +24,44 @@ import { Steps } from '@astrojs/starlight/components';
   
     ということ．
 
+2. 切断の準備
+
+    　$\alpha, \beta$は循環しない無限小数である．$\alpha = k.k_1k_2 \cdots k_n \cdots, \beta = s.s_1s_2 \cdots s_n \cdots $とおく．また，
+    $$
+    \begin{aligned}
+    a_n &= k + \frac{k_1}{10}+\frac{k_2}{10^2}+ \cdots + \frac{k_n}{10^n} \\
+    b_n &= s + \frac{s_1}{10}+\frac{s_2}{10^2} + \cdots + \frac{s_n}{10^n}
+    \end{aligned} 
+    $$
+    とする． 
+    $$
+    C^{\prime} = \{  r \in \mathbb{Q} \space | \space \forall n \in \mathbb{N}; c_n = \frac{a_n + b_n}{2} \leq r  \} 
+    $$ 
+    $C$は$C^{\prime}$の補集合とすると，$\langle C,C^{\prime} \rangle$は切断である．（[循環しない無限小数は無理数を表わす](/real_number/011_irrational_number/)を参照．） 
+3. $\alpha < \gamma < \beta$であること． 
+
+    　$\gamma = \langle C, C^{\prime}\rangle$とするとき，$\alpha < \gamma < \beta$であることを示す．すなわち，
+    $$
+    A \subsetneqq C, C \subsetneqq B 
+    $$ 
+    であることを示す． 
+
+    　定理1.5より，実数$\alpha$に対して，$a < \alpha \leq a + \frac{1}{m}，a \in A, a + \frac{1}{m} \in C$なる有理数$a$と自然数$m$が存在する．$a + \frac{1}{m} \notin A$で$a + \frac{1}{m} \in C$なので，$A \neq C$である．$C$の定義から，明らかに$A \subseteqq C$なので，合わせると$A \subsetneqq C$となる． 
+
+    　$\gamma$に対しても同様である．よって，$\alpha < \gamma < \beta$である． 
+ 
+4. $\gamma$は無理数であること．
+
+    　$C^{\prime}$に最小の有理数がないことを示す．
+    $$
+    d_n = c_n + \frac{1}{10^n} 
+    $$ 
+    と$\gamma$を考える．すべての自然数$n$において，$\gamma < d_n$で，$d_{n+1} < d_n$という性質から，$C^{\prime}$に最小の有理数はない．
+
+5. 無数に存在すること．
+
+    　ここまでで，無理数$\alpha, \beta, \alpha < \beta$に対し，$\alpha < \gamma < \beta$なる無理数が存在することがわかった．以下，$\alpha < \gamma$についても同様に議論をすれば，無理数が無数に存在することがわかる．
 </Steps>
+
+## 復習ノート
+- 任意の実数において，これを近似する有理数は存在するか．
