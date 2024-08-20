@@ -1,0 +1,20 @@
+---
+title: Astro(starlight)でrehypeKatexプラグインに引数を渡す方法．
+description: AstroのrehypeKatexプラグインに引数を指定する方法を記述する．
+---
+　Astroを使用して，Webページを作成している．$\KaTeX$をプラグインに利用して数式を記述しているが，数式内に日本語が混入すると警告が少々うるさい．
+例えば以下のようなもの．
+```bash
+LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "存" used in math mode [unicodeTextInMathMode]
+```
+
+　これを抑止するためには，使用しているプラグイン`rehypeKatex`に引数`{strict: true}`を渡せばよい．その方法がわかったので，記載する．
+```js {5,5}
+// astro.config.mjs
+  ...
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [ [rehypeKatex, {strict: true}] ],
+  }
+  ... 
+```
