@@ -1,3 +1,16 @@
+/* ========= */
+/* Table     */
+/* ========= */
+/*Astroにより，tableがdisplay:blockにされ，中央寄せには以下が必要．*/
+figure > table {
+    text-align: center;
+    width: max-content; 
+    margin: 0 auto; 
+}
+
+/* ========= */
+/* Img       */
+/* ========= */
 /* 画像の中央寄せ */
 .img-center {
     margin : auto;
@@ -15,6 +28,9 @@ figcaption {
     padding: 0 6px; 
 }
 
+/* ========= */
+/* Katex     */
+/* ========= */
 /*KaTeXの日本語フォント設定*/
 /*本文と一致させる*/
 .cjk_fallback {
