@@ -1,0 +1,45 @@
+---
+title: 実数の大小（定義1.2・定理1.1）
+description: 実数の大小について定義し，その性質を示す．
+---
+import image_01 from "/src/assets/real_number/017/large_and_small_of_real_number.jpg";
+
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+import  ImageWithCaption  from "/src/components/ImageWithCaption.astro";
+
+<Card title="定義1.2">
+　２つの実数$\alpha = \langle A, A^{\prime} \rangle, \beta = \langle B, B^{\prime} \rangle$について，$A \subsetneq B$ならば$\alpha$は$\beta$より小さいといい，$\alpha < \beta$と書く．
+</Card>
+
+<Card title="定理1.1(実数の大小)">
+　２つの実数$\alpha, \beta$の間にはつぎの３つの関係のうちの１つ，そしてただ１つだけが成り立つ．
+$$
+\alpha < \beta, \space \alpha = \beta, \space \alpha > \beta
+$$
+</Card>
+
+## 定理の主張
+　有理数と同じく，すべての実数の間には等号含む大小関係が定まる．
+
+## 証明の考え方
+　$\alpha = \langle A, A^{\prime} \rangle, \beta = \langle B, B^{\prime} \rangle$とする．$A,B$の関係を有理数の切断の性質から考えると，$A \neq B$はありえない．つまり，$A \subsetneq B, A = B, B \subsetneq A$のいずれかである．
+
+    <ImageWithCaption
+        src={image_01}
+        alt="図1"
+        width="420"
+        height="210"
+        figcaption="図1"
+    />
+
+　また，これら３つの関係は集合の性質から，どの２つも両立することはない．つまり，ただ１つだけが成立する．
+
+　$A \subsetneq B$のとき，定義1.2から$\alpha < \beta$．
+
+　$A = B$のとき，[定義1.1の実数の等号](/real_number/010_dedekind_cut/#実数の等号)から$\alpha = \beta$．
+
+　$B \subsetneq A$のとき，定義1.2から$\beta < \alpha$．
+
+## 復習ノート
+- 実数の定義は何か．
