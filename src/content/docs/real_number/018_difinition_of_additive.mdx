@@ -1,0 +1,83 @@
+---
+title: 実数の加法の定義．（P18，補題1.1）
+description: 実数における加法を定義し，和に関する１つの性質（補題）を示す．
+lastUpdated: 2024-08-27
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+<Card title="定義（加法）">
+　有理数の任意の２つの集合$S, T$が与えられたとき，$s \in S, t \in T$の和$s + t$全体の集合を$S + T$で表わす：
+$$
+S + T = \{ s + t \space | \space s \in S, t \in T \}.
+$$
+また同様に
+$$
+S + t = \{ s + t \space | \space s \in S \}
+$$
+などと書く．
+</Card>
+
+<Card title="補題1.1">
+　$a, b$が有理数のとき，$r < a + b$なる有理数$r$に対して$r = s + t, s < a, t < b$なる有理数$s, t$が存在する．
+</Card>
+
+<Card title="定義1.3">
+　２つの実数$\alpha = \langle A, A^{\prime} \rangle, \beta = \langle B, B^{\prime} \rangle$が任意に与えられたとき，$\alpha \text{と} \beta$の和を
+$$
+\alpha + \beta = \sigma, \space \sigma = \langle S, S^{\prime} \rangle, \space S = A + B
+$$
+と定義する．
+</Card>
+
+## 定義の主張
+　有理数の２つの集合における加法を定義している．まだここでは有理数の切断の加法について言及していない．
+
+## 補題1.1の主張
+　定義1.3を主張する上で必要．主張内容は上のとおり素直に受け取ればよい．
+
+## 補題1.1の証明の考え方
+　有理数の存在を証明するので，仮定の$a, b, r$を使って，条件を満たす有理数$s, t$を構成できることを示せばいい．
+
+　有理数$s, t$を以下のとおりに定義する．
+$$
+\begin{aligned}
+s &= a - \frac{(a+b-r)}{2} \\
+t &= b - \frac{(a+b-r)}{2}
+\end{aligned}
+$$
+このとき，$s + t = r$であり，$r < a + b$から$\frac{(a+b-r)}{2} > 0$から$s > a$および$r > b$がわかる．
+
+　したがって，$a, b, r$から$s, t$を構成できたので，補題1.1は成立する．
+
+## 定義1.3の主張
+　$S$は$s + t(s \in A, t \in B)$の全体である．$r < \alpha + \beta$を満たす有理数$r$の全体などと言っていない．$r < \alpha + \beta$で理論が構築されていれば，わかりやすいのに．
+
+### $\langle S, S^{\prime} \rangle$は有理数の切断である．
+　$\sigma = \langle S, S^{\prime} \rangle$と定義したが，$\langle S, S^{\prime} \rangle$が[有理数の切断](/real_number/010_dedekind_cut/)かどうかはまだ示されていない．
+
+<Steps>
+
+1. $S, S^{\prime}$が空集合でないこと．
+
+    　まず，$S, S^{\prime}$が空集合でないことを示す．
+
+    　**$S = A + B$は空集合ではない**．なぜなら，$A, B$は有理数の切断において空集合ではないので，ある有理数$a \in A, b \in B$が存在し，$a + b \in S$となり，$S$に元が存在する．
+
+    　$S^{\prime}$は$S$の補集合と定義される．これだけでは$S^{\prime}$が空集合かどうかは不明である．しかし，**$S^{\prime}$は空集合でない**．
+
+    　なぜならば，任意の$r \in A, s \in B$において$r + s < u + v$を満たす$u \in A^{\prime}, v \in B^{\prime}$が取れる．すなわち，$S$に含まれない有理数$u + v$が存在するということ．つまり，$S^{\prime}$は空集合でないということ．
+
+2. 有理数の切断の[条件3](/real_number/010_dedekind_cut/#1と同値な条件)を満たすこと．
+
+    　任意で$a + b \in S ( a \in A, b \in B )$を取る．補題1.1より$r = s + t < a + b$を満たす$s \in A, t \in B$がある．これは$r = s + t \in S$を意味し，$r < a + b$である有理数$r$は$r \in S$ということ．すなわち，有理数の切断の条件3を満たす．
+
+3. $S$に属する最大の有理数はない．
+
+    　$A, B$に最大の有理数がないので，$A + B$にも最大の有理数はない．したがって，$S = A + B$にも最大の有理数はない．
+
+
+</Steps>
+　以上により，$\langle S, S^{\prime} \rangle$は有理数の切断であることが示せた．
+
+

@@ -1,0 +1,44 @@
+---
+title: 実数と有理数の加法について（P19）．
+description: 実数と有理数の加法について．
+lastUpdated: 2024-08-28
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+<Card title="定理">
+　$\beta = b$が有理数，$\alpha = \langle A, A^{\prime} \rangle$が任意の実数のとき，
+$$
+\alpha + b = \langle A +b, A^{\prime} + b \rangle.
+$$
+</Card>
+
+## 定理の主張
+　有理数$b = \langle B, B^{\prime} \rangle, B = \{ r \in \mathbb{Q} \space | \space r < b \}$なので，[実数の加法の定義](/real_number/018_difinition_of_additive/)によれば，
+$$
+\alpha + b = \langle R, R^{\prime} \rangle,  R = \{ t + u \space | \space t \in A,  u \in B \}
+$$
+となる．
+
+　この定理の主張は，$R = A + b$ であるということ．もう，$\{ r \in Q \space | \space r < \alpha + b \}$によって切断するのではないのかと思うが，そうではない．
+
+## 証明の考え方
+有理数$b$を実数とみて，$b = \langle B, B^{\prime} \rangle, B = \{ r \in \mathbb{Q} \space | \space r < b \} $とおける．このとき，$\alpha + b = \langle R, R^{\prime} \rangle, R = A + B = \{ t + u \space | \space t \in A, u \in B \}$となる．
+
+　$\alpha + b = \langle A + b, A^{\prime} +b \rangle$を示すには，$R = A + b$を示せばよい．
+
+<Steps>
+
+1. $R \subset A + b$を示す．
+
+    　$r \in R, r = t + u, r \in A, u \in B$とする．$u < b$だから，$t - ( b - u ) < t$．有理数の切断の条件(3)より，$t - ( b - u ) \in A$．このとき，$r = t - ( b - u ) + b$となるので，$r \in A + b$．
+
+2. $A + b \subset R$を示す．
+
+    　$r + b \in A + b, r \in A$とする．このとき有理数の切断の条件2より$A$には最大の有理数が存在しないことから，$r < t$なる有理数$t$が存在する．すると，有理数の切断の[条件3](/real_number/010_dedekind_cut/#1と同値な条件)より，$b - ( t - r ) \in B$である．このとき，$r + b = t + b - ( t - r ) \in R$となるので，$A + b \subset R$．
+
+</Steps>
+　以上から，$A + b = R$．したがって，$\alpha + b = \langle A + b, A^{\prime} + b \rangle$．
+
+## 復習ノート
+- $\alpha + \beta = \{ r \in \mathbb{Q} | r < \alpha + \beta \}$と誤解していないか．
