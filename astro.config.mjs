@@ -35,7 +35,7 @@ export default defineConfig({
       label: '実数論',
       autogenerate : {
         directory: 'real_number',
-        collapsed: true,
+        collapsed: false,
       }
     }, 
     {
