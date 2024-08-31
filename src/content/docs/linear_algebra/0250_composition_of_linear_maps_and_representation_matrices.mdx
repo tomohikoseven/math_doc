@@ -1,0 +1,57 @@
+---
+title: 線形写像の合成と表現行列の関係について（定理6.10.4）
+description: 線形写像の合成と表現行列の関係について
+lastUpdated: 2024-09-01
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+import ImageWithCaption from "/src/components/ImageWithCaption.astro";
+import image_01 from "/src/assets/linear_algebra/0250/線形写像の合成と表現行列について.webp";
+
+<Card title="定理6.10.4">
+　$V, W, U$をベクトル空間，$\boldsymbol{v}_1, \cdots \boldsymbol{v}_n$, $\boldsymbol{w}_1, \cdots \boldsymbol{w}_m$, $\boldsymbol{u}_1, \cdots ,\boldsymbol{u}_l $をそれぞれ$V, W, U$の基底とする．２つの線形写像
+$$
+f \colon V \to W, \space g \colon W \to U
+$$
+が与えられたとき，上記基底に関して，$f, g$に対応する表現行列をそれぞれ$A, B$とすると，合成写像
+$$
+g \circ f \colon V \to U
+$$
+に対応する$表現行列C$は，$等式C=BA$を満たす．
+</Card>
+
+## 定理の主張
+　合成写像の基底に関する表現行列は，合成している写像の表現行列の積で素直に表せられることを主張している．
+
+<ImageWithCaption 
+    src={image_01}
+    alt="線形写像の合成と表現行列の関係"
+    figcaption="線形写像の合成と表現行列の関係"
+    width="440"
+    height="288"
+/>
+
+## 証明の考え方
+　$C=BA$を示すためには，行列Cと行列BAの成分どうしが同じであることを示せばよいが，**線形写像の行列表現と成分ベクトルとの関係性から示したほうが簡単そう**であるので，そうする．
+
+　ベクトル空間$V$のベクトル$\boldsymbol{x}$を基底$\boldsymbol{v}_1, \cdots, \boldsymbol{v}_n$に関する成分ベクトル$\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$，ベクトル空間$W$のベクトル$\boldsymbol{y}$を基底$\boldsymbol{w}_1, \cdots, \boldsymbol{w}_m$に関する成分ベクトル$\begin{pmatrix} y_1 \\ \vdots \\ y_m \end{pmatrix}$，ベクトル空間$U$のベクトル$\boldsymbol{z}$を基底$\boldsymbol{u}_1, \cdots, \boldsymbol{u}_l$に関する成分ベクトル$\begin{pmatrix} z_1 \\ \vdots \\ z_l \end{pmatrix}$とする．
+
+　題意から，表現行列と成分ベクトルの関係式は
+$$
+\begin{pmatrix}
+y_1 \\ \vdots \\ y_m\end{pmatrix} = A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} , \space \begin{pmatrix}z_1 \\ \vdots \\ z_l \end{pmatrix} = B \begin{pmatrix}y_1 \\ \vdots \\ y_m\end{pmatrix}, \space \begin{pmatrix}z_1 \\ \vdots \\ z_l \end{pmatrix} = C \begin{pmatrix}x_1 \\ \vdots \\ x_n
+\end{pmatrix}
+$$
+
+左の2式から，
+$$
+\begin{pmatrix}
+z_1 \\ \vdots \\ z_l
+\end{pmatrix}
+= BA
+\begin{pmatrix}
+x_1 \\ \vdots \\ x_n
+\end{pmatrix}
+$$
+となる．したがって，一番右の関係式と比較することによって，$C=BA$となる．
