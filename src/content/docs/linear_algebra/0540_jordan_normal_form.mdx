@@ -1,0 +1,111 @@
+---
+title: ジョルダン標準形の主張．
+description: ジョルダン標準形の主張について記す.
+lastUpdated: 2024-09-01
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+import ImageWithCaption from "/src/components/ImageWithCaption.astro";
+import image_01 from "/src/assets/linear_algebra/0540/ジョルダン標準形_一般固有空間の分解.webp";
+import image_02 from "/src/assets/linear_algebra/0540/ジョルダン標準形_表現行列.webp";
+
+<Card title="定理12.10.1">
+　$n$次実正方行列$A$が，重複もこめて$n$個の固有値をもつならば，適当な正則行列$P$によって
+$$
+P^{-1}AP
+$$
+はジョルダンの標準形になる．
+</Card>
+
+## 定理の主張
+　固有値の数がベクトル空間の次元と同じなら、ベクトル空間は一般固有空間で分解できる．
+
+<ImageWithCaption
+    src={image_01}
+    alt="一般固有空間の分解"  
+    figcaption="一般固有空間の分解"
+    width="500"
+    height="348" 
+/>
+
+　そして，各一般固有空間はジョルダン・ダイヤグラムを構成する基底で考えると，その表現行列はジョルダン・ブロックで表される．
+
+　適当な正則行列$P$は何かといえば，直和分解した一般固有空間の各ジョルダン・ダイアグラムを順番に並べたものである．
+
+## 証明の考え方
+<Steps>
+1. 一般固有空間による直和分解
+
+    　$\text{線形変換}f \colon \mathbb{R}^n \rightarrow \mathbb{R}^n$とし，$\text{線形変換}f$の表現行列を$A$とする．定理12.6.1により，$\mathbb{R}^n$は一般固有空間に直和分解される．つまり，
+    $$
+    \mathbb{R}^n = W(\lambda_1)\oplus\cdots\oplus W(\lambda_r)．
+    $$
+
+    すると定理12.1.1より，ある正則行列$P$があって，
+    $$
+    \begin{equation}
+    P^{-1}AP =
+        \begin{pmatrix} 
+          A_1 & &  \huge{0}   \\
+           &    \ddots &  \\
+          \huge{0} &  & A_r
+        \end{pmatrix}
+    \end{equation}
+    $$
+    となる．各$A_i$がジョルダン・ブロックで表されればよい．
+
+2. べき零写像の表現行列を考える．
+
+    　$f_i-\lambda_i id \space \colon \space W(\lambda_i) \rightarrow W(\lambda_i)$を考える（$id$は恒等写像，f_iの表現行列は$A_i$）．$f_i - \lambda_i id$は$W(\lambda_i)$でべき零写像である．記述の簡略のため，$g_i = f_i - \lambda_i id$とおく．
+
+    　このべき零写像$g_i$のフィルトレーションに関係して$W(\lambda_i)$の基底をうまく選ぶ．つまり，ジョルダン・ダイヤグラムである．そして，この基底に関して$g_i$の表現行列を考える．ここにジョルダン・ブロックが現れるからである．
+
+    <ImageWithCaption
+        src={image_02}
+        alt="表現行列"  
+        figcaption="表現行列"
+        width="500"
+        height="364" 
+    />
+
+    　表現行列は基底の像と基底との関係であるから，その関係を一部記載すると，
+    $$
+    g_i(g_i^{k-1}(\boldsymbol{x_1}) \cdots g_i(\boldsymbol{x_1}) \space \boldsymbol{x_1}) = (g_i^{k-1}(\boldsymbol{x_1}) \cdots g_i(\boldsymbol{x_1}) \space \boldsymbol{x_1}) J(0,k_1)
+    $$
+
+    となる．つまり，$g_i$表現行列の一部は$J(0,k_1)$である．
+
+    表現行列の全体は以下のようになる．
+
+    $$
+    (g_i = f_i - \lambda_i id =)A_i - \lambda_i E = 
+    \begin{pmatrix}
+      J(0, k_1) & & \huge{0}  \\
+      & \ddots & & \\
+     \huge{0} & & J(0, k_p) \\ 
+    \end{pmatrix}
+    $$
+
+    これを$A_i$について解くと，
+    $$
+    A_i = 
+    \begin{pmatrix}
+      J(\lambda_i, k_1) & & \huge{0}  \\
+      & \ddots & & \\
+     \huge{0} & & J(\lambda_i, k_p) \\ 
+    \end{pmatrix}
+    $$
+
+3. ジョルダン標準形
+
+    　各$A_i$を(1)に代入すると，$P^{-1}AP$はジョルダン標準形となる．
+
+</Steps>
+
+***
+
+## 復習ノート
+　ジョルダン標準形の証明には以下を理解している必要がある．
+- 一般固有空間による直和分解．
+- べき零写像のジョルダン・ダイヤグラムによる表現行列．
