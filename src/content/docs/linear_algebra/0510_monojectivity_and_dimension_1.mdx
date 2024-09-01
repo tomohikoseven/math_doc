@@ -1,0 +1,62 @@
+---
+title: 線形写像の単射性と次元の関係について（定理7.3.3（1））
+description: 線形写像の単射性と次元の関係について記す．
+lastUpdated: 2024-09-01
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+import { CardGrid } from '@astrojs/starlight/components';
+
+import ImageWithCaption from "/src/components/ImageWithCaption.astro";
+import image_01 from "/src/assets/linear_algebra/0500/線形写像の単射性とベクトル空間の関係（定理7.3.2）.webp";
+import image_02 from "/src/assets/linear_algebra/0510/線形写像の単射性と次元の関係について（定理7.3.3（1））.webp";
+
+<Card title="定理7.3.3">
+　$f \colon V \to W$を線形写像とするとき，$f$が単射であるための必要十分条件は
+$$
+\text{dim} (\text{Im}f) = \text{dim} V．
+$$
+</Card>
+
+## 定理の主張
+　次元定理からわかるとおり，$f$が線形写像のみの性質を持つなら$\text{dim}V \neq \text{dim}(\text{Im}f)$である．しかしこの定理では$f$が単射なら，$V$と$\text{Im}f$の次元が同じになると言っている．（正しくは逆も成り立つという主張．）
+
+<CardGrid>
+<ImageWithCaption
+    src={image_01}
+    alt="線形写像の単射性とベクトル空間の対応関係"  
+    figcaption="線形写像の単射性とベクトル空間の対応関係"
+    width="350"
+    height="300" 
+/>
+<ImageWithCaption
+    src={image_02}
+    alt="線形写像とベクトル空間の対応関係"
+    figcaption="線形写像とベクトル空間の対応関係"
+    width="350"
+    height="350" 
+/>
+</CardGrid>
+
+## 証明の考え方
+<Steps>
+
+1. $f$が単射$\implies \text{dim}(\text{Im}f)=\text{dim}V$
+
+    真正面から証明しようとするなら，$\text{dim}(\text{Im}f) \le \text{dim}V$かつ$\text{dim}(\text{Im}f) \ge \text{dim}V$を示せばよいが，定理7.3.2と次元定理から導出できそう．
+
+    　$f$は単射であるとする．定理7.3.2より$\text{Ker}f = \{ \boldsymbol{0}\}$．よって，$\text{dim}(\text{Ker}f)=0$．次元定理より，$\text{dim}V = \text{dim}(\text{Im}f)+\text{dim}(\text{Ker}f)$なので，$\text{dim}V=\text{dim}(\text{Im}f)$．
+
+2. $\text{dim}(\text{Im}f)=\text{dim}V \implies $ $f$が単射
+
+    　こちらも真正面から証明しようとするなら，単射の定義から$f$が単射であること導く．しかし，こちらも次元定理と定理7.3.2から導けそう．
+
+    　$\text{dim}(\text{Im}f)=\text{dim}V$とする．次元定理より$\text{dim}(\text{Ker}f)=0$．これと$f$は線形写像であることより，$\text{Ker}f = \{ \boldsymbol{0} \}$．定理7.3.2から$f$は単射．
+
+</Steps>
+
+***
+
+## 復習ノート
+- 次元の関係性は$f$が線形のときと$f$が線形＋単射の場合で，どう異なるのか．
+- 写像による対応関係，次元との関係を図示できるか．

@@ -1,0 +1,53 @@
+---
+title: 線形写像の全射性と次元の関係について（定理7.3.3（2））
+description: 線形写像の全射性と次元の関係について
+lastUpdated: 2024-09-02
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+import ImageWithCaption from "/src/components/ImageWithCaption.astro";
+import image_01 from "/src/assets/linear_algebra/0520/線形写像の全射性と次元の関係について（定理7.3.3（2））.webp";
+
+<Card title="定理7.3.3">
+　$f \colon V \to W$を線形写像とするとき，
+$$
+f \text{は全射} \iff \text{dim}(\text{Im}f) = \text{dim}W.
+$$
+</Card>
+
+## 定理の主張
+<ImageWithCaption
+    src={image_01}
+    alt="線形写像の全射性とベクトル空間の対応関係"  
+    figcaption="線形写像の全射性とベクトル空間の対応関係"
+    width="264"
+    height="273" 
+/>
+
+## 証明の考え方
+<Steps>
+
+1. $f \text{は全射} \implies \text{dim}(\text{Im}f)=\text{dim}W \text{を示す．}$
+
+    　$\text{dim}(\text{Im}f) \ge \text{dim}W$かつ$\text{dim}(\text{Im}f) \le \text{dim}W$を示せばよい．
+
+    **$\text{dim}(\text{Im}f) \le \text{dim}W$を示す**．
+
+    　一般に$\text{Im}f \subseteq W$である．よって，$\text{dim}(\text{Im}f) \le \text{dim}W$．
+
+
+    **$\text{dim}(\text{Im}f) \ge \text{dim}W$を示す**．
+
+    　$W \subseteq \text{Im}f$を示す．$\boldsymbol{y} \in W$とすると，$f$は全射なので$\boldsymbol{y}=f(\boldsymbol{x})$なる$\boldsymbol{x} \in V$が存在する．$\text{Im}f$の定義より$\text{Im}f = \{ f(\boldsymbol{x}) \in W | \boldsymbol{x} \in V \}$なので，$\boldsymbol{y} \in \text{Im}f$．よって，$W \subseteq \text{Im}f$．したがって，$\text{dim}(\text{Im}f) \ge \text{dim}W$．
+
+    　以上から，$\text{dim}(\text{Im}f)=\text{dim}W$．
+
+2. $ \text{dim}(\text{Im}f)=\text{dim}W \implies f \text{は全射} \text{を示す．}$
+
+    　$\text{dim}(\text{Im}f)=\text{dim}W$とする．$f$が全射であることを示すので，定義から任意の$\boldsymbol{y} \in W$に対して，$\boldsymbol{y}=f(\boldsymbol{x})$を満たす$\boldsymbol{x} \in V$が存在することを示せばよい．
+
+    　$\boldsymbol{y} \in W$とおく．仮定から$\text{dim}(\text{Im}f) = \text{dim}W$なので，定理6.8.6より$\text{Im}f=W$である．よって，$\boldsymbol{y} \in \text{Im}f$．$\text{Im}f$の定義より，$\boldsymbol{y}=f(\boldsymbol{x})$を満たす$\boldsymbol{x} \in V$が存在することが言える．したがって，$f$は全射．
+
+
+</Steps>

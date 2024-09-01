@@ -1,0 +1,64 @@
+---
+title: 線形写像の単射性とベクトル空間の関係（定理7.3.2）
+description: 線形写像の単射性とベクトル空間の関係について記す．
+lastUpdated: 2024-09-01
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+import ImageWithCaption from "/src/components/ImageWithCaption.astro";
+import image_01 from "/src/assets/linear_algebra/0500/線形写像の単射性とベクトル空間の関係（定理7.3.2）.webp";
+
+<Card title="定理7.3.2">
+　線形写像$f \colon V \to W$が単射であるための必要十分条件は
+$$
+\text{Ker}f = \{ \boldsymbol{0} \} ．
+$$
+</Card>
+
+## 定理の主張
+　線形写像$f$の単射性を知りたいならば，$\text{Ker}f$の元を調べよ．$\text{Ker}f$の元（ベクトル）が$\boldsymbol{0}$（ゼロベクトル）のみであれば，$f$は単射である．
+
+　線形写像$f$により，$\boldsymbol{0} \in W$に対応する$V$の元が$\boldsymbol{0}$（ゼロベクトル）のみなら，$f$は単射であるということ．
+
+<ImageWithCaption
+    src={image_01}
+    alt="線形写像の単射性とベクトル空間の対応関係"
+    figcaption="線形写像の単射性とベクトル空間の対応関係"
+    width="350"
+    height="319" 
+/>
+
+## 証明の考え方
+<Steps>
+1. $f\text{は単射}\implies \text{Ker}f = \{ \boldsymbol{0} \}\space $を示す．
+
+    　$f$は単射であると仮定する．このとき，$\text{Ker}f \subset \{ \boldsymbol{0} \}$ かつ $ \{ \boldsymbol{0} \} \subset \text{Ker}f $であることを示せばよい．
+
+    **$\{ \boldsymbol{0} \} \subset \text{Ker}f $を示す**.
+
+    　これは明らか．
+
+    **$\text{Ker}f \subset \{ \boldsymbol{0} \} $を示す**.
+
+    　$\boldsymbol{x} \in \text{Ker}f \implies \boldsymbol{x} \in \{ \boldsymbol{0} \} $であることを示す．
+
+    　$\boldsymbol{x} \in \text{Ker}f $とする．このとき，$\text{Ker}f$の定義より$f(\boldsymbol{x})=\boldsymbol{0}$が成り立つ．仮定より$f$は単射なので，$f(\boldsymbol{x}) = \boldsymbol{0}$を満たす$\boldsymbol{x}$は１つで$\boldsymbol{0}$である．よって，$\boldsymbol{x} \in \{ \boldsymbol{0} \}$．したがって，$\text{Ker}f \subset \{ \boldsymbol{0} \} $．
+
+    　以上から，$\text{Ker}f = \{ \boldsymbol{0} \}$．
+
+2. $\text{Ker}f = \{ \boldsymbol{0} \} \implies f\text{は単射}$を示す．
+
+    　単射の定義より，$f(\boldsymbol{x}) = f(\boldsymbol{y}) \implies \boldsymbol{x} = \boldsymbol{y} \space$を示せばよい．
+
+    　$f(\boldsymbol{x}) = f(\boldsymbol{y}) $とする．線形性より式を変形して$f(\boldsymbol{x-y}) = \boldsymbol{0}$．$\text{Ker}f = \{ \boldsymbol{0} \}$より，$\boldsymbol{x-y=0}$．よって，$\boldsymbol{x=y}$．したがって，$f$は単射である．
+
+</Steps>
+
+***
+
+## 復習ノート
+- 次元定理とどのように関連しているだろうか．
+- 次元定理とは何だっただろうか．
+- $\text{Ker}f$の定義は何か．
+- $f$が単射ではない場合は$V, W$の対応関係をどのように図示できるだろうか．
