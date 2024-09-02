@@ -33,6 +33,7 @@ export default defineConfig({
     sidebar: [
     {
       label: '実数論',
+      collapsed: true, 
       autogenerate : {
         directory: 'real_number',
         collapsed: true,
@@ -40,6 +41,7 @@ export default defineConfig({
     }, 
     {
       label: '線形代数',
+      collapsed: true, 
       autogenerate: {
         directory: 'linear_algebra',
         collapsed: true,
@@ -50,6 +52,14 @@ export default defineConfig({
       autogenerate: {
         directory: 'software',
         collapsed: true,
+      }
+    },
+    {
+      label: 'その他',
+      collapsed: true, 
+      autogenerate: {
+        directory: 'other',
+        collapsed: false,
       }
     }]
   })],
