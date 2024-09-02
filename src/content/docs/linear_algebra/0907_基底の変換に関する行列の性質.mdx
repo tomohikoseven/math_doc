@@ -1,0 +1,24 @@
+---
+title: 基底の変換に関する行列の性質
+description: 基底の変換に関する行列の性質
+lastUpdated: 2024-09-02
+draft: true
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+<Card title="定理6.9.1">
+　ベクトル空間 $ V $の1組の基底を $ \boldsymbol{a}_1, \cdots , \boldsymbol{a}_n $ とする．$ V $の$n$個のベクトル$\boldsymbol{b}_1, \cdots , \boldsymbol{b}_n $が$V$の基底であるための必要十分条件は，
+$$
+\boldsymbol{b}_{j} = \sum_{i=1}^{n}c_{ij}\boldsymbol{a}_{i} \quad (j = 1, \cdots , n) 
+$$
+と書いたとき，行列$C = (c_{ij})$が正則となることである．
+</Card>
+
+## 定理の主張
+　ベクトル空間内の2つの基底に対して，それらが行列$C$で関係しているとき、その行列$C$は正則である．逆に，1つの基底の組と正則な行列$C$があったとき，それらの積は基底になる．
+
+　正則な行列には次元を減らさない性質があるので、2つの基底の間に行列$C$が関係しているなら、それは正則でないとおかしい．
+
+　上の定理の結果として行列$C$が正則であることはよく使われるが、その逆はあまり利用されていない。つまり、同一ベクトル空間内の２つの基底とそれらに関係する行列が仮定されたとき、その行列は正則であることが暗黙され、証明で利用される。
+

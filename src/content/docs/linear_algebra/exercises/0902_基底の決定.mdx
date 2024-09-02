@@ -1,0 +1,40 @@
+---
+title: 基底の決定（例題）
+description: 基底の決定（例題）
+lastUpdated: 2024-09-02
+draft: true
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+import ImageWithCaption from "/src/components/ImageWithCaption.astro";
+import image_01 from "/src/assets/linear_algebra/draft/基底の決定（例題）.webp"
+
+<Card title="例題12">
+　線形写像$ F \colon \boldsymbol{R}^3\longrightarrow\boldsymbol{R}^2 $の基底 $\bigg\langle \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}, \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \bigg\rangle , \bigg\langle \begin{bmatrix} 1 \\ 1 \end{bmatrix}, \begin{bmatrix} 1 \\ 0 \end{bmatrix} \bigg\rangle $に関する表現行列が$A=\Big\lbrack\begin{array}{rrr} 1 & -5 & -2 \\ -1 & 8 & 3 \end{array}\Big\rbrack $であるとき，その表現行列が$ B=\Big\lbrack\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \end{array}\Big\rbrack $になるように$ \boldsymbol{R}^3$および$\boldsymbol{R}^2$の基を定めよ。
+</Card>
+
+## 例題の主張
+　基底の変換行列と表現行列の関係（$ B=Q^{-1}AP$）を理解しているか，また，それを応用できるかを問うている．もう一組ずつの基底が何かを問われているところに，もう一捻りして問に答える必要がある．
+
+## 解答の考え方
+<dl>
+    <dt>(仮定A1)</dt>
+    <dd>$ 線形写像F \colon \reals^3 \longrightarrow \reals^2$</dd>
+    <dt>(仮定A2)</dt>
+    <dd>基底$\boldsymbol{a}=\bigg\langle \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \bigg\rangle, \boldsymbol{b}=\bigg\langle \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \end{pmatrix} \bigg\rangle $に関する表現行列は，$A=\begin{pmatrix*}[r] 1 & -5 & -2 \\ -1 & 8 & 3 \end{pmatrix*}$．</dd>
+    <dt>(結論)</dt>
+    <dd>表現行列が$ B=\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix} $となるような$ \reals^3および\reals^2$の基底は何か．</dd>
+</dl>
+***
+　求める$ \reals^3 $の基底の組を$\boldsymbol{a}^{\prime}=\langle \boldsymbol{a}_1^{\prime}, \boldsymbol{a}_2^{\prime}, \boldsymbol{a}_3^{\prime} \rangle$，$\reals^2$の基底の組を$\boldsymbol{b}^{\prime}=\langle \boldsymbol{b}_1^{\prime}, \boldsymbol{b}_2^{\prime} \rangle $，題意の$ \reals^3$の基底の組を$ \boldsymbol{a} = \langle \boldsymbol{a}_1, \boldsymbol{a}_2, \boldsymbol{a}_3 \rangle = \bigg\langle \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \bigg\rangle $, $ \reals^2$の基底の組を$ \boldsymbol{b} =\langle \boldsymbol{b}_1, \boldsymbol{b}_2 \rangle =\bigg\langle \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \end{pmatrix} \bigg\rangle $，ベクトル空間$ \reals^3$の基底の組$ \boldsymbol{a}$に関する成分ベクトルの集合を$\reals_{\boldsymbol{a}}^3 $，その他同様に$\reals_{\boldsymbol{a'}}^3 $，$\reals_{\boldsymbol{b}}^3 $，$\reals_{\boldsymbol{b'}}^3 $とおく．また，$ \boldsymbol{a}$から$\boldsymbol{a'}$への基底変換行列を$ P $，$ \boldsymbol{b}$から$\boldsymbol{b'}$への基底変換行列を$ Q $とおく．
+
+　すると題意から，下図のような関係がわかる．
+<ImageWithCaption 
+    src={image_01}
+    alt="図1"
+    figcaption="図1"
+    width="520"
+    height="400"
+/>
+
