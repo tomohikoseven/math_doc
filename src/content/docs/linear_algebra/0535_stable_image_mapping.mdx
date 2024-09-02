@@ -1,0 +1,27 @@
+---
+title: 線形変換fとf-λ1の安定像空間は同値である．
+description: 線形変換fとf-λ1の安定像空間は同値である.
+lastUpdated: 2024-09-01
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+import { Aside } from '@astrojs/starlight/components';
+
+
+<Aside>この主張は，今の段階では個人的メモであり，正しいかどうか保証していません．</Aside>
+
+<Card title="命題">
+　線形変換$f \colon V \rightarrow V$とその固有値$\lambda$が与えられたとき，$f$の安定像空間$V^{\prime}_k$と線形変換$f-\lambda 1 \colon V \rightarrow V$の安定像空間$V_k$は同値である．すなわち，$V^{\prime}_k = V_{k}$である．
+</Card>
+
+## 証明
+　背理法で示す．すなわち，$V^{\prime}_k \neq V_{k}$として矛盾を示す．
+
+　$\boldsymbol{x} \in V^{\prime}_k - V_k$が存在すると仮定する．これは特に$\boldsymbol{x} \neq \boldsymbol{0}$である．
+
+　$\boldsymbol{x} \not\in V_k$より，$\boldsymbol{x} \in W_k$である．よって，$(f-\lambda 1)^k(\boldsymbol{x}) = \boldsymbol{0}$．
+
+　$(f-\lambda 1)^k | V_k \colon V_k \rightarrow V_k$を定義すると，$(f-\lambda 1)^k | V_K$は同型写像なので，$\boldsymbol{x} \in V_k$であることも考慮して，$(f-\lambda 1)^k(\boldsymbol{x}) = \boldsymbol{0}$ならば，$\boldsymbol{x} = \boldsymbol{0}$．しかし，これは$\boldsymbol{x} \neq \boldsymbol{0}$であることに矛盾する．
+
+　以上より，$V^{\prime}_k = V_{k}$である．すなわち，線形変換$f$と$f-\lambda 1$の安定像空間は同値である．
