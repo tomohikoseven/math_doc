@@ -66,17 +66,11 @@ export default defineConfig({
     },
     {
       label: 'サイトについて',
-      items: [
-        {
-          label: 'プライバシーポリシー',
-          link: '/0001_privacy_policy/'
-        },
-        {
-          label: '免責事項，著作権，肖像権について',
-          link: '/0002_disclaimer_copyright/'
-        }
-
-      ]
+      collapsed: false,
+      autogenerate: {
+        directory: 'mywebsite',
+        collapsed: false,
+      }
     }]
   })],
   markdown: {
