@@ -18,7 +18,9 @@ export default defineConfig({
     ],
     plugins: [starlightLinksValidator()],
     title: '数学の主張',
-    tableOfContents: false, 
+    tableOfContents: true, 
+    lastUpdated: true, 
+    disable404Route: true, 
     customCss: [ './src/styles/custom.css' ] ,
     defaultLocale: 'ja',
     locales: {
@@ -61,6 +63,20 @@ export default defineConfig({
         directory: 'other',
         collapsed: false,
       }
+    },
+    {
+      label: 'サイトについて',
+      items: [
+        {
+          label: 'プライバシーポリシー',
+          link: '/0001_privacy_policy/'
+        },
+        {
+          label: '免責事項，著作権，肖像権について',
+          link: '/0002_disclaimer_copyright/'
+        }
+
+      ]
     }]
   })],
   markdown: {
