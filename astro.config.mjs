@@ -4,7 +4,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 import starlightLinksValidator from 'starlight-links-validator';
-import { KATEX, GOOGLE_ADSENSE, GOOGLE_ANALYTICS, BUY_ME_A_COFFEE } from './src/libs/head';
+import { KATEX, GOOGLE_SITE_VERIFICATION, GOOGLE_ADSENSE, GOOGLE_ANALYTICS, BUY_ME_A_COFFEE } from './src/libs/head';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +12,7 @@ export default defineConfig({
   integrations: [starlight({
     head:[
      KATEX, 
+     GOOGLE_SITE_VERIFICATION,
      GOOGLE_ADSENSE, 
      ...GOOGLE_ANALYTICS,
       BUY_ME_A_COFFEE,
