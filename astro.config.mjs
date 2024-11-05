@@ -10,6 +10,7 @@ import { KATEX, GOOGLE_SITE_VERIFICATION, GOOGLE_ADSENSE, GOOGLE_ANALYTICS, BUY_
 export default defineConfig({
   site: 'https://math-doc.pages.dev',
   integrations: [starlight({
+    favicon: '/favicon.ico',
     head:[
      KATEX, 
      GOOGLE_SITE_VERIFICATION,
