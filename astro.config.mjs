@@ -23,12 +23,6 @@ export default defineConfig({
     lastUpdated: true, 
     disable404Route: true, 
     customCss: [ './src/styles/custom.css' ] ,
-    defaultLocale: 'ja',
-    locales: {
-      ja: {
-        label: '日本語'
-      }
-    }, 
     social: {
       github: 'https://github.com/tomohikoseven',
       'x.com': 'https://x.com/tomohikoseven'
