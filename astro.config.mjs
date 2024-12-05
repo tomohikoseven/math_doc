@@ -6,6 +6,8 @@ import rehypeKatex from 'rehype-katex';
 import starlightLinksValidator from 'starlight-links-validator';
 import { KATEX, GOOGLE_SITE_VERIFICATION, GOOGLE_ADSENSE, GOOGLE_ANALYTICS, BUY_ME_A_COFFEE } from './src/libs/head';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://math-doc.pages.dev',
@@ -68,7 +70,7 @@ export default defineConfig({
         collapsed: false,
       }
     }]
-  })],
+  }), sitemap()],
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [ [rehypeKatex, {strict: true}] ],
