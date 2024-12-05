@@ -10,7 +10,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://math-doc.pages.dev',
+  site: 'https://math-doc.pages.dev/',
   integrations: [starlight({
     favicon: '/favicon.ico',
     head:[
