@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://math-doc.pages.dev/sitemap-index.xml
+Sitemap: https://st953225.static.jp/sitemap-index.xml
