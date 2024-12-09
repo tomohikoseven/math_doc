@@ -1,0 +1,41 @@
+name: Deploy to Xserver Static
+
+on:
+  push:
+    branches:
+      - main  # mainブランチにpushされたときに実行
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 22
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the project
+      run: npm run build
+
+    - name: Install lftp
+      run: sudo apt-get install -y lftp
+
+    - name: Deploy to Xserver Static
+      env:
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      run: |
+        lftp -c "
+        open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER
+        mirror -R --delete -x \".htaccess\" ./dist /  
+        bye
+        " || true
