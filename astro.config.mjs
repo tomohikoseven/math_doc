@@ -10,7 +10,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://st953225.static.jp/',
+  site: 'https://mathdoc.ifdef.jp/',
   integrations: [starlight({
     favicon: '/favicon.ico',
     head:[

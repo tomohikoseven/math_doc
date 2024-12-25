@@ -22,7 +22,7 @@ export default defineConfig({
   integrations: [...],
   ...
 ```
-　すると，[sitemap-index.xml](https://st953225.static.jp/sitemap-index.xml)が作成される．
+　すると，[sitemap-index.xml](https://mathdoc.ifdef.jp/sitemap-index.xml)が作成される．
 
 ## ライブラリの追加は不要．
 　検索すると，@astrojs/sitemapをインストールする記事が出てくるが，すでに入っているので，やらなくてよい．`site`だけ追加すれば，ビルド時に生成してくれる．

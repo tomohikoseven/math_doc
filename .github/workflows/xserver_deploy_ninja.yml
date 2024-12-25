@@ -1,4 +1,4 @@
-name: Deploy to Xserver Static
+name: Deploy to Ninja Homepage
 
 on:
   push:
@@ -28,11 +28,11 @@ jobs:
     - name: Install lftp
       run: sudo apt-get install -y lftp
 
-    - name: Deploy to Xserver Static
+    - name: Deploy to Ninja Homepage
       env:
-        FTP_SERVER: ${{ secrets.FTP_SERVER }}
-        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        FTP_SERVER: ${{ secrets.FTP_SERVER_NINJA }}
+        FTP_USERNAME: ${{ secrets.FTP_USERNAME_NINJA }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD_NINJA }}
       run: |
         lftp -c "
         open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER
