@@ -4,7 +4,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 import starlightLinksValidator from 'starlight-links-validator';
-import { KATEX, GOOGLE_SITE_VERIFICATION, GOOGLE_ADSENSE, GOOGLE_ANALYTICS, BUY_ME_A_COFFEE } from './src/libs/head';
+import { KATEX, GOOGLE_SITE_VERIFICATION, GOOGLE_ANALYTICS, BUY_ME_A_COFFEE } from './src/libs/head';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -13,7 +13,6 @@ export default defineConfig({
   site: 'https://mathdoc.ifdef.jp/',
   integrations: [starlight({
     favicon: '/favicon.ico',
-    defaultLocale: 'root',
     locales: {
       root: {
         label: '日本語',
@@ -23,7 +22,6 @@ export default defineConfig({
     head:[
      KATEX, 
      GOOGLE_SITE_VERIFICATION,
-     GOOGLE_ADSENSE, 
      ...GOOGLE_ANALYTICS,
       BUY_ME_A_COFFEE,
     ],
