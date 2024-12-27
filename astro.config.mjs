@@ -27,6 +27,10 @@ export default defineConfig({
     ],
     plugins: [starlightLinksValidator()],
     title: '数学の主張',
+    components: {
+      // オーバーライド
+      Footer: './src/components/Footer.astro',
+    },
     tableOfContents: true, 
     lastUpdated: true, 
     disable404Route: true, 

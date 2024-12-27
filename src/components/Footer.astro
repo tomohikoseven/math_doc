@@ -1,0 +1,8 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Footer.astro';
+import AdSeihokei from './AdSeihokei.astro';
+---
+
+<AdSeihokei></AdSeihokei>
+<Default {...Astro.props}><slot /></Default>
