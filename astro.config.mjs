@@ -13,6 +13,13 @@ export default defineConfig({
   site: 'https://mathdoc.ifdef.jp/',
   integrations: [starlight({
     favicon: '/favicon.ico',
+    defaultLocale: 'root',
+    locales: {
+      root: {
+        label: '日本語',
+        lang: 'ja', // langはルートロケールに必要です
+      },
+    },
     head:[
      KATEX, 
      GOOGLE_SITE_VERIFICATION,
