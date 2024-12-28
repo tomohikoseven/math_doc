@@ -1,0 +1,56 @@
+---
+import type { Props } from '@astrojs/starlight/props'
+import Default from '@astrojs/starlight/components/Head.astro'
+import { getCldOgImageUrl } from 'astro-cloudinary/helpers'
+
+// Grab the current page entry and site title from the page data.
+const { entry, siteTitle } = Astro.props
+
+// Get the URL of the generated image for the current page.
+const ogImageUrl = getCldOgImageUrl({
+  // The public ID of the image in Cloudinary.
+  src: 'og_image_by5hx6',
+  // A blur transformation to apply to the image.
+  blur: '1000',
+  // Text overlays to add to the image.
+  overlays: [
+    {
+      text: {
+        // Add the title of the current page as text.
+        text: entry.data.title,
+        // Style the title text.
+        color: '#020617',
+        fontFamily: 'Lato',
+        fontSize: 80,
+        fontWeight: 'bold',
+      },
+      // Position the title with some padding.
+      crop: 'fit',
+      position: { y: -50 },
+      width: 1000,
+    },
+    {
+      text: {
+        // Add the description of the current page as text.
+        text: entry.data.description || siteTitle,
+        // Style the description.
+        color: '#020617',
+        fontFamily: 'Lato',
+        fontSize: 55,
+        fontWeight: 'bold',
+      },
+      // Position the description below the title.
+      position: { y: 50 },
+      crop: 'fit',
+      width: 1000,
+    },
+  ],
+})
+---
+
+<!-- Render the default <Head/> component. -->
+<Default {...Astro.props}><slot /></Default>
+
+<!-- Render the <meta/> tags for the Open Graph images. -->
+<meta property="og:image" content={ogImageUrl} />
+<meta name="twitter:image" content={ogImageUrl} />
