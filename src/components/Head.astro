@@ -9,9 +9,7 @@ const { entry, siteTitle } = Astro.props
 // Get the URL of the generated image for the current page.
 const ogImageUrl = getCldOgImageUrl({
   // The public ID of the image in Cloudinary.
-  src: 'og_image_by5hx6',
-  // A blur transformation to apply to the image.
-  blur: '1000',
+  src: 'og_image_facet_qwe8i8',
   // Text overlays to add to the image.
   overlays: [
     {
@@ -20,7 +18,7 @@ const ogImageUrl = getCldOgImageUrl({
         text: entry.data.title,
         // Style the title text.
         color: '#020617',
-        fontFamily: 'Lato',
+        fontFamily: 'Sawarabi Gothic',
         fontSize: 80,
         fontWeight: 'bold',
       },
@@ -35,9 +33,9 @@ const ogImageUrl = getCldOgImageUrl({
         text: entry.data.description || siteTitle,
         // Style the description.
         color: '#020617',
-        fontFamily: 'Lato',
+        fontFamily: 'Sawarabi Gothic',
         fontSize: 55,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
       },
       // Position the description below the title.
       position: { y: 50 },
