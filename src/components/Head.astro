@@ -4,7 +4,7 @@ import Default from '@astrojs/starlight/components/Head.astro'
 import { getCldOgImageUrl } from 'astro-cloudinary/helpers'
 
 // Grab the current page entry and site title from the page data.
-const { entry, siteTitle } = Astro.props
+const { entry } = Astro.props
 
 // Get the URL of the generated image for the current page.
 const ogImageUrl = getCldOgImageUrl({
