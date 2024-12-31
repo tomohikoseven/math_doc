@@ -21,7 +21,6 @@ export default defineConfig({
     },
     head:[
      KATEX, 
-     GOOGLE_SITE_VERIFICATION,
      ...GOOGLE_ANALYTICS,
       BUY_ME_A_COFFEE,
     ],
