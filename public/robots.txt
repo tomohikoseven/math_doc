@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://mathdoc.ifdef.jp/sitemap-index.xml
