@@ -2,9 +2,10 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import starlightBlog from 'starlight-blog';
 
 import starlightLinksValidator from 'starlight-links-validator';
-import { KATEX, GOOGLE_SITE_VERIFICATION, GOOGLE_ANALYTICS, BUY_ME_A_COFFEE } from './src/libs/head';
+import { KATEX, GOOGLE_ANALYTICS, BUY_ME_A_COFFEE } from './src/libs/head';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -24,7 +25,7 @@ export default defineConfig({
      ...GOOGLE_ANALYTICS,
       BUY_ME_A_COFFEE,
     ],
-    plugins: [starlightLinksValidator()],
+    plugins: [starlightBlog(),starlightLinksValidator()],
     title: '数学の主張',
     components: {
       // オーバーライド
