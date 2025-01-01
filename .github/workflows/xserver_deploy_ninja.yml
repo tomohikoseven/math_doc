@@ -33,3 +33,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD_NINJA }}
         local-dir: ./dist/
         server-dir: / 
+
+    - name: Update sitemap 
+      run: |
+         curl -X GET "http://www.google.com/ping?sitemap=https://mathdoc.ifdef.jp/sitemap-0.xml"
