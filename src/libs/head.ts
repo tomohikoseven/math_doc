@@ -32,7 +32,7 @@ export const GOOGLE_ANALYTICS = [{
         tag: `script`,
         attrs: {
           async: true,
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-5RMK9LFJWN',
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-GLTH0LBWDY',
         }
       },
       {
@@ -42,7 +42,7 @@ export const GOOGLE_ANALYTICS = [{
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-5RMK9LFJWN');
+  gtag('config', 'G-GLTH0LBWDY');
  `
       }];
 
