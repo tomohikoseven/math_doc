@@ -25,7 +25,16 @@ export default defineConfig({
      ...GOOGLE_ANALYTICS,
       BUY_ME_A_COFFEE,
     ],
-    plugins: [starlightBlog(),starlightLinksValidator()],
+    plugins: [starlightBlog({
+      authors: {
+        tomohikoseven: {
+          name: 'tomohikoseven',
+          title: 'General mathematician',
+          picture: '/general_mathematician.webp',
+          url: 'https://x.com/tomohikoseven', 
+        },
+      },
+    }),starlightLinksValidator()],
     title: '数学の主張',
     components: {
       // オーバーライド
