@@ -57,18 +57,18 @@ export default defineConfig({
       }
     },
     {
-      label: 'Software',
-      autogenerate: {
-        directory: 'software',
-        collapsed: true,
-      }
-    },
-    {
-      label: 'その他',
+      label: '数学全般',
       collapsed: true, 
       autogenerate: {
         directory: 'other',
         collapsed: false,
+      }
+    },
+    {
+      label: 'Software',
+      autogenerate: {
+        directory: 'software',
+        collapsed: true,
       }
     },
     {
