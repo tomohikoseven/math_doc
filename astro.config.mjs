@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import starlightBlog from 'starlight-blog';
 
 import starlightLinksValidator from 'starlight-links-validator';
 import { KATEX, GOOGLE_ANALYTICS, BUY_ME_A_COFFEE } from './src/libs/head';
@@ -25,16 +24,7 @@ export default defineConfig({
      ...GOOGLE_ANALYTICS,
       BUY_ME_A_COFFEE,
     ],
-    plugins: [starlightBlog({
-      authors: {
-        tomohikoseven: {
-          name: 'tomohikoseven',
-          title: 'General mathematician',
-          picture: '/general_mathematician.webp',
-          url: 'https://x.com/tomohikoseven', 
-        },
-      },
-    }),starlightLinksValidator()],
+    plugins: [starlightLinksValidator()],
     title: '数学の主張',
     components: {
       // オーバーライド
