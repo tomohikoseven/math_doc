@@ -1,0 +1,25 @@
+---
+import { CldImage } from 'astro-cloudinary';
+
+const { txt, wid=850  } = Astro.props;
+---
+
+
+<CldImage
+  src="image_facet_ctofpe"
+  sizes="100vw"
+  overlays={[
+    {
+      text: {
+        color: '#000000',
+        fontFamily: 'Sawarabi Gothic',
+        fontSize: 55,
+        fontWeight: 'black',
+        text: txt
+      },
+      crop: 'fit',
+      width: wid,
+    },
+  ]}
+  alt={txt}
+/>
