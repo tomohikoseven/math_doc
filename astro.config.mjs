@@ -4,7 +4,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 import starlightLinksValidator from 'starlight-links-validator';
-import { KATEX, GOOGLE_ANALYTICS, BUY_ME_A_COFFEE } from './src/libs/head';
+import { KATEX, GOOGLE_ANALYTICS } from './src/libs/head';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -22,7 +22,6 @@ export default defineConfig({
     head:[
      KATEX, 
      ...GOOGLE_ANALYTICS,
-      BUY_ME_A_COFFEE,
     ],
     plugins: [starlightLinksValidator()],
     title: '数学の主張',
