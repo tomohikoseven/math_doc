@@ -3,8 +3,12 @@ title: 【2024年10月】楽天ラッキーくじの当選を整理する。
 description: 楽天ラッキーくじの当選を整理する(2024年10月)。
 lastUpdated: 2024-11-01
 ---
-import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+export const imageTxt = "楽天ラッキーくじ当選結果（2024年10月）";
 
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+import CloudinaryImage from '/src/components/CloudinaryImage.astro';
+
+<CloudinaryImage txt={imageTxt} wid='800'></CloudinaryImage>
 <NoteRakutenKuji></NoteRakutenKuji>
 
 | 日付 | 当選ポイント | 当選くじ |
