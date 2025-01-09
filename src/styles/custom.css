@@ -47,6 +47,11 @@ figcaption {
 span.katex::before, span.katex::after {
 	content: " ";
 }
+/* \sqrtや\sumの表示がされない問題の対応 */
+/* https://github.com/withastro/starlight/issues/2744 */
+.katex-html svg {
+  height: inherit;
+}
 
 /* ====================== */
 /* 問い合わせフォーム     */

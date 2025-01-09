@@ -4,8 +4,6 @@ export const KATEX = {
         attrs:{
           rel: 'stylesheet',
           href: 'https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.css',
-          integrity: 'sha384-7lU0muIg/i1plk7MgygDUp3/bNRA65orrBub4/OSWHECgwEsY83HaS1x3bljA/XV',
-          crossorigin: 'anonymous'
         }
       };
 
