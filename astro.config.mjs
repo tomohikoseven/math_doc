@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import emoji from 'remark-emoji';
 
 import starlightLinksValidator from 'starlight-links-validator';
 import { KATEX, GOOGLE_ANALYTICS } from './src/libs/head';
@@ -88,7 +89,7 @@ export default defineConfig({
     }]
   }), sitemap()],
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, emoji],
     rehypePlugins: [ [rehypeKatex, {strict: true}] ],
   }
 });
