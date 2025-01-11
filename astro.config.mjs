@@ -64,6 +64,14 @@ export default defineConfig({
       }
     },
     {
+      label: '数学日誌',
+      collapsed: true, 
+      autogenerate: {
+        directory: 'diary',
+        collapsed: false,
+      }
+    },
+    {
       label: 'Software',
       autogenerate: {
         directory: 'software',
