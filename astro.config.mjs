@@ -39,7 +39,8 @@ export default defineConfig({
     customCss: [ './src/styles/custom.css' ] ,
     social: {
       github: 'https://github.com/tomohikoseven',
-      'x.com': 'https://x.com/tomohikoseven'
+      'x.com': 'https://x.com/tomohikoseven',
+      'instagram': 'https://www.instagram.com/nagasetomohiko/',
     },
     sidebar: [
     {
