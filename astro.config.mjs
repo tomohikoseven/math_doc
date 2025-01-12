@@ -30,6 +30,8 @@ export default defineConfig({
       // オーバーライド
       Footer: './src/components/Footer.astro',
       Head: './src/components/Head.astro',
+      TableOfContents: './src/components/TableOfContents.astro',
+      Sidebar: './src/components/Sidebar.astro',
     },
     tableOfContents: true, 
     lastUpdated: true, 
