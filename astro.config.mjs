@@ -6,6 +6,7 @@ import emoji from 'remark-emoji';
 
 import starlightLinksValidator from 'starlight-links-validator';
 import { KATEX, GOOGLE_ANALYTICS } from './src/libs/head';
+import { REAL_NUMBER, LINEAR_ALGEBRA, MATHEMATICS, MATH_DIALY, SOFTWARE, ABOUT_MY_WEBSITE } from './src/libs/sidebar';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -43,53 +44,13 @@ export default defineConfig({
       'instagram': 'https://www.instagram.com/nagasetomohiko/',
     },
     sidebar: [
-    {
-      label: '実数論',
-      collapsed: true, 
-      autogenerate : {
-        directory: 'real_number',
-        collapsed: true,
-      }
-    }, 
-    {
-      label: '線形代数',
-      collapsed: true, 
-      autogenerate: {
-        directory: 'linear_algebra',
-        collapsed: true,
-      }
-    },
-    {
-      label: '数学全般',
-      collapsed: true, 
-      autogenerate: {
-        directory: 'other',
-        collapsed: false,
-      }
-    },
-    {
-      label: '数学日誌',
-      collapsed: true, 
-      autogenerate: {
-        directory: 'diary',
-        collapsed: false,
-      }
-    },
-    {
-      label: 'Software',
-      autogenerate: {
-        directory: 'software',
-        collapsed: true,
-      }
-    },
-    {
-      label: 'サイトについて',
-      collapsed: false,
-      autogenerate: {
-        directory: 'mywebsite',
-        collapsed: false,
-      }
-    }]
+      REAL_NUMBER, 
+      LINEAR_ALGEBRA,
+      MATHEMATICS, 
+      MATH_DIALY,
+      SOFTWARE, 
+      ABOUT_MY_WEBSITE
+    ]
   }), sitemap()],
   markdown: {
     remarkPlugins: [remarkMath, emoji],
