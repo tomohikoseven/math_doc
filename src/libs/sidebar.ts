@@ -50,3 +50,12 @@ export const ABOUT_MY_WEBSITE = {
         collapsed: false,
       }
     };
+  
+export const HIGH_SCHOOL_MATH = {
+  label: '高校数学',
+  collapsed: false,
+  autogenerate: {
+    directory: 'high_school_math',
+    collapsed: false,
+  }
+};
