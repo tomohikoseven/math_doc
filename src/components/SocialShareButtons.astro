@@ -1,0 +1,17 @@
+---
+const { title, siteurl } = Astro.props;
+---
+<div class="ninja_onebutton">
+  <script is:inline>
+  //<![CDATA[
+  (function(d){
+  if(typeof(window.NINJA_CO_JP_ONETAG_BUTTON_53f9f968c2c34e845d070e269d10a3fa)=='undefined'){
+      document.write("<sc"+"ript type='text\/javascript' src='\/\/omt.shinobi.jp\/b\/53f9f968c2c34e845d070e269d10a3fa'><\/sc"+"ript>");
+  }else{
+      window.NINJA_CO_JP_ONETAG_BUTTON_53f9f968c2c34e845d070e269d10a3fa.ONETAGButton_Load();}
+  })(document);
+  //]]>
+  </script><span class="ninja_onebutton_hidden" style="display:none;">{siteurl}</span><span style="display:none;" class="ninja_onebutton_hidden">{title}</span>
+</div>
+  
+  

@@ -33,6 +33,7 @@ export default defineConfig({
       Head: './src/components/Head.astro',
       TableOfContents: './src/components/TableOfContents.astro',
       Sidebar: './src/components/Sidebar.astro',
+      PageTitle: './src/components/starlight/PageTitle.astro',
     },
     tableOfContents: true, 
     lastUpdated: true, 
