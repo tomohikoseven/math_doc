@@ -21,7 +21,7 @@ jobs:
 
     - name: Install D2
       run: |
-          curl -fsSL https://d2lang.com/install.sh | sh -s -- \
+          curl -fsSL https://d2lang.com/install.sh | sh -s -- 
           export PATH=$HOME/.local/bin:$PATH
 
     - name: Install dependencies
