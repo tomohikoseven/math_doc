@@ -3,6 +3,7 @@ import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import emoji from 'remark-emoji';
+import d2 from 'astro-d2';
 
 import starlightLinksValidator from 'starlight-links-validator';
 import { KATEX, GOOGLE_ANALYTICS } from './src/libs/head';
@@ -53,7 +54,7 @@ export default defineConfig({
       SOFTWARE, 
       ABOUT_MY_WEBSITE
     ]
-  }), sitemap()],
+  }), sitemap(), d2()],
   markdown: {
     remarkPlugins: [remarkMath, emoji],
     rehypePlugins: [ [rehypeKatex, {strict: true}] ],
