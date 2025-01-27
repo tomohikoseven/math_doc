@@ -1,0 +1,248 @@
+---
+title: 三元数を構成する．
+description: 三元数を構成してみた．一般的に三元数は存在しないが，複素数の勉強をしたことで自分なりの三元数を構成できるのではと考え，やってみた．ここのその結果を記す．
+lastUpdated: 2025-01-27
+prev: false
+next: false
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+　高校数学の複素数を勉強しているとき，複素数って２つの実数の組と捉えれば可視だよねと気づき，その発展形として３つの実数の組はどうなるのか考え始めた．これがきっかけで
+このページの三元数は誕生した．
+
+　しかし鵜呑みにしてはいけない．一般的に三元数は存在しない．
+
+## 前提
+　この三元数ページは自分が考えた結果を残すべく誕生したものである．
+
+## 四元数，八元数との違いについて
+　四元数，八元数はある．それらとこの三元数はどう違うのかを表で示す．
+
+<table>
+  <thead>
+    <tr valign="middle">
+      <th rowspan="2"></th> 
+      <th rowspan="2">加法</th> 
+      <th rowspan="2">減法</th> 
+      <th rowspan="2">乗法</th> 
+      <th colspan="2">交換法則</th>
+      <th colspan="2">結合法則</th>
+      <th colspan="2">分配法則</th>
+    </tr> 
+    <tr> 
+      <th>加法</th> 
+      <th>乗法</th> 
+      <th>加法</th> 
+      <th>乗法</th> 
+      <th>左</th> 
+      <th>右</th> 
+    </tr> 
+  </thead>
+  <tbody align="center" >
+    <tr>
+      <th scope="row">四元数</th> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td>
+      <td><Icon name="approve-check-circle" size="2rem" /></td>
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="close" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+    </tr> 
+    <tr>
+      <th scope="row" style="text-align:center;">八元数</th> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td>
+      <td><Icon name="approve-check-circle" size="2rem" /></td>
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="close" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="close" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+    </tr> 
+    <tr> 
+      <th scope="row">三元数</th> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td>
+      <td><Icon name="approve-check-circle" size="2rem" /></td>
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="close" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+      <td><Icon name="close" size="2rem" /></td> 
+      <td><Icon name="close" size="2rem" /></td> 
+      <td><Icon name="approve-check-circle" size="2rem" /></td> 
+    </tr> 
+  </tbody>
+  <caption style="caption-side: bottom;">
+    四元数，八元数と三元数の違い. 
+  </caption>
+</table>
+
+
+## 三元数を構成する．
+　三元数の元を3つの実数の組$(a, b, c)$とする．$(a',b',c')$も同様．
+
+**加法**
+　要素毎に足し算する．
+  $$
+  (a, b, c) + (a', b', c') = ( a + a', b + b', c + c')
+  $$
+
+**減法**
+　要素毎に引き算する．
+  $$
+  (a, b, c) - (a', b', c') = ( a - a', b - b', c - c')
+  $$
+
+**乗法** 
+  $$
+  (a, b, c) \cdot (a', b', c') = (aa'-bb'-cc', ab'+ba'+cb', ac'+bc'+ca')
+  $$
+
+**スカラー倍**
+　$k \in \mathbb{R} $とする．
+  $$
+  k ( a, b, c ) = (ka, kb, kc)
+  $$ 
+
+### 三元数
+　以上までの加法・減法・乗法・スカラー倍から数を構成する．
+
+**三元数**
+
+　$1 = (1,0,0)$，$i = (0,1,0)$， $j = (0,0,1)$とおくと，
+  $$
+  \begin{equation*}
+  \begin{split}
+      (a,b,c) &= (a,0,0)+(0,b,0)+(0,0,c) \\
+              &= a(1,0,0)+b(0,1,0)+c(0,0,1) \\
+              &= a + bi + cj 
+  \end{split} 
+  \end{equation*} 
+  $$
+
+**加法**
+  $$
+  (a+bi+cj) + (a'+b'i+c'j) = (a+a')+(b+b')i+(c+c')j
+  $$
+
+**減法**
+  $$
+  (a+bi+cj) - (a'+b'i+c'j) = (a-a')+(b-b')i+(c-c')j
+  $$
+
+**乗法**
+
+　$i^2 = j^2 = -1$，$ij = j$，$ji = i$，$ai = ia$，$aj = ja$，$a \in \mathbb{R}$により定義する．
+  $$
+  \begin{equation*} 
+  \begin{split} 
+  (a+bi+cj)(a'+b'i+c'j) = (aa'-bb'-cc') + (ab'+ba'+cb')i + (ac'+bc'+ca')j
+  \end{split} 
+  \end{equation*} 
+  $$
+
+#### 交換法則
+　$x = a+bi+cj$，$y = a'+b'i+c'j$とする．
+
+**加法**
+  $$
+  \begin{equation*} 
+  \begin{split} 
+    x + y &= (a+a') + (b+b')i + (c+c')j  \\
+          &= (a'+a) + (b'+b)i + (c'+c)j  \\
+          &= y + x 
+  \end{split} 
+  \end{equation*} 
+  $$
+
+**乗法**
+
+　$c = 1+i$，$d = 1+j$とすると，
+
+  $$
+  \begin{equation*} 
+  \begin{split} 
+    cd &= (1+i)(1+j) = 1 + j + i + ij = 1 + i + 2j  \\
+    dc &= (1+j)(1+i) = 1 + i + j + ji = 1 + 2i + j
+  \end{split} 
+  \end{equation*} 
+  $$
+  よって，$cd \neq dc$．交換法則の乗法は成り立たない．
+
+#### 結合法則
+
+**加法**
+
+　$x=a+bi+cj$，$y=a'+b'i+c'j$，$z=a''+b''i+c''j$とおくと，
+
+  $$
+  \begin{equation*} 
+  \begin{split}
+  (x+y)+z &= (a+a')+(b+b')i+(c+c')j+a''+b''i+c''j \\
+          &= (a+a'+a'')+(b+b'+b'')i+(c+c'+c'')j   \\
+          &= a+bi+cj+(a'+a'')+(b'+b'')i+(c'+c'')j \\
+          &= x+(y+z) 
+  \end{split}
+  \end{equation*} 
+  $$
+
+**乗法**
+
+　$x=1+i$，$y=1+j$，$z=i+j$とおくと，
+  $$
+  \begin{equation*} 
+  \begin{split} 
+  (xy)z &= (1+i+2j)(i+j) = -3+3i+2j \\
+  x(yz) &= (1+i)(-1+2i+j) = -3+i+2j
+  \end{split} 
+  \end{equation*} 
+  $$
+  よって，$(xy)z \neq x(yz)$．したがって，結合法則の乗法は成り立たない．
+
+#### 分配法則
+
+**左分配法則**　　$x(y+z) \neq xy + xz$
+
+　$x=1+i$，$y=1+j$，$z=i+j$とおくと，
+  $$
+  \begin{equation*} 
+  \begin{split}
+  x(y+z) &= (1+i)(1+i+2j) = 2i+2j \\
+  xy+yz &= 1+i+2j-1+2i+j = 3i+3j 
+  \end{split} 
+  \end{equation*} 
+  $$
+　よって，$x(y+z) \neq xy+yz$．したがって，分配法則は成り立たない．
+
+**右分配法則**　　$(x+y)z = xz + yz$
+
+　この三元数は右分配法則が成り立つように作った．
+  $$
+  \begin{equation*} 
+  \begin{split}
+  xz  &= (a+bi+cj)(a''+b''i+c''j) \\
+      &= (aa''-bb''-cc'') + (ab''+ba''+cb'') i + (ac''+bc''+ca'')j \\
+  yz  &= (a'+b'i+c'j)(a''+b''i+c''j)  \\
+      &= (a'a''-b'b''-c'c'')+(a'b''+b'a''+c'b'')i+(a'c''+b'c''+c'a'')j  \\
+  xz+yz &= \{ (a+a')a''-(b+b')b''-(c+c')c'' \} \\
+          &+ \{ (a+a')b''+(b+b')a''+(c+c')b'' \}i \\
+          &+\{ (a+a')c''+(b+b')c''+(c+c')a'' \}j \\
+  (x+y)z &= \{ (a+a')+(b+b')i+(c+c')j \}(a''+b''i+c''j) \\
+         &= \{ (a+a')a''-(b+b')b''-(c+c')c'' \}  \\
+          &+ \{ (a+a')b''+(b+b')a''+(c+c')b'' \}i \\
+          &+ \{ (a+a')c''+(b+b')c''+(c+c')a'' \}j
+  \end{split}
+  \end{equation*} 
+  $$
+  よって，$(x+y)z = xz+yz$．したがって，右分配法則は成立する．
+
+## 三元数のアイデア
+　iを掛けるとxy平面を$\frac{\pi}{2}$回転する，jを掛けるとxz平面を$\frac{\pi}{2}$回転する．
+つまり，三次元のxyz平面で言えば，三元数$x$に対し$ix$は$x$をxy平面を$\frac{\pi}{2}$回転させた点に移動する．
+$jx$はxz平面を$\frac{\pi}{2}$回転させた点に移動する．
+　
