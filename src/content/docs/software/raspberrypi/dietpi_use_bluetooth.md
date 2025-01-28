@@ -1,6 +1,6 @@
 ---
 title: DietPi(bookworm)にてbluetoothを使うために．
-description: DietPi(bookworm)にてbluetoothを使うために必要な手順．
+description: Raspberry PiのDietPi環境でBluetoothを有効にし、Bluemanを使用してデバイスを管理する方法を解説します。必要なパッケージのインストール手順や設定方法を詳しく紹介します。
 ---
 　bluetoothにつなげてYoutubeやTverを見たいけど，コマンドでつなげるやり方わからなかったし，GUIのほうがわかりやすいので何かないかと調べたら，Blueman(Bluetooth Manager）があったので、インストールしてみた。
 

@@ -1,6 +1,6 @@
 ---
 title: Puppeteerでchromeをモバイル対応で起動する．
-description: Puppeteerでchromeを起動するとき，モバイル対応表示させる方法を記す．
+description: Puppeteerを使用して、Chromeブラウザをモバイル版として起動する方法を解説します。UserAgentの設定やデバイス情報の指定方法を詳しく紹介します。
 ---
 　Puppeteerでポイ活自動実行プログラムを作っている．Chromeブラウザがモバイル版（スマートフォンから起動）でないと，表示されないボタンを押す必要があったが，Puppeteerがデフォルトで起動するChromeはモバイル版ではないため，どうにか対応したいと思っていた．
 

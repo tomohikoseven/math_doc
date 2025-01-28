@@ -1,6 +1,6 @@
 ---
 title: "SyntaxError: Unexpected identifier 'Ay0'"
-description: "Bunで作ったexeが実行時エラーを出力したときの解決法．"
+description: "BunでPuppeteerの自動化スクリプトを実行中に発生する 'SyntaxError: Unexpected identifier 'Ay0'' エラーの原因と解決方法を解説します。module.typeの設定変更による対処法を詳しく説明します。"
 ---
 ## 開発環境
 - Windows 10

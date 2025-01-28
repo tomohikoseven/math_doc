@@ -1,6 +1,6 @@
 ---
 title: DietPi(bookworm)でアプリをタイル配置させたい．
-description: Dietpiでは標準でできないので，できるようにする方法を記す．
+description: DietPi(bookworm)でアプリをWindows風にタイル配置する方法を解説します。QuickTileツールのインストール手順と、ショートカットキーによるウィンドウ配置の操作方法を詳しく紹介します。
 ---
 　DietPiの初期状態ではWindowsのようにショートカットキー(Windowsキー+矢印)でアプリケーションをタイル配置することができない．知らないだけかもしれないが．
 

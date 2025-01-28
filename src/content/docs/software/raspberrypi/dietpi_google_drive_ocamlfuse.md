@@ -1,6 +1,6 @@
 ---
 title: ラズパイ4Bにgoogle-drive-ocamlfuseをインストールする．
-description: ラズパイ4Bにgoogle-drive-ocamlfuseをインストールする．
+description: Raspberry Pi 4にgoogle-drive-ocamlfuseをインストールし、Google Driveをマウントする方法を解説します。必要なパッケージのインストールから、クライアントIDとシークレットの取得、マウント手順までを詳しく説明します。
 ---
 **参考サイト**
 - https://github.com/astrada/google-drive-ocamlfuse/wiki/How-to-install-from-source-on-Debian-Jessie

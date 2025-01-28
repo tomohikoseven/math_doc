@@ -1,6 +1,6 @@
 ---
 title: "[WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping."
-description: Astroでのサイトマップ作成時に必要な設定．
+description: Astroプロジェクトでサイトマップを自動生成する方法を解説します。astro.config.mjsにsiteオプションを追加することで、ビルド時にsitemap-index.xmlが生成されます。
 ---
 
 　タイトルにある警告は，cloudflare pages上でビルドしたときのログに出力されたもの．
