@@ -1,6 +1,6 @@
 ---
 title: ブラウザのvivaldiをラズパイ上にインストールする方法．
-description: ブラウザのvivaldiをラズパイ上にインストールする方法．
+description: Raspberry Pi 4 Model BのDietPi環境で、Vivaldiブラウザをインストールする手順を解説します。ChromiumとWaylandの相性問題を回避し、快適なブラウジング環境を構築しましょう。
 ---
 　ラズパイとChromiumは相性が良くない．WaylandとChromiumが良くないようだ．
 「ティッシュ」と入力したくても，「hてぃっｓう」みたいに途中の入力(h)が先頭に来て誤変換してしまう．
