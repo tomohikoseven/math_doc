@@ -1,6 +1,6 @@
 ---
 title: ラズパイ4B+bookwormをオーバークロック.
-description: ラズパイ4B+bookwormをオーバークロックする手順.
+description: Raspberry Pi 4 Model BでDietPi（bookworm）を使用し、オーバークロックの設定手順と注意点を解説します。クロック周波数の設定方法、再起動できなくなった場合の対処法も紹介しています。
 ---
 **参考サイト**
 - [ラズパイをオーバークロックして使う（メモ）](https://wisteriahill.sakura.ne.jp/CMS/WordPress/2024/01/16/raspberry-pi-overclock/)
