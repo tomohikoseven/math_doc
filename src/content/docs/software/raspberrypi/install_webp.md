@@ -1,6 +1,6 @@
 ---
 title : webpファイルをラズパイ上で見る方法
-description : ラズパイ上では，初期状態でwebpファイルを見ることができない．プログラムをインストールして，見る方法を記載する．
+description : Raspberry Pi 4 Model BのDietPi環境で、WebP形式の画像ファイルを表示する方法を解説します。vwebpツールのインストール手順と、コマンドラインからの画像表示方法を詳しく紹介します。
 ---
 　webpファイルを見るためには，[vwebp](https://developers.google.com/speed/webp/download?hl=ja)が必要である．ラズパイ上にはインストールされていないので，インストールする必要がある．
 
