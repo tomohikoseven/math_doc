@@ -21,7 +21,7 @@ export const MATHEMATICS = {
       collapsed: true, 
       autogenerate: {
         directory: 'other',
-        collapsed: false,
+        collapsed: true,
       }
     };
 
@@ -30,12 +30,13 @@ export const MATH_DIALY = {
       collapsed: true, 
       autogenerate: {
         directory: 'diary',
-        collapsed: false,
+        collapsed: true,
       }
     };
    
 export const SOFTWARE = {
       label: 'Software',
+      collapsed: true, 
       autogenerate: {
         directory: 'software',
         collapsed: true,
@@ -44,18 +45,18 @@ export const SOFTWARE = {
 
 export const ABOUT_MY_WEBSITE = {
       label: 'サイトについて',
-      collapsed: false,
+      collapsed: true,
       autogenerate: {
         directory: 'mywebsite',
-        collapsed: false,
+        collapsed: true,
       }
     };
   
 export const HIGH_SCHOOL_MATH = {
   label: '高校数学',
-  collapsed: false,
+  collapsed: true,
   autogenerate: {
     directory: 'high_school_math',
-    collapsed: false,
+    collapsed: true,
   }
 };
