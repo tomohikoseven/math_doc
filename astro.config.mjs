@@ -30,10 +30,10 @@ export default defineConfig({
     title: '数学の主張',
     components: {
       // オーバーライド
-      Footer: './src/components/Footer.astro',
-      Head: './src/components/Head.astro',
-      TableOfContents: './src/components/TableOfContents.astro',
-      Sidebar: './src/components/Sidebar.astro',
+      Footer: './src/components/starlight/Footer.astro',
+      Head: './src/components/starlight/Head.astro',
+      TableOfContents: './src/components/starlight/TableOfContents.astro',
+      Sidebar: './src/components/starlight/Sidebar.astro',
       PageTitle: './src/components/starlight/PageTitle.astro',
     },
     tableOfContents: true, 
