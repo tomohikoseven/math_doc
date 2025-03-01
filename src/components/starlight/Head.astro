@@ -1,10 +1,9 @@
 ---
-import type { Props } from '@astrojs/starlight/props'
 import Default from '@astrojs/starlight/components/Head.astro'
 import { getCldOgImageUrl } from 'astro-cloudinary/helpers'
 
 // Grab the current page entry and site title from the page data.
-const { entry } = Astro.props
+const { entry } = Astro.locals.starlightRoute;
 
 // Get the URL of the generated image for the current page.
 const ogImageUrl = getCldOgImageUrl({
@@ -31,7 +30,7 @@ const ogImageUrl = getCldOgImageUrl({
 ---
 
 <!-- Render the default <Head/> component. -->
-<Default {...Astro.props}><slot /></Default>
+<Default><slot /></Default>
 
 <!-- Render the <meta/> tags for the Open Graph images. -->
 <meta property="og:image" content={ogImageUrl} />

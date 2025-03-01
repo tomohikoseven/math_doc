@@ -1,10 +1,9 @@
 ---
-import type { Props } from '@astrojs/starlight/props'
 import Default from '@astrojs/starlight/components/PageTitle.astro'
 import SocialShareButtons  from '../SocialShareButtons.astro'
-const { title } = Astro.props.entry.data;
+const { title } = Astro.locals.starlightRoute.entry.data;
 const siteurl = new URL(Astro.url.pathname, Astro.site); 
 ---
 <SocialShareButtons title={title} siteurl={siteurl} />
-<Default {...Astro.props}><slot /></Default>
+<Default><slot /></Default>
 
