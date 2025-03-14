@@ -1,0 +1,68 @@
+---
+title: 行列は写像と捉える．
+description: 行列をどのように捉えて線形代数を学習しなければならないのかを示す．
+lastUpdated: 2025-03-13
+---
+import { Card } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+
+import ImageWithCaption from "/src/components/ImageWithCaption.astro";
+import image_01 from "/src/assets/linear_algebra/0011/0011_多項式は写像である.jpg"
+import image_02 from "/src/assets/linear_algebra/0011/0011_連立多項式は複数の写像から成る.jpg"
+import image_03 from "/src/assets/linear_algebra/0011/0011_連立多項式と行列表記.jpg"
+
+
+　行列は複数の数の組の間の対応関係を表す．
+
+## 多項式は数である．
+　多項式は数である．2元1次多項式を例に考える．2元1次多項式とは、2つの変数（例えば$xとy$）と定数から作られる式で，
+各変数の次数が1であるものを指す．つまり，$ax+by+c (a,b,cは定数)$のような形で表される．
+この$xやy$は実数や複素数などを表す数の代表である．それら数が和積で表された2元1次多項式$ax+by+c$は数である．
+つまり，2元1次多項式に限らず，多項式は数なのである．
+
+## 多項式は写像[^1]である．
+　多項式は複数の数の組と１つの数の対応関係を表す写像でもある．2つの変数$(x,y)$に対して，
+$2x+3y$という多項式（数）を対応させると，これは$\R^2 \to \R$のように写像とみることができる．
+<ImageWithCaption 
+    src={image_01}
+    alt="多項式は写像である"
+    figcaption="多項式は写像である"
+    width="440"
+    height="288"
+/>
+
+## 連立多項式は複数の写像から成る．
+　多項式は写像なので，それを連立させた連立多項式は複数の写像ということになる．
+例えば，2つの変数$(x,y)$に対し，2つの多項式(数)$(2x+3y, x+4y)$を対応させることを考えると，
+1つは$2x+3y$に対応する写像，もう1つは$x+4y$に対応する写像となる．
+<ImageWithCaption 
+    src={image_02}
+    alt="連立多項式は複数の写像である"
+    figcaption="連立多項式は複数の写像である"
+    width="440"
+    height="288"
+/>
+
+## 連立多項式と行列表記
+　連立多項式を行列を使って表してみる．
+$$
+\begin{pmatrix}
+  2 & 3 \\
+  1 & 4
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y
+\end{pmatrix}
+=
+\begin{pmatrix}
+  2x + 3y \\
+  x + 4y
+\end{pmatrix}
+$$
+　行列以外の$\begin{pmatrix} x \\ y \end{pmatrix} や \begin{pmatrix} 2x + 3y \\ x + 4y \end{pmatrix}$
+を**ベクトル**と呼ぶ．縦方向に数が並んでいるものである．
+
+---
+
+[^1]:写像については，他サイトの解説を参考にしてください．知っているものと扱います．
