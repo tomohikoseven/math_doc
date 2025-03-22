@@ -1,0 +1,144 @@
+---
+title: ベクトルとベクトル空間の定義．
+description: 行列を知るにはベクトルは欠かせない．ベクトルとベクトル空間を定義する．
+lastUpdated: 2025-03-22
+---
+import { Card } from "@astrojs/starlight/components";
+
+import ImageWithCaption from "/src/components/ImageWithCaption.astro";
+import image_01 from "/src/assets/linear_algebra/0012/ベクトル空間の捉え方.jpg";
+
+
+　線形代数を学習していると，行列から始まったけどなぜかベクトルの話に終始する．
+連立方程式はどこかへ行き，何をやっているのかまったくわからなくなる．
+ここでは単にベクトルとベクトル空間について定義する．とてもつまらない記事である．
+
+## まずはベクトルを定義．
+　このブログではここまでの線形代数の記事にベクトルを定義せずに使用していた．
+線形代数の記事にアクセスする読者はベクトルくらい見たことあると想定しているからだ．
+しかし，今後の記事ではベクトルも数多く登場すると思うので，一旦定義しておく．
+
+<Card title="ベクトルの定義">
+　$n$個の数$a_1, a_2, \cdots, a_n$を並べた組を$n$項（または$n$次元）**数ベクトル**または単に**ベクトル**という．
+それぞれの数$a_1, a_2, \cdots, a_n$をその**成分**という．
+
+　以下のように成分を縦に並べた組，横に並べた組をそれぞれ**列ベクトル**，**行ベクトル**という．
+$$
+\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix}
+,
+\space
+(a_1, \cdots, a_n)
+$$
+</Card>
+
+#### ベクトルの相等
+　２つのベクトル
+$$
+\boldsymbol{a} =
+\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix}
+, \space \space
+\boldsymbol{b} =
+\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_n
+\end{pmatrix}
+$$
+が等しいとは，それぞれの成分が等しいということ．つまり，
+$$
+\begin{cases}
+a_1 = b_1 \\
+ \quad \vdots \\
+a_n = b_n
+\end{cases}
+$$
+ということ．
+
+#### ベクトルの演算
+##### ベクトルの足し算
+　ベクトルの足し算は，それぞれの成分を足せばよい．すなわち，2つのベクトルの足し算は
+$$
+\boldsymbol{a} + \boldsymbol{b}
+ =
+\begin{pmatrix}
+a_1 + b_1 \\
+\vdots \\
+a_n + b_n
+\end{pmatrix}
+．
+$$
+
+##### ベクトルのスカラー倍
+　スカラー倍はベクトルに定数を掛けることだ．つまり，ベクトルのスカラー倍は
+$$
+k \boldsymbol{a} = 
+\begin{pmatrix}
+ka_1 \\
+\vdots \\
+ka_n
+\end{pmatrix}
+$$
+
+
+## ベクトル空間も定義．
+　[行列は写像と捉える．](/linear_algebra/0011_a_matrix_is_a_linear_map/)で，行列は写像である旨を解説した．
+写像であるということは定義域と値域があるはずだが，その辺は濁していた．
+定義域と値域はベクトル空間である．ベクトルの集合のことだ．
+
+<Card title="ベクトル空間の定義">
+　（Geminiに定義を生成させました．）
+
+　ベクトル空間$V$ とは、以下の条件を満たす集合$V$と演算（ベクトル和とスカラー倍）の組 ($V, +, \cdot$) のこと．
+
+**1. 和に関する性質**
+
+　任意のベクトル $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$ に対して、
+  - $\mathbf{u} + \mathbf{v} \in V$（和の閉じていること）
+  - $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$（結合法則）
+  - $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$（交換法則）
+  - $\mathbf{u} + \mathbf{0} = \mathbf{u}$ を満たす零ベクトル $\mathbf{0} \in V$ が存在する（零ベクトルの存在）
+  - $\mathbf{u} + (-\mathbf{u}) = \mathbf{0}$ を満たす逆ベクトル $-\mathbf{u} \in V$ が存在する（逆ベクトルの存在）
+ 
+**2. スカラー倍に関する性質**
+
+　任意のベクトル $\mathbf{u}, \mathbf{v} \in V$ とスカラー $a, b \in \mathbb{R}$ に対して、
+    - $a \cdot \mathbf{u} \in V$（スカラー倍の閉じていること）
+    - $a \cdot (\mathbf{u} + \mathbf{v}) = a \cdot \mathbf{u} + a \cdot \mathbf{v}$（分配法則）
+    - $(a + b) \cdot \mathbf{u} = a \cdot \mathbf{u} + b \cdot \mathbf{u}$（分配法則）
+    - $(ab) \cdot \mathbf{u} = a \cdot (b \cdot \mathbf{u})$（結合法則）
+    - $1 \cdot \mathbf{u} = \mathbf{u}$（単位元の性質）
+</Card>
+
+#### ベクトル空間をどう捉えるか．
+　ベクトル空間についてどのように考えればいいのかを書く．数学を学習する上でとても大事なことだからだ．
+<Card title="ベクトル空間の捉え方">
+- ベクトル空間は，零に相等するベクトルを中心として，次元的に広がるベクトルの集まりである．最大・最小のような境界はない．
+</Card>
+上のベクトル空間の定義はそれを表している．とても極端に言えば，
+- 零ベクトルの存在
+- スカラー倍で閉じていること
+
+の２つから「零に相当するベクトルを中心とした次元的に広がるベクトルの集まりがベクトル空間」と言える．
+
+<ImageWithCaption 
+    src={image_01}
+    alt="ベクトル空間の捉え方"
+    width="500"
+    height="300"
+    figcaption="ベクトル空間の捉え方"
+ />
+
+:::caution
+　**この記事でベクトル空間について理解することは不可能である**．上の説明だけではわからないので，
+あなたがこの捉え方で正しいのか考えながら学習を進めなければならない．
+:::
+
+---
