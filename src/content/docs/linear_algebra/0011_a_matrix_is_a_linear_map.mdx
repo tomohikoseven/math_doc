@@ -9,7 +9,7 @@ import { Steps } from '@astrojs/starlight/components';
 import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/linear_algebra/0011/0011_多項式は写像である.jpg"
 import image_02 from "/src/assets/linear_algebra/0011/0011_連立多項式は複数の写像から成る.jpg"
-import image_03 from "/src/assets/linear_algebra/0011/0011_連立多項式と行列表記.jpg"
+import image_03 from "/src/assets/linear_algebra/0011/0011_独自性を排除した.jpg"
 
 
 　行列は複数の数の組の間の対応関係を表す．
@@ -39,6 +39,17 @@ $2x+3y$という多項式（数）を対応させると，これは$\R^2 \to \R$
     src={image_02}
     alt="連立多項式は複数の写像である"
     figcaption="連立多項式は複数の写像である"
+    width="440"
+    height="288"
+/>
+
+　これはとても独自性がありすぎて，受け入れづらいものと考える．
+そのため現代の線形代数に寄せた独自性を排除した一般的な書き方を画像で記す．
+
+<ImageWithCaption
+    src={image_03}
+    alt="独自性を排除した連立多項式は複数の写像である図"
+    figcaption="独自性を排除した連立多項式は複数の写像である図"
     width="440"
     height="288"
 />
