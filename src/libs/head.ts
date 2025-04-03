@@ -3,7 +3,7 @@ export const KATEX = {
         tag:'link',
         attrs:{
           rel: 'stylesheet',
-          href: 'https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.css',
+          href: 'https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css',
         }
       };
 
