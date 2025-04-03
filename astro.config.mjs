@@ -39,6 +39,11 @@ export default defineConfig({
     tableOfContents: true, 
     lastUpdated: true, 
     disable404Route: true, 
+    //i18n: {
+    //  routing: {
+    //    prefixDefaultLocale: false,
+    //  }
+    //},
     customCss: [ './src/styles/custom.css' ] ,
     social: {
       github: 'https://github.com/tomohikoseven',
