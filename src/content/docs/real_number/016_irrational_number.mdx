@@ -1,6 +1,7 @@
 ---
-title: 循環しない無限小数は無理数を表わす．
+title: 循環しない無限小数は無理数を表わす．(P14)
 description: 循環しない無限小数が無理数であることを定理として示し、その証明を詳しく解説します。無限小数の性質と有理数の切断を用いた論証を学びましょう。
+lastUpdated: 2025-04-09
 ---
 import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
@@ -12,15 +13,22 @@ import { Steps } from '@astrojs/starlight/components';
 ## 定理の主張
 　循環する無限小数は有理数だが，**循環しない無限小数は実数であり，そのすべてが無理数である**．
 
-　有理数と実数の違いは定義から明らかだが，それ以外に実数には無理数があることが挙げられる．
 
 ## 証明の考え方
-　任意の循環しない無限小数を$k.k_1k_2 \cdots k_n \cdots $とする．$k$は整数で，$k_n$は$0$〜$9$のいずれかである．
+　証明の方針として，まず循環しない無限小数が実数であることを示す．
+実数でなければ何なのか探求しなければならないが，そうではないということだ．
+次に無理数であることを示す．実数だと分かれば，有理数か無理数であるので，
+有理数なら分数で表現できるはずだが，そうではないということだ．
 
-　無限小数が実数であることを示したいので，
+　任意の循環しない無限小数を$\alpha = k.k_1k_2 \cdots k_n \cdots $とする．
+$k$は整数で，$k_n$は$0$〜$9$のいずれかの整数である．
+
+　まずこの無限小数が実数であることを示す．
 
 <Steps>
 1. 有理数の切断を準備する．
+
+    以下のように有理数の組$A，A'$を定義する．
 
     $$
     \begin{aligned}
@@ -30,37 +38,49 @@ import { Steps } from '@astrojs/starlight/components';
     $$
     $$
     \begin{aligned}
-        A^{\prime} &= \{ r \in \mathbb{Q} \space | \space \text{すべての自然数}n\text{について} a_n \le r \}  \\
-        A &= \{ r \in \mathbb{Q} \space | \space \text{少なくとも１つの自然数}n\text{について}r \lt a_n \}.
+        A &= \{ r \in \mathbb{Q} \space | \space \text{少なくとも１つの自然数}n\text{について}r \lt a_n \}.   \\
+        A^{\prime} &= \{ r \in \mathbb{Q} \space | \space \text{すべての自然数}n\text{について} a_n \le r \}．
     \end{aligned}
     $$
 
-    この有理数の無限集合の組$\langle A, A^{\prime} \rangle$が無理数であることを示す．
+    ポイントは，$a_1 \le a_2 \le \cdots \le a_n \le \cdots \le \alpha $という性質で$A'$を定義していること．
+    $A$は$A'$の補集合である．
+
+    $b_n$は無理数であることを示すときに使われる．
+
+    この有理数の無限集合の組$\langle A, A^{\prime} \rangle$が証明の方針に従い，無理数であることを示す．
 
 
 2. 実数であること.
 
-    　[定義](/real_number/010_dedekind_cut/)に従って，まず実数であることを示す．
+    　[定義](/real_number/010_dedekind_cut/)に従って，まず$\langle A,A' \rangle$が実数であることを示す．
 
-    　$a_1 \in A, b_1 \in A^{\prime}$なので，$A, A^{\prime}$は空集合ではない．
+    　前提として，$a_1 \in A, b_1 \in A^{\prime}$なので，$A, A^{\prime}$は空集合ではない．
 
-    　また，$A^{\prime}$は有理数の切断の条件3'.を満たす．なぜなら，$r \in A^{\prime}$のとき，$r \le s, s \in \mathbb{Q}$ならば，$\forall n \in \mathbb{N}, a_n < r \le s$なので，$\forall n \in \mathbb{N}, a_n < s$となるから．
+    　また，$A^{\prime}$は有理数の切断の[条件3'.](/real_number/010_dedekind_cut/#実数の等号)を満たす．
+    なぜなら，$r \in A^{\prime}$のとき，$r \le s, s \in \mathbb{Q}$ならば，$\forall n \in \mathbb{N}, a_n < r \le s$なので，$\forall n \in \mathbb{N}, a_n < s$となるから．
+    難しく書いたがつまり，$A'$の元を適当に$r$を取って，$r \le s$な有理数$s$はすべて$A'$の元だから，
+    $A'$は有理数の切断の条件3'.を満たしているということ．
 
-    　そして，$A$に最大の有理数はない．なぜなら，$A$に属する有理数$r$はある自然数$n$が存在して，$r < a_n$で$a_n \in \mathbb{Q} \cap A$なので．
+    　そして，$A$に最大の有理数はない．
+    なぜなら，$A$の定義から$A$に属する有理数$r$はある自然数$n$が存在して，
+    $r < a_n$で$a_n \in \mathbb{Q} \cap A$なので，かならず大きい有理数がある．
 
     　以上から，$\langle A, A^{\prime} \rangle$は実数である．
 
 
 3. $k.k_1k_2 \cdots k_n \cdots = \langle A,A^{\prime} \rangle$である．
 
-    　$\alpha = k.k_1k_2\cdots k_n \cdots $とおく．$A, A^{\prime}$の元が$\alpha$を境界としていることを示す．
+    　$\alpha = k.k_1k_2\cdots k_n \cdots $とおく．
+    $A, A^{\prime}$の元が$\alpha$を境界としていることを示す．
+    すなわち，上で定義した$A,A'$が$\{r \in \mathbb{Q} \space | \space r < \alpha \}$と$\{ r \in \mathbb{Q} \space | \space \alpha \leq r \}$に等しいことを示す．
     
-    　$r \in A$を任意でとる．すると，ある自然数$N$があり，$r < a_N$を満たす．$a_n$の性質からすべての自然数$n$において，$a_n < \alpha \text{だから} r < \alpha$．
+    　$r \in A$を任意でとる．すると，ある自然数$N$があり，$r < a_N$を満たす．
+    $a_n$の性質からすべての自然数$n$において，$a_n < \alpha$だから$r < a_N < \alpha$．
     よって，$A = \{r \in \mathbb{Q} \space | \space r < \alpha \}$．
     
     　$r \in A^{\prime}$を任意でとる．するとすべての自然数nにおいて，$a_n \leq r$．また，$a_n < \alpha$である．$r,\alpha$を比較すると，$r < \alpha$はありえない．$r < \alpha$なら，$r \in A$でもあるが，$A \cap A^{\prime} = \emptyset$なので，ありえない．よって，$\alpha \leq r$である．
-    
-    　よって，$A^{\prime} = \{ r \in \mathbb{Q} \space | \space \alpha \leq r \}$．
+    したがって，$A^{\prime} = \{ r \in \mathbb{Q} \space | \space \alpha \leq r \}$．
     
     　以上から，$k.k_1k_2 \cdots k_n \cdots = \alpha = \langle A, A^{\prime} \rangle$．
   
@@ -72,9 +92,9 @@ import { Steps } from '@astrojs/starlight/components';
 
 </Steps>
 
+以上により，循環しない無限小数は無理数であることが示せた．
 
 
-***
 
 ## 復習ノート
 - 有理数の切断の定義は何か．
