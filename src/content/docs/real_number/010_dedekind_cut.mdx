@@ -1,7 +1,7 @@
 ---
 title: 有理数の切断と実数(定義1.0，定義1.1)
 description: デデキントの切断を用いた実数の定義を詳しく解説します。有理数を空でない2つの部分集合に分割する方法と、その条件について学びましょう。
-lastUpdated: 2024-08-17
+lastUpdated: 2025-04-09
 ---
 
 import { Card } from "@astrojs/starlight/components";
@@ -44,7 +44,9 @@ import image_03_2 from "/src/assets/real_number/010/dedekind_cut_and_real_number
 　有理数を分割したので，<mark>$\mathbb{Q} = A \cup A^{\prime}, \space A \cap A^{\prime} = \emptyset $ </mark>である．また，切断$\langle A, A^{\prime} \rangle$において，**$A$の補集合が$A^{\prime}$なので，$A$を決めれば切断$\langle A, A^{\prime} \rangle$が決まる**ことを意味する．
 
 ### 実数の主張
-　**有理数とは異なる概念である**ことを主張している．有理数の無限集合の組$\langle A, A^{\prime} \rangle$を実数と考えるため，とても数とはみなせない．しかし，この実数の性質をみていくと数とみなしてもよいということになる．
+　**有理数とは異なる概念である**ことを主張している．
+有理数の無限集合の組$\langle A, A^{\prime} \rangle$を実数と考えるため，とても数とはみなせない．
+しかしこの先，実数の性質をみていくと数とみなしてもよいということになる．
 
 ### 実数の等号
 　２つの実数$\alpha, \beta$が等しい：$\alpha = \beta$というのは，切断$\langle A, A^{\prime} \rangle \text{と} \langle B, B^{\prime} \rangle$が同じであること，すなわち，$A = B$であることを意味する．
@@ -54,10 +56,16 @@ import image_03_2 from "/src/assets/real_number/010/dedekind_cut_and_real_number
 - 3. $\space r \in A$に対して，$s \le r, s \in \mathbb{Q}$ならば，$s \in A$．
 - 3'. $\space r \in A^{\prime}$に対して，$ r \le s, s \in \mathbb{Q}$ならば，$s \in A^{\prime}$．
 
-#### 3.の主張
-　切断$\langle A,A^{\prime} \rangle$の$A$の性質について述べている．すなわち，どんな$r \in A$に対しても，$s < r$である有理数$s$は$A$に属する．
+　これら条件は，補集合の関係にある2つの有理数の集合$A，A'$に分けたのなら，片方が切断の条件を満たせば，
+もう片方も自動的に条件を満たすから，片方だけ調べればよいということ．
 
-　逆に考えると，$A$の性質は$s \le r$で$A$に属さない有理数$s$は存在しないということ．つまり，以下の図のような切断はない．
+#### 3.の主張
+　切断$\langle A,A^{\prime} \rangle$の$A$の性質について述べている．
+すなわち，どんな$r \in A$に対しても，$s < r$である有理数$s$は$A$に属する．
+
+　逆に考えると，$A$の性質は$s \le r$で$A$に属さない有理数$s$は存在しないということ．
+言い換えると，$A$の中に$A'$の元が混ざっていないということ．
+つまり，以下の図のような切断はない．
     <ImageWithCaption 
         src={image_03}
         alt="3.の図的表現"
@@ -67,9 +75,12 @@ import image_03_2 from "/src/assets/real_number/010/dedekind_cut_and_real_number
     />
 
 #### 3'.の主張
- 　3.の主張を$A^{\prime}$側で考えればよい．すなわち，どんな$r \in A^{\prime}$に対しても，$r \le s$である有理数$s$は$A^{\prime}$に属する．
+ 　3.の主張を$A^{\prime}$側で考えればよい．
+ すなわち，どんな$r \in A^{\prime}$に対しても，$r \le s$である有理数$s$は$A^{\prime}$に属する．
 
-　こちらも逆に考えると，$A^{\prime}$の性質は$r \le s$で$A^{\prime}$に属さない有理数$s$は存在しないということ．つまり，以下の図のような切断はない．
+　こちらも逆に考えると，$A^{\prime}$の性質は$r \le s$で$A^{\prime}$に属さない有理数$s$は存在しないということ．
+言い換えれば，$A'$の中に$A$の元が混ざっていないということ．
+つまり，以下の図のような切断はない．
     <ImageWithCaption
         src={image_03_2}
         alt="3'.の図的表現"
