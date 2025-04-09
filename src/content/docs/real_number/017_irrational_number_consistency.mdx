@@ -1,6 +1,7 @@
 ---
 title: 無理数は稠密である．（P16）
 description: デデキントの切断を用いて、無理数の存在が無矛盾であることを証明します。実数の構成法を通じて、無理数の存在理由を理解しましょう。
+lastUpdated: 2025-04-09
 ---
 import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
@@ -48,7 +49,7 @@ import { Steps } from '@astrojs/starlight/components';
 
     　定理1.5より，実数$\alpha$に対して，$a < \alpha \leq a + \frac{1}{m}，a \in A, a + \frac{1}{m} \in C$なる有理数$a$と自然数$m$が存在する．$a + \frac{1}{m} \notin A$で$a + \frac{1}{m} \in C$なので，$A \neq C$である．$C$の定義から，明らかに$A \subseteqq C$なので，合わせると$A \subsetneqq C$となる． 
 
-    　$\gamma$に対しても同様である．よって，$\alpha < \gamma < \beta$である． 
+    　$\gammaと\beta$に対しても同様である．よって，$\alpha < \gamma < \beta$である． 
  
 4. $\gamma$は無理数であること．
 
@@ -63,5 +64,3 @@ import { Steps } from '@astrojs/starlight/components';
     　ここまでで，無理数$\alpha, \beta, \alpha < \beta$に対し，$\alpha < \gamma < \beta$なる無理数が存在することがわかった．以下，$\alpha < \gamma$についても同様に議論をすれば，無理数が無数に存在することがわかる．
 </Steps>
 
-## 復習ノート
-- 任意の実数において，これを近似する有理数は存在するか．
