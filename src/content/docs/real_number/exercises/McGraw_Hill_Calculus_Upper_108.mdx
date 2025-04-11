@@ -1,0 +1,39 @@
+---
+title: P26 問108 マグロウヒル大学演習シリーズ 微積分(上)
+description: P26 問108 （マグロウヒル大学演習シリーズ 微積分(上)）を解く．
+lastUpdated: 2025-04-11
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問108">
+　(a) $\sqrt{5}+\sqrt{3}$，(b) $\sqrt{3} - \sqrt{2}$，(c) $(\sqrt{3})(\sqrt{2})$，
+(d) $\dfrac{\sqrt{2}}{\sqrt{3}}$は，それぞれデデキントの切断をどのように使えば定義できるか例示せよ．
+</Card>
+
+　$\sqrt{5}，\sqrt{3}，\sqrt{2}$の有理数の切断を以下のとおりに表す．
+$$
+  \sqrt{5} = \langle A,A' \rangle，A = \{ r \in \mathbb{Q} \, | \, r < \sqrt{5} \}，A' = Aの補集合 \\
+  \sqrt{3} = \langle B,B' \rangle，B = \{ r \in \mathbb{Q} \, | \, r < \sqrt{3} \}，B' = Bの補集合 \\
+  \sqrt{2} = \langle C,C' \rangle，C = \{ r \in \mathbb{Q} \, | \, r < \sqrt{2} \}，C' = Cの補集合
+$$
+### (a)
+　$\sqrt{5} + \sqrt{3} = \langle A+B, A'+B' \rangle$，$A+B= \{ a+b \in \mathbb{Q} \, | \, a \in A，b \in B \}$，
+$A'+B'$は$A+B$の補集合．
+
+### (b)
+　$-\sqrt{2} = \langle -C',-C \rangle$，$-C' = \{-s \in \mathbb{Q} \, | \, s \in C' \}$，
+$-C = \{ -s \in \mathbb{Q} \, | \, s \in C \}$となる．
+したがって，　$\sqrt{3} - \sqrt{2} = \langle B-C', B'-C \rangle $，
+$B-C' = \{ r-s \in \mathbb{Q} \, | \, r \in B，s \in C' \}$，$B'-C$は$B-C'$の補集合．
+
+### (c)
+　$(\sqrt{3})(\sqrt{2}) = \langle B・C, B'・C' \rangle$，
+$B・C = \{ rs \in \mathbb{Q} \, | \, r \in B，s \in C \} $，
+$B'・C'$は$B・C$の補集合．
+
+### (d)
+　$\dfrac{\sqrt{2}}{\sqrt{3}} = \dfrac{\sqrt{3}\sqrt{2}}{3}$なので，
+$\dfrac{\sqrt{3}\sqrt{2}}{3} = \langle D, D' \rangle$，
+$D =  \{ \dfrac{rs}{3} \in \mathbb{Q} \, | \, r \in B，s \in C \}$，
+$D'$は$D$の補集合．
