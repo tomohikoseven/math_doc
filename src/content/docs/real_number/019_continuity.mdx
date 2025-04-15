@@ -1,24 +1,26 @@
 ---
 title: 実数の連続性（定理1.6）
 description: 実数の連続性について示す．
+lastUpdated: 2025-04-15
 ---
 import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 
 <Card title="定理1.6（実数の連続性）">
-　$\langle B, B^{\prime} \rangle$が実数の切断のとき，$B$に属する最大の実数が存在するか，または$B^{\prime}$に属する最小の実数が存在する．
+　$\langle B, B' \rangle$が実数の切断のとき，$B$に属する最大の実数が存在するか，または$B'$に属する最小の実数が存在する．
 </Card>
 
 ## 定理の主張
 　本定理の主張は，記事タイトルの通り，**実数は連続している**ということだ．しかし，定理の字面を真正面に受け取ってもそのようには読めない．いったいどういうことなのか．
 
-　$B, B^{\prime}$について以下のとおりに整理できる．（max$B$, min$B^{\prime}$は最大値，最小値を意味する．）
+　$B, B'$について以下のとおりに整理できる．
+（max$B$, min$B'$は最大値，最小値を意味する．）
 
 <figure>
     <table>
         <thead>
             <tr>
-                <th></th> <th>max$B$</th> <th>max$B^{\prime}$</th> <th></th>
+                <th></th> <th>max$B$</th> <th>min$B'$</th> <th></th>
             </tr>
         </thead>
         <tr>
@@ -37,13 +39,13 @@ import { Steps } from '@astrojs/starlight/components';
     <figcaption>実数の切断における最大／最小値の可能性を整理．</figcaption> 
 </figure>
 
-　**本定理は，(2),(3)のいずれかであり，(4)ではないことを主張している**．有理数の切断($\langle A, A^{\prime} \rangle$)と有理数が連続でない（すき間がある）関係を考えるとわかりやすい．
+　**本定理は，(2),(3)のいずれかであり，(4)ではないことを主張している**．有理数の切断($\langle A, A' \rangle$)と有理数が連続でない（すき間がある）関係を考えるとわかりやすい．
 
 <figure>
     <table>
         <thead>
             <tr>
-                <th></th> <th>max$A$</th> <th>max$A^{\prime}$</th> <th></th>
+                <th></th> <th>max$A$</th> <th>min$A'$</th> <th></th>
             </tr>
         </thead>
         <tr>
@@ -62,42 +64,72 @@ import { Steps } from '@astrojs/starlight/components';
     <figcaption>有理数の切断における最大／最小値の整理．</figcaption> 
 </figure>
 
-　有理数の切断を考えた場合，(4)'の場合にはすき間があるということだった．実数の切断でも同様に考えて，**(4)の場合が否定できると，実数にすき間がないことになり，連続であることが言える**．
+　有理数の切断を考えた場合，(4)'はすき間があるということだった．
+実数の切断でも同様に考えて，**(4)の場合が否定できると，実数にすき間がないことになり，
+連続であることが言える**．
 
 ## 証明の考え方
 　以下の命題を示せばよい．
 <Card title="実数の連続性">
-　どんな実数の切断$\langle R, R^{\prime}\rangle$においても，すき間がない．（すなわち，$R$に最大の実数があるかもしくは$R^{\prime}$に最小の実数がある．）
+　どんな実数の切断$\langle R, R'\rangle$においても，すき間がない．
+（すなわち，$R$に最大の実数が存在するか，もしくは$R'$に最小の実数が存在する．）
 </Card>
 　背理法により示す．すなわち，
 
 $$
-ある実数の切断\langle R, R^{\prime} \rangle があり，この切断において，Rに最大の実数がなく かつ R^{\prime}に最小の実数がない
+ある実数の切断\langle R, R' \rangle があり， この切断において，\\
+Rに最大の実数がなく\,かつ\, R'に最小の実数がない
 $$
 
-と仮定し，矛盾を示す．
+と仮定し，矛盾を示す．（この仮定が成立したらすき間があるということだから．）
 
 <Steps>
 
-1. 実数を構成する．
+1. すき間付近の実数を構成する．
 
-    　$\langle R, R^{\prime} \rangle$に対し，実数$\alpha = \langle A, A^{\prime} \rangle$をとる．$A=\{ R \cap \mathbb{Q} \}, \space A^{\prime}=R^{\prime} \cap \mathbb{Q}$である．$\langle A, A^{\prime} \rangle$が有理数の切断であることを確かめる．
+    　$\langle R, R' \rangle$に対し，
+    $\alpha = \langle A, A' \rangle$，$A= R \cap \mathbb{Q}$，
+    $A'=R' \cap \mathbb{Q}$を考える．
+    $\langle A, A' \rangle$が有理数の切断であることを確かめる．なぜなら，
+    $A$に最大の有理数が存在するかどうかわかっていないから．
 
-    　$R, R^{\prime}$は空集合ではないので，$A, A^{\prime}$も空集合ではない．$r \in A, s \in A^{\prime}$とすると，$r \in R, s \in R^{\prime}$であり，[実数の切断](/real_number/018_real_number_cut/)の定義より，$r < s$．よって，有理数の切断の条件$(1)$を満たす．
+    　$R, R'$は空集合ではないので，$A, A'$も空集合ではない．
+    $r \in A, s \in A'$とすると，$r \in R, s \in R'$であり，
+    [実数の切断](/real_number/018_real_number_cut/)の定義より，$r < s$．
+    よって，有理数の切断の条件$(1)$を満たす．
 
-    　$A$に最大の有理数$r_0$が存在すると仮定．すると，$r_0$は$R$でも最大である．しかし，背理法の仮定より，$R$に最大の実数はないので，矛盾．$A$に最大の有理数は存在しない．有理数の切断の条件$(2)$を満たす．
-
-    　以上により，$\alpha = \langle A, A^{\prime} \rangle$は有理数の切断である．
+    　$A$に最大の有理数$r_0$が存在したとすると，$r_0 \in R$でもあることと，
+    背理法の仮定から$R$に最大の実数がないので，$r_0 < \rho$なる実数$\rho \in R$がある．
+    このとき[定理1.4](/real_number/014_consistency/)より，$r_0 < r < \rho$なる有理数$r$が存在する．
+    しかし$r_0$は$A$の最大の有理数であると仮定したので，矛盾する．
+    よって，$A$は最大の有理数は存在しない．つまり，有理数の切断の条件2.を満たす．
+    
+    　以上により，$\alpha = \langle A, A' \rangle$は有理数の切断（実数）である．
 
 2. 矛盾を示す．
 
-    　$\alpha \in R$とする．$R$に最大の実数はないので，$\alpha < \rho$なる実数$\rho \in R$が存在する．定理1.4より，$\alpha < r < \rho$なる有理数$r$がある．$\alpha < r$なので，$r \in A^{\prime}$だが，$r < \rho$なので$r \in R$，つまり$r \in A$のはず．矛盾する．つまり$\alpha \notin R$．
+    　$\alpha$は実数であり，
+    実数の切断$\langle R, R' \rangle$においては$\alpha \in R$もしくは$\alpha \in R'$である．
 
-    　$\alpha \in R^{\prime}$とする．$R^{\prime}$に最小の実数はないので，$\varphi < \alpha$なる実数$\varphi \in R^{\prime}$が存在する．[定理1.4](/real_number/014_consistency/)より，$\varphi < r < \alpha$なる有理数$r$がある．$r < \alpha$なので，$r \in A$だが，$\varphi < r$なので，$r \in R^{\prime}$つまり$r \in A^{\prime}$のはず．矛盾する．つまり$\alpha \notin R^{\prime}$．
+    　$\alpha \in R$とする．$R$に最大の実数はないので，
+    $\alpha < \rho$なる実数$\rho \in R$が存在する．
+    定理1.4より，$\alpha < r < \rho$なる有理数$r$がある．
+    $\alpha < r$なので，$r \in A'$だが，$r < \rho$なので$r \in R$，
+    つまり$r \in A$のはず．矛盾する．つまり$\alpha \notin R$．
 
-    　したがって，背理法により**実数にはすき間がない（連続である）**．
+    　$\alpha \in R'$とする．$R'$に最小の実数はないので，
+    $\varphi < \alpha$なる実数$\varphi \in R'$が存在する．
+    定理1.4より，
+    $\varphi < r < \alpha$なる有理数$r$がある．
+    $r < \alpha$なので，$r \in A$だが，$\varphi < r$なので$r \in R'$，
+    つまり$r \in A'$のはず．矛盾する．
+    つまり$\alpha \notin R'$．
+
+    　以上から実数$\alpha$が実数の切断$\langle R, R' \rangle$のどちらにも属さない矛盾が発生した．
 
 </Steps>
+
+　したがって，背理法により**実数にはすき間がない（連続である）**．
 
 ## 復習ノート
 - 実数の切断と有理数の切断は何が違うのだろうか．
