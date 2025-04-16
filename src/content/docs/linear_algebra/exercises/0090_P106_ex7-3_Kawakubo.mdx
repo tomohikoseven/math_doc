@@ -1,0 +1,99 @@
+---
+title: P106 第4章 章末問題7(3)を解く．【線形代数学（川久保勝夫著）】
+description: 線形代数学（川久保勝夫著）の第4章 章末問題7(3)の１つの回答例を示す．巻末の解答に途中計算がなく，不親切なので記しておく．
+lastUpdated: 2025-04-17
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題7(3)">
+  次の行列式を計算せよ．
+$$
+\begin{vmatrix}
+ a & bc & a^2 \\
+ b & ca & b^2 \\
+ c & ab & c^2 \\
+\end{vmatrix}
+$$
+</Card>
+　基本変形と余因子展開で計算するテクニカルな問題だが，どう解くのか途中式がないとわからない可能性がある
+（私はGeminiの助けをもとに解いた．）．途中式を記し，解答する．
+
+## 解答
+$$
+\begin{align}
+\begin{vmatrix}
+ a & bc & a^2 \\
+ b & ca & b^2 \\
+ c & ab & c^2 \\
+\end{vmatrix}
+&=
+\begin{vmatrix}
+ a & bc & a^2 \\
+ b-a & ca-bc & b^2-a^2 \\
+ c-a & ab-bc & c^2-a^2 \\
+\end{vmatrix} \\
+&=
+(b-a)(c-a)
+\begin{vmatrix}
+ a & bc & a^2 \\
+ 1 & -c & b+a \\
+ 1 & -b & c+a \\ 
+\end{vmatrix} \\
+\end{align}
+$$
+- (1)は行基本変形を行った．
+  1. (-1)x1行目を2行目に加える．
+  1. (-1)x1行目を3行目に加える．
+- (2)は2行目，3行目の共通因数を外に出した．
+
+$$
+\begin{align}
+\begin{vmatrix}
+ a & bc & a^2 \\
+ 1 & -c & b+a \\
+ 1 & -b & c+a \\ 
+\end{vmatrix}
+&=
+\begin{vmatrix}
+ 0 & bc + ba & -ca \\
+ 0 & -c + b & b - c \\
+ 1 & -b & c + a \\ 
+\end{vmatrix} \\
+&=
+\begin{vmatrix}
+ bc+ba & -ca \\
+ -c+b & b-c \\ 
+\end{vmatrix} \\
+&=
+(b-c)
+\begin{vmatrix}
+ bc+ba & -ca \\
+ 1 & 1 \\
+\end{vmatrix} \\
+&=
+(b-c)
+\begin{vmatrix}
+ bc+ba+ca & -ca \\
+ 0 & 1 \\
+\end{vmatrix} \\
+&=
+(b-c)(ab+bc+ca)
+\end{align}
+$$
+
+- (3)は行基本変形により，(1,1)成分，(2,1)成分を0にする．
+- (4)は余因子展開．
+- (5)は2行目の共通因子を外に出した．
+- (6)は行基本変形により，(2,1)成分を0にする．
+- (7)は余因子展開．
+
+　(2)と(7)を合わせて，
+$$
+\begin{vmatrix}
+ a & bc & a^2 \\
+ b & ca & b^2 \\
+ c & ab & c^2 \\
+\end{vmatrix}
+= -(a-b)(b-c)(c-a)(ab+bc+ca)
+$$
