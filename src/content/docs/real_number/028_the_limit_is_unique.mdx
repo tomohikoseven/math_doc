@@ -1,0 +1,36 @@
+---
+title: 収束する数列の極限はただ一つ．(P24)
+description: 収束する数列の極限はただ一つであることを示す．
+lastUpdated: 2025-04-23
+---
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="定理1.12'">
+　収束する数列$\{ \alpha_n \}$の極限は唯一つしかない．
+</Card>
+
+## 証明の注意点
+　この定理までの実数の性質において，実数の除法について何もわかっていない．
+よって，$\dfrac{\varepsilon}{2}$は使えない．つまり，
+$|\alpha_n - \alpha| < \frac{\varepsilon}{2}$を使えないということ．
+よって，$|\beta - \alpha| = |\beta - \alpha_n + \alpha_n - \alpha| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$
+という証明ができないということ．
+
+## 証明
+　背理法により示す．
+
+　数列$\{ \alpha_n \}$が２つの極限$\alpha, \beta, \alpha < \beta$を持つとする．
+[定理1.4](/real_number/014_consistency/)により，$\alpha < r < \beta$を満たす
+有理数$r$が存在する．[定理1.12](/real_number/027_limit_of_a_sequence_2/)により，
+有限個を除いて$\alpha_n < r$を満たす．つまり，$\alpha_n < r$を満たす$\alpha_n$が無数にある．
+定理1.12は，極限とちょっとでも差がある$r - \alpha$部分には無数に数列があるということだったから．
+
+　また同様に，定理1.12より有限個を除いて$r < \alpha_n$を満たす．
+つまり，$r < \alpha_n$を満たす$\alpha_n$が無数にある．
+こちらは$\beta - r$部分に無数に数列があるということだ．
+
+　以上により，無数の$\alpha_n$について，$\alpha_n < r，r < \alpha_n$を満たすことになる．
+矛盾が生じる．
+
+　背理法により，極限はただ一つしかない．
+
