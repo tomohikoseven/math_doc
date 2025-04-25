@@ -1,0 +1,59 @@
+---
+title: P106 第4章 章末問題7(2)を解く．【線形代数学（川久保勝夫著）】
+description: 線形代数学（川久保勝夫著）の第4章 章末問題7(2)の１つの回答例を示す．巻末の解答に途中計算がなく，不親切なので記しておく．
+lastUpdated: 2025-04-25
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題7(2)">
+  次の行列式を計算せよ．
+$$
+\begin{vmatrix}
+a & a^2 & b+c \\
+b & b^2 & c+a \\
+c & c^2 & a+b
+\end{vmatrix}
+$$ 
+</Card> 
+
+## 解答
+$$
+\begin{align}
+\begin{vmatrix}
+a & a^2 & b+c \\
+b & b^2 & c+a \\
+c & c^2 & a+b
+\end{vmatrix}
+&=
+\begin{vmatrix}
+a & a^2 & a+b+c \\
+b & b^2 & a+b+c \\
+c & c^2 & a+b+c
+\end{vmatrix} \\
+&=
+(a+b+c)
+\begin{vmatrix}
+a & a^2 & 1 \\
+b & b^2 & 1 \\
+c & c^2 & 1
+\end{vmatrix} \\
+&=
+(a+b+c)
+\begin{vmatrix}
+1 & a & a^2 \\
+1 & b & b^2 \\
+1 & c & c^2 \\
+\end{vmatrix} \\
+&=
+(a+b+c)(c-a)(c-b)(b-a) \\
+&=
+(a+b+c)(a-b)(b-c)(c-a)
+\end{align}
+$$
+
+- (1)は3列目に1列目を加えた．
+- (2)は3列目の共通因子を外に出した．
+- (3)は列を入れ替えた．1列目と3列目を入れ替え，その後2列目と3列目を入れ替えた．
+- (4)はヴァンデルモンドの行列式の結果を使って展開した．
+- (5)は(4)を整理した．
