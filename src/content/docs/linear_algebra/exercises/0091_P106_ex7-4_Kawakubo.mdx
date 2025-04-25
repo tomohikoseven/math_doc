@@ -1,0 +1,95 @@
+---
+title: P106 第4章 章末問題7(4)を解く．【線形代数学（川久保勝夫著）】
+description: 線形代数学（川久保勝夫著）の第4章 章末問題7(4)の１つの回答例を示す．巻末の解答に途中計算がなく，不親切なので記しておく．
+lastUpdated: 2025-04-25
+---
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題7(4)">
+　次の行列式を計算せよ．
+$$
+\begin{vmatrix}
+a+b+c & -c & -b \\
+-c & a+b+c & -a \\
+-b & -a & a+b+c 
+\end{vmatrix}
+$$
+</Card>
+
+## 解答
+$$
+\begin{align}
+\begin{vmatrix}
+a+b+c & -c & -b \\
+-c & a+b+c & -a \\
+-b & -a & a+b+c 
+\end{vmatrix}
+&=
+\begin{vmatrix}
+a+b & -c & -b \\
+a+b & a+b+c & -a \\
+-(a+b) & -a & a+b+c 
+\end{vmatrix} \\
+&=
+(a+b)
+\begin{vmatrix}
+1 & -c & -b \\
+1 & a+b+c & -a \\
+-1 & -a & a+b+c 
+\end{vmatrix} \\
+\end{align}
+$$
+- (1)は2列目を1列目に加えた．
+- (2)は1列目の共通因子(a+b)を外に出した．
+
+$$
+\begin{align}
+\begin{vmatrix}
+1 & -c & -b \\
+1 & a+b+c & -a \\
+-1 & -a & a+b+c 
+\end{vmatrix}
+&=
+\begin{vmatrix}
+1 & -c & -b \\
+0 & a+b+2c & -a+b \\
+0 & -(a+c) & a+c
+\end{vmatrix} \\
+&=
+\begin{vmatrix}
+a+b+2c & -a+b \\
+-(a+b) & a+c
+\end{vmatrix} \\
+&=
+(a+c)
+\begin{vmatrix}
+a+b+2c & -a+b \\
+-1 & 1 
+\end{vmatrix} \\
+&=
+(a+c)
+\begin{vmatrix}
+2(b+c) & -a+b \\
+0 & 1
+\end{vmatrix} \\
+&=
+2(a+c)(b+c)
+\end{align}
+$$
+
+- (3)は2行目に1行目x(-1)を加え，3行目に1行目を加えた．
+- (4)は1列目で余因子展開をした．
+- (5)は2行目の共通因子を外に出した．
+- (6)は2列目を1列目に加えた．
+- (7)は2行目で余因子展開をした．
+
+(2)と(7)を合わせて，
+$$
+\begin{vmatrix}
+a+b+c & -c & -b \\
+-c & a+b+c & -a \\
+-b & -a & a+b+c 
+\end{vmatrix}
+=
+2(a+b)(b+c)(c+a)
+$$
