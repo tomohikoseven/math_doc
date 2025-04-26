@@ -46,11 +46,11 @@ export default defineConfig({
     //  }
     //},
     customCss: [ './src/styles/custom.css' ] ,
-    social: {
-      github: 'https://github.com/tomohikoseven',
-      'x.com': 'https://x.com/tomohikoseven',
-      'instagram': 'https://www.instagram.com/nagasetomohiko/',
-    },
+    social: [
+      { icon:'github', label:'GitHub', href: 'https://github.com/tomohikoseven' },
+      { icon: 'x.com', label:'X', href: 'https://x.com/tomohikoseven' },
+      { icon:'instagram', label:'Instagram', href: 'https://www.instagram.com/nagasetomohiko/'},
+    ],
     sidebar: [
       REAL_NUMBER, 
       LINEAR_ALGEBRA,
