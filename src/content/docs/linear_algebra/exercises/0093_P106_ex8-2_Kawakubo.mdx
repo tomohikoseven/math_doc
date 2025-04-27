@@ -1,0 +1,49 @@
+---
+title: P106 第4章 章末問題8(2)を解く．【線形代数学（川久保勝夫著）】
+description: 線形代数学（川久保勝夫著）の第4章 章末問題8(2)の１つの回答例を示す．巻末の解答に途中計算がなく，不親切なので記しておく．
+lastUpdated: 2025-04-28
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題8(2)">
+　次の行列式を計算せよ．
+$$
+\begin{vmatrix}
+a & b & c & d \\
+-b & a & -d & c \\
+-c & d & a & -b \\
+-d & -c & b & a \\
+\end{vmatrix}
+$$
+</Card>
+
+## 解法
+$$
+A =
+\begin{pmatrix}
+a & b & c & d \\
+-b & a & -d & c \\
+-c & d & a & -b \\
+-d & -c & b & a \\
+\end{pmatrix}
+$$
+とおく．
+$$
+\begin{aligned}
+A{}^t\! A
+&=
+\begin{pmatrix}
+a^2+b^2+c^2+d^2 & 0 & 0 & 0 \\
+0 & a^2+b^2+c^2+d^2 & 0 & 0 \\
+0 & 0 & a^2+b^2+c^2+d^2 & 0 \\
+0 & 0 & 0 & a^2+b^2+c^2+d^2 \\
+\end{pmatrix} \\
+&=
+(a^2+b^2+c^2+d^2)^4
+\end{aligned}
+$$
+であることに気づけば，$det(A{}^t\! A)=detA・det({}^t\! A)=detA・detA=(detA)^2$から，
+$$
+detA = (a^2+b^2+c^2+d^2)^2
+$$
