@@ -1,0 +1,60 @@
+---
+title: 定理4.6.11を証明する．
+description: 行列式の性質で重要な定理4.6.11を証明する．
+lastUpdated: 2025-04-27
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="定理4.6.11">
+　$A$を$r$次正方行列，$D$を$s$次正方行列，$C$を$s \times r$行列とする．
+$$
+\begin{vmatrix}
+A & O \\
+C & D \\
+\end{vmatrix}
+=
+|A|・|D|
+$$
+ここで，$O$はすべての成分が$0$からなる$r \times s$行列を表す．
+</Card>
+
+## 証明
+$$
+\begin{pmatrix}
+A & O \\
+C & D \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+A & O \\
+O & E \\
+\end{pmatrix}
+\begin{pmatrix}
+E & O \\
+C & D \\
+\end{pmatrix}
+（Oは零行列，Eは単位行列）
+$$
+と分解できることと，$det(AB) = detA・detB$であることと，
+$$
+\begin{vmatrix}
+A & O \\
+O & E \\
+\end{vmatrix}
+\begin{vmatrix}
+E & O \\
+C & D \\
+\end{vmatrix}
+=
+|A|・|D|
+$$
+から，
+$$
+\begin{vmatrix}
+A & O \\
+C & D \\
+\end{vmatrix}
+=
+|A|・|D|
+$$
