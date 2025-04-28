@@ -1,8 +1,7 @@
 ---
 title: P106 第4章 章末問題8(3)を解く．【線形代数学（川久保勝夫著）】
 description: 線形代数学（川久保勝夫著）の第4章 章末問題8(3)の１つの回答例を示す．巻末の解答に途中計算がなく，不親切なので記しておく．
-lastUpdated: 2025-04-28
-draft: true
+lastUpdated: 2025-04-29
 ---
 
 import { Card } from "@astrojs/starlight/components";
@@ -48,6 +47,13 @@ abc
 a-1 & b-1 & c-1 \\
 a^2-1 & b^2-1 & c^2-1 \\
 a^3-1 & b^3-1 & c^3-1 \\
+\end{vmatrix} \\
+&=
+abc(a-1)(b-1)(c-1)
+\begin{vmatrix}
+1 & 1 & 1 \\
+a+1 & b+1 & c+1 \\
+a^2-a+1 & b^2-b+1 & c^2-c+1 \\
 \end{vmatrix}
 \end{align}
 $$
@@ -55,3 +61,56 @@ $$
 - (1)は2行目に1行目x(-1)を加え，3行目に1行目x(-1)を加え，4行目に1行目x(-1)を加える．
 - (2)は余因子展開をした．
 - (3)は1〜3行目の共通因子をそれぞれ外出しした．
+- (4)は1〜3行目をさらに共通因子で外出しした．
+
+$$
+\begin{align}
+\begin{vmatrix}
+1 & 1 & 1 \\
+a+1 & b+1 & c+1 \\
+a^2-a+1 & b^2-b+1 & c^2-c+1 \\
+\end{vmatrix}
+&=
+\begin{vmatrix}
+1 & 0 & 0 \\
+a+1 & b-a & c-a \\
+a^2-a+1 & b^2-b-a^2+a & c^2-c-a^2+a \\
+\end{vmatrix} \\
+&=
+\begin{vmatrix}
+b-a & c-a \\
+(b-a)(b+a-1) & (c-a)(c+a-1) \\
+\end{vmatrix} \\
+&=
+(b-a)(c-a)
+\begin{vmatrix}
+1 & 1 \\
+b+a-1 & c+a-1 \\
+\end{vmatrix} \\
+&=
+(b-a)(c-a)
+\begin{vmatrix}
+1 & 0 \\
+b+a-1 & c-b \\
+\end{vmatrix} \\
+&=
+(b-a)(c-a)(c-b)
+\end{align}
+$$
+
+- (5)は2行目に1行目x(-1)を加えた．3行目も同様．
+- (6)は余因子展開をした．
+- (7)は1,2列目の共通因子を外出しした．
+- (8)は2行目に1行目x(-1)を加えた．
+- (9)は余因子展開をした．
+
+(4)と(9)を合わせて，式を整理すると，
+$$
+\begin{vmatrix}
+1 & a & b & c \\
+1 & a^2 & b^2 & c^2 \\
+1 & a^3 & b^3 & c^3 \\
+1 & a^4 & b^4 & c^4 \\
+\end{vmatrix}
+= abc(a-1)(b-1)(c-1)(a-b)(b-c)(c-a)
+$$
