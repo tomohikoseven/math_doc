@@ -7,7 +7,7 @@ import d2 from 'astro-d2';
 
 import starlightLinksValidator from 'starlight-links-validator';
 import { KATEX, GOOGLE_ANALYTICS } from './src/libs/head';
-import { REAL_NUMBER, LINEAR_ALGEBRA, MATHEMATICS, MATH_DIALY, SOFTWARE, ABOUT_MY_WEBSITE, HIGH_SCHOOL_MATH } from './src/libs/sidebar';
+import { REAL_NUMBER, LINEAR_ALGEBRA, MATHEMATICS, MATH_DIALY, SOFTWARE, ABOUT_MY_WEBSITE, HIGH_SCHOOL_MATH, LINEAR_ALGEBRA_KAWAKUBO } from './src/libs/sidebar';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -54,6 +54,7 @@ export default defineConfig({
     sidebar: [
       REAL_NUMBER, 
       LINEAR_ALGEBRA,
+      LINEAR_ALGEBRA_KAWAKUBO, 
       MATHEMATICS, 
       MATH_DIALY,
       HIGH_SCHOOL_MATH,
