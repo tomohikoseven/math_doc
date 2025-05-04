@@ -1,0 +1,48 @@
+---
+title: P107 第4章 章末問題10(2)．
+description: 線形代数学（川久保勝夫著）の第4章 章末問題10(2)の１つの回答例を示す．
+lastUpdated: 2025-05-04
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題10(2)">
+　次の等式を証明せよ．
+$$
+\begin{vmatrix}
+1 & 2 & 3 & \cdots & n \\
+-1 & 0 & 3 & \cdots & n \\
+-1 & -2 & 0 & \cdots & n \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+-1 & -2 & -3 & \cdots & 0 \\
+\end{vmatrix}
+=
+n!
+$$
+</Card>
+
+## 解答
+$$
+\begin{align}
+\begin{vmatrix}
+1 & 2 & 3 & \cdots & n \\
+-1 & 0 & 3 & \cdots & n \\
+-1 & -2 & 0 & \cdots & n \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+-1 & -2 & -3 & \cdots & 0 \\
+\end{vmatrix}
+&=
+\begin{vmatrix}
+1 & 2 & 3 & \cdots & n \\
+0 & 2 & 6 & \cdots & 2n \\
+0 & 0 & 3 & \cdots & 2n \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & n \\
+\end{vmatrix} \\
+&=
+n!
+\end{align}
+$$
+
+- (1)は1行目を$i$行目に加えた．$2 \le i \le n$．すると上三角行列になる．
+- (2)は上三角行列式を展開した結果である．
