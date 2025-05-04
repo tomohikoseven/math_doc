@@ -1,0 +1,67 @@
+---
+title: P107 第4章 章末問題10(1)．
+description: 線形代数学（川久保勝夫著）の第4章 章末問題10(1)の１つの回答例を示す．
+lastUpdated: 2025-05-04
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題10(1)">
+　次の等式を証明せよ．
+$$
+\begin{vmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+1 & 2 & 2 & \cdots & 2 \\
+1 & 2 & 3 & \cdots & 3 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & 2 & 3 & \cdots & n \\
+\end{vmatrix}
+=
+1
+$$
+</Card>
+
+## 解答
+$$
+\begin{align}
+\begin{vmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+1 & 2 & 2 & \cdots & 2 \\
+1 & 2 & 3 & \cdots & 3 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & 2 & 3 & \cdots & n \\
+\end{vmatrix}
+&=
+\begin{vmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+0 & 1 & 1 & \cdots & 1 \\
+0 & 1 & 2 & \cdots & 2 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 1 & 2 & \cdots & n-1 \\
+\end{vmatrix} \\
+&=
+\begin{vmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+1 & 2 & 2 & \cdots & 2 \\
+1 & 2 & 3 & \cdots & 3 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & 2 & 3 & \cdots & n-1 \\
+\end{vmatrix}
+\end{align}
+$$
+
+- (1)は$i$行目に1行目x(-1)を加えた．$2 \le i \le n$．
+- (2)は1列目に関して，余因子展開をした．
+
+　つまり
+$$
+A_n =
+\begin{pmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+1 & 2 & 2 & \cdots & 2 \\
+1 & 2 & 3 & \cdots & 3 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & 2 & 3 & \cdots & n \\
+\end{pmatrix}
+$$
+とおけば，$|A_n|=|A_{n-1}|= \cdots = |A_1|=1$となる．
