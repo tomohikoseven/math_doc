@@ -1,0 +1,64 @@
+---
+title: P107 第4章 章末問題10(3)．
+description: 線形代数学（川久保勝夫著）の第4章 章末問題10(3)の１つの回答例を示す．
+lastUpdated: 2025-05-05
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題10(3)">
+　次の等式を証明せよ．
+$$
+\begin{vmatrix}
+a+b & a & \cdots & a \\
+a & a+b & \cdots & a \\
+\vdots & \vdots & & \vdots \\
+a & a & \cdots & a+b \\
+\end{vmatrix}
+=
+(na+b)b^{n-1}
+$$
+　(ただし，$n$は行列の次数)
+</Card>
+
+## 解答
+$$
+\begin{align}
+\begin{vmatrix}
+a+b & a & \cdots & a \\
+a & a+b & \cdots & a \\
+\vdots & \vdots & & \vdots \\
+a & a & \cdots & a+b \\
+\end{vmatrix}
+&=
+\begin{vmatrix}
+na+b & na+b & \cdots & na+b \\
+a & a+b & \cdots & a \\
+\vdots & \vdots & & \vdots \\
+a & a & \cdots & a+b \\
+\end{vmatrix} \\
+&=
+(na+b)
+\begin{vmatrix}
+1 & 1 & \cdots & 1 \\
+a & a+b & \cdots & a \\
+\vdots & \vdots & & \vdots \\
+a & a & \cdots & a+b \\
+\end{vmatrix} \\
+&=
+(na+b)
+\begin{vmatrix}
+1 & 1 & \cdots & 1 \\
+0 & b & \cdots & 0 \\
+\vdots & \vdots & & \vdots \\
+0 & 0 & \cdots & b \\
+\end{vmatrix} \\
+&=
+(na+b)b^{n-1}
+\end{align}
+$$
+
+- (1)は1行目に2行目以下すべての行を加えた．
+- (2)は1行目の共通因子を外出しした．
+- (3)は1行目x(-a)を2行目以下すべての行に加えた．
+- (4)は上三角行列式を展開した．
