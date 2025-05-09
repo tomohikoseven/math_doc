@@ -1,0 +1,61 @@
+---
+title: P108 第4章 章末問題11(2)．
+description: 線形代数学（川久保勝夫著）の第4章 章末問題11(2)の１つの回答例を示す．
+lastUpdated: 2025-05-09
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題11(2)">
+　次の等式を証明せよ．
+$$
+\begin{vmatrix}
+x & a_2 & a_3 & \cdots & a_n & 1 \\
+a_1 & x & a_3 & \cdots & a_n & 1 \\
+a_1 & a_2 & x & \cdots & a_n & 1 \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+a_1 & a_2 & a_3 & \cdots & x & 1 \\
+a_1 & a_2 & a_3 & \cdots & a_n & 1 \\ 
+\end{vmatrix}
+=
+\prod_{i=1}^{n}(x-a_i)
+$$
+</Card>
+
+## 解答
+$$
+\begin{align}
+\begin{vmatrix}
+x & a_2 & a_3 & \cdots & a_n & 1 \\
+a_1 & x & a_3 & \cdots & a_n & 1 \\
+a_1 & a_2 & x & \cdots & a_n & 1 \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+a_1 & a_2 & a_3 & \cdots & x & 1 \\
+a_1 & a_2 & a_3 & \cdots & a_n & 1 \\ 
+\end{vmatrix}
+&=
+\begin{vmatrix}
+x-a_1 & 0 & 0 & \cdots & 0 & 0 \\
+0 & x-a_2 & 0 & \cdots & 0 & 0 \\
+0 & 0 & x-a_3 & \cdots & 0 & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & \cdots & x-a_n & 0 \\
+a_1 & a_2 & a_3 & \cdots & a_n & 1 \\
+\end{vmatrix} \\
+&=
+(-1)^{2n+2}
+\begin{vmatrix}
+x-a_1 & 0 & 0 & \cdots & 0 \\
+0 & x-a_2 & 0 & \cdots & 0 \\
+0 & 0 & x-a_3 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & x-a_n  \\
+\end{vmatrix} \\
+&=
+\prod_{i=1}^{n}(x-a_i)
+\end{align}
+$$
+
+- (1)は1行目にn+1行目x(-1)を加える．$i$行目にn+1x(-1)を加える．$2 \le i \le n$．
+- (2)は$n+1$列目で余因子展開をした．
+- (3)は対角行列式を展開し，整理した．
