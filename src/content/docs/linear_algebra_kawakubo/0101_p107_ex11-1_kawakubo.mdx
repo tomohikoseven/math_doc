@@ -1,0 +1,61 @@
+---
+title: P107 第4章 章末問題11(1)．
+description: 線形代数学（川久保勝夫著）の第4章 章末問題11(1)の１つの回答例を示す．
+lastUpdated: 2025-05-09
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題11(1)">
+　次の等式を証明せよ．
+$$
+\begin{vmatrix}
+a_n     & -1 & 0 & \cdots & 0 \\
+a_{n-1} & x  & -1 &  \ddots & \vdots \\
+a_{n-2} & 0  & x & \ddots & 0 \\
+\vdots & \vdots & \ddots & \ddots & -1 \\
+a_0 & 0 & \cdots & 0 & x \\
+\end{vmatrix}
+=
+a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0
+$$
+</Card>
+
+## 解答
+$$
+\begin{align}
+\begin{vmatrix}
+a_n     & -1 & 0 & \cdots & 0 \\
+a_{n-1} & x  & -1 &  \ddots & \vdots \\
+a_{n-2} & 0  & x & \ddots & 0 \\
+\vdots & \vdots & \ddots & \ddots & -1 \\
+a_0 & 0 & \cdots & 0 & x \\
+\end{vmatrix}
+&=
+\begin{vmatrix}
+a_n     & -1 & 0 & \cdots & 0 \\
+a_{n-1} & x  & -1 &  \ddots & \vdots \\
+a_{n-2} & 0  & x & \ddots & 0 \\
+\vdots & \vdots & \ddots & \ddots & -1 \\
+\displaystyle\sum_{i=0}^n a_ix^i & 0 & \cdots & 0 & 0 \\
+\end{vmatrix} \\
+&=
+(-1)^{n+2}\displaystyle\sum_{i=0}^n a_ix^i
+\begin{vmatrix}
+-1 & 0 & \cdots & 0 \\
+ x  & -1 &  \ddots & \vdots \\
+ \vdots  & \ddots & \ddots & 0 \\
+ 0 & \cdots & x & -1 \\
+\end{vmatrix} \\
+&=
+(-1)^{2n+2}\displaystyle\sum_{i=0}^n a_ix^i \\
+&=
+a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0
+\end{align}
+$$
+
+- (1)は$n+1$行目に1行目x$x^n$を加える，2行目x$x^{n-1}$を加える，$\cdots$，n行目x$x$を加える．
+  - $n+1$行の2列目以降は0になる．
+- (2)は$n+1$行で余因子展開をした．
+- (3)は(2)が下三角行列式であることを利用して展開した．つまり$(-1)^{n}$．
+- (4)は(3)を整理した．
