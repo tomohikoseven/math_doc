@@ -1,0 +1,48 @@
+---
+title: P108 第4章 章末問題11(3)．
+description: 線形代数学（川久保勝夫著）の第4章 章末問題11(3)の１つの回答例を示す．
+lastUpdated: 2025-05-10
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題11(3)">
+　次の等式を証明せよ．
+$$
+\begin{vmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+b_1 & a_1 & a_1 & \cdots & a_1 \\
+b_2 & b_2 & a_2 & \cdots & a_2 \\
+\vdots & \vdots & \ddots & \ddots & \vdots \\
+b_{n-1} & b_{n-1} & \cdots & b_{n-1} & a_{n-1} \\ 
+\end{vmatrix}
+=
+\prod_{i=1}^{n-1}(a_i-b_i)
+$$
+</Card>
+
+## 解答
+$$
+\begin{align}
+\begin{vmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+b_1 & a_1 & a_1 & \cdots & a_1 \\
+b_2 & b_2 & a_2 & \cdots & a_2 \\
+\vdots & \vdots & \ddots & \ddots & \vdots \\
+b_{n-1} & b_{n-1} & \cdots & b_{n-1} & a_{n-1} \\ 
+\end{vmatrix}
+&=
+\begin{vmatrix}
+1 & 0 & 0 & \cdots & 0 \\
+b_1 & a_1-b_1 & 0 & \cdots & 0 \\
+b_2 & 0 & a_2-b_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \ddots & \vdots \\
+b_{n-1} & 0 & \cdots &  & a_{n-1}-b_{n-1} \\ 
+\end{vmatrix} \\
+&=
+\prod_{i=1}^{n-1}(a_i-b_i)
+\end{align}
+$$
+
+- (1)は$n$列目に$n-1$列目x(-1)を加える．$n-1$列目に$n-2$列目x(-1)を加える．$\cdots$，2列目に1列目x(-1)を加える．
+- (2)は下三角行列式を展開した．
