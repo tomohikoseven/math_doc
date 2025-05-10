@@ -1,0 +1,84 @@
+---
+title: P108 第4章 章末問題11(5)．
+description: 線形代数学（川久保勝夫著）の第4章 章末問題11(5)の１つの回答例を示す．
+lastUpdated: 2025-05-10
+---
+
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問題11(5)">
+　次の等式を証明せよ．
+$$
+\begin{vmatrix}
+1+x^2 & x & 0 & \cdots & 0 \\
+x & 1+x^2 & x & \ddots & \vdots \\
+0 & x & \ddots & \ddots & 0 \\
+\vdots & \ddots & \ddots &  1+x^2 & x \\
+0 & \cdots & 0 &  x & 1+x^2 \\
+\end{vmatrix}
+=
+1+x^2+x^4+\cdots+x^{2n}
+$$
+</Card>
+
+## 解答
+　帰納法を用いる．
+$$
+A_n =
+\begin{vmatrix}
+1+x^2 & x & 0 & \cdots & 0 \\
+x & 1+x^2 & x & \ddots & \vdots \\
+0 & x & \ddots & \ddots & 0 \\
+\vdots & \ddots & \ddots &  1+x^2 & x \\
+0 & \cdots & 0 &  x & 1+x^2 \\
+\end{vmatrix}
+$$
+とおく．$A_1=1+x^2$，
+$$
+\begin{aligned}
+A_2
+&=
+\begin{vmatrix}
+1+x^2 & x \\
+x & 1+x^2 \\
+\end{vmatrix} \\
+&=(1+x^2)(1+x^2) - x^2 \\
+&=1+x^2+x^4
+\end{aligned}
+$$
+であり，
+$$
+\begin{aligned}
+A_3
+&=
+\begin{vmatrix}
+1+x^2 & x & 0 \\
+x & 1+x^2 & x \\
+0 & x & 1+x^2 \\
+\end{vmatrix} \\
+&=
+(1+x^2)A_2-x
+\begin{vmatrix}
+x & 0 \\
+x & 1+x^2 \\
+\end{vmatrix} \\
+&=
+(1+x^2)A_2-x^2A_1 \\
+&=
+1+x^2+x^4+x^6
+\end{aligned}
+$$
+である．
+
+　つまり，$A_{n-1}$まで題意が成り立つと仮定すると，
+$$
+\begin{aligned}
+A_n 
+&= (1+x^2)A_{n-1} - x^2A_{n-2} \\
+&= (1+x^2)(1+x^2+x^4+\cdots+x^{2(n-1)})-x^2(1+x^2+x^4+\cdots+x^{2(n-2)}) \\
+&= 1+x^2+x^4+\cdots+x^{2n}．
+\end{aligned}
+$$
+
+以上により，帰納法から題意が示せた．
+
