@@ -9,41 +9,33 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題8(2)">
 　次の行列式を計算せよ．
 $$
-\begin{vmatrix}
-a & b & c & d \\
--b & a & -d & c \\
--c & d & a & -b \\
--d & -c & b & a \\
-\end{vmatrix}
+mat(delim: "|", a, b, c, d;
+- b, a, - d, c;
+- c, d, a, - b;
+- d, - c, b, a;)
 $$
 </Card>
 
 ## 解法
 $$
 A =
-\begin{pmatrix}
-a & b & c & d \\
--b & a & -d & c \\
--c & d & a & -b \\
--d & -c & b & a \\
-\end{pmatrix}
+mat(delim: "(", a, b, c, d;
+- b, a, - d, c;
+- c, d, a, - b;
+- d, - c, b, a;)
 $$
 とおく．
 $$
-\begin{aligned}
-A{}^t\! A
+A A^top
 &=
-\begin{pmatrix}
-a^2+b^2+c^2+d^2 & 0 & 0 & 0 \\
-0 & a^2+b^2+c^2+d^2 & 0 & 0 \\
-0 & 0 & a^2+b^2+c^2+d^2 & 0 \\
-0 & 0 & 0 & a^2+b^2+c^2+d^2 \\
-\end{pmatrix} \\
+mat(delim: "(", a^2 + b^2 + c^2 + d^2, 0, 0, 0;
+0, a^2 + b^2 + c^2 + d^2, 0, 0;
+0, 0, a^2 + b^2 + c^2 + d^2, 0;
+0, 0, 0, a^2 + b^2 + c^2 + d^2 ;) \
 &=
-(a^2+b^2+c^2+d^2)^4
-\end{aligned}
+(a^2 + b^2 + c^2 + d^2)^4
 $$
-であることに気づけば，$det(A{}^t\! A)=detA・det({}^t\! A)=detA・detA=(detA)^2$から，
+であることに気づけば，$d e t(A A^top) = d e t A "・" d e t(A^top) = d e t A "・" d e t A = (d e t A)^2$から，
 $$
-detA = (a^2+b^2+c^2+d^2)^2
+d e t A = (a^2 + b^2 + c^2 + d^2)^2
 $$

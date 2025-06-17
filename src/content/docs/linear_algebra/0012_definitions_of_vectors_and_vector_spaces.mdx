@@ -19,46 +19,38 @@ import image_01 from "/src/assets/linear_algebra/0012/ベクトル空間の捉�
 しかし，今後の記事ではベクトルも数多く登場すると思うので，一旦定義しておく．
 
 <Card title="ベクトルの定義">
-　$n$個の数$a_1, a_2, \cdots, a_n$を並べた組を$n$項（または$n$次元）**数ベクトル**または単に**ベクトル**という．
-それぞれの数$a_1, a_2, \cdots, a_n$をその**成分**という．
+　$n$個の数$a_1, a_2, dots.c, a_n$を並べた組を$n$項（または$n$次元）**数ベクトル**または単に**ベクトル**という．
+それぞれの数$a_1, a_2, dots.c, a_n$をその**成分**という．
 
 　以下のように成分を縦に並べた組，横に並べた組をそれぞれ**列ベクトル**，**行ベクトル**という．
 $$
-\begin{pmatrix}
-a_1 \\
-\vdots \\
-a_n
-\end{pmatrix}
+mat(delim: "(", a_1 ;
+dots.v;
+a_n)
 ,
-\space
-(a_1, \cdots, a_n)
+
+(a_1, dots.c, a_n)
 $$
 </Card>
 
 #### ベクトルの相等
 　２つのベクトル
 $$
-\boldsymbol{a} =
-\begin{pmatrix}
-a_1 \\
-\vdots \\
-a_n
-\end{pmatrix}
-, \space \space
-\boldsymbol{b} =
-\begin{pmatrix}
-b_1 \\
-\vdots \\
-b_n
-\end{pmatrix}
+bold(a) =
+mat(delim: "(", a_1 ;
+dots.v;
+a_n)
+,  
+bold(b) =
+mat(delim: "(", b_1 ;
+dots.v;
+b_n)
 $$
 が等しいとは，それぞれの成分が等しいということ．つまり，
 $$
-\begin{cases}
-a_1 = b_1 \\
- \quad \vdots \\
-a_n = b_n
-\end{cases}
+cases(a_1 = b_1,
+ quad dots.v,
+a_n = b_n)
 $$
 ということ．
 
@@ -66,25 +58,21 @@ $$
 ##### ベクトルの足し算
 　ベクトルの足し算は，それぞれの成分を足せばよい．すなわち，2つのベクトルの足し算は
 $$
-\boldsymbol{a} + \boldsymbol{b}
+bold(a) + bold(b)
  =
-\begin{pmatrix}
-a_1 + b_1 \\
-\vdots \\
-a_n + b_n
-\end{pmatrix}
-．
+mat(delim: "(", a_1 + b_1 ;
+dots.v;
+a_n + b_n)
+"．"
 $$
 
 ##### ベクトルのスカラー倍
 　スカラー倍はベクトルに定数を掛けることだ．つまり，ベクトルのスカラー倍は
 $$
-k \boldsymbol{a} = 
-\begin{pmatrix}
-ka_1 \\
-\vdots \\
-ka_n
-\end{pmatrix}
+k bold(a) = 
+mat(delim: "(", k a_1 ;
+dots.v;
+k a_n)
 $$
 
 
@@ -96,25 +84,25 @@ $$
 <Card title="ベクトル空間の定義">
 　（Geminiに定義を生成させました．）
 
-　ベクトル空間$V$ とは、以下の条件を満たす集合$V$と演算（ベクトル和とスカラー倍）の組 ($V, +, \cdot$) のこと．
+　ベクトル空間$V$ とは、以下の条件を満たす集合$V$と演算（ベクトル和とスカラー倍）の組 ($V, +, dot.op$) のこと．
 
 **1. 和に関する性質**
 
-　任意のベクトル $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$ に対して、
-  - $\mathbf{u} + \mathbf{v} \in V$（和の閉じていること）
-  - $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$（結合法則）
-  - $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$（交換法則）
-  - $\mathbf{u} + \mathbf{0} = \mathbf{u}$ を満たす零ベクトル $\mathbf{0} \in V$ が存在する（零ベクトルの存在）
-  - $\mathbf{u} + (-\mathbf{u}) = \mathbf{0}$ を満たす逆ベクトル $-\mathbf{u} \in V$ が存在する（逆ベクトルの存在）
+　任意のベクトル $upright(bold(u)), upright(bold(v)), upright(bold(w)) in V$ に対して、
+  - $upright(bold(u)) + upright(bold(v)) in V$（和の閉じていること）
+  - $(upright(bold(u)) + upright(bold(v))) + upright(bold(w)) = upright(bold(u)) +(upright(bold(v)) + upright(bold(w)))$（結合法則）
+  - $upright(bold(u)) + upright(bold(v)) = upright(bold(v)) + upright(bold(u))$（交換法則）
+  - $upright(bold(u)) + upright(bold(0)) = upright(bold(u))$ を満たす零ベクトル $upright(bold(0)) in V$ が存在する（零ベクトルの存在）
+  - $upright(bold(u)) +(-upright(bold(u))) = upright(bold(0))$ を満たす逆ベクトル $-upright(bold(u)) in V$ が存在する（逆ベクトルの存在）
  
 **2. スカラー倍に関する性質**
 
-　任意のベクトル $\mathbf{u}, \mathbf{v} \in V$ とスカラー $a, b \in \mathbb{R}$ に対して、
-    - $a \cdot \mathbf{u} \in V$（スカラー倍の閉じていること）
-    - $a \cdot (\mathbf{u} + \mathbf{v}) = a \cdot \mathbf{u} + a \cdot \mathbf{v}$（分配法則）
-    - $(a + b) \cdot \mathbf{u} = a \cdot \mathbf{u} + b \cdot \mathbf{u}$（分配法則）
-    - $(ab) \cdot \mathbf{u} = a \cdot (b \cdot \mathbf{u})$（結合法則）
-    - $1 \cdot \mathbf{u} = \mathbf{u}$（単位元の性質）
+　任意のベクトル $upright(bold(u)), upright(bold(v)) in V$ とスカラー $a, b in RR$ に対して、
+    - $a dot.op upright(bold(u)) in V$（スカラー倍の閉じていること）
+    - $a dot.op(upright(bold(u)) + upright(bold(v))) = a dot.op upright(bold(u)) + a dot.op upright(bold(v))$（分配法則）
+    - $(a + b) dot.op upright(bold(u)) = a dot.op upright(bold(u)) + b dot.op upright(bold(u))$（分配法則）
+    - $(a b) dot.op upright(bold(u)) = a dot.op(b dot.op upright(bold(u)))$（結合法則）
+    - $1 dot.op upright(bold(u)) = upright(bold(u))$（単位元の性質）
 </Card>
 
 #### ベクトル空間をどう捉えるか．

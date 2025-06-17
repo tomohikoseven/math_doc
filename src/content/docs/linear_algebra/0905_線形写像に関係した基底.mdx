@@ -8,19 +8,19 @@ import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 
 <Card title="定理7.3.4">
-　任意の線形写像$f \colon V \to W$に対して，$V$の基底$\boldsymbol{v}_1, \cdots , \boldsymbol{v}_n$および$W$の基底$\boldsymbol{w}_1, \cdots, \boldsymbol{w}_m$で，次の関係を満たすものが存在する．
+　任意の線形写像$f colon V -> W$に対して，$V$の基底$bold(v)_1, dots.c, bold(v)_n$および$W$の基底$bold(w)_1, dots.c, bold(w)_m$で，次の関係を満たすものが存在する．
 $$
-f(\boldsymbol{v})=\boldsymbol{w}_1, f(\boldsymbol{v}_2)=\boldsymbol{w}_2, \cdots , f(\boldsymbol{v}_r)=\boldsymbol{w}_r, \\ f(\boldsymbol{v}_{r+1})=\boldsymbol{0}, f(\boldsymbol{v}_{r+2}) =\boldsymbol{0}, \cdots , f(\boldsymbol{v}_n)=\boldsymbol{0}．
+f(bold(v)) = bold(w)_1, f(bold(v)_2) = bold(w)_2, dots.c, f(bold(v)_r) = bold(w)_r, \ f(bold(v)_(r + 1)) = bold(0), f(bold(v)_(r + 2)) = bold(0), dots.c, f(bold(v)_n) = bold(0) "．"
 $$
-ここで，$r = \text{dim} \thinspace (\text{Im}f)$である．
+ここで，$r = "dim"("Im" f)$である．
 </Card>
 
 ## 定理の主張
 　定理7.3.1を具体的に表現している．
 
-　ベクトル空間$V,W$間に対応関係を定義する写像$f$は多数存在する．その中で，題意のような**基底間の対応関係を満たす写像は線形性を持つ**というのが，ここの主張である．
+　ベクトル空間$V, W$間に対応関係を定義する写像$f$は多数存在する．その中で，題意のような**基底間の対応関係を満たす写像は線形性を持つ**というのが，ここの主張である．
 
-　この対応関係が定義できるということはどういうことだろうか．これはベクトル空間$V$の$r$個の基底$\boldsymbol{v}_1, \cdots , \boldsymbol{v}_r$で生成する部分ベクトル空間は$\text{Im}f$と同じ空間（構造）にみえるということである．
+　この対応関係が定義できるということはどういうことだろうか．これはベクトル空間$V$の$r$個の基底$bold(v)_1, dots.c, bold(v)_r$で生成する部分ベクトル空間は$"Im" f$と同じ空間（構造）にみえるということである．
 
 (図を入れる)
 
@@ -28,15 +28,15 @@ $$
 　題意を満たす写像$f$は一部の対応関係しか表現されていない．しかしここから写像の全体像が定義できる．題意から，以下のとおり関係式が導ける．
 
 $$
-(f(\boldsymbol{v}_1 ) \cdots f(\boldsymbol{r}) \cdots f(\boldsymbol{v}_n)) = (\boldsymbol{w}_1 \cdots \boldsymbol{w}_r \cdots \boldsymbol{w}_m) (E_1 \cdots E_r \thinspace \boldsymbol{0} \cdots \boldsymbol{0})
+(f(bold(v)_1) dots.c f(bold(r)) dots.c f(bold(v)_n)) = (bold(w)_1 dots.c bold(w)_r dots.c bold(w)_m)(E_1 dots.c E_r  bold(0) dots.c bold(0))
 $$
-ただし，$E_i$は$i \thinspace \text{列目}$のみ 1 の$m \times 1\text{行列}$である．
+ただし，$E_i$は$i "列目"$のみ 1 の$m times 1 "行列"$である．
 
-　$A = (E_1 \cdots E_r \thinspace \boldsymbol{0} \cdots \boldsymbol{0})$とおくと，$f(\boldsymbol{x}) = A\boldsymbol{x}$は題意を満たす写像$f$の全体像となる．この写像が線形性を持てばよい．
+　$A = (E_1 dots.c E_r  bold(0) dots.c bold(0))$とおくと，$f(bold(x)) = A bold(x)$は題意を満たす写像$f$の全体像となる．この写像が線形性を持てばよい．
 
-　$f(\alpha \boldsymbol{x}+\beta \boldsymbol{y}) = \alpha f(\boldsymbol{x}) + \beta f(\boldsymbol{y})　\space (\alpha, \beta \in \reals) $を示す．
+　$f(alpha bold(x) + beta bold(y)) = alpha f(bold(x)) + beta f(bold(y)) "　"(alpha, beta in R)$を示す．
 $$
-f(\alpha \boldsymbol{x} + \beta \boldsymbol{y} ) = A(\alpha \boldsymbol{x} + \beta \boldsymbol{y}) = \alpha A \boldsymbol{x} + \beta A \boldsymbol{y} = \alpha f(\boldsymbol{x}) + \beta f(\boldsymbol{y}) 
+f(alpha bold(x) + beta bold(y)) = A(alpha bold(x) + beta bold(y)) = alpha A bold(x) + beta A bold(y) = alpha f(bold(x)) + beta f(bold(y))
 $$
 よって，写像$f$は線形写像である．
 

@@ -11,13 +11,17 @@ import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/linear_algebra/0150/線形写像の像空間と核空間（定義）.webp";
 
 <Card title="定義6.3.2">
-　$V, W$をベクトル空間，$f \colon V \to W$を線形写像とするとき，$$ \text{Im}f = \{ f(\boldsymbol{x}) \space | \space \boldsymbol{x} \in V \}$$を$f$の像空間という．$f(V)$とも書く．また，$$ \text{Ker}f = \{ \boldsymbol{x} \in V \space | \space f(\boldsymbol{x}) = \boldsymbol{0} \}$$を$f$の核空間という．
+　$V, W$をベクトル空間，$f colon V -> W$を線形写像とするとき，$$
+"Im" f = {f(bold(x))|bold(x) in V}
+$$を$f$の像空間という．$f(V)$とも書く．また，$$
+"Ker" f = {bold(x) in V|f(bold(x)) = bold(0)}
+$$を$f$の核空間という．
 </Card>
 
 ## 定義の主張
 　通常の写像（$f$の像）と同じことを言っているが，$f$が線形写像のときは像空間と言っている．
 
-　$f$が線形写像のとき，$f$に対応する行列$A$が１つ定まる（線形代数を学んでいくと，どこかでその定理を証明することになる．）．すなわち線形写像を１つ定めたとき，それに対応する行列$A$があって，$f(\boldsymbol{x})=A\boldsymbol{x}$となる．よって， $\text{Ker}f $は$A\boldsymbol{x} = \boldsymbol{0}$なる$\boldsymbol{x}$の集合である．
+　$f$が線形写像のとき，$f$に対応する行列$A$が１つ定まる（線形代数を学んでいくと，どこかでその定理を証明することになる．）．すなわち線形写像を１つ定めたとき，それに対応する行列$A$があって，$f(bold(x)) = A bold(x)$となる．よって， $"Ker" f$は$A bold(x) = bold(0)$なる$bold(x)$の集合である．
 
 <ImageWithCaption 
     src={image_01}

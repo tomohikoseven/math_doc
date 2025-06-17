@@ -1,12 +1,12 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
 import emoji from 'remark-emoji';
+import rehypeTypst from '@myriaddreamin/rehype-typst';
 import d2 from 'astro-d2';
 
 import starlightLinksValidator from 'starlight-links-validator';
-import { KATEX, GOOGLE_ANALYTICS } from './src/libs/head';
+import { GOOGLE_ANALYTICS } from './src/libs/head';
 import { REAL_NUMBER, LINEAR_ALGEBRA, MATHEMATICS, MATH_DIALY, SOFTWARE, ABOUT_MY_WEBSITE, HIGH_SCHOOL_MATH, LINEAR_ALGEBRA_KAWAKUBO } from './src/libs/sidebar';
 
 import sitemap from '@astrojs/sitemap';
@@ -23,7 +23,6 @@ export default defineConfig({
       },
     },
     head:[
-     KATEX, 
      ...GOOGLE_ANALYTICS,
     ],
     plugins: [starlightLinksValidator()],
@@ -61,9 +60,11 @@ export default defineConfig({
       SOFTWARE, 
       ABOUT_MY_WEBSITE
     ]
-  }), sitemap(), d2()],
+  }), 
+  d2(), 
+  sitemap()],
   markdown: {
     remarkPlugins: [remarkMath, emoji],
-    rehypePlugins: [ [rehypeKatex, {strict: true}] ],
+    rehypePlugins: [ rehypeTypst ],
   }
 });

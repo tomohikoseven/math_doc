@@ -9,43 +9,35 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題11(4)">
 　次の等式を証明せよ．
 $$
-\begin{vmatrix}
-1 & n & n & \cdots & n \\
-n & 2 & n & \cdots & n \\
-n & n & 3 & \cdots & n \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-n & n & n & \cdots & n \\
-\end{vmatrix}
+mat(delim: "|", 1, n, n, dots.c, n;
+n, 2, n, dots.c, n;
+n, n, 3, dots.c, n;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+n, n, n, dots.c, n;)
 =
-(-1)^{n-1}n!
+(-1)^(n - 1) n!
 $$
 </Card>
 
 ## 解答
 $$
-\begin{align}
-\begin{vmatrix}
-1 & n & n & \cdots & n \\
-n & 2 & n & \cdots & n \\
-n & n & 3 & \cdots & n \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-n & n & n & \cdots & n \\
-\end{vmatrix}
+mat(delim: "|", 1, n, n, dots.c, n;
+n, 2, n, dots.c, n;
+n, n, 3, dots.c, n;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+n, n, n, dots.c, n;)
 &=
-\begin{vmatrix}
-1-n & 0 & 0 & \cdots & 0 \\
-0 & 2-n & 0 & \cdots & 0 \\
-0 & 0 & 3-n & \cdots & 0 \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-n & n & n & \cdots & n \\
-\end{vmatrix} \\
+mat(delim: "|", 1 - n, 0, 0, dots.c, 0;
+0, 2 - n, 0, dots.c, 0;
+0, 0, 3 - n, dots.c, 0;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+n, n, n, dots.c, n;) \
 &=
-(1-n)(2-n)\cdots(i-n)\cdots\{(n-1)-n\}n \\
+(1 - n)(2 - n) dots.c(i - n) dots.c {(n - 1) - n} n \
 &=
-(-1)^{n-1}n!
-\end{align}
+(-1)^(n - 1) n!
 $$
 
-- (1)は$i$行目に$n$行目x(-1)を加える．$1 \le i \le n-1$．
+- (1)は$i$行目に$n$行目x(-1)を加える．$1 <= i <= n - 1$．
 - (2)は下三角行列式を展開した．
 - (3)は(2)を整理した．

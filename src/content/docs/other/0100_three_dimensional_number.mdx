@@ -84,165 +84,133 @@ import { Icon } from '@astrojs/starlight/components';
 
 
 ## 三元数を構成する．
-　三元数の元を3つの実数の組$(a, b, c)$とする．$(a',b',c')$も同様．
+　三元数の元を3つの実数の組$(a, b, c)$とする．$(a', b', c')$も同様．
 
 **加法**
 　要素毎に足し算する．
   $$
-  (a, b, c) + (a', b', c') = ( a + a', b + b', c + c')
-  $$
+(a, b, c) +(a', b', c') = (a + a', b + b', c + c')
+$$
 
 **減法**
 　要素毎に引き算する．
   $$
-  (a, b, c) - (a', b', c') = ( a - a', b - b', c - c')
-  $$
+(a, b, c) -(a', b', c') = (a - a', b - b', c - c')
+$$
 
 **乗法** 
   $$
-  (a, b, c) \cdot (a', b', c') = (aa'-bb'-cc', ab'+ba'+cb', ac'+bc'+ca')
-  $$
+(a, b, c) dot.op (a', b', c') = (a a' - b b' - c c', a b' + b a' + c b', a c' + b c' + c a')
+$$
 
 **スカラー倍**
-　$k \in \mathbb{R} $とする．
+　$k in RR$とする．
   $$
-  k ( a, b, c ) = (ka, kb, kc)
-  $$ 
+k(a, b, c) = (k a, k b, k c)
+$$ 
 
 ### 三元数
 　以上までの加法・減法・乗法・スカラー倍から数を構成する．
 
 **三元数**
 
-　$1 = (1,0,0)$，$i = (0,1,0)$， $j = (0,0,1)$とおくと，
+　$1 = (1, 0, 0)$，$i = (0, 1, 0)$， $j = (0, 0, 1)$とおくと，
   $$
-  \begin{equation*}
-  \begin{split}
-      (a,b,c) &= (a,0,0)+(0,b,0)+(0,0,c) \\
-              &= a(1,0,0)+b(0,1,0)+c(0,0,1) \\
-              &= a + bi + cj 
-  \end{split} 
-  \end{equation*} 
-  $$
+(a, b, c) &= (a, 0, 0) +(0, b, 0) +(0, 0, c) \
+&= a(1, 0, 0) + b(0, 1, 0) + c(0, 0, 1) \
+&= a + b i + c j
+$$
 
 **加法**
   $$
-  (a+bi+cj) + (a'+b'i+c'j) = (a+a')+(b+b')i+(c+c')j
-  $$
+(a + b i + c j) +(a' + b' i + c' j) = (a + a') +(b + b') i +(c + c') j
+$$
 
 **減法**
   $$
-  (a+bi+cj) - (a'+b'i+c'j) = (a-a')+(b-b')i+(c-c')j
-  $$
+(a + b i + c j) -(a' + b' i + c' j) = (a - a') +(b - b') i +(c - c') j
+$$
 
 **乗法**
 
-　$i^2 = j^2 = -1$，$ij = j$，$ji = i$，$ai = ia$，$aj = ja$，$a \in \mathbb{R}$により定義する．
+　$i^2 = j^2 = - 1$，$i j = j$，$j i = i$，$a i = i a$，$a j = j a$，$a in RR$により定義する．
   $$
-  \begin{equation*} 
-  \begin{split} 
-  (a+bi+cj)(a'+b'i+c'j) = (aa'-bb'-cc') + (ab'+ba'+cb')i + (ac'+bc'+ca')j
-  \end{split} 
-  \end{equation*} 
-  $$
+(a + b i + c j)(a' + b' i + c' j) = (a a' - b b' - c c') +(a b' + b a' + c b') i +(a c' + b c' + c a') j
+$$
 
 #### 交換法則
-　$x = a+bi+cj$，$y = a'+b'i+c'j$とする．
+　$x = a + b i + c j$，$y = a' + b' i + c' j$とする．
 
 **加法**
   $$
-  \begin{equation*} 
-  \begin{split} 
-    x + y &= (a+a') + (b+b')i + (c+c')j  \\
-          &= (a'+a) + (b'+b)i + (c'+c)j  \\
-          &= y + x 
-  \end{split} 
-  \end{equation*} 
-  $$
+x + y &= (a + a') +(b + b') i +(c + c') j \
+&= (a' + a) +(b' + b) i +(c' + c) j \
+&= y + x
+$$
 
 **乗法**
 
-　$c = 1+i$，$d = 1+j$とすると，
+　$c = 1 + i$，$d = 1 + j$とすると，
 
   $$
-  \begin{equation*} 
-  \begin{split} 
-    cd &= (1+i)(1+j) = 1 + j + i + ij = 1 + i + 2j  \\
-    dc &= (1+j)(1+i) = 1 + i + j + ji = 1 + 2i + j
-  \end{split} 
-  \end{equation*} 
-  $$
-  よって，$cd \neq dc$．交換法則の乗法は成り立たない．
+c d &= (1 + i)(1 + j) = 1 + j + i + i j = 1 + i + 2 j \
+d c &= (1 + j)(1 + i) = 1 + i + j + j i = 1 + 2 i + j
+$$
+  よって，$c d != d c$．交換法則の乗法は成り立たない．
 
 #### 結合法則
 
 **加法**
 
-　$x=a+bi+cj$，$y=a'+b'i+c'j$，$z=a''+b''i+c''j$とおくと，
+　$x = a + b i + c j$，$y = a' + b' i + c' j$，$z = a^('') + b^('') i + c^('') j$とおくと，
 
   $$
-  \begin{equation*} 
-  \begin{split}
-  (x+y)+z &= (a+a')+(b+b')i+(c+c')j+a''+b''i+c''j \\
-          &= (a+a'+a'')+(b+b'+b'')i+(c+c'+c'')j   \\
-          &= a+bi+cj+(a'+a'')+(b'+b'')i+(c'+c'')j \\
-          &= x+(y+z) 
-  \end{split}
-  \end{equation*} 
-  $$
+(x + y) + z &= (a + a') +(b + b') i +(c + c') j + a^('') + b^('') i + c^('') j \
+&= (a + a' + a^('')) +(b + b' + b^('')) i +(c + c' + c^('')) j \
+&= a + b i + c j +(a' + a^('')) +(b' + b^('')) i +(c' + c^('')) j \
+&= x +(y + z)
+$$
 
 **乗法**
 
-　$x=1+i$，$y=1+j$，$z=i+j$とおくと，
+　$x = 1 + i$，$y = 1 + j$，$z = i + j$とおくと，
   $$
-  \begin{equation*} 
-  \begin{split} 
-  (xy)z &= (1+i+2j)(i+j) = -3+3i+2j \\
-  x(yz) &= (1+i)(-1+2i+j) = -3+i+2j
-  \end{split} 
-  \end{equation*} 
-  $$
-  よって，$(xy)z \neq x(yz)$．したがって，結合法則の乗法は成り立たない．
+(x y) z &= (1 + i + 2 j)(i + j) = - 3 + 3 i + 2 j \
+x(y z) &= (1 + i)(-1 + 2 i + j) = - 3 + i + 2 j
+$$
+  よって，$(x y) z != x(y z)$．したがって，結合法則の乗法は成り立たない．
 
 #### 分配法則
 
-**左分配法則**　　$x(y+z) \neq xy + xz$
+**左分配法則**　　$x(y + z) != x y + x z$
 
-　$x=1+i$，$y=1+j$，$z=i+j$とおくと，
+　$x = 1 + i$，$y = 1 + j$，$z = i + j$とおくと，
   $$
-  \begin{equation*} 
-  \begin{split}
-  x(y+z) &= (1+i)(1+i+2j) = 2i+2j \\
-  xy+yz &= 1+i+2j-1+2i+j = 3i+3j 
-  \end{split} 
-  \end{equation*} 
-  $$
-　よって，$x(y+z) \neq xy+yz$．したがって，分配法則は成り立たない．
+x(y + z) &= (1 + i)(1 + i + 2 j) = 2 i + 2 j \
+x y + y z &= 1 + i + 2 j - 1 + 2 i + j = 3 i + 3 j
+$$
+　よって，$x(y + z) != x y + y z$．したがって，分配法則は成り立たない．
 
-**右分配法則**　　$(x+y)z = xz + yz$
+**右分配法則**　　$(x + y) z = x z + y z$
 
 　この三元数は右分配法則が成り立つように作った．
   $$
-  \begin{equation*} 
-  \begin{split}
-  xz  &= (a+bi+cj)(a''+b''i+c''j) \\
-      &= (aa''-bb''-cc'') + (ab''+ba''+cb'') i + (ac''+bc''+ca'')j \\
-  yz  &= (a'+b'i+c'j)(a''+b''i+c''j)  \\
-      &= (a'a''-b'b''-c'c'')+(a'b''+b'a''+c'b'')i+(a'c''+b'c''+c'a'')j  \\
-  xz+yz &= \{ (a+a')a''-(b+b')b''-(c+c')c'' \} \\
-          &+ \{ (a+a')b''+(b+b')a''+(c+c')b'' \}i \\
-          &+\{ (a+a')c''+(b+b')c''+(c+c')a'' \}j \\
-  (x+y)z &= \{ (a+a')+(b+b')i+(c+c')j \}(a''+b''i+c''j) \\
-         &= \{ (a+a')a''-(b+b')b''-(c+c')c'' \}  \\
-          &+ \{ (a+a')b''+(b+b')a''+(c+c')b'' \}i \\
-          &+ \{ (a+a')c''+(b+b')c''+(c+c')a'' \}j
-  \end{split}
-  \end{equation*} 
-  $$
-  よって，$(x+y)z = xz+yz$．したがって，右分配法則は成立する．
+x z &= (a + b i + c j)(a^('') + b^('') i + c^('') j) \
+&= (a a^('') - b b^('') - c c^('')) +(a b^('') + b a^('') + c b^('')) i +(a c^('') + b c^('') + c a^('')) j \
+y z &= (a' + b' i + c' j)(a^('') + b^('') i + c^('') j) \
+&= (a' a^('') - b' b^('') - c' c^('')) +(a' b^('') + b' a^('') + c' b^('')) i +(a' c^('') + b' c^('') + c' a^('')) j \
+x z + y z &= {(a + a') a^('') -(b + b') b^('') -(c + c') c^('')} \
+& + {(a + a') b^('') +(b + b') a^('') +(c + c') b^('')} i \
+& + {(a + a') c^('') +(b + b') c^('') +(c + c') a^('')} j \
+(x + y) z &= {(a + a') +(b + b') i +(c + c') j}(a^('') + b^('') i + c^('') j) \
+&= {(a + a') a^('') -(b + b') b^('') -(c + c') c^('')} \
+& + {(a + a') b^('') +(b + b') a^('') +(c + c') b^('')} i \
+& + {(a + a') c^('') +(b + b') c^('') +(c + c') a^('')} j
+$$
+  よって，$(x + y) z = x z + y z$．したがって，右分配法則は成立する．
 
+  
 ## 三元数のアイデア
-　iを掛けるとxy平面を$\frac{\pi}{2}$回転する，jを掛けるとxz平面を$\frac{\pi}{2}$回転する．
-つまり，三次元のxyz平面で言えば，三元数$x$に対し$ix$は$x$をxy平面を$\frac{\pi}{2}$回転させた点に移動する．
-$jx$はxz平面を$\frac{\pi}{2}$回転させた点に移動する．
-　
+　iを掛けるとxy平面を$pi/2$回転する，jを掛けるとxz平面を$pi/2$回転する．
+つまり，三次元のxyz平面で言えば，三元数$x$に対し$i x$は$x$をxy平面を$pi/2$回転させた点に移動する．
+$j x$はxz平面を$pi/2$回転させた点に移動する．

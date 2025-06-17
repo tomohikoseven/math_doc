@@ -10,28 +10,28 @@ import image_01 from "/src/assets/real_number/014/rational_line_has_gaps_1.jpg";
 import image_02 from "/src/assets/real_number/014/rational_line_has_gaps_2.jpg";
 
 <Card title="定理1.5">
-　自然数$m$が与えられたとする．このとき，任意の実数$\alpha$に対し，
+　自然数$m$が与えられたとする．このとき，任意の実数$alpha$に対し，
     $$
-    a < \alpha \leq a + \frac{1}{m}
-    $$
+a < alpha <= a + 1/m
+$$
 なる有理数$a$が存在する．
 </Card>
 
 ## 定理の主張
-　実数$\alpha$は有理数でいくらでも近似できる．近似精度は自然数$m$による．
+　実数$alpha$は有理数でいくらでも近似できる．近似精度は自然数$m$による．
 
 ## 証明の考え方
-　$\alpha = \langle A, A^{\prime} \rangle$とする．自然数$m$を何かひとつ決めたとして，
-$a \in A，a + \frac{1}{m} \in A'$なる有理数$a$が構成できることを示せばよい．
+　$alpha = angle.l A, A^prime angle.r$とする．自然数$m$を何かひとつ決めたとして，
+$a in A "，" a + 1/m in A'$なる有理数$a$が構成できることを示せばよい．
 
 <Steps>
 
 1. 有理数$a$を構成する．
 
-    $r \in A, s \in A^{\prime}$を取る．$rからs$までを$m$分割して，その$n$倍を$r$から加算したものを$a_n$とおく．
+    $r in A, s in A^prime$を取る．$r "から" s$までを$m$分割して，その$n$倍を$r$から加算したものを$a_n$とおく．
     すなわち，
     $$
-    a_n = r + \frac{(s-r)n}{m} 
+    a_n = r +((s - r) n)/m
     $$
     <ImageWithCaption
         src={image_01}
@@ -42,10 +42,10 @@ $a \in A，a + \frac{1}{m} \in A'$なる有理数$a$が構成できることを�
     />
     とおく．
     
-    $a_n$は常に有理数で，$n=0$のとき$a_0 = r \in A$で，$n=m$のとき$a_m = s \in A'$となるので，
+    $a_n$は常に有理数で，$n = 0$のとき$a_0 = r in A$で，$n = m$のとき$a_m = s in A'$となるので，
     $a_n$は$n$が$0$から増えるに従い，いつか$A$の元から$A'$の元になるはずである．
 
-    つまり，$a_0 \in A, a_n \in A^{\prime}$から，$a_k < \alpha \leq a_{k+1}$なる自然数$k$が$0<k\leq m$に存在する．
+    つまり，$a_0 in A, a_n in A^prime$から，$a_k < alpha <= a_(k + 1)$なる自然数$k$が$0 < k <= m$に存在する．
     <ImageWithCaption
         src={image_02}
         alt="図2"
@@ -53,7 +53,7 @@ $a \in A，a + \frac{1}{m} \in A'$なる有理数$a$が構成できることを�
         height="210"
         figcaption="図2"
     />
-    $a_{k} = a$とすれば，$a < \alpha \leq a + \frac{1}{m}$なる有理数$a$が存在することになる．
+    $a_k = a$とすれば，$a < alpha <= a + 1/m$なる有理数$a$が存在することになる．
     
 
 </Steps>

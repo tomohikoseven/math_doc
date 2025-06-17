@@ -8,41 +8,41 @@ import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 
 <Card title="定理12.6.1">
-　$f \colon V \rightarrow V$は線形変換であって，その固有多項式は1次式の積に分解されるとする．すなわち，$\lambda_1, \cdots \lambda_r$を$f$の異なる固有値とするとき，$f$の固有多項式$\varphi(t)$が
+　$f colon V -> V$は線形変換であって，その固有多項式は1次式の積に分解されるとする．すなわち，$lambda_1, dots.c lambda_r$を$f$の異なる固有値とするとき，$f$の固有多項式$phi(t)$が
 $$
-\varphi(t) = (\lambda_1 - t)^{m_1}(\lambda_2 - t)^{m_2} \cdots (\lambda_r-t)^{m_r}
+phi(t) = (lambda_1 - t)^(m_1)(lambda_2 - t)^(m_2) dots.c(lambda_r - t)^(m_r)
 $$
-と因数分解されたとする．そのとき，$\lambda_1, \cdots, \lambda_r$に属する一般固有空間$W(\lambda_1), \cdots, W(\lambda_r) $の次元はそれぞれ$m_1, \cdots, m_r$であり，これらは$V$の直和分解を与え，かつ各$W(\lambda_i)$は$f$で不変である．すなわち，
+と因数分解されたとする．そのとき，$lambda_1, dots.c, lambda_r$に属する一般固有空間$W(lambda_1), dots.c, W(lambda_r)$の次元はそれぞれ$m_1, dots.c, m_r$であり，これらは$V$の直和分解を与え，かつ各$W(lambda_i)$は$f$で不変である．すなわち，
 $$
-V = W(\lambda_1) \oplus \cdots \oplus W(\lambda_r) \space  \text{かつ} \space f(W(\lambda_i)) \subset W(\lambda_i) \space ( i = 1, \cdots , r ).
+V = W(lambda_1) plus.circle dots.c plus.circle W(lambda_r) "かつ" f(W(lambda_i)) subset W(lambda_i)(i = 1, dots.c, r) .
 $$
-そして，任意の$i = 1, \cdots , r$に対して，
+そして，任意の$i = 1, dots.c, r$に対して，
 $$
-f | W(\lambda_i) \colon W(\lambda_i) \rightarrow W(\lambda_i)
+f|W(lambda_i) colon W(lambda_i) -> W(lambda_i)
 $$
 の固有多項式は
 $$
-(\lambda_i - t )^{m_i}
+(lambda_i - t)^(m_i)
 $$
 である．
 </Card>
 
 ## 定理の主張
-- 線形変換$f \colon V \rightarrow V$の固有多項式$\varphi(t)$が1次式の積に因数分解できるなら，ベクトル空間$V$は一般固有空間で分解できる．
+- 線形変換$f colon V -> V$の固有多項式$phi(t)$が1次式の積に因数分解できるなら，ベクトル空間$V$は一般固有空間で分解できる．
     - 1次式の積に因数分解できる = 重複を含め，解の個数は$V$の次元．
-- 一般固有空間は$f-\lambda_i id$で不変だが，$f$でも不変だ．
-- $f | W(\lambda) \colon W(\lambda) \rightarrow W(\lambda)$を考えると，この固有多項式は$(\lambda-t)^{m_i}$.
+- 一般固有空間は$f - lambda_i i d$で不変だが，$f$でも不変だ．
+- $f|W(lambda) colon W(lambda) -> W(lambda)$を考えると，この固有多項式は$(lambda - t)^(m_i)$．
 
 ## 証明の考え方
 　相異なる固有値の数rに関する帰納法により示す．ベクトル空間$V$の次元は$n$とする．
 
 <Steps>
 
-1. $r=1$のとき
+1. $r = 1$のとき
 
-    　これはすなわち，$f$の固有値は$\lambda_1$のみで，$\varphi(t)=(\lambda_1 - t)^{m_1=n}$のとき，$V=W(\lambda_1)$であることを示す．
+    　これはすなわち，$f$の固有値は$lambda_1$のみで，$phi(t) = (lambda_1 - t)^(m_1 = n)$のとき，$V = W(lambda_1)$であることを示す．
 
-    　定理12.5.3より，$dimW(\lambda_1)=m_i=n$である．また一般に$W(\lambda_1) \subset V$である．すると定理6.8.6から，$V=W(\lambda_1)$
+    　定理12.5.3より，$d i m W(lambda_1) = m_i = n$である．また一般に$W(lambda_1) subset V$である．すると定理6.8.6から，$V = W(lambda_1)$
 
 2. xxx
 

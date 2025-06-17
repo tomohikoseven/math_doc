@@ -9,47 +9,35 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題7(2)">
   次の行列式を計算せよ．
 $$
-\begin{vmatrix}
-a & a^2 & b+c \\
-b & b^2 & c+a \\
-c & c^2 & a+b
-\end{vmatrix}
+mat(delim: "|", a, a^2, b + c;
+b, b^2, c + a;
+c, c^2, a + b)
 $$ 
 </Card> 
 
 ## 解答
 $$
-\begin{align}
-\begin{vmatrix}
-a & a^2 & b+c \\
-b & b^2 & c+a \\
-c & c^2 & a+b
-\end{vmatrix}
+mat(delim: "|", a, a^2, b + c;
+b, b^2, c + a;
+c, c^2, a + b)
 &=
-\begin{vmatrix}
-a & a^2 & a+b+c \\
-b & b^2 & a+b+c \\
-c & c^2 & a+b+c
-\end{vmatrix} \\
+mat(delim: "|", a, a^2, a + b + c;
+b, b^2, a + b + c;
+c, c^2, a + b + c) \
 &=
-(a+b+c)
-\begin{vmatrix}
-a & a^2 & 1 \\
-b & b^2 & 1 \\
-c & c^2 & 1
-\end{vmatrix} \\
+(a + b + c)
+mat(delim: "|", a, a^2, 1;
+b, b^2, 1;
+c, c^2, 1) \
 &=
-(a+b+c)
-\begin{vmatrix}
-1 & a & a^2 \\
-1 & b & b^2 \\
-1 & c & c^2 \\
-\end{vmatrix} \\
+(a + b + c)
+mat(delim: "|", 1, a, a^2 ;
+1, b, b^2 ;
+1, c, c^2 ;) \
 &=
-(a+b+c)(c-a)(c-b)(b-a) \\
+(a + b + c)(c - a)(c - b)(b - a) \
 &=
-(a+b+c)(a-b)(b-c)(c-a)
-\end{align}
+(a + b + c)(a - b)(b - c)(c - a)
 $$
 
 - (1)は3列目に1列目を加えた．

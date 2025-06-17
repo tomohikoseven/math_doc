@@ -10,9 +10,9 @@ import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/linear_algebra/0520/線形写像の全射性と次元の関係について（定理7.3.3（2））.webp";
 
 <Card title="定理7.3.3">
-　$f \colon V \to W$を線形写像とするとき，
+　$f colon V -> W$を線形写像とするとき，
 $$
-f \text{は全射} \iff \text{dim}(\text{Im}f) = \text{dim}W.
+f "は全射" <==> "dim"("Im" f) = "dim" W .
 $$
 </Card>
 
@@ -28,26 +28,26 @@ $$
 ## 証明の考え方
 <Steps>
 
-1. $f \text{は全射} \implies \text{dim}(\text{Im}f)=\text{dim}W \text{を示す．}$
+1. $f "は全射" ==> "dim"("Im" f) = "dim" W "を示す．"$
 
-    　$\text{dim}(\text{Im}f) \ge \text{dim}W$かつ$\text{dim}(\text{Im}f) \le \text{dim}W$を示せばよい．
+    　$"dim"("Im" f) >= "dim" W$かつ$"dim"("Im" f) <= "dim" W$を示せばよい．
 
-    **$\text{dim}(\text{Im}f) \le \text{dim}W$を示す**．
+    **$"dim"("Im" f) <= "dim" W$を示す**．
 
-    　一般に$\text{Im}f \subseteq W$である．よって，$\text{dim}(\text{Im}f) \le \text{dim}W$．
+    　一般に$"Im" f subset.eq W$である．よって，$"dim"("Im" f) <= "dim" W$．
 
 
-    **$\text{dim}(\text{Im}f) \ge \text{dim}W$を示す**．
+    **$"dim"("Im" f) >= "dim" W$を示す**．
 
-    　$W \subseteq \text{Im}f$を示す．$\boldsymbol{y} \in W$とすると，$f$は全射なので$\boldsymbol{y}=f(\boldsymbol{x})$なる$\boldsymbol{x} \in V$が存在する．$\text{Im}f$の定義より$\text{Im}f = \{ f(\boldsymbol{x}) \in W | \boldsymbol{x} \in V \}$なので，$\boldsymbol{y} \in \text{Im}f$．よって，$W \subseteq \text{Im}f$．したがって，$\text{dim}(\text{Im}f) \ge \text{dim}W$．
+    　$W subset.eq "Im" f$を示す．$bold(y) in W$とすると，$f$は全射なので$bold(y) = f(bold(x))$なる$bold(x) in V$が存在する．$"Im" f$の定義より$"Im" f = {f(bold(x)) in W|bold(x) in V}$なので，$bold(y) in "Im" f$．よって，$W subset.eq "Im" f$．したがって，$"dim"("Im" f) >= "dim" W$．
 
-    　以上から，$\text{dim}(\text{Im}f)=\text{dim}W$．
+    　以上から，$"dim"("Im" f) = "dim" W$．
 
-2. $ \text{dim}(\text{Im}f)=\text{dim}W \implies f \text{は全射} \text{を示す．}$
+2. $"dim"("Im" f) = "dim" W ==> f "は全射" "を示す．"$
 
-    　$\text{dim}(\text{Im}f)=\text{dim}W$とする．$f$が全射であることを示すので，定義から任意の$\boldsymbol{y} \in W$に対して，$\boldsymbol{y}=f(\boldsymbol{x})$を満たす$\boldsymbol{x} \in V$が存在することを示せばよい．
+    　$"dim"("Im" f) = "dim" W$とする．$f$が全射であることを示すので，定義から任意の$bold(y) in W$に対して，$bold(y) = f(bold(x))$を満たす$bold(x) in V$が存在することを示せばよい．
 
-    　$\boldsymbol{y} \in W$とおく．仮定から$\text{dim}(\text{Im}f) = \text{dim}W$なので，定理6.8.6より$\text{Im}f=W$である．よって，$\boldsymbol{y} \in \text{Im}f$．$\text{Im}f$の定義より，$\boldsymbol{y}=f(\boldsymbol{x})$を満たす$\boldsymbol{x} \in V$が存在することが言える．したがって，$f$は全射．
+    　$bold(y) in W$とおく．仮定から$"dim"("Im" f) = "dim" W$なので，定理6.8.6より$"Im" f = W$である．よって，$bold(y) in "Im" f$．$"Im" f$の定義より，$bold(y) = f(bold(x))$を満たす$bold(x) in V$が存在することが言える．したがって，$f$は全射．
 
 
 </Steps>

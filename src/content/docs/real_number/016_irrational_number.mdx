@@ -20,7 +20,7 @@ import { Steps } from '@astrojs/starlight/components';
 次に無理数であることを示す．実数だと分かれば，有理数か無理数であるので，
 有理数なら分数で表現できるはずだが，そうではないということだ．
 
-　任意の循環しない無限小数を$\alpha = k.k_1k_2 \cdots k_n \cdots $とする．
+　任意の循環しない無限小数を$alpha = k . k_1 k_2 dots.c k_n dots.c$とする．
 $k$は整数で，$k_n$は$0$〜$9$のいずれかの整数である．
 
 　まずこの無限小数が実数であることを示す．
@@ -28,67 +28,63 @@ $k$は整数で，$k_n$は$0$〜$9$のいずれかの整数である．
 <Steps>
 1. 有理数の切断を準備する．
 
-    以下のように有理数の組$A，A'$を定義する．
+    以下のように有理数の組$A "，" A'$を定義する．
 
     $$
-    \begin{aligned}
-        a_n &= k.k_1k_2\cdots k_n \\ &= k + \frac{k_1}{10} + \frac{k_2}{10^2} + \cdots + \frac{k_n}{10^n} \\
-        b_n &= a_n + \frac{1}{10^n}
-    \end{aligned}
+    a_n &= k . k_1 k_2 dots.c k_n \ &= k + k_1 /10 + k_2 /10^2 + dots.c + k_n /10^n \
+    b_n &= a_n + 1/10^n
     $$
     $$
-    \begin{aligned}
-        A &= \{ r \in \mathbb{Q} \space | \space \text{少なくとも１つの自然数}n\text{について}r \lt a_n \}.   \\
-        A^{\prime} &= \{ r \in \mathbb{Q} \space | \space \text{すべての自然数}n\text{について} a_n \le r \}．
-    \end{aligned}
+    A &= {r in QQ| "少なくとも１つの自然数" n "について" r lt a_n } . \
+    A^prime &= {r in QQ| "すべての自然数" n "について" a_n <= r} "．"
     $$
 
-    ポイントは，$a_1 \le a_2 \le \cdots \le a_n \le \cdots \le \alpha $という性質で$A'$を定義していること．
+    ポイントは，$a_1 <= a_2 <= dots.c <= a_n <= dots.c <= alpha$という性質で$A'$を定義していること．
     $A$は$A'$の補集合である．
 
     $b_n$は無理数であることを示すときに使われる．
 
-    この有理数の無限集合の組$\langle A, A^{\prime} \rangle$が証明の方針に従い，無理数であることを示す．
+    この有理数の無限集合の組$angle.l A, A^prime angle.r$が証明の方針に従い，無理数であることを示す．
 
 
 2. 実数であること.
 
-    　[定義](/real_number/010_dedekind_cut/)に従って，まず$\langle A,A' \rangle$が実数であることを示す．
+    　[定義](/real_number/010_dedekind_cut/)に従って，まず$angle.l A, A' angle.r$が実数であることを示す．
 
-    　前提として，$a_1 \in A, b_1 \in A^{\prime}$なので，$A, A^{\prime}$は空集合ではない．
+    　前提として，$a_1 in A, b_1 in A^prime$なので，$A, A^prime$は空集合ではない．
 
-    　また，$A^{\prime}$は有理数の切断の[条件3'.](/real_number/010_dedekind_cut/#実数の等号)を満たす．
-    なぜなら，$r \in A^{\prime}$のとき，$r \le s, s \in \mathbb{Q}$ならば，$\forall n \in \mathbb{N}, a_n < r \le s$なので，$\forall n \in \mathbb{N}, a_n < s$となるから．
-    難しく書いたがつまり，$A'$の元を適当に$r$を取って，$r \le s$な有理数$s$はすべて$A'$の元だから，
+    　また，$A^prime$は有理数の切断の[条件3'.](/real_number/010_dedekind_cut/#実数の等号)を満たす．
+    なぜなら，$r in A^prime$のとき，$r <= s, s in QQ$ならば，$forall n in NN, a_n < r <= s$なので，$forall n in NN, a_n < s$となるから．
+    難しく書いたがつまり，$A'$の元を適当に$r$を取って，$r <= s$な有理数$s$はすべて$A'$の元だから，
     $A'$は有理数の切断の条件3'.を満たしているということ．
 
     　そして，$A$に最大の有理数はない．
     なぜなら，$A$の定義から$A$に属する有理数$r$はある自然数$n$が存在して，
-    $r < a_n$で$a_n \in \mathbb{Q} \cap A$なので，かならず大きい有理数がある．
+    $r < a_n$で$a_n in QQ sect A$なので，かならず大きい有理数がある．
 
-    　以上から，$\langle A, A^{\prime} \rangle$は実数である．
+    　以上から，$angle.l A, A^prime angle.r$は実数である．
 
 
-3. $k.k_1k_2 \cdots k_n \cdots = \langle A,A^{\prime} \rangle$である．
+3. $k . k_1 k_2 dots.c k_n dots.c = angle.l A, A^prime angle.r$である．
 
-    　$\alpha = k.k_1k_2\cdots k_n \cdots $とおく．
-    $A, A^{\prime}$の元が$\alpha$を境界としていることを示す．
-    すなわち，上で定義した$A,A'$が$\{r \in \mathbb{Q} \space | \space r < \alpha \}$と$\{ r \in \mathbb{Q} \space | \space \alpha \leq r \}$に等しいことを示す．
+    　$alpha = k . k_1 k_2 dots.c k_n dots.c$とおく．
+    $A, A^prime$の元が$alpha$を境界としていることを示す．
+    すなわち，上で定義した$A, A'$が${r in QQ|r < alpha}$と${r in QQ|alpha <= r}$に等しいことを示す．
     
-    　$r \in A$を任意でとる．すると，ある自然数$N$があり，$r < a_N$を満たす．
-    $a_n$の性質からすべての自然数$n$において，$a_n < \alpha$だから$r < a_N < \alpha$．
-    よって，$A = \{r \in \mathbb{Q} \space | \space r < \alpha \}$．
+    　$r in A$を任意でとる．すると，ある自然数$N$があり，$r < a_N$を満たす．
+    $a_n$の性質からすべての自然数$n$において，$a_n < alpha$だから$r < a_N < alpha$．
+    よって，$A = {r in QQ|r < alpha}$．
     
-    　$r \in A^{\prime}$を任意でとる．するとすべての自然数nにおいて，$a_n \leq r$．また，$a_n < \alpha$である．$r,\alpha$を比較すると，$r < \alpha$はありえない．$r < \alpha$なら，$r \in A$でもあるが，$A \cap A^{\prime} = \emptyset$なので，ありえない．よって，$\alpha \leq r$である．
-    したがって，$A^{\prime} = \{ r \in \mathbb{Q} \space | \space \alpha \leq r \}$．
+    　$r in A^prime$を任意でとる．するとすべての自然数nにおいて，$a_n <= r$．また，$a_n < alpha$である．$r, alpha$を比較すると，$r < alpha$はありえない．$r < alpha$なら，$r in A$でもあるが，$A sect A^prime = nothing$なので，ありえない．よって，$alpha <= r$である．
+    したがって，$A^prime = {r in QQ|alpha <= r}$．
     
-    　以上から，$k.k_1k_2 \cdots k_n \cdots = \alpha = \langle A, A^{\prime} \rangle$．
+    　以上から，$k . k_1 k_2 dots.c k_n dots.c = alpha = angle.l A, A^prime angle.r$．
   
 4. 無理数である.
 
-    　$A^{\prime}$に最小の有理数がないことを示す．
+    　$A^prime$に最小の有理数がないことを示す．
     
-    　すべての自然数$n$において，$\alpha < b_n, b_n \in A^{\prime}$であり，$b_{n+1} < b_n$なので，$A^{\prime}$に最小の有理数は存在しない．
+    　すべての自然数$n$において，$alpha < b_n, b_n in A^prime$であり，$b_(n + 1) < b_n$なので，$A^prime$に最小の有理数は存在しない．
 
 </Steps>
 
@@ -99,4 +95,4 @@ $k$は整数で，$k_n$は$0$〜$9$のいずれかの整数である．
 ## 復習ノート
 - 有理数の切断の定義は何か．
   - 同値な条件は何か．
-- 有理数の切断$\langle A, A^{\prime} \rangle$における，有理数と無理数の違いは何か．
+- 有理数の切断$angle.l A, A^prime angle.r$における，有理数と無理数の違いは何か．

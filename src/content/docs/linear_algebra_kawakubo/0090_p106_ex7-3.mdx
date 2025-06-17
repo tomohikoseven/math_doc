@@ -9,11 +9,9 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題7(3)">
   次の行列式を計算せよ．
 $$
-\begin{vmatrix}
- a & bc & a^2 \\
- b & ca & b^2 \\
- c & ab & c^2 \\
-\end{vmatrix}
+mat(delim: "|", a, b c, a^2 ;
+b, c a, b^2 ;
+c, a b, c^2 ;)
 $$
 </Card>
 　基本変形と余因子展開で計算するテクニカルな問題だが，どう解くのか途中式がないとわからない可能性がある
@@ -21,26 +19,18 @@ $$
 
 ## 解答
 $$
-\begin{align}
-\begin{vmatrix}
- a & bc & a^2 \\
- b & ca & b^2 \\
- c & ab & c^2 \\
-\end{vmatrix}
+mat(delim: "|", a, b c, a^2 ;
+b, c a, b^2 ;
+c, a b, c^2 ;)
 &=
-\begin{vmatrix}
- a & bc & a^2 \\
- b-a & ca-bc & b^2-a^2 \\
- c-a & ab-bc & c^2-a^2 \\
-\end{vmatrix} \\
+mat(delim: "|", a, b c, a^2 ;
+b - a, c a - b c, b^2 - a^2 ;
+c - a, a b - b c, c^2 - a^2 ;) \
 &=
-(b-a)(c-a)
-\begin{vmatrix}
- a & bc & a^2 \\
- 1 & -c & b+a \\
- 1 & -b & c+a \\ 
-\end{vmatrix} \\
-\end{align}
+(b - a)(c - a)
+mat(delim: "|", a, b c, a^2 ;
+1, - c, b + a;
+1, - b, c + a;) \
 $$
 - (1)は行基本変形を行った．
   1. (-1)x1行目を2行目に加える．
@@ -48,38 +38,26 @@ $$
 - (2)は2行目，3行目の共通因数を外に出した．
 
 $$
-\begin{align}
-\begin{vmatrix}
- a & bc & a^2 \\
- 1 & -c & b+a \\
- 1 & -b & c+a \\ 
-\end{vmatrix}
+mat(delim: "|", a, b c, a^2 ;
+1, - c, b + a;
+1, - b, c + a;)
 &=
-\begin{vmatrix}
- 0 & bc + ba & -ca \\
- 0 & -c + b & b - c \\
- 1 & -b & c + a \\ 
-\end{vmatrix} \\
+mat(delim: "|", 0, b c + b a, - c a;
+0, - c + b, b - c;
+1, - b, c + a;) \
 &=
-\begin{vmatrix}
- bc+ba & -ca \\
- -c+b & b-c \\ 
-\end{vmatrix} \\
+mat(delim: "|", b c + b a, - c a;
+- c + b, b - c;) \
 &=
-(b-c)
-\begin{vmatrix}
- bc+ba & -ca \\
- 1 & 1 \\
-\end{vmatrix} \\
+(b - c)
+mat(delim: "|", b c + b a, - c a;
+1, 1;) \
 &=
-(b-c)
-\begin{vmatrix}
- bc+ba+ca & -ca \\
- 0 & 1 \\
-\end{vmatrix} \\
+(b - c)
+mat(delim: "|", b c + b a + c a, - c a;
+0, 1;) \
 &=
-(b-c)(ab+bc+ca)
-\end{align}
+(b - c)(a b + b c + c a)
 $$
 
 - (3)は行基本変形により，(1,1)成分，(2,1)成分を0にする．
@@ -90,10 +68,8 @@ $$
 
 　(2)と(7)を合わせて，
 $$
-\begin{vmatrix}
- a & bc & a^2 \\
- b & ca & b^2 \\
- c & ab & c^2 \\
-\end{vmatrix}
-= -(a-b)(b-c)(c-a)(ab+bc+ca)
+mat(delim: "|", a, b c, a^2 ;
+b, c a, b^2 ;
+c, a b, c^2 ;)
+= -(a - b)(b - c)(c - a)(a b + b c + c a)
 $$

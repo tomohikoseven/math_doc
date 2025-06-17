@@ -10,15 +10,15 @@ import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/linear_algebra/0250/線形写像の合成と表現行列について.webp";
 
 <Card title="定理6.10.4">
-　$V, W, U$をベクトル空間，$\boldsymbol{v}_1, \cdots \boldsymbol{v}_n$, $\boldsymbol{w}_1, \cdots \boldsymbol{w}_m$, $\boldsymbol{u}_1, \cdots ,\boldsymbol{u}_l $をそれぞれ$V, W, U$の基底とする．２つの線形写像
+　$V, W, U$をベクトル空間，$bold(v)_1, dots.c bold(v)_n$, $bold(w)_1, dots.c bold(w)_m$, $bold(u)_1, dots.c, bold(u)_l$をそれぞれ$V, W, U$の基底とする．２つの線形写像
 $$
-f \colon V \to W, \space g \colon W \to U
+f colon V -> W, g colon W -> U
 $$
 が与えられたとき，上記基底に関して，$f, g$に対応する表現行列をそれぞれ$A, B$とすると，合成写像
 $$
-g \circ f \colon V \to U
+g circle.small f colon V -> U
 $$
-に対応する$表現行列C$は，$等式C=BA$を満たす．
+に対応する$"表現行列" C$は，$"等式" C = B A$を満たす．
 </Card>
 
 ## 定理の主張
@@ -33,25 +33,19 @@ $$
 />
 
 ## 証明の考え方
-　$C=BA$を示すためには，行列Cと行列BAの成分どうしが同じであることを示せばよいが，**線形写像の行列表現と成分ベクトルとの関係性から示したほうが簡単そう**であるので，そうする．
+　$C = B A$を示すためには，行列Cと行列BAの成分どうしが同じであることを示せばよいが，**線形写像の行列表現と成分ベクトルとの関係性から示したほうが簡単そう**であるので，そうする．
 
-　ベクトル空間$V$のベクトル$\boldsymbol{x}$を基底$\boldsymbol{v}_1, \cdots, \boldsymbol{v}_n$に関する成分ベクトル$\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}$，ベクトル空間$W$のベクトル$\boldsymbol{y}$を基底$\boldsymbol{w}_1, \cdots, \boldsymbol{w}_m$に関する成分ベクトル$\begin{pmatrix} y_1 \\ \vdots \\ y_m \end{pmatrix}$，ベクトル空間$U$のベクトル$\boldsymbol{z}$を基底$\boldsymbol{u}_1, \cdots, \boldsymbol{u}_l$に関する成分ベクトル$\begin{pmatrix} z_1 \\ \vdots \\ z_l \end{pmatrix}$とする．
+　ベクトル空間$V$のベクトル$bold(x)$を基底$bold(v)_1, dots.c, bold(v)_n$に関する成分ベクトル$mat(delim: "(", x_1 ; dots.v; x_n)$，ベクトル空間$W$のベクトル$bold(y)$を基底$bold(w)_1, dots.c, bold(w)_m$に関する成分ベクトル$mat(delim: "(", y_1 ; dots.v; y_m)$，ベクトル空間$U$のベクトル$bold(z)$を基底$bold(u)_1, dots.c, bold(u)_l$に関する成分ベクトル$mat(delim: "(", z_1 ; dots.v; z_l)$とする．
 
 　題意から，表現行列と成分ベクトルの関係式は
 $$
-\begin{pmatrix}
-y_1 \\ \vdots \\ y_m\end{pmatrix} = A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} , \space \begin{pmatrix}z_1 \\ \vdots \\ z_l \end{pmatrix} = B \begin{pmatrix}y_1 \\ \vdots \\ y_m\end{pmatrix}, \space \begin{pmatrix}z_1 \\ \vdots \\ z_l \end{pmatrix} = C \begin{pmatrix}x_1 \\ \vdots \\ x_n
-\end{pmatrix}
+mat(delim: "(", y_1 ; dots.v; y_m) = A mat(delim: "(", x_1 ; dots.v; x_n), mat(delim: "(", z_1 ; dots.v; z_l) = B mat(delim: "(", y_1 ; dots.v; y_m), mat(delim: "(", z_1 ; dots.v; z_l) = C mat(delim: "(", x_1 ; dots.v; x_n)
 $$
 
 左の2式から，
 $$
-\begin{pmatrix}
-z_1 \\ \vdots \\ z_l
-\end{pmatrix}
-= BA
-\begin{pmatrix}
-x_1 \\ \vdots \\ x_n
-\end{pmatrix}
+mat(delim: "(", z_1 ; dots.v; z_l)
+= B A
+mat(delim: "(", x_1 ; dots.v; x_n)
 $$
-となる．したがって，一番右の関係式と比較することによって，$C=BA$となる．
+となる．したがって，一番右の関係式と比較することによって，$C = B A$となる．

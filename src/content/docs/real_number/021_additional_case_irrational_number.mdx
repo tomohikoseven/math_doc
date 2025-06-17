@@ -7,41 +7,41 @@ import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 
 <Card title="定理">
-$\alpha = a, \beta = b$が有理数のとき，実数としての和$\alpha + \beta$と有理数としての和$a+b$は一致する：
+$alpha = a, beta = b$が有理数のとき，実数としての和$alpha + beta$と有理数としての和$a + b$は一致する：
 $$
-\alpha + \beta = a + b．
+alpha + beta = a + b "．"
 $$
 </Card>
 
 ## 定理の主張
 　[実数の加法](/real_number/020_difinition_of_additive/)については定義した．だが，その実数がともに有理数であった場合，和の切断は自然な表し方ができるということを主張している．すなわち，
 $$
-\alpha + \beta = \{ r \in \mathbb{Q} \space | \space r < a + b \}
+alpha + beta = {r in QQ|r < a + b}
 $$
 とできる．要するに，有理数であれば，$a + b$で切断したことと同じということ．
 
 　上記は当たり前のようにみえるが，実数の加法の定義では
 $$
-\alpha + \beta = \{ s + t \space | \space s \in A,  t \in B \}
+alpha + beta = {s + t|s in A, t in B}
 $$
-($ \alpha = \langle A, A^{\prime} \rangle , \space \beta = \langle B, B^{\prime} \rangle $)なので，$r < a + b$とは言えないのである．
+($alpha = angle.l A, A^prime angle.r, beta = angle.l B, B^prime angle.r$)なので，$r < a + b$とは言えないのである．
 
 ## 証明の考え方
-　$a + b$を実数として切断で表わすと，$R = \{ r \in \mathbb{Q} \space | \space r < a + b \} $として，$a + b = \langle R, R^{\prime} \rangle$．
+　$a + b$を実数として切断で表わすと，$R = {r in QQ|r < a + b}$として，$a + b = angle.l R, R^prime angle.r$．
 
-　また，$\alpha + \beta = \langle S, S^{\prime} \rangle$，$S = A + B = \{ t + u  \space | \space t \in A, u \in B \}$とおく．
+　また，$alpha + beta = angle.l S, S^prime angle.r$，$S = A + B = {t + u|t in A, u in B}$とおく．
 
-　$\alpha + \beta = a + b$を示すには，$S = R$を示せばよい．
+　$alpha + beta = a + b$を示すには，$S = R$を示せばよい．
 
 <Steps>
 
-1. $R \subset S$を示す．
+1. $R subset S$を示す．
 
-    $r \in R$とする．$r < a + b$である．補題1.1より，有理数$a,b$に対し，$r = s + t, s < a, t < b$なる有理数$s, t$が存在する．有理数の切断の条件1.より，$s < a, t < b$なる有理数$s, t$は$s \in A, t \in B$．よって，$r = s + t \in S$なので，$R \subset S$．
+    $r in R$とする．$r < a + b$である．補題1.1より，有理数$a, b$に対し，$r = s + t, s < a, t < b$なる有理数$s, t$が存在する．有理数の切断の条件1.より，$s < a, t < b$なる有理数$s, t$は$s in A, t in B$．よって，$r = s + t in S$なので，$R subset S$．
 
-2. $S \subset R$を示す．
+2. $S subset R$を示す．
 
-    $s \in S, s = t + u, t \in A, u \in B$とする．$t < a, u < b$なので，$t + u < a + b$．したがって，$s \in R$．つまり，$S \subset R$．
+    $s in S, s = t + u, t in A, u in B$とする．$t < a, u < b$なので，$t + u < a + b$．したがって，$s in R$．つまり，$S subset R$．
 
 </Steps>
 　以上より，$S = R$を示せた．

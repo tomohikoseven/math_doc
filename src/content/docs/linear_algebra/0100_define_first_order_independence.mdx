@@ -11,22 +11,34 @@ import image_01 from "/src/assets/linear_algebra/0100/1次関係、1次従属、
 
 ## 1次関係
 <Card title="1次関係">
-　ベクトル$\boldsymbol{a}_1, \boldsymbol{a}_2, \cdots , \boldsymbol{a}_m$が$$ c_1\boldsymbol{a}_1 + c_2\boldsymbol{a}_2 + \cdots + c_m\boldsymbol{a}_m = \boldsymbol{0} \space ( c_i \in \reals) $$を満たすとき，これをベクトル$\boldsymbol{a}_1, \boldsymbol{a}_2, \cdots , \boldsymbol{a}_m$の**1次関係**という．
-
-　すべての$c_i$が0のとき，
-$$ 0\boldsymbol{a}_1 + 0\boldsymbol{a}_2 + \cdots + 0\boldsymbol{a}_m = \boldsymbol{0} $$
-はどんなベクトル$\boldsymbol{a}_1, \boldsymbol{a}_2, \cdots , \boldsymbol{a}_m$についても成り立つ．これを**自明な1次関係**という．
+　ベクトル$bold(a)_1, bold(a)_2, dots.c, bold(a)_m$が
+$$
+c_1 bold(a)_1 + c_2 bold(a)_2 + dots.c + c_m bold(a)_m = bold(0)(c_i in R)
+$$
+を満たすとき，これをベクトル$bold(a)_1, bold(a)_2, dots.c, bold(a)_m$の**1次関係**という．
+すべての$c_i$が0のとき，
+$$
+0 bold(a)_1 + 0 bold(a)_2 + dots.c + 0 bold(a)_m = bold(0)
+$$
+はどんなベクトル$bold(a)_1, bold(a)_2, dots.c, bold(a)_m$についても成り立つ．
+これを**自明な1次関係**という．
 </Card>
 
 ## 1次関係の主張
-　**ベクトルの組$\boldsymbol{a}_1, \cdots, \boldsymbol{a}_m$の$\text{１次結合}=\boldsymbol{0}$となる関係式のこと**を１次関係という．関係式さえ満たされれば，係数$c_i \in \reals \space ( i = 1, \cdots , m)$については気にしない．$c_1=c_2=\cdots=c_m=0$のとき，どんなベクトルの組でも関係式は必ず満たされるので，関係式は存在するのかを考える必要はない．
+　**ベクトルの組$bold(a)_1, dots.c, bold(a)_m$の$"１次結合" = bold(0)$となる関係式のこと**を１次関係という．関係式さえ満たされれば，係数$c_i in R(i = 1, dots.c, m)$については気にしない．$c_1 = c_2 = dots.c = c_m = 0$のとき，どんなベクトルの組でも関係式は必ず満たされるので，関係式は存在するのかを考える必要はない．
 
-　ベクトルの組を行列$A=(\boldsymbol{a}_1 \cdots \boldsymbol{a}_m)$とみれば，$\boldsymbol{Ac}=\boldsymbol{0}$が関係式である．（$\boldsymbol{c}=\begin{pmatrix} c_1 \\ \vdots \\ c_m \end{pmatrix}$である．）また，$\boldsymbol{Ac}=\boldsymbol{0}$を満たす$\boldsymbol{c}$の集合を$X$とすれば，$\text{Ker}f=X$である．（$f$ってなんだよというのは置いておいて．）
+　ベクトルの組を行列$A = (bold(a)_1 dots.c bold(a)_m)$とみれば，
+$bold(A c) = bold(0)$が関係式である．（$bold(c) = mat(delim: "(", c_1 ; dots.v; c_m)$である．）
+また，$bold(A c) = bold(0)$を満たす$bold(c)$の集合を$X$とすれば，$"Ker" f = X$である．
+（$f$ってなんだよというのは置いておいて．）
 
 ## 1次独立について
 <Card title="1次独立">
-　ベクトルの組$\boldsymbol{a}_1, \boldsymbol{a}_2, \cdots , \boldsymbol{a}_m$について，1次関係
-$$ c_1\boldsymbol{a}_1 + c_2\boldsymbol{a}_2 + \cdots + c_m\boldsymbol{a}_m = \boldsymbol{0} $$が成り立つのは，自明な1次関係すなわち，$c_1 = c_2 = \cdots = c_m = 0$の場合のみであるとき，$\boldsymbol{a}_1, \boldsymbol{a}_2, \cdots , \boldsymbol{a}_m$は1次独立であるという．
+　ベクトルの組$bold(a)_1, bold(a)_2, dots.c, bold(a)_m$について，1次関係
+$$
+c_1 bold(a)_1 + c_2 bold(a)_2 + dots.c + c_m bold(a)_m = bold(0)
+$$
+が成り立つのは，自明な1次関係すなわち，$c_1 = c_2 = dots.c = c_m = 0$の場合のみであるとき，$bold(a)_1, bold(a)_2, dots.c, bold(a)_m$は1次独立であるという．
 </Card>
 
 ## 1次独立の主張
@@ -36,11 +48,13 @@ $$ c_1\boldsymbol{a}_1 + c_2\boldsymbol{a}_2 + \cdots + c_m\boldsymbol{a}_m = \b
 
 　誤って理解してはいけないことは，**１組の1次独立のベクトルの数＝次元数，1次独立＝基底ではない**．3次元ベクトル空間のある２つのベクトルの組が1次独立であっても，組のベクトル数は次元数とは異なるし，基底になっていない．
 
-　１次関係で出てきた集合$X$で言えば，ベクトルの組が1次独立であることは$X=\{\boldsymbol{0}\}$である．これが"1次関係が成り立つのは自明な1次関係の場合のみであるとき"の意味である．
+　１次関係で出てきた集合$X$で言えば，ベクトルの組が1次独立であることは$X = {bold(0)}$である．これが"1次関係が成り立つのは自明な1次関係の場合のみであるとき"の意味である．
 
 ## 1次従属について
-<Card title="">
-　ベクトルの組$\boldsymbol{a}_1, \boldsymbol{a}_2, \cdots , \boldsymbol{a}_m$が1次独立でないとき，1次従属であるという．すなわち$\boldsymbol{a}_1, \boldsymbol{a}_2, \cdots , \boldsymbol{a}_m$が1次従属であるとは，1次関係 $$ c_1\boldsymbol{a}_1 + c_2\boldsymbol{a} + \cdots + c_m\boldsymbol{a}_m = \boldsymbol{0}$$を満たす$c_1, c_2, \cdots , c_m$で，そのうちの少なくとも1つが0でないものが存在するときにいう．
+<Card title="1次従属">
+　ベクトルの組$bold(a)_1, bold(a)_2, dots.c, bold(a)_m$が1次独立でないとき，1次従属であるという．すなわち$bold(a)_1, bold(a)_2, dots.c, bold(a)_m$が1次従属であるとは，1次関係 $$
+c_1 bold(a)_1 + c_2 bold(a) + dots.c + c_m bold(a)_m = bold(0)
+$$を満たす$c_1, c_2, dots.c, c_m$で，そのうちの少なくとも1つが0でないものが存在するときにいう．
 </Card>
 
 ## 1次従属の主張
@@ -48,10 +62,10 @@ $$ c_1\boldsymbol{a}_1 + c_2\boldsymbol{a}_2 + \cdots + c_m\boldsymbol{a}_m = \b
 
 　これも1次独立と同じく，ベクトルの組がどのような関係性なのか（1次独立なのか？1次従属なのか？）を主張している．
 
-　1次関係で出てきた集合$X$で言えば，ベクトルの組が1次従属であることは$X \neq \{\boldsymbol{0}\}$である．すなわち，集合$X$にはゼロベクトル（$\boldsymbol{0}$）以外に元が存在するということ．
+　1次関係で出てきた集合$X$で言えば，ベクトルの組が1次従属であることは$X != {bold(0)}$である．すなわち，集合$X$にはゼロベクトル（$bold(0)$）以外に元が存在するということ．
 
 ## もう少し深堀り
-　1次関係は$\text{Ker}f$のことで，自明な1次関係を必ず満たし，非自明な1次関係とともに構成される．すなわち，$\text{Ker}f$は1次独立と関係するゼロベクトルを必ず含み，1次従属と関係するゼロベクトル以外のベクトル$\boldsymbol{c}$で構成される集合であるとみえる．
+　1次関係は$"Ker" f$のことで，自明な1次関係を必ず満たし，非自明な1次関係とともに構成される．すなわち，$"Ker" f$は1次独立と関係するゼロベクトルを必ず含み，1次従属と関係するゼロベクトル以外のベクトル$bold(c)$で構成される集合であるとみえる．
 
 <ImageWithCaption
     src={image_01}

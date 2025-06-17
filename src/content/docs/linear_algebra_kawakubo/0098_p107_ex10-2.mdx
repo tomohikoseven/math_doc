@@ -9,13 +9,11 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題10(2)">
 　次の等式を証明せよ．
 $$
-\begin{vmatrix}
-1 & 2 & 3 & \cdots & n \\
--1 & 0 & 3 & \cdots & n \\
--1 & -2 & 0 & \cdots & n \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
--1 & -2 & -3 & \cdots & 0 \\
-\end{vmatrix}
+mat(delim: "|", 1, 2, 3, dots.c, n;
+- 1, 0, 3, dots.c, n;
+- 1, - 2, 0, dots.c, n;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+- 1, - 2, - 3, dots.c, 0;)
 =
 n!
 $$
@@ -23,26 +21,20 @@ $$
 
 ## 解答
 $$
-\begin{align}
-\begin{vmatrix}
-1 & 2 & 3 & \cdots & n \\
--1 & 0 & 3 & \cdots & n \\
--1 & -2 & 0 & \cdots & n \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
--1 & -2 & -3 & \cdots & 0 \\
-\end{vmatrix}
+mat(delim: "|", 1, 2, 3, dots.c, n;
+- 1, 0, 3, dots.c, n;
+- 1, - 2, 0, dots.c, n;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+- 1, - 2, - 3, dots.c, 0;)
 &=
-\begin{vmatrix}
-1 & 2 & 3 & \cdots & n \\
-0 & 2 & 6 & \cdots & 2n \\
-0 & 0 & 3 & \cdots & 2n \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-0 & 0 & 0 & \cdots & n \\
-\end{vmatrix} \\
+mat(delim: "|", 1, 2, 3, dots.c, n;
+0, 2, 6, dots.c, 2 n;
+0, 0, 3, dots.c, 2 n;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+0, 0, 0, dots.c, n;) \
 &=
 n!
-\end{align}
 $$
 
-- (1)は1行目を$i$行目に加えた．$2 \le i \le n$．すると上三角行列になる．
+- (1)は1行目を$i$行目に加えた．$2 <= i <= n$．すると上三角行列になる．
 - (2)は上三角行列式を展開した結果である．

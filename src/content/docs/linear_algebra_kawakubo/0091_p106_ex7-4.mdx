@@ -8,73 +8,51 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題7(4)">
 　次の行列式を計算せよ．
 $$
-\begin{vmatrix}
-a+b+c & -c & -b \\
--c & a+b+c & -a \\
--b & -a & a+b+c 
-\end{vmatrix}
+mat(delim: "|", a + b + c, - c, - b;
+- c, a + b + c, - a;
+- b, - a, a + b + c)
 $$
 </Card>
 
 ## 解答
 $$
-\begin{align}
-\begin{vmatrix}
-a+b+c & -c & -b \\
--c & a+b+c & -a \\
--b & -a & a+b+c 
-\end{vmatrix}
+mat(delim: "|", a + b + c, - c, - b;
+- c, a + b + c, - a;
+- b, - a, a + b + c)
 &=
-\begin{vmatrix}
-a+b & -c & -b \\
-a+b & a+b+c & -a \\
--(a+b) & -a & a+b+c 
-\end{vmatrix} \\
+mat(delim: "|", a + b, - c, - b;
+a + b, a + b + c, - a;
+-(a + b), - a, a + b + c) \
 &=
-(a+b)
-\begin{vmatrix}
-1 & -c & -b \\
-1 & a+b+c & -a \\
--1 & -a & a+b+c 
-\end{vmatrix} \\
-\end{align}
+(a + b)
+mat(delim: "|", 1, - c, - b;
+1, a + b + c, - a;
+- 1, - a, a + b + c) \
 $$
 - (1)は2列目を1列目に加えた．
 - (2)は1列目の共通因子(a+b)を外に出した．
 
 $$
-\begin{align}
-\begin{vmatrix}
-1 & -c & -b \\
-1 & a+b+c & -a \\
--1 & -a & a+b+c 
-\end{vmatrix}
+mat(delim: "|", 1, - c, - b;
+1, a + b + c, - a;
+- 1, - a, a + b + c)
 &=
-\begin{vmatrix}
-1 & -c & -b \\
-0 & a+b+2c & -a+b \\
-0 & -(a+c) & a+c
-\end{vmatrix} \\
+mat(delim: "|", 1, - c, - b;
+0, a + b + 2 c, - a + b;
+0, -(a + c), a + c) \
 &=
-\begin{vmatrix}
-a+b+2c & -a+b \\
--(a+b) & a+c
-\end{vmatrix} \\
+mat(delim: "|", a + b + 2 c, - a + b;
+-(a + b), a + c) \
 &=
-(a+c)
-\begin{vmatrix}
-a+b+2c & -a+b \\
--1 & 1 
-\end{vmatrix} \\
+(a + c)
+mat(delim: "|", a + b + 2 c, - a + b;
+- 1, 1) \
 &=
-(a+c)
-\begin{vmatrix}
-2(b+c) & -a+b \\
-0 & 1
-\end{vmatrix} \\
+(a + c)
+mat(delim: "|", 2(b + c), - a + b;
+0, 1) \
 &=
-2(a+c)(b+c)
-\end{align}
+2(a + c)(b + c)
 $$
 
 - (3)は2行目に1行目x(-1)を加え，3行目に1行目を加えた．
@@ -85,11 +63,9 @@ $$
 
 (2)と(7)を合わせて，
 $$
-\begin{vmatrix}
-a+b+c & -c & -b \\
--c & a+b+c & -a \\
--b & -a & a+b+c 
-\end{vmatrix}
+mat(delim: "|", a + b + c, - c, - b;
+- c, a + b + c, - a;
+- b, - a, a + b + c)
 =
-2(a+b)(b+c)(c+a)
+2(a + b)(b + c)(c + a)
 $$

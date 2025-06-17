@@ -13,7 +13,7 @@ import image_02 from "/src/assets/linear_algebra/0540/ジョルダン標準形_�
 <Card title="定理12.10.1">
 　$n$次実正方行列$A$が，重複もこめて$n$個の固有値をもつならば，適当な正則行列$P$によって
 $$
-P^{-1}AP
+P^(-1) A P
 $$
 はジョルダンの標準形になる．
 </Card>
@@ -35,31 +35,28 @@ $$
 
 ## 証明の考え方
 <Steps>
+
 1. 一般固有空間による直和分解
 
-    　$\text{線形変換}f \colon \mathbb{R}^n \rightarrow \mathbb{R}^n$とし，$\text{線形変換}f$の表現行列を$A$とする．定理12.6.1により，$\mathbb{R}^n$は一般固有空間に直和分解される．つまり，
+    　$"線形変換" f colon RR^n -> RR^n$とし，$"線形変換" f$の表現行列を$A$とする．定理12.6.1により，$RR^n$は一般固有空間に直和分解される．つまり，
     $$
-    \mathbb{R}^n = W(\lambda_1)\oplus\cdots\oplus W(\lambda_r)．
+    RR^n = W(lambda_1) plus.circle dots.c plus.circle W(lambda_r) "．"
     $$
 
     すると定理12.1.1より，ある正則行列$P$があって，
     $$
-    \begin{equation}
-    P^{-1}AP =
-        \begin{pmatrix} 
-          A_1 & &  \huge{0}   \\
-           &    \ddots &  \\
-          \huge{0} &  & A_r
-        \end{pmatrix}
-    \end{equation}
+    P^(-1) A P =
+        mat(delim: "(", A_1,, 0;
+           , dots.down,;
+          0,, A_r)
     $$
     となる．各$A_i$がジョルダン・ブロックで表されればよい．
 
 2. べき零写像の表現行列を考える．
 
-    　$f_i-\lambda_i id \space \colon \space W(\lambda_i) \rightarrow W(\lambda_i)$を考える（$id$は恒等写像，f_iの表現行列は$A_i$）．$f_i - \lambda_i id$は$W(\lambda_i)$でべき零写像である．記述の簡略のため，$g_i = f_i - \lambda_i id$とおく．
+    　$f_i - lambda_i i d colon W(lambda_i) -> W(lambda_i)$を考える（$i d$は恒等写像，f_iの表現行列は$A_i$）．$f_i - lambda_i i d$は$W(lambda_i)$でべき零写像である．記述の簡略のため，$g_i = f_i - lambda_i i d$とおく．
 
-    　このべき零写像$g_i$のフィルトレーションに関係して$W(\lambda_i)$の基底をうまく選ぶ．つまり，ジョルダン・ダイヤグラムである．そして，この基底に関して$g_i$の表現行列を考える．ここにジョルダン・ブロックが現れるからである．
+    　このべき零写像$g_i$のフィルトレーションに関係して$W(lambda_i)$の基底をうまく選ぶ．つまり，ジョルダン・ダイヤグラムである．そして，この基底に関して$g_i$の表現行列を考える．ここにジョルダン・ブロックが現れるからである．
 
     <ImageWithCaption
         src={image_02}
@@ -71,35 +68,31 @@ $$
 
     　表現行列は基底の像と基底との関係であるから，その関係を一部記載すると，
     $$
-    g_i(g_i^{k-1}(\boldsymbol{x_1}) \cdots g_i(\boldsymbol{x_1}) \space \boldsymbol{x_1}) = (g_i^{k-1}(\boldsymbol{x_1}) \cdots g_i(\boldsymbol{x_1}) \space \boldsymbol{x_1}) J(0,k_1)
+    g_i (g_i^(k - 1)(bold(x_1)) dots.c g_i (bold(x_1)) bold(x_1)) = (g_i^(k - 1)(bold(x_1)) dots.c g_i (bold(x_1)) bold(x_1)) J(0, k_1)
     $$
 
-    となる．つまり，$g_i$表現行列の一部は$J(0,k_1)$である．
+    となる．つまり，$g_i$表現行列の一部は$J(0, k_1)$である．
 
     表現行列の全体は以下のようになる．
 
     $$
-    (g_i = f_i - \lambda_i id =)A_i - \lambda_i E = 
-    \begin{pmatrix}
-      J(0, k_1) & & \huge{0}  \\
-      & \ddots & & \\
-     \huge{0} & & J(0, k_p) \\ 
-    \end{pmatrix}
+    (g_i = f_i - lambda_i i d =) A_i - lambda_i E = 
+        mat(delim: "(", J(0 comma k_1),, 0;
+        , dots.down,,;
+        0,, J(0 comma k_p);)
     $$
 
     これを$A_i$について解くと，
     $$
     A_i = 
-    \begin{pmatrix}
-      J(\lambda_i, k_1) & & \huge{0}  \\
-      & \ddots & & \\
-     \huge{0} & & J(\lambda_i, k_p) \\ 
-    \end{pmatrix}
+    mat(delim: "(", J(lambda_i comma k_1),, 0;
+      , dots.down,,;
+     0,, J(lambda_i comma k_p);)
     $$
 
 3. ジョルダン標準形
 
-    　各$A_i$を(1)に代入すると，$P^{-1}AP$はジョルダン標準形となる．
+    　各$A_i$を(1)に代入すると，$P^(-1) A P$はジョルダン標準形となる．
 
 </Steps>
 

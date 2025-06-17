@@ -9,38 +9,28 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題9(2)">
 　$A, B$が$n$次正方行列のとき，次の等式を証明せよ．
 $$
-\begin{vmatrix}
-A & -B \\
-B & A \\
-\end{vmatrix}
+mat(delim: "|", A, - B;
+B, A;)
 =
-|A-iB||A+iB|
+|A - i B||A + i B|
 $$
 </Card>
 
 ## 解答
 $$
-\begin{align}
-\begin{vmatrix}
-A & -B \\
-B & A \\
-\end{vmatrix}
+mat(delim: "|", A, - B;
+B, A;)
 &=
-\begin{vmatrix}
-A-iB & -B \\
-B+iA & A \\
-\end{vmatrix} \\
+mat(delim: "|", A - i B, - B;
+B + i A, A;) \
 &=
-\begin{vmatrix}
-A-iB & -B \\
-O & A+iB \\
-\end{vmatrix} \\
+mat(delim: "|", A - i B, - B;
+O, A + i B;) \
 &=
-|A-iB||A+iB| \\
-\end{align}
+|A - i B||A + i B| \
 $$
 
-- (1)は$n+1$列目の複素数$i$倍を$1$列目に，$n+j$列目を$j$列目に加えた結果である．
-  - $2 \le j \le n$である．
-- (2)は1行目の$-i$倍を$n+1$列目に，$j$行目を$n+j$行目に加えた結果である．
+- (1)は$n + 1$列目の複素数$i$倍を$1$列目に，$n + j$列目を$j$列目に加えた結果である．
+  - $2 <= j <= n$である．
+- (2)は1行目の$-i$倍を$n + 1$列目に，$j$行目を$n + j$行目に加えた結果である．
 - (3)は[定理4.6.11](/linear_algebra/0461_theorem_4_6_11/)を使った．

@@ -7,48 +7,48 @@ import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 
 <Card title="定理1.12">
-　数列$\{ \alpha_n \}$が実数$\alpha$に収束するための必要十分条件は，
-$\rho < \alpha < \sigma$なる実数$\rho, \sigma$が任意に与えられたとき，不等式：
+　数列${alpha_n }$が実数$alpha$に収束するための必要十分条件は，
+$rho < alpha < sigma$なる実数$rho, sigma$が任意に与えられたとき，不等式：
 $$
-\rho < \alpha_n < \sigma
+rho < alpha_n < sigma
 $$
 が有限個の自然数$n$を除いて成立することである．
 </Card>
 
 ## 定理の主張
-　収束するということは，$\alpha$と任意の差$\varepsilon$の範囲(めちゃくちゃ近いところ)に$\alpha_n$が必ずいるということだった．
-でもそれって，均等な差$\varepsilon$ではなくもっと柔軟に考えて，$\alpha$を含む任意の範囲で考えても同じだよねということ．
-$\alpha$さえ含めば，どんな範囲にも$\alpha_n$が無数にいるなら，
-数列$\{ \alpha_n \}$が$\alpha$に収束していることの定義と変わらない．
+　収束するということは，$alpha$と任意の差$epsilon$の範囲(めちゃくちゃ近いところ)に$alpha_n$が必ずいるということだった．
+でもそれって，均等な差$epsilon$ではなくもっと柔軟に考えて，$alpha$を含む任意の範囲で考えても同じだよねということ．
+$alpha$さえ含めば，どんな範囲にも$alpha_n$が無数にいるなら，
+数列${alpha_n }$が$alpha$に収束していることの定義と変わらない．
 
 ## 証明
 ### 必要条件(⇒)
-　数列$\{ \alpha_n \}$が$\alpha$に収束すると仮定．また，$\rho < \alpha < \sigma$なる実数$\rho, \sigma$が与えられたとする．
-このとき，$\varepsilon = min(\alpha-\rho, \sigma-\alpha)$とすると，$\varepsilon$は正の実数である．
+　数列${alpha_n }$が$alpha$に収束すると仮定．また，$rho < alpha < sigma$なる実数$rho, sigma$が与えられたとする．
+このとき，$epsilon = m i n(alpha - rho, sigma - alpha)$とすると，$epsilon$は正の実数である．
 
-　この$\varepsilon$に対して，ある自然数$n_0$が対応していて，$n > n_0$の自然数$n$において
-$|\alpha_n - \alpha| < \varepsilon$が成り立つ（仮定から）．
-つまり，$-\varepsilon + \alpha < \alpha_n < \varepsilon + \alpha$．
+　この$epsilon$に対して，ある自然数$n_0$が対応していて，$n > n_0$の自然数$n$において
+$|alpha_n - alpha| < epsilon$が成り立つ（仮定から）．
+つまり，$-epsilon + alpha < alpha_n < epsilon + alpha$．
 
-　$\varepsilon = min(\alpha-\rho, \sigma-\alpha)$と合わせると，
-$\rho \leq -\varepsilon + \alpha < \alpha_n < \varepsilon + \alpha \leq \sigma$．
-つまり，$n > n_0$の自然数$n$に対して$\rho < \alpha_n < \sigma$が成り立つ．
-すなわち，有限個の自然数$n$を除いて$\rho < \alpha < \sigma$が成り立つ．
+　$epsilon = m i n(alpha - rho, sigma - alpha)$と合わせると，
+$rho <= - epsilon + alpha < alpha_n < epsilon + alpha <= sigma$．
+つまり，$n > n_0$の自然数$n$に対して$rho < alpha_n < sigma$が成り立つ．
+すなわち，有限個の自然数$n$を除いて$rho < alpha < sigma$が成り立つ．
 
 ### 十分条件(⇐)
-　$\rho < \alpha < \sigma$なる実数$\rho, \sigma$が与えられたとし，このとき不等式：
+　$rho < alpha < sigma$なる実数$rho, sigma$が与えられたとし，このとき不等式：
 $$
-\rho < \alpha_n < \sigma
+rho < alpha_n < sigma
 $$
 が有限個の自然数$n$を除いて成り立つと仮定する．
-$\varepsilon = min(\alpha-\rho, \sigma-\alpha)$とすると，$-\varepsilon+\alpha < \alpha_n < \varepsilon+\alpha $
+$epsilon = m i n(alpha - rho, sigma - alpha)$とすると，$-epsilon + alpha < alpha_n < epsilon + alpha$
 は有限個の自然数$n$を除いて成り立つ．
 
-　この有限個の自然数$n$の中で一番大きいものを$n_0$とすると，$n > n_0$ならば$-\varepsilon+\alpha < \alpha_n < \varepsilon+\alpha$が
+　この有限個の自然数$n$の中で一番大きいものを$n_0$とすると，$n > n_0$ならば$-epsilon + alpha < alpha_n < epsilon + alpha$が
 成り立つということである．
 
-　以上を整理すると，実数$\rho, \sigma$により任意に正の実数$\varepsilon$がとれ，
-この$\varepsilon$に対応する自然数$n_0$もとれて，$n > n_0$ならば$-\varepsilon+\alpha < \alpha_n < \varepsilon+\alpha$
-が成立する．すなわち，数列$\{ \alpha_n \}$が$\alpha$に収束することがわかった．
+　以上を整理すると，実数$rho, sigma$により任意に正の実数$epsilon$がとれ，
+この$epsilon$に対応する自然数$n_0$もとれて，$n > n_0$ならば$-epsilon + alpha < alpha_n < epsilon + alpha$
+が成立する．すなわち，数列${alpha_n }$が$alpha$に収束することがわかった．
 
 

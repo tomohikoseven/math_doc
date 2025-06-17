@@ -12,14 +12,14 @@ import image_01 from "/src/assets/linear_algebra/0500/線形写像の単射性�
 import image_02 from "/src/assets/linear_algebra/0510/線形写像の単射性と次元の関係について（定理7.3.3（1））.webp";
 
 <Card title="定理7.3.3">
-　$f \colon V \to W$を線形写像とするとき，$f$が単射であるための必要十分条件は
+　$f colon V -> W$を線形写像とするとき，$f$が単射であるための必要十分条件は
 $$
-\text{dim} (\text{Im}f) = \text{dim} V．
+"dim"("Im" f) = "dim" V "．"
 $$
 </Card>
 
 ## 定理の主張
-　次元定理からわかるとおり，$f$が線形写像のみの性質を持つなら$\text{dim}V \neq \text{dim}(\text{Im}f)$である．しかしこの定理では$f$が単射なら，$V$と$\text{Im}f$の次元が同じになると言っている．（正しくは逆も成り立つという主張．）
+　次元定理からわかるとおり，$f$が線形写像のみの性質を持つなら$"dim" V != "dim"("Im" f)$である．しかしこの定理では$f$が単射なら，$V$と$"Im" f$の次元が同じになると言っている．（正しくは逆も成り立つという主張．）
 
 <CardGrid>
 <ImageWithCaption
@@ -41,17 +41,17 @@ $$
 ## 証明の考え方
 <Steps>
 
-1. $f$が単射$\implies \text{dim}(\text{Im}f)=\text{dim}V$
+1. $f$が単射$==> "dim"("Im" f) = "dim" V$
 
-    真正面から証明しようとするなら，$\text{dim}(\text{Im}f) \le \text{dim}V$かつ$\text{dim}(\text{Im}f) \ge \text{dim}V$を示せばよいが，定理7.3.2と次元定理から導出できそう．
+    真正面から証明しようとするなら，$"dim"("Im" f) <= "dim" V$かつ$"dim"("Im" f) >= "dim" V$を示せばよいが，定理7.3.2と次元定理から導出できそう．
 
-    　$f$は単射であるとする．定理7.3.2より$\text{Ker}f = \{ \boldsymbol{0}\}$．よって，$\text{dim}(\text{Ker}f)=0$．次元定理より，$\text{dim}V = \text{dim}(\text{Im}f)+\text{dim}(\text{Ker}f)$なので，$\text{dim}V=\text{dim}(\text{Im}f)$．
+    　$f$は単射であるとする．定理7.3.2より$"Ker" f = {bold(0)}$．よって，$"dim"("Ker" f) = 0$．次元定理より，$"dim" V = "dim"("Im" f) + "dim"("Ker" f)$なので，$"dim" V = "dim"("Im" f)$．
 
-2. $\text{dim}(\text{Im}f)=\text{dim}V \implies $ $f$が単射
+2. $"dim"("Im" f) = "dim" V ==>$ $f$が単射
 
     　こちらも真正面から証明しようとするなら，単射の定義から$f$が単射であること導く．しかし，こちらも次元定理と定理7.3.2から導けそう．
 
-    　$\text{dim}(\text{Im}f)=\text{dim}V$とする．次元定理より$\text{dim}(\text{Ker}f)=0$．これと$f$は線形写像であることより，$\text{Ker}f = \{ \boldsymbol{0} \}$．定理7.3.2から$f$は単射．
+    　$"dim"("Im" f) = "dim" V$とする．次元定理より$"dim"("Ker" f) = 0$．これと$f$は線形写像であることより，$"Ker" f = {bold(0)}$．定理7.3.2から$f$は単射．
 
 </Steps>
 

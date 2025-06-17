@@ -1,7 +1,7 @@
 {
   "name": "math",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -13,11 +13,11 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.4.1",
     "@astrojs/starlight": "^0.34.3",
+    "@myriaddreamin/rehype-typst": "^0.6.0",
     "astro": "5.9.0",
     "astro-cloudinary": "1.3.2",
     "astro-d2": "^0.8.0",
     "astro-embed": "^0.9.0",
-    "rehype-katex": "^7.0.1",
     "remark-emoji": "^5.0.1",
     "remark-math": "^6.0.0",
     "sharp": "^0.34.2",

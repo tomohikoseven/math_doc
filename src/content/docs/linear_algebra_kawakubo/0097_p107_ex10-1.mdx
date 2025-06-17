@@ -9,13 +9,11 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題10(1)">
 　次の等式を証明せよ．
 $$
-\begin{vmatrix}
-1 & 1 & 1 & \cdots & 1 \\
-1 & 2 & 2 & \cdots & 2 \\
-1 & 2 & 3 & \cdots & 3 \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-1 & 2 & 3 & \cdots & n \\
-\end{vmatrix}
+mat(delim: "|", 1, 1, 1, dots.c, 1;
+1, 2, 2, dots.c, 2;
+1, 2, 3, dots.c, 3;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+1, 2, 3, dots.c, n;)
 =
 1
 $$
@@ -23,45 +21,35 @@ $$
 
 ## 解答
 $$
-\begin{align}
-\begin{vmatrix}
-1 & 1 & 1 & \cdots & 1 \\
-1 & 2 & 2 & \cdots & 2 \\
-1 & 2 & 3 & \cdots & 3 \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-1 & 2 & 3 & \cdots & n \\
-\end{vmatrix}
+mat(delim: "|", 1, 1, 1, dots.c, 1;
+1, 2, 2, dots.c, 2;
+1, 2, 3, dots.c, 3;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+1, 2, 3, dots.c, n;)
 &=
-\begin{vmatrix}
-1 & 1 & 1 & \cdots & 1 \\
-0 & 1 & 1 & \cdots & 1 \\
-0 & 1 & 2 & \cdots & 2 \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-0 & 1 & 2 & \cdots & n-1 \\
-\end{vmatrix} \\
+mat(delim: "|", 1, 1, 1, dots.c, 1;
+0, 1, 1, dots.c, 1;
+0, 1, 2, dots.c, 2;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+0, 1, 2, dots.c, n - 1;) \
 &=
-\begin{vmatrix}
-1 & 1 & 1 & \cdots & 1 \\
-1 & 2 & 2 & \cdots & 2 \\
-1 & 2 & 3 & \cdots & 3 \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-1 & 2 & 3 & \cdots & n-1 \\
-\end{vmatrix}
-\end{align}
+mat(delim: "|", 1, 1, 1, dots.c, 1;
+1, 2, 2, dots.c, 2;
+1, 2, 3, dots.c, 3;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+1, 2, 3, dots.c, n - 1;)
 $$
 
-- (1)は$i$行目に1行目x(-1)を加えた．$2 \le i \le n$．
+- (1)は$i$行目に1行目x(-1)を加えた．$2 <= i <= n$．
 - (2)は1列目に関して，余因子展開をした．
 
 　つまり
 $$
 A_n =
-\begin{pmatrix}
-1 & 1 & 1 & \cdots & 1 \\
-1 & 2 & 2 & \cdots & 2 \\
-1 & 2 & 3 & \cdots & 3 \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-1 & 2 & 3 & \cdots & n \\
-\end{pmatrix}
+mat(delim: "(", 1, 1, 1, dots.c, 1;
+1, 2, 2, dots.c, 2;
+1, 2, 3, dots.c, 3;
+dots.v, dots.v, dots.v, dots.down, dots.v;
+1, 2, 3, dots.c, n;)
 $$
-とおけば，$|A_n|=|A_{n-1}|= \cdots = |A_1|=1$となる．
+とおけば，$|A_n | =|A_(n - 1)| = dots.c =|A_1 | = 1$となる．

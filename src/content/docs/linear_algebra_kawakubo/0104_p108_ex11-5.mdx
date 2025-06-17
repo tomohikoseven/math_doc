@@ -9,15 +9,13 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題11(5)">
 　次の等式を証明せよ．
 $$
-\begin{vmatrix}
-1+x^2 & x & 0 & \cdots & 0 \\
-x & 1+x^2 & x & \ddots & \vdots \\
-0 & x & \ddots & \ddots & 0 \\
-\vdots & \ddots & \ddots &  1+x^2 & x \\
-0 & \cdots & 0 &  x & 1+x^2 \\
-\end{vmatrix}
+mat(delim: "|", 1 + x^2, x, 0, dots.c, 0;
+x, 1 + x^2, x, dots.down, dots.v;
+0, x, dots.down, dots.down, 0;
+dots.v, dots.down, dots.down, 1 + x^2, x;
+0, dots.c, 0, x, 1 + x^2 ;)
 =
-1+x^2+x^4+\cdots+x^{2n}
+1 + x^2 + x^4 + dots.c + x^(2 n)
 $$
 </Card>
 
@@ -25,59 +23,45 @@ $$
 　帰納法を用いる．
 $$
 A_n =
-\begin{vmatrix}
-1+x^2 & x & 0 & \cdots & 0 \\
-x & 1+x^2 & x & \ddots & \vdots \\
-0 & x & \ddots & \ddots & 0 \\
-\vdots & \ddots & \ddots &  1+x^2 & x \\
-0 & \cdots & 0 &  x & 1+x^2 \\
-\end{vmatrix}
+mat(delim: "|", 1 + x^2, x, 0, dots.c, 0;
+x, 1 + x^2, x, dots.down, dots.v;
+0, x, dots.down, dots.down, 0;
+dots.v, dots.down, dots.down, 1 + x^2, x;
+0, dots.c, 0, x, 1 + x^2 ;)
 $$
-とおく．$A_1=1+x^2$，
+とおく．$A_1 = 1 + x^2$，
 $$
-\begin{aligned}
 A_2
 &=
-\begin{vmatrix}
-1+x^2 & x \\
-x & 1+x^2 \\
-\end{vmatrix} \\
-&=(1+x^2)(1+x^2) - x^2 \\
-&=1+x^2+x^4
-\end{aligned}
+mat(delim: "|", 1 + x^2, x;
+x, 1 + x^2 ;) \
+&= (1 + x^2)(1 + x^2) - x^2 \
+&= 1 + x^2 + x^4
 $$
 であり，
 $$
-\begin{aligned}
 A_3
 &=
-\begin{vmatrix}
-1+x^2 & x & 0 \\
-x & 1+x^2 & x \\
-0 & x & 1+x^2 \\
-\end{vmatrix} \\
+mat(delim: "|", 1 + x^2, x, 0;
+x, 1 + x^2, x;
+0, x, 1 + x^2 ;) \
 &=
-(1+x^2)A_2-x
-\begin{vmatrix}
-x & 0 \\
-x & 1+x^2 \\
-\end{vmatrix} \\
+(1 + x^2) A_2 - x
+mat(delim: "|", x, 0;
+x, 1 + x^2 ;) \
 &=
-(1+x^2)A_2-x^2A_1 \\
+(1 + x^2) A_2 - x^2 A_1 \
 &=
-1+x^2+x^4+x^6
-\end{aligned}
+1 + x^2 + x^4 + x^6
 $$
 である．
 
-　つまり，$A_{n-1}$まで題意が成り立つと仮定すると，
+　つまり，$A_(n - 1)$まで題意が成り立つと仮定すると，
 $$
-\begin{aligned}
-A_n 
-&= (1+x^2)A_{n-1} - x^2A_{n-2} \\
-&= (1+x^2)(1+x^2+x^4+\cdots+x^{2(n-1)})-x^2(1+x^2+x^4+\cdots+x^{2(n-2)}) \\
-&= 1+x^2+x^4+\cdots+x^{2n}．
-\end{aligned}
+A_n
+&= (1 + x^2) A_(n - 1) - x^2 A_(n - 2) \
+&= (1 + x^2)(1 + x^2 + x^4 + dots.c + x^(2(n - 1))) - x^2 (1 + x^2 + x^4 + dots.c + x^(2(n - 2))) \
+&= 1 + x^2 + x^4 + dots.c + x^(2 n) "．"
 $$
 
 以上により，帰納法から題意が示せた．

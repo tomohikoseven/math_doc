@@ -1,12 +1,3 @@
-// Katex CSS
-export const KATEX = {
-        tag:'link',
-        attrs:{
-          rel: 'stylesheet',
-          href: 'https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css',
-        }
-      };
-
 // Adsence 審査用コード
 export const GOOGLE_SITE_VERIFICATION = {
         tag: 'meta',

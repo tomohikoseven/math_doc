@@ -7,42 +7,42 @@ import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 
 <Card title="定義(数列)">
-　$\alpha_1, \alpha_2, \cdots, \alpha_n, \cdots $のように実数を一列に並べたものを数列といい，$\{ \alpha_n \}$で表わす．
+　$alpha_1, alpha_2, dots.c, alpha_n, dots.c$のように実数を一列に並べたものを数列といい，${alpha_n }$で表わす．
 </Card>
 
 <Card title="定義1.4">
-　数列$\{ \alpha \}$が与えられたとし，$\alpha$を１つの実数とする．任意の正の実数$\varepsilon$に対応して自然数$n_0(\varepsilon)$が定まって，
+　数列${alpha}$が与えられたとし，$alpha$を１つの実数とする．任意の正の実数$epsilon$に対応して自然数$n_0 (epsilon)$が定まって，
 $$
-n > n_0(\varepsilon) \space ならば \space |\alpha_n - \alpha| < \varepsilon
+n > n_0 (epsilon) "ならば"|alpha_n - alpha| < epsilon
 $$
-となるとき，数列$\{ \alpha_n\}$は$\alpha$に収束する，また$\alpha$は数列$\{ \alpha_n \}$の極限である，あるいは極限値であるといい，
+となるとき，数列${alpha_n }$は$alpha$に収束する，また$alpha$は数列${alpha_n }$の極限である，あるいは極限値であるといい，
 $$
-\lim_{n \to \infty} \alpha_n = \alpha
+lim_(n -> infinity) alpha_n = alpha
 $$
 と書く．
 </Card>
 
 ## 定義の主張
-　$\alpha$との距離がどんなものでも，数列がその範囲に無数にあるとき，
-数列が$\alpha$に収束するということ．
+　$alpha$との距離がどんなものでも，数列がその範囲に無数にあるとき，
+数列が$alpha$に収束するということ．
 
-　$n$が限りなく大きいと$\alpha_n$は$\alpha$にとても近いと主張している．
-$\alpha$との近さをどのように決めても，その距離内には無数の$\alpha_n$がある．
+　$n$が限りなく大きいと$alpha_n$は$alpha$にとても近いと主張している．
+$alpha$との近さをどのように決めても，その距離内には無数の$alpha_n$がある．
 
-　$\alpha_n$と$\alpha_{n+1}$を比べたら，
-$\alpha_{n+1}$の方が$\alpha$に近いなどと主張しているわけではない．
+　$alpha_n$と$alpha_(n + 1)$を比べたら，
+$alpha_(n + 1)$の方が$alpha$に近いなどと主張しているわけではない．
 そんな近場の２つの数列の比較など大切ではない．
-$n$がとてつもなく大きい方がそうでない場合と比べ，$\alpha$に近い．
-そして，$\alpha$の付近に$\alpha_n$が密集しているということ．
+$n$がとてつもなく大きい方がそうでない場合と比べ，$alpha$に近い．
+そして，$alpha$の付近に$alpha_n$が密集しているということ．
 
-　$\alpha_n$がだんだん近づくような，きれいな数列でなくとも収束する．
+　$alpha_n$がだんだん近づくような，きれいな数列でなくとも収束する．
 「大きくなるにつれて」などの語句は数列の本質を外してしまうので，誤解しないように注意．
 
 　ここまですべて定義を言い換えたような主張を書いたが，位相構造の観点で書いてみようと思う．
 ただ本人はまだはっきりと位相構造を理解していないので，その点は注意だ．
 
-　$\alpha$に収束する数列$\{ \alpha_n \}$は，$\alpha$と「近さ」で関係している．
-$\alpha$とどんなに近いところにも$\alpha_n$がいる．
+　$alpha$に収束する数列${alpha_n }$は，$alpha$と「近さ」で関係している．
+$alpha$とどんなに近いところにも$alpha_n$がいる．
 
 ## その他
 　この概念は，実数の大小，加減，距離が定義されることで扱えるもの．

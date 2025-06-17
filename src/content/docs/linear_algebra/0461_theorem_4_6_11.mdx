@@ -8,56 +8,42 @@ import { Card } from "@astrojs/starlight/components";
 import { LinkCard } from '@astrojs/starlight/components';
 
 <Card title="定理4.6.11">
-　$A$を$r$次正方行列，$D$を$s$次正方行列，$C$を$s \times r$行列とする．
+　$A$を$r$次正方行列，$D$を$s$次正方行列，$C$を$s times r$行列とする．
 $$
-\begin{vmatrix}
-A & O \\
-C & D \\
-\end{vmatrix}
+mat(delim: "|", A, O;
+C, D;)
 =
-|A|・|D|
+|A| dot |D|
 $$
-ここで，$O$はすべての成分が$0$からなる$r \times s$行列を表す．
+ここで，$O$はすべての成分が$0$からなる$r times s$行列を表す．
 </Card>
 
 ## 証明
 $$
-\begin{pmatrix}
-A & O \\
-C & D \\
-\end{pmatrix}
+mat(delim: "(", A, O;
+C, D;)
 =
-\begin{pmatrix}
-A & O \\
-O & E \\
-\end{pmatrix}
-\begin{pmatrix}
-E & O \\
-C & D \\
-\end{pmatrix}
-（Oは零行列，Eは単位行列）
+mat(delim: "(", A, O;
+O, E;)
+mat(delim: "(", E, O;
+C, D;)
+"（" O "は零行列，" E "は単位行列）"
 $$
-と分解できることと，$det(AB) = detA・detB$であることと，
+と分解できることと，$d e t(A B) = d e t A dot d e t B$であることと，
 $$
-\begin{vmatrix}
-A & O \\
-O & E \\
-\end{vmatrix}
-\begin{vmatrix}
-E & O \\
-C & D \\
-\end{vmatrix}
+mat(delim: "|", A, O;
+O, E;)
+mat(delim: "|", E, O;
+C, D;)
 =
-|A|・|D|
+|A| dot |D|
 $$
 から，
 $$
-\begin{vmatrix}
-A & O \\
-C & D \\
-\end{vmatrix}
+mat(delim: "|", A, O;
+C, D;)
 =
-|A|・|D|
+|A| dot |D|
 $$
 
 ## 演習問題

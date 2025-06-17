@@ -7,50 +7,50 @@ import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 
 <Card title="定義">
-　実数$\alpha = \langle A, A^{\prime} \rangle$において，
+　実数$alpha = angle.l A, A^prime angle.r$において，
 $$
--\alpha = \langle -A^{\prime}, -A \rangle, \space -A^{\prime} = \{ -r \space | \space r \in A^{\prime} \}, \space -A = \{ -r \space | \space r \in A \}
+-alpha = angle.l - A^prime, - A angle.r, - A^prime = {-r|r in A^prime }, - A = {-r|r in A}
 $$
 と定義する．
 </Card>
 
 <Card title="定理1.8（逆元）">
 $$
--\alpha + \alpha = \alpha + (-\alpha) = 0.
+-alpha + alpha = alpha +(-alpha) = 0 .
 $$
 </Card>
 
 ## 定理の主張
-　加法に関して，$-\alpha$は$\alpha$の逆元であるということ．
+　加法に関して，$-alpha$は$alpha$の逆元であるということ．
 
 ## 証明の考え方
-　$\alpha = a$が有理数のときは，有理数の計算なので明らか．
+　$alpha = a$が有理数のときは，有理数の計算なので明らか．
 
-　$\alpha$が無理数の場合を考える．
+　$alpha$が無理数の場合を考える．
 
-　$S = \{ r \in \mathbb{Q} \space | \space r < 0 \}$とおくと，$0 = \langle S, S^{\prime} \rangle$．$R = A + (-A^{\prime}) = \{ r + s \space | \space r \in A, s \in -A^{\prime} \}$とおくと，$\alpha + (-\alpha) = \langle R, R^{\prime} \rangle$．
+　$S = {r in QQ|r < 0}$とおくと，$0 = angle.l S, S^prime angle.r$．$R = A +(-A^prime) = {r + s|r in A, s in - A^prime }$とおくと，$alpha +(-alpha) = angle.l R, R^prime angle.r$．
 
 　$R = S$を示す．
 
 <Steps>
 
-1. $R \subset S$を示す．
+1. $R subset S$を示す．
 
-    　$r + s \in R, r \in A, s \in -A^{\prime}$とする．$-s \in A^{\prime}$なので，$r < -s$．よって，$r + s < 0$．すなわち，$r + s \in S$．
+    　$r + s in R, r in A, s in - A^prime$とする．$-s in A^prime$なので，$r < - s$．よって，$r + s < 0$．すなわち，$r + s in S$．
 
-2. $S \subset R$を示す．
+2. $S subset R$を示す．
 
-    　$t \in S$とする．$t = r + s, r \in A, s \in -A^{\prime}$なる有理数$r,s$が存在し，$t \in R$となることを示す．
+    　$t in S$とする．$t = r + s, r in A, s in - A^prime$なる有理数$r, s$が存在し，$t in R$となることを示す．
 
-    　$t < 0$なので，$-t > 0$である．有理数の稠密性により，$\frac{1}{m} < -t$を満たす自然数$m$がある．定理1.5より，この自然数$m$に対し，$r < \alpha < r + \frac{1}{m}$なる有理数$r$が存在する($\alpha$は無理数なので，右側不等式に等号はない．)．$r < \alpha$なので，$r \in A$．
+    　$t < 0$なので，$-t > 0$である．有理数の稠密性により，$1/m < - t$を満たす自然数$m$がある．定理1.5より，この自然数$m$に対し，$r < alpha < r + 1/m$なる有理数$r$が存在する($alpha$は無理数なので，右側不等式に等号はない．)．$r < alpha$なので，$r in A$．
 
-    　$s = t - r$とおく．すると，$-s = r - t > r + \frac{1}{m}$を満たすので，$-s > \alpha$となり，$-s \in A^{\prime}$．よって，$s \in -A^{\prime}$．
+    　$s = t - r$とおく．すると，$-s = r - t > r + 1/m$を満たすので，$-s > alpha$となり，$-s in A^prime$．よって，$s in - A^prime$．
 
 </Steps>
 
-　以上より，$t = r + s$を満たす有理数$r,s$が構成でき，$t \in R$となる．
+　以上より，$t = r + s$を満たす有理数$r, s$が構成でき，$t in R$となる．
 
 　したがって，$R = S$．
 
-（$-\alpha + \alpha = \alpha + (-\alpha)$は交換法則により成立する．）
+（$-alpha + alpha = alpha +(-alpha)$は交換法則により成立する．）
 

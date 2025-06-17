@@ -10,15 +10,13 @@ import { Card } from "@astrojs/starlight/components";
 
 <Card title="ヴァンデルモンドの行列式">
 $$
-\begin{vmatrix}
-   1 & 1 & \cdots & 1 \\
-   x_1 & x_2 & \cdots & x_n \\
-   x_1^2 & x_2^2 & \cdots & x_n^2 \\
-   \vdots & \vdots & & \vdots \\ 
-   x_1^{n-1} & x_2^{n-1} & & x_n^{n-1} \\
-\end{vmatrix}
+mat(delim: "|", 1, 1, dots.c, 1;
+   x_1, x_2, dots.c, x_n ;
+   x_1^2, x_2^2, dots.c, x_n^2 ;
+   dots.v, dots.v,, dots.v; 
+   x_1^(n - 1), x_2^(n - 1),, x_n^(n - 1);)
 =
-\prod_{1 \leq i < j \leq n} (x_j-x_i)
+product_(1 <= i < j <= n)(x_j - x_i)
 $$
 </Card>
 
@@ -26,138 +24,107 @@ $$
 $$
 A_k
 =
-\begin{pmatrix}
- 1 & 1 & \cdots & 1 \\
- x_{n-k+1} & x_{n-k+2} & \cdots & x_n \\
- x_{n-k+1}^2 & x_{n-k+2}^2 & \cdots & x_n^2 \\
- \vdots & \vdots & & \vdots \\
- x_{n-k+1}^{k-1} & x_{n-k+2}^{k-1} & \cdots & x_n^{k-1} \\
-\end{pmatrix}
+mat(delim: "(", 1, 1, dots.c, 1;
+ x_(n - k + 1), x_(n - k + 2), dots.c, x_n ;
+ x_(n - k + 1)^2, x_(n - k + 2)^2, dots.c, x_n^2 ;
+ dots.v, dots.v,, dots.v;
+ x_(n - k + 1)^(k - 1), x_(n - k + 2)^(k - 1), dots.c, x_n^(k - 1);)
 $$
 とおく．
 
-　$k=2$のとき，
+　$k = 2$のとき，
 $$
-\begin{align}
-|A_2|
+|A_2 |
 &=
-\begin{vmatrix}
-  1 & 1 \\
-  x_{n-1} & x_{n} \\
-\end{vmatrix} \\
+mat(delim: "|", 1, 1;
+  x_(n - 1), x_n ;) \
 &=
-\begin{vmatrix}
-  1 & 1 \\
-  0 & x_n - x_{n-1} \\
-\end{vmatrix} \\
+mat(delim: "|", 1, 1;
+  0, x_n - x_(n - 1);) \
 &=
-\prod_{n-1 \leq i < j \leq n} (x_j - x_i)
-\end{align}
+product_(n - 1 <= i < j <= n)(x_j - x_i)
 $$
 - (2)は行基本変形を行った．
-  - 1行目x($-x_{n-1}$)を2行目に加えた．
+  - 1行目x($-x_(n - 1)$)を2行目に加えた．
 - (3)は余因子展開を行った結果をヴァンでルモンドの行列式の結果に合わせた．
 
-　$k=3$のとき
+　$k = 3$のとき
 $$
-\begin{align}
-|A_3|
+|A_3 |
 &=
-\begin{vmatrix}
-  1 & 1 & 1 \\
-  x_{n-2} & x_{n-1} & x_{n} \\
-  x_{n-2}^2 & x_{n-1}^2 & x_{n}^2 \\
-\end{vmatrix} \\
+mat(delim: "|", 1, 1, 1;
+  x_(n - 2), x_(n - 1), x_n ;
+  x_(n - 2)^2, x_(n - 1)^2, x_n^2 ;) \
 &=
-\begin{vmatrix}
-  1 & 1 & 1 \\
-  1 & x_{n-1} & x_{n} \\
-  0 & x_{n-1}(x_{n-1} - x_{n-2}) & x_{n}(x_n - x_{n-2}) \\
-\end{vmatrix} \\
+mat(delim: "|", 1, 1, 1;
+  1, x_(n - 1), x_n ;
+  0, x_(n - 1)(x_(n - 1) - x_(n - 2)), x_n (x_n - x_(n - 2));) \
 &=
-\begin{vmatrix}
-  1 & 1 & 1 \\
-  0 & x_{n-1}-x_{n-2} & x_{n}-x_{n-2} \\
-  0 & x_{n-1}(x_{n-1} - x_{n-2}) & x_{n}(x_n - x_{n-2}) \\
-\end{vmatrix} \\
+mat(delim: "|", 1, 1, 1;
+  0, x_(n - 1) - x_(n - 2), x_n - x_(n - 2);
+  0, x_(n - 1)(x_(n - 1) - x_(n - 2)), x_n (x_n - x_(n - 2));) \
 &=
-\begin{vmatrix}
-  x_{n-1}-x_{n-2} & x_{n}-x_{n-2} \\
-  x_{n-1}(x_{n-1} - x_{n-2}) & x_{n}(x_n - x_{n-2}) \\
-\end{vmatrix} \\
+mat(delim: "|", x_(n - 1) - x_(n - 2), x_n - x_(n - 2);
+  x_(n - 1)(x_(n - 1) - x_(n - 2)), x_n (x_n - x_(n - 2));) \
 &=
-\prod_{n-2 < k \leq n}(x_k - x_{n-2})
-\begin{vmatrix}
-  1 & 1 \\
-  x_{n-1} & x_{n} \\
-\end{vmatrix} \\
+product_(n - 2 < k <= n)(x_k - x_(n - 2))
+mat(delim: "|", 1, 1;
+  x_(n - 1), x_n ;) \
 &=
-\prod_{n-2 < k \leq n}(x_k - x_{n-2}) |A_2| \\
+product_(n - 2 < k <= n)(x_k - x_(n - 2))|A_2 | \
 &=
-\prod_{n-2 \leq i < j \leq n}(x_j - x_i)
-\end{align}
+product_(n - 2 <= i < j <= n)(x_j - x_i)
 $$
 
 - (5)(6)は行基本変形を行った．
-  - 2行目x($-x_{n-2}$)を3行目に加えた．
-  - 1行目x($-x_{n-2}$)を2行目に加えた．
+  - 2行目x($-x_(n - 2)$)を3行目に加えた．
+  - 1行目x($-x_(n - 2)$)を2行目に加えた．
 - (7)は余因子展開を行った．
 - (8)は列基本変形を行った．
   - 列の共通因子を外に出した．
 - (10)はヴァンデルモンドの行列式の結果に合わせた．
 
-　$4 \leq k \leq n-1$のときも同じように計算すると，
+　$4 <= k <= n - 1$のときも同じように計算すると，
 $$
-|A_k| = \prod_{n-k+1 \leq i < j \leq n}(x_j - x_i)
+|A_k | = product_(n - k + 1 <= i < j <= n)(x_j - x_i)
 $$
 となる．特に
 $$
-|A_{n-1}| = \prod_{2 \leq i < j \leq n}(x_j - x_i)
+|A_(n - 1)| = product_(2 <= i < j <= n)(x_j - x_i)
 $$
 となる．
 
-　いよいよ$k=n$のときを示す．
+　いよいよ$k = n$のときを示す．
 $$
-\begin{align}
-|A_n|
+|A_n |
 &=
-\begin{vmatrix}
-  1 & 1 & \cdots & 1 \\
-  x_{1} & x_{2} & \cdots & x_{n} \\
-  x_{1}^2 & x_{2}^2 & \cdots & x_{n}^2 \\
-  \vdots & \vdots & & \vdots \\ 
-  x_{1}^{n-1} & x_{2}^{n-1} & \cdots & x_{n}^{n-1} \\
-\end{vmatrix} \\
+mat(delim: "|", 1, 1, dots.c, 1;
+  x_1, x_2, dots.c, x_n ;
+  x_1^2, x_2^2, dots.c, x_n^2 ;
+  dots.v, dots.v,, dots.v; 
+  x_1^(n - 1), x_2^(n - 1), dots.c, x_n^(n - 1);) \
 &=
-\begin{vmatrix}
-  1 & 1 & \cdots & 1 \\
-  0 & x_{2}-x_1 & \cdots & x_{n}-x_1 \\
-  0 & x_{2}(x_2-x_1) & \cdots & x_{n}(x_n-x_1) \\
-  \vdots & \vdots & & \vdots \\ 
-  0 & x_{2}^{n-2}(x_2-x_1) & \cdots & x_{n}^{n-2}(x_n-x_1) \\
-\end{vmatrix} \\
+mat(delim: "|", 1, 1, dots.c, 1;
+  0, x_2 - x_1, dots.c, x_n - x_1 ;
+  0, x_2 (x_2 - x_1), dots.c, x_n (x_n - x_1);
+  dots.v, dots.v,, dots.v; 
+  0, x_2^(n - 2)(x_2 - x_1), dots.c, x_n^(n - 2)(x_n - x_1);) \
 &=
-\begin{vmatrix}
-  x_{2}-x_1 & \cdots & x_{n}-x_1 \\
-  x_{2}(x_2-x_1) & \cdots & x_{n}(x_n-x_1) \\
-  \vdots & & \vdots \\ 
-  x_{2}^{n-2}(x_2-x_1) & \cdots & x_{n}^{n-2}(x_n-x_1) \\
-\end{vmatrix} \\
+mat(delim: "|", x_2 - x_1, dots.c, x_n - x_1 ;
+  x_2 (x_2 - x_1), dots.c, x_n (x_n - x_1);
+  dots.v,, dots.v; 
+  x_2^(n - 2)(x_2 - x_1), dots.c, x_n^(n - 2)(x_n - x_1);) \
 &=
-\prod_{2 \leq k \leq n}(x_k - x_1) 
-\begin{vmatrix}
-  1 & 1 & \cdots & 1 \\
-  x_{2} & x_{3} & \cdots & x_{n} \\
-  x_{2}^2 & x_{3}^2 & \cdots & x_{n}^2 \\
-  \vdots & \vdots & & \vdots \\ 
-  x_{2}^{n-2} & x_{3}^{n-2} & \cdots & x_{n}^{n-2} \\
-\end{vmatrix} \\
+product_(2 <= k <= n)(x_k - x_1) 
+mat(delim: "|", 1, 1, dots.c, 1;
+  x_2, x_3, dots.c, x_n ;
+  x_2^2, x_3^2, dots.c, x_n^2 ;
+  dots.v, dots.v,, dots.v; 
+  x_2^(n - 2), x_3^(n - 2), dots.c, x_n^(n - 2);) \
 &=
-\prod_{2 \leq k \leq n}(x_k - x_1) |A_{n-1}| \\
+product_(2 <= k <= n)(x_k - x_1)|A_(n - 1)| \
 &=
-\prod_{1 \leq i < j \leq n}(x_j - x_i) \\
-
-\end{align}
+product_(1 <= i < j <= n)(x_j - x_i) \
 $$
 
 - (12)は行基本変形を行った．

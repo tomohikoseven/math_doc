@@ -10,24 +10,24 @@ import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/linear_algebra/0200/線形写像と1次結合の行列表示の関係.webp";
 
 <Card title="定理6.3.3">
-　$ V, W $をベクトル空間，$ f \colon V \to W $ を線形写像とする．
+　$V, W$をベクトル空間，$f colon V -> W$ を線形写像とする．
 
-　$V$の $m$ 個のベクトル $\boldsymbol{u}_{1}, \cdots , \boldsymbol{u}_{m}$，$V$ の$n$ 個のベクトル$\boldsymbol{v}_{1}, \cdots , \boldsymbol{v}_{n}$ と $m \times n$ 行列 $A = (a_{ij})$ が，次の関係を満たしているとする．
+　$V$の $m$ 個のベクトル $bold(u)_1, dots.c, bold(u)_m$，$V$ の$n$ 個のベクトル$bold(v)_1, dots.c, bold(v)_n$ と $m times n$ 行列 $A = (a_(i j))$ が，次の関係を満たしているとする．
 $$
-(\boldsymbol{v}_{1} \cdots \boldsymbol{v}_{n}) = (\boldsymbol{u}_{1} \cdots \boldsymbol{u}_{m}) A
+(bold(v)_1 dots.c bold(v)_n) = (bold(u)_1 dots.c bold(u)_m) A
 $$
 すなわち，
 $$
-\boldsymbol{v}_{j} = \sum_{i=1}^{m}a_{ij}\boldsymbol{u}_{i} \quad ( j = 1, \cdots ,n)
+bold(v)_j = sum_(i = 1)^m a_(i j) bold(u)_i quad(j = 1, dots.c, n)
 $$
 そのとき，
 $$
-( f(\boldsymbol{v}_{1}) \cdots f(\boldsymbol{v}_{n}) ) = ( f(\boldsymbol{u}_{1}) \cdots f(\boldsymbol{u}_{m}) )A 
+(f(bold(v)_1) dots.c f(bold(v)_n)) = (f(bold(u)_1) dots.c f(bold(u)_m)) A
 $$
 </Card>
 
 ## 定理の主張
-　ベクトル空間 $ V,W $ の間に線形写像が定義されている．このとき，$ V $の2つのベクトルの組の間に行列 $A$倍の関係があれば、これらに対応する$W$の２つのベクトルの組の間にも行列$A$倍の関係がある．2つのベクトルの組が変われば，行列も変わる．
+　ベクトル空間 $V, W$ の間に線形写像が定義されている．このとき，$V$の2つのベクトルの組の間に行列 $A$倍の関係があれば、これらに対応する$W$の２つのベクトルの組の間にも行列$A$倍の関係がある．2つのベクトルの組が変われば，行列も変わる．
 
 <ImageWithCaption
     src={image_01}
@@ -43,14 +43,14 @@ $$
     <dt>仮定A1</dt>
     <dd>
     $$
-    f \colon V \to W は線形写像である
-    $$
+f colon V -> W "は線形写像である"
+$$
     </dd>
     <dt>仮定A2</dt>
     <dd>
     $$
-    (\boldsymbol{v}_{1} \cdots \boldsymbol{v}_{n}) = (\boldsymbol{u}_{1} \cdots \boldsymbol{u}_m)A \space すなわち，\boldsymbol{v}_{j} = \sum_{i=1}^{m}a_{ij}\boldsymbol{u}_{i} 
-    $$
+(bold(v)_1 dots.c bold(v)_n) = (bold(u)_1 dots.c bold(u)_m) A "すなわち，" bold(v)_j = sum_(i = 1)^m a_(i j) bold(u)_i
+$$
     </dd>
 </dl>
 
@@ -58,25 +58,23 @@ $$
     <dt>結論B</dt>
     <dd>
     $$
-    ( f(\boldsymbol{v}_{1}) \cdots f(\boldsymbol{v}_{m}) ) = ( f(\boldsymbol{u}_{1}) \cdots f(\boldsymbol{u}_{m}) )A
-    $$
+(f(bold(v)_1) dots.c f(bold(v)_m)) = (f(bold(u)_1) dots.c f(bold(u)_m)) A
+$$
     </dd>
 </dl>
 
 ## 証明の考え方
-　（結論B）は$\text{２つのベクトル}$が等しいことを主張している．これを示すには、成分同士が等しいことを示せばよい。すなわち、
+　（結論B）は$"２つのベクトル"$が等しいことを主張している．これを示すには、成分同士が等しいことを示せばよい。すなわち、
 $$
-f(\boldsymbol{v}_{j}) = \sum_{i=1}^{m} a_{ij}f(\boldsymbol{u}_{i} ) \quad (j = 1, \cdots , n) \tag{B1}
+f(bold(v)_j) = sum_(i = 1)^m a_(i j) f(bold(u)_i) quad(j = 1, dots.c, n)   [(B 1)]
 $$
 を示す．
 
-（仮定A2）より，$ \boldsymbol{v}_{j} = \sum_{i=1}^{m} a_{ij}\boldsymbol{u}_{i} $であることと，（仮定A1）の$f$の線形性から，
+（仮定A2）より，$bold(v)_j = sum_(i = 1)^m a_(i j) bold(u)_i$であることと，（仮定A1）の$f$の線形性から，
 $$
-\begin{aligned}
-f(\boldsymbol{v}_{j}) &= f(a_{1j}\boldsymbol{u}_{1}+a_{2j}\boldsymbol{u}_{2}+\cdots+a_{mj}\boldsymbol{u}_{m}) \\
-&= f( a_{1j}\boldsymbol{u}_{1}) + f( a_{2j}\boldsymbol{u}_{2}) + \cdots + f(a_{mj}\boldsymbol{u}_{m} ) \\
-&= f( a_{1j}\boldsymbol{u}_{1}) + f( a_{2j}\boldsymbol{u}_{2}) + \cdots + f(a_{mj}\boldsymbol{u}_{m} ) \\
-&= \sum_{i = 1}^{m}a_{ij}f(\boldsymbol{u}_{i}) \quad (j = 1, \cdots , n)
-\end{aligned}
+f(bold(v)_j) &= f(a_(1 j) bold(u)_1 + a_(2 j) bold(u)_2 + dots.c + a_(m j) bold(u)_m) \
+&= f(a_(1 j) bold(u)_1) + f(a_(2 j) bold(u)_2) + dots.c + f(a_(m j) bold(u)_m) \
+&= f(a_(1 j) bold(u)_1) + f(a_(2 j) bold(u)_2) + dots.c + f(a_(m j) bold(u)_m) \
+&= sum_(i = 1)^m a_(i j) f(bold(u)_i) quad(j = 1, dots.c, n)
 $$
 よって，（B1）が示せた．したがって，（結論B）が示せた．

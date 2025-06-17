@@ -28,30 +28,34 @@ figcaption {
     padding: 0 6px; 
 }
 
-/* ========= */
-/* Katex     */
-/* ========= */
-/*KaTeXの日本語フォント設定*/
-/*本文と一致させる*/
-.cjk_fallback {
-    font-family: var(--__sl-font); 
-    font-size: var(--sl-text-body); 
+/* ====================== */
+/* Typst     */
+/* ====================== */
+
+/* 数式のスタイル */
+svg.typst-doc {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0rem; 
+  margin-top: 0rem; 
 }
-/*KaTeXブロックのモバイル表示対応*/
-/*画面からはみ出すときは横スクロールが表示される*/
-.katex-html {
-	overflow-y: hidden;
-	overflow-x: auto;
+
+/* displayスタイルの数式の場合 */
+:not(p,li,strong) > svg.typst-doc {
+  padding-top: 1rem; 
 }
-/*行内数式の前後にスペースを入れる*/
-span.katex::before, span.katex::after {
-	content: " ";
+
+
+/* rehype-typstが数式を画像にするときに一緒にビルドするHTML内のCSSのsvg {...}が原因． */
+.starlight-aside__icon, /* AstroのIconが表示されない問題を対処 */
+svg[class^="astro-"],   /* StarlightのSNSアイコンが表示されない問題を対処 */
+svg.icon.label-icon,    /* 表示テーマ(light or dark)の選択アイコンが表示されない問題を対処 */
+svg.caret,              /* 目次および表示テーマの選択可を示す矢印(>やv)が表示されない問題を対処 */
+svg[class^=" astro-"] { /* Iconコンポーネントが表示されない問題を対処．astroの前に半角スペースがある． */
+  fill: currentColor;
 }
-/* \sqrtや\sumの表示がされない問題の対応 */
-/* https://github.com/withastro/starlight/issues/2744 */
-.katex-html svg {
-  height: inherit;
-}
+
 
 /* ====================== */
 /* 問い合わせフォーム     */

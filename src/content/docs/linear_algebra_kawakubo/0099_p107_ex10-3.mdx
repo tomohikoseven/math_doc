@@ -9,53 +9,41 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題10(3)">
 　次の等式を証明せよ．
 $$
-\begin{vmatrix}
-a+b & a & \cdots & a \\
-a & a+b & \cdots & a \\
-\vdots & \vdots & & \vdots \\
-a & a & \cdots & a+b \\
-\end{vmatrix}
+mat(delim: "|", a + b, a, dots.c, a;
+a, a + b, dots.c, a;
+dots.v, dots.v,, dots.v;
+a, a, dots.c, a + b;)
 =
-(na+b)b^{n-1}
+(n a + b) b^(n - 1)
 $$
 　(ただし，$n$は行列の次数)
 </Card>
 
 ## 解答
 $$
-\begin{align}
-\begin{vmatrix}
-a+b & a & \cdots & a \\
-a & a+b & \cdots & a \\
-\vdots & \vdots & & \vdots \\
-a & a & \cdots & a+b \\
-\end{vmatrix}
+mat(delim: "|", a + b, a, dots.c, a;
+a, a + b, dots.c, a;
+dots.v, dots.v,, dots.v;
+a, a, dots.c, a + b;)
 &=
-\begin{vmatrix}
-na+b & na+b & \cdots & na+b \\
-a & a+b & \cdots & a \\
-\vdots & \vdots & & \vdots \\
-a & a & \cdots & a+b \\
-\end{vmatrix} \\
+mat(delim: "|", n a + b, n a + b, dots.c, n a + b;
+a, a + b, dots.c, a;
+dots.v, dots.v,, dots.v;
+a, a, dots.c, a + b;) \
 &=
-(na+b)
-\begin{vmatrix}
-1 & 1 & \cdots & 1 \\
-a & a+b & \cdots & a \\
-\vdots & \vdots & & \vdots \\
-a & a & \cdots & a+b \\
-\end{vmatrix} \\
+(n a + b)
+mat(delim: "|", 1, 1, dots.c, 1;
+a, a + b, dots.c, a;
+dots.v, dots.v,, dots.v;
+a, a, dots.c, a + b;) \
 &=
-(na+b)
-\begin{vmatrix}
-1 & 1 & \cdots & 1 \\
-0 & b & \cdots & 0 \\
-\vdots & \vdots & & \vdots \\
-0 & 0 & \cdots & b \\
-\end{vmatrix} \\
+(n a + b)
+mat(delim: "|", 1, 1, dots.c, 1;
+0, b, dots.c, 0;
+dots.v, dots.v,, dots.v;
+0, 0, dots.c, b;) \
 &=
-(na+b)b^{n-1}
-\end{align}
+(n a + b) b^(n - 1)
 $$
 
 - (1)は1行目に2行目以下すべての行を加えた．

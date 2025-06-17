@@ -10,16 +10,16 @@ import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/linear_algebra/0500/線形写像の単射性とベクトル空間の関係（定理7.3.2）.webp";
 
 <Card title="定理7.3.2">
-　線形写像$f \colon V \to W$が単射であるための必要十分条件は
+　線形写像$f colon V -> W$が単射であるための必要十分条件は
 $$
-\text{Ker}f = \{ \boldsymbol{0} \} ．
+"Ker" f = {bold(0)} "．"
 $$
 </Card>
 
 ## 定理の主張
-　線形写像$f$の単射性を知りたいならば，$\text{Ker}f$の元を調べよ．$\text{Ker}f$の元（ベクトル）が$\boldsymbol{0}$（ゼロベクトル）のみであれば，$f$は単射である．
+　線形写像$f$の単射性を知りたいならば，$"Ker" f$の元を調べよ．$"Ker" f$の元（ベクトル）が$bold(0)$（ゼロベクトル）のみであれば，$f$は単射である．
 
-　線形写像$f$により，$\boldsymbol{0} \in W$に対応する$V$の元が$\boldsymbol{0}$（ゼロベクトル）のみなら，$f$は単射であるということ．
+　線形写像$f$により，$bold(0) in W$に対応する$V$の元が$bold(0)$（ゼロベクトル）のみなら，$f$は単射であるということ．
 
 <ImageWithCaption
     src={image_01}
@@ -31,27 +31,27 @@ $$
 
 ## 証明の考え方
 <Steps>
-1. $f\text{は単射}\implies \text{Ker}f = \{ \boldsymbol{0} \}\space $を示す．
+1. $f "は単射" ==> "Ker" f = {bold(0)}$を示す．
 
-    　$f$は単射であると仮定する．このとき，$\text{Ker}f \subset \{ \boldsymbol{0} \}$ かつ $ \{ \boldsymbol{0} \} \subset \text{Ker}f $であることを示せばよい．
+    　$f$は単射であると仮定する．このとき，$"Ker" f subset {bold(0)}$ かつ ${bold(0)} subset "Ker" f$であることを示せばよい．
 
-    **$\{ \boldsymbol{0} \} \subset \text{Ker}f $を示す**.
+    **${bold(0)} subset "Ker" f$を示す**.
 
     　これは明らか．
 
-    **$\text{Ker}f \subset \{ \boldsymbol{0} \} $を示す**.
+    **$"Ker" f subset {bold(0)}$を示す**.
 
-    　$\boldsymbol{x} \in \text{Ker}f \implies \boldsymbol{x} \in \{ \boldsymbol{0} \} $であることを示す．
+    　$bold(x) in "Ker" f ==> bold(x) in {bold(0)}$であることを示す．
 
-    　$\boldsymbol{x} \in \text{Ker}f $とする．このとき，$\text{Ker}f$の定義より$f(\boldsymbol{x})=\boldsymbol{0}$が成り立つ．仮定より$f$は単射なので，$f(\boldsymbol{x}) = \boldsymbol{0}$を満たす$\boldsymbol{x}$は１つで$\boldsymbol{0}$である．よって，$\boldsymbol{x} \in \{ \boldsymbol{0} \}$．したがって，$\text{Ker}f \subset \{ \boldsymbol{0} \} $．
+    　$bold(x) in "Ker" f$とする．このとき，$"Ker" f$の定義より$f(bold(x)) = bold(0)$が成り立つ．仮定より$f$は単射なので，$f(bold(x)) = bold(0)$を満たす$bold(x)$は１つで$bold(0)$である．よって，$bold(x) in {bold(0)}$．したがって，$"Ker" f subset {bold(0)}$．
 
-    　以上から，$\text{Ker}f = \{ \boldsymbol{0} \}$．
+    　以上から，$"Ker" f = {bold(0)}$．
 
-2. $\text{Ker}f = \{ \boldsymbol{0} \} \implies f\text{は単射}$を示す．
+2. $"Ker" f = {bold(0)} ==> f "は単射"$を示す．
 
-    　単射の定義より，$f(\boldsymbol{x}) = f(\boldsymbol{y}) \implies \boldsymbol{x} = \boldsymbol{y} \space$を示せばよい．
+    　単射の定義より，$f(bold(x)) = f(bold(y)) ==> bold(x) = bold(y)$を示せばよい．
 
-    　$f(\boldsymbol{x}) = f(\boldsymbol{y}) $とする．線形性より式を変形して$f(\boldsymbol{x-y}) = \boldsymbol{0}$．$\text{Ker}f = \{ \boldsymbol{0} \}$より，$\boldsymbol{x-y=0}$．よって，$\boldsymbol{x=y}$．したがって，$f$は単射である．
+    　$f(bold(x)) = f(bold(y))$とする．線形性より式を変形して$f(bold(x - y)) = bold(0)$．$"Ker" f = {bold(0)}$より，$bold(x - y = 0)$．よって，$bold(x = y)$．したがって，$f$は単射である．
 
 </Steps>
 
@@ -60,5 +60,5 @@ $$
 ## 復習ノート
 - 次元定理とどのように関連しているだろうか．
 - 次元定理とは何だっただろうか．
-- $\text{Ker}f$の定義は何か．
+- $"Ker" f$の定義は何か．
 - $f$が単射ではない場合は$V, W$の対応関係をどのように図示できるだろうか．

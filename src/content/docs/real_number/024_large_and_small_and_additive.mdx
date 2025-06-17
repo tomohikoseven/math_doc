@@ -8,13 +8,13 @@ import { Steps } from '@astrojs/starlight/components';
 
 <Card title="定理1.9">
 $$
-\alpha \le \gamma, \space \beta \le \delta \space \text{ならば} \space \alpha + \beta \le \gamma + \delta．
+alpha <= gamma, beta <= delta "ならば" alpha + beta <= gamma + delta "．"
 $$
 </Card>
 
 <Card title="定理1.10">
 $$
-\alpha < \gamma, \space \beta \le \delta \space \text{ならば} \space \alpha + \beta < \gamma + \delta．
+alpha < gamma, beta <= delta "ならば" alpha + beta < gamma + delta "．"
 $$
 </Card>
 
@@ -25,20 +25,20 @@ $$
 　定理1.9は定理1.10を含む．定理1.9を証明できれば，定理1.10も証明できる．
 
 　定理1.9は以下の４つを示せばよい．そのうち，(2)と(4)は定理1.10にあたる．
-- (1)$\alpha = \gamma$かつ$\beta = \delta$ ならば，$\alpha + \beta = \gamma + \delta$．
-- (2)$\alpha < \gamma$かつ$\beta = \delta$ならば，$\alpha + \beta < \gamma + \delta$．
-- (3)$\alpha = \gamma$かつ$\beta < \delta$ならば，$\alpha + \beta < \gamma + \delta$．
-- (4)$\alpha < \gamma$かつ$\beta < \delta$ならば，$\alpha + \beta < \gamma + \delta$．
+- (1)$alpha = gamma$かつ$beta = delta$ ならば，$alpha + beta = gamma + delta$．
+- (2)$alpha < gamma$かつ$beta = delta$ならば，$alpha + beta < gamma + delta$．
+- (3)$alpha = gamma$かつ$beta < delta$ならば，$alpha + beta < gamma + delta$．
+- (4)$alpha < gamma$かつ$beta < delta$ならば，$alpha + beta < gamma + delta$．
 
-　$\alpha = \langle A, A^{\prime} \rangle$，$\beta = \langle B, B^{\prime} \rangle$，$\gamma = \langle C, C^{\prime} \rangle$，$\delta = \langle D, D^{\prime} \rangle$とおく．
+　$alpha = angle.l A, A^prime angle.r$，$beta = angle.l B, B^prime angle.r$，$gamma = angle.l C, C^prime angle.r$，$delta = angle.l D, D^prime angle.r$とおく．
 
-　$\alpha = \gamma, \beta = \delta$とする．すると，$A = C, B=D$．よって$A+B = C+D$．したがって，$\alpha + \beta = \gamma + \delta$．
+　$alpha = gamma, beta = delta$とする．すると，$A = C, B = D$．よって$A + B = C + D$．したがって，$alpha + beta = gamma + delta$．
 
-　$\alpha < \gamma, \beta = \delta$とする．すると，$A \subsetneq C, B = D$．このとき，$A + B \subsetneq C + D$．したがって，$\alpha + \beta < \gamma + \delta$．
+　$alpha < gamma, beta = delta$とする．すると，$A subset.neq C, B = D$．このとき，$A + B subset.neq C + D$．したがって，$alpha + beta < gamma + delta$．
 
-　$\alpha = \gamma, \beta < \delta$のときも同様．
+　$alpha = gamma, beta < delta$のときも同様．
 
-　$\alpha < \gamma, \beta < \delta$とする．すると，$A \subsetneq C, B \subsetneq D$．このとき，$A + B \subsetneq C + D$．したがって，$\alpha + \beta < \gamma + \delta$．
+　$alpha < gamma, beta < delta$とする．すると，$A subset.neq C, B subset.neq D$．このとき，$A + B subset.neq C + D$．したがって，$alpha + beta < gamma + delta$．
 
 　以上より，定理1.9が成り立つ．同時に定理1.10も成り立つ．
 
@@ -46,28 +46,28 @@ $$
 　上記定理が証明できたことで，以下がすぐにわかる．いや，まあまあ悩んだ．
 
 <Card title="系1">
-　不等式$\alpha > \beta$は$\alpha - \beta > 0$と同値である．
+　不等式$alpha > beta$は$alpha - beta > 0$と同値である．
 </Card>
 <Card title="系2">
-　不等式$\alpha < 0$は$-\alpha > 0$と同値である．
+　不等式$alpha < 0$は$-alpha > 0$と同値である．
 </Card>
 
 ## 系1，2の主張
 　実数においても有理数と同様に，左辺および右辺へ符号を変えて移行できるものと考えてよい．
 
 ### 系1の証明の考え方
-　$\alpha > \beta$と仮定する．$- \beta = -\beta$なので，定理1.10から$\alpha - \beta > \beta -\beta = 0$．よって，$\alpha - \beta > 0$．
+　$alpha > beta$と仮定する．$-beta = - beta$なので，定理1.10から$alpha - beta > beta - beta = 0$．よって，$alpha - beta > 0$．
 
-　$\alpha - \beta > 0$と仮定する．$\beta = \beta$なので，定理1.10から$\alpha - \beta + \beta > 0 + \beta = \beta$．よって，$\alpha > \beta$．
+　$alpha - beta > 0$と仮定する．$beta = beta$なので，定理1.10から$alpha - beta + beta > 0 + beta = beta$．よって，$alpha > beta$．
 
-　以上により，$\alpha > \beta$と$\alpha - \beta > 0$は同値．
+　以上により，$alpha > beta$と$alpha - beta > 0$は同値．
 
 ### 系2の証明の考え方
-　$\alpha < 0$と仮定する．$-\alpha = -\alpha$なので，定理1.10から$0 = \alpha -\alpha < -\alpha$．よって，$0 < -\alpha$．
+　$alpha < 0$と仮定する．$-alpha = - alpha$なので，定理1.10から$0 = alpha - alpha < - alpha$．よって，$0 < - alpha$．
 
-　$-\alpha > 0$と仮定する．$\alpha = \alpha$なので，定理1.10から$-\alpha + \alpha > 0 + \alpha$．よって，$0 > \alpha$．
+　$-alpha > 0$と仮定する．$alpha = alpha$なので，定理1.10から$-alpha + alpha > 0 + alpha$．よって，$0 > alpha$．
 
-　以上により，$\alpha < 0$と$-\alpha > 0$は同値．
+　以上により，$alpha < 0$と$-alpha > 0$は同値．
 
 ## 復習ノート
 - [定理1.1](/real_number/011_large_and_small/)が4つの条件に関係していることがわかるか．

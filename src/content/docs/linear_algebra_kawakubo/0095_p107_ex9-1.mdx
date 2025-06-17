@@ -9,49 +9,31 @@ import { Card } from "@astrojs/starlight/components";
 <Card title="問題9(1)">
 　$A, B$が$n$次正方行列のとき，次の等式を証明せよ．
 $$
-\begin{vmatrix}
-A & B \\
-B & A \\
-\end{vmatrix}
+mat(delim: "|", A, B;
+B, A;)
 =
-\begin{vmatrix}
-A + B
-\end{vmatrix}
-\begin{vmatrix}
-A - B
-\end{vmatrix}
+mat(delim: "|", A + B)
+mat(delim: "|", A - B)
 $$
 </Card>
 
 ## 解答
 $$
-\begin{align}
-\begin{vmatrix}
-A & B \\
-B & A \\
-\end{vmatrix}
+mat(delim: "|", A, B;
+B, A;)
 &=
-\begin{vmatrix}
-A+B & B \\
-A+B & A \\
-\end{vmatrix} \\
+mat(delim: "|", A + B, B;
+A + B, A;) \
 &=
-\begin{vmatrix}
-A+B & B \\
-O & A-B \\
-\end{vmatrix} \\
+mat(delim: "|", A + B, B;
+O, A - B;) \
 &=
-\begin{vmatrix}
-A + B
-\end{vmatrix}
-\begin{vmatrix}
-A - B
-\end{vmatrix}
-\end{align}
+mat(delim: "|", A + B)
+mat(delim: "|", A - B)
 $$
 
 - (1)はブロックとしての2列目をブロックとしての1列目に加える．
   - 逆にわかりづらいかもしれないがもっと詳細に説明すると，
-  ブロックとしての2列目の中の$i$列目をブロックとしての1列目の$i$列目に加えることを$1からn$まで繰り返す．
+  ブロックとしての2列目の中の$i$列目をブロックとしての1列目の$i$列目に加えることを$1 "から" n$まで繰り返す．
 - (2)はブロックとしての2行目にブロックとしての1行目x(-1)を加える．
 - (3)は[定理4.6.11](/linear_algebra/0461_theorem_4_6_11/)を使って，行列式を等式変形した．
