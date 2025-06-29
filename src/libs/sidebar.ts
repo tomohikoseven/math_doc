@@ -17,7 +17,7 @@ export const LINEAR_ALGEBRA = {
     };
   
 export const LINEAR_ALGEBRA_KAWAKUBO = {
-      label: '線形代数学（川久保勝夫著）',
+      label: '線形代数学 演習',
       collapsed: true,
       autogenerate: {
         directory: 'linear_algebra_kawakubo',
