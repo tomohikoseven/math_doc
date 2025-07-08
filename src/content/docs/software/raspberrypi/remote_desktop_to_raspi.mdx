@@ -1,0 +1,44 @@
+---
+title: ラズパイへのリモートデスクトップ接続を試みたときの青い画面解消の１つの方法
+description: ラズベリーパイにxrdpをインストールし，メインPC(Windows)からリモートデスクトップ接続を試みたが青い画面のままでログインできなかった．それを解消する（正常に接続）ために私が行ったことを書きます．
+lastUpdated: 2025-07-08
+---
+
+　オーナー様のご厚意で，月額無料で自宅マンションにjcomのインターネット回線が整備された．ラズパイの接続先をjcomに変更して，メインPCからそのラズパイへリモートデスクトップ接続しようとしたところ，**なぜか青い画面のまま**．
+
+## この記事の内容は何か
+　青い画面にならず，正常にリモートデスクトップ接続できるために私が何をしたかを書いている．
+
+　RealVNC viewerでリモートログインはできた．しかし，動作がかなりヌルっとしていた．使えないので，**どうしてもリモートデスクトップ接続したかった**．
+
+## 何をしたら正常に接続できたか．
+　**ttyグループにユーザを追加した**．
+
+```bash
+sudo usermod -a -G tty your_username
+```
+
+## なぜそれをしようとしたのか．
+　最終的に`~/.xorgxrdp.10.log`を確認するに至った（何かあやしさを感じた）．そのファイル内のエラーを確認し，Geminiに聞いたら，権限についてのエラーが出力されているから，ttyグループにユーザを追加してみよと言われた．実際のエラーは以下．
+```bash {6-6}
+$ grep -E 'EE|WW|Error|Failed' ~/.xorgxrdp.10.log
+[   786.095] (WW) The directory "/usr/share/fonts/X11/cyrillic" does not exist.
+[   786.103] (EE) systemd-logind: failed to take device /dev/dri/card1: Operation not permitted
+[   786.104] (EE) systemd-logind: failed to take device /dev/dri/card0: Operation not permitted
+[   786.180] (EE) 
+[   786.180] (EE) parse_vt_settings: Cannot open /dev/tty0 (Permission denied)
+[   786.180] (EE) 
+[   786.180] (EE) 
+[   786.180] (EE) Please also check the log file at ".xorgxrdp.10.log" for additional information.
+[   786.180] (EE) 
+[   786.180] (WW) xf86CloseConsole: KDSETMODE failed: Bad file descriptor
+[   786.180] (WW) xf86CloseConsole: VT_GETMODE failed: Bad file descriptor
+[   786.182] (EE) Server terminated with error (1). Closing log file.
+```
+
+　ここに至るまではxrdpの再インストールやxrdp-sesman.logのエラーメッセージによる対処案の実行など，色々やった．半日くらいは時間を費やした．
+
+　videoグループへのユーザ追加はすでにしていた．インターネット回線が変わる前はリモートデスクトップ接続できていたから．ttyグループへのユーザ追加でまだ接続できなかったら，videoグループへのユーザ追加もやってみてよいかも．
+
+## 効率的な問題解決方法はGeminiに問うこと
+　自分の個性を発揮することが目的ではなく，一般的なことで詰まってしまった場合，生成AIに問うのは非常に有効である．
