@@ -5,7 +5,16 @@ export const REAL_NUMBER = {
         directory: 'real_number',
         collapsed: true,
       }
-    }; 
+    };
+
+export const MCGRAW_HILL_CALCULUS_UPPER = {
+      label: 'マグロウヒル大学演習シリーズ 微積分（上）',
+      collapsed: true,
+      autogenerate : {
+        directory: 'McGraw_Hill_College_Exercise_Series_Calculus_Upper',
+        collapsed: true,
+      }
+    };
     
 export const LINEAR_ALGEBRA = {
       label: '線形代数',
