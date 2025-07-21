@@ -1,0 +1,29 @@
+---
+title: P72 問69 (第3章 数列)
+description: P72 問69 （マグロウヒル大学演習シリーズ 微積分(上)）を解く．
+lastUpdated: 2025-07-21
+---
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問69">
+$$
+abs(u_n) <= abs(v_n) "かつ" lim_(n->oo) v_n "ならば，" lim_(n->oo) u_n = 0 "であることを証明せよ．"
+$$
+</Card>
+
+
+## 証明の方針
+　収束の定義さえわかっていれば，普通に解くことはできると思います．また，絶対値 $abs(u_n)$ を外せば，はさみうちの原理から解くことも可能です．
+
+## 解答
+　はさみうちの原理を使って示します．
+
+　まず，問の仮定から $ -abs(v_n) <= u_n <= abs(v_n) $ となります．よって，$lim_(n->oo) abs(v_n) = 0$ であればよいです．
+
+　$ lim_(n->oo) v_n = 0$ から $lim_(n->oo) abs(v_n) = 0$ は示せます．
+$$
+abs(abs(v_n) -0) = abs(abs(v_n)) = abs(v_n) = abs(v_n -0) < epsilon
+$$
+だからです（簡単にですが，示せました）．
+
+　極限の加法から，$lim_(n->oo) -abs(v_n) = lim_(n->oo) (-1)*lim_(n->oo) abs(v_n) = -1 * 0 = 0$．したがって，はさみうちの原理より，$lim_(n->oo) u_n = 0$．
