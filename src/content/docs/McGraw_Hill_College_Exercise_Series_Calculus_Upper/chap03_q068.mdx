@@ -1,0 +1,25 @@
+---
+title: P72 問68 (第3章 数列)
+description: P72 問68 （マグロウヒル大学演習シリーズ 微積分(上)）を解く．
+lastUpdated: 2025-07-22
+---
+import { Card } from "@astrojs/starlight/components";
+
+<Card title="問68">
+$$
+"すべての" n >= N "に対して，" a_n >= b_n "かつ" lim_(n->oo) a_n = A, lim_(n->oo) b_n = B "ならば，" A >= B "を証明せよ．"
+$$
+</Card>
+
+## 証明の方針
+　$A - B >= 0$ を示し，$A >= B$ であると証明します．
+
+## 解答
+　$A - B >= 0$ であることを示し，それはつまり，$A >= B$ であることを示す．
+
+　仮定より，$a_n, b_n$ は収束するから，$a_n - b_n$ も収束する．仮定から，$n >= N$ において，$a_n - b_n >= 0$ だから，$lim_(n->oo) (a_n - b_n) >= 0$．すると $a_n, b_n$ は収束するから，極限の加法と合わせて，
+$$
+lim_(n->oo) (a_n - b_n) = lim_(n->oo) a_n - lim_(n->oo) b_n = A - B >= 0.
+$$
+
+　よって，$A - B >= 0$．したがって，$A >= B$．
