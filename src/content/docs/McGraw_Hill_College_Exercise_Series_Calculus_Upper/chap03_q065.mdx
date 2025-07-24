@@ -1,0 +1,54 @@
+---
+title: P71 問65 (第3章 数列)
+description: P71 問65 （マグロウヒル大学演習シリーズ 微積分(上)）を解く．
+lastUpdated: 2025-07-24
+---
+import { Card } from "@astrojs/starlight/components";
+import ImageWithCaption from "/src/components/ImageWithCaption.astro";
+import image_01 from "/src/assets/mcgraw_hill/chap03/q065.jpg";
+
+<Card title="問65">
+$$
+lim_(n->oo) n sin(1/n) = 1 " を証明せよ。"
+$$
+</Card>
+
+## 証明の方針
+　本問は、数列の章の1つ問題として提示されています。つまり、数列の極限の問題です。
+したがって、微分や $lim_(x->0) sin(x)/x = 1 $ を既知とせず、はさみうちの原理で解きます。
+
+　はさみうちの原理には不等式が必要となります。それには $sin(x) <= x <= tan(x)$ を使います。
+
+
+## 解答
+　はさみうちの原理を使って、極限を求めます。そのためには不等式が必要ですが、
+単位円を使った面積による不等式を導出します。$0 < 1/n < pi/2$なので、
+下図のとおり第一象限で考えてよいです。
+
+<ImageWithCaption
+    src={image_01}
+    alt="図 単位円を使った不等式の導出"
+    width="304"
+    height="188"
+    figcaption="図 単位円を使った不等式の導出"
+/>
+
+以下の3つの面積を比較します。
+- 三角形OAB：$(1/2) sin(1/n)$
+- 扇形OAB：$1/(2n)$
+- 三角形OAC：$(1/2) tan(1/n)$
+
+図から、面積の大小関係は明らかに 三角形OAB < 扇形OAB < 三角形OAC です。つまり、
+$$
+(1/2) sin(1/n) < 1/(2n) < (1/2) tan(1/n)
+$$
+これを計算していくと、
+$$
+ sin(1/n) < 1/n < tan(1/n) 
+&<=> 1 < (1/n) / sin(1/n) < tan(1/n) / sin(1/n) \
+&<=> 1 < (1/n) / sin(1/n) < 1/cos(1/n) \
+&<=> cos(1/n) < n sin(1/n) < 1
+$$
+となります。
+
+　$lim_(n->oo) cos(1/n) = 1$ だから、はさみうちの原理より $lim_(n->oo) n sin(1/n) = 1$。
