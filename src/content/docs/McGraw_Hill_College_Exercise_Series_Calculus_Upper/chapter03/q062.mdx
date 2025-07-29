@@ -9,43 +9,40 @@ import { Card } from "@astrojs/starlight/components";
 　$lim_(n->oo) abs(u_(n+1)/u_n) = abs(a) < 1$ ならば $lim_(n->oo) u_n = 0$ であることを証明せよ．
 </Card>
 
+　$u_(n)$ とその前後の値が $abs(a) < 1$ の間隔に収まっていくなら，数列$u_n$ は$0$ に収まっていく．
 
 ## 証明の方針
-　これは級数の収束判定で用いられるダランベールの収束判定法の証明の一部と同じ考え方を使います。
 
-1.  $lim_(n->oo) abs(u_(n+1)/u_n) = abs(a) < 1$ という条件から、十分大きな $n$ に対して $abs(u_(n+1)/u_n)$ が1より小さい定数 $r$ で上から抑えられることを示します。
-2.  具体的には、$abs(a) < r < 1$ となる $r$ を選びます。極限の定義から、ある番号 $N$ が存在し、$n >= N$ ならば $abs(u_(n+1)/u_n) < r$ となることを利用します。
-3.  この不等式を繰り返し使うと、$abs(u_n)$ が公比 $r$ の等比数列 $C dot r^n$ で抑えられることがわかります。
-4.  $0 < r < 1$ なので $lim_(n->oo) r^n = 0$ です。
-5.  はさみうちの原理を使って $lim_(n->oo) abs(u_n) = 0$ を導き、そこから $lim_(n->oo) u_n = 0$ を示します。
+- はさみうちの原理を使って $lim_(n->oo) abs(u_n) = 0$ を導き、問39(まだ未作成)から $lim_(n->oo) u_n = 0$ が示せる．
+- はさみうちの原理で使う不等式は，$lim_(n->oo) abs(u_(n+1)/u_n) = abs(a) < 1$ という条件から導く．
+    - 十分大きな $n$ に対して $abs(u_(n+1)/u_n)$ が1より小さい定数 $r$ で上から抑えられることを示す．
 
 ## 解答
-　$lim_(n->oo) abs(u_(n+1)/u_n) = abs(a)$ であり、仮定より $abs(a) < 1$ です。
+　はさみうちの原理を使って $lim_(n->oo) abs(u_n) = 0$ 示す．
 
-　ここで、$abs(a) < r < 1$ を満たす実数 $r$ を1つ選びます。（例えば $r = (abs(a) + 1) / 2$ とすればよいです。）
+　仮定より，任意の正の数 $epsilon$ において，ある正の数 $delta(epsilon) $ が存在し，
+$$
+ n > delta(epsilon) => abs( abs(u_(n+1)/u_n) - abs(a) ) < epsilon
+$$
+が成り立つ．絶対値を外すことで，
+$$
+ abs(u_(n+1)/u_n) - abs(a) < epsilon \
+ <=> abs(u_(n+1)/u_n) < abs(a) + epsilon
+$$
+となる．ここで $abs(a) < 1$ なので，$ abs(a) + epsilon_o < 1$ となる $epsilon_o$ を選べる(イプシロンデルタ論法はそういうことであるから．)．そのとき，$N_o = delta(epsilon_o)$ とおくと，
+$$
+ n > N_o => abs(u_(n+1)/u_n) < abs(a) + epsilon_o (< 1)
+$$
+となる．つまり，
+$$
+ n > N_o => abs(u_(n+1)) < (abs(a) + epsilon_o)abs(u_n)
+$$
+である．$n > N_o$ で成り立つので，
+$$
+ abs(u_(n+1)) < (abs(a) + epsilon_o)^(n-N_o+1) abs(u_(N_o))
+$$
+となる．
 
-　$epsilon = r - abs(a)$ とおくと、$epsilon > 0$ です。
-数列の極限の定義から、この $epsilon$ に対して、ある自然数 $N$ が存在し、$n >= N$ を満たすすべての $n$ について、
-$$
-abs(abs(u_(n+1)/u_n) - abs(a)) < epsilon
-$$
-が成り立ちます。この不等式は、
-$$
-abs(u_(n+1)/u_n) - abs(a) < epsilon \
-<=> abs(u_(n+1)/u_n) < abs(a) + epsilon = abs(a) + (r - abs(a)) = r
-$$
-を意味します。つまり、$n >= N$ のとき $abs(u_(n+1)/u_n) < r$ が成り立ちます。
+　$abs(a) + epsilon_o < 1$ なので，$lim_(n->oo) (abs(a) + epsilon_o)^(n-N_o+1) abs(u_(N_o)) = 0 $．$0 < abs(u_(n+1)) $ でもあるので，はさみうちの原理から $lim_(n->oo) abs(u_n) = 0$ が得られる．
 
-　$n > N$ のとき、この関係を繰り返し用いると、
-$$
-abs(u_n) = abs( u_n / u_(n-1) dot u_(n-1) / u_(n-2) dot dots dot u_(N+1) / u_N dot u_N ) \
-= abs(u_n / u_(n-1)) dot abs(u_(n-1) / u_(n-2)) dot dots dot abs(u_(N+1) / u_N) dot abs(u_N) \
-< r dot r dot dots dot r dot abs(u_N) = r^(n-N) dot abs(u_N)
-$$
-となります。ここで $C = abs(u_N) / r^N$ とおくと、$C$ は正の定数であり、$abs(u_n) < C dot r^n$ と書けます。
-
-　したがって、$n > N$ において $0 <= abs(u_n) < C dot r^n$ が成り立ちます。
-$0 < r < 1$ なので $lim_(n->oo) r^n = 0$ であり、よって $lim_(n->oo) C dot r^n = 0$ です。
-
-　はさみうちの原理より、$lim_(n->oo) abs(u_n) = 0$ が得られます。
-$-abs(u_n) <= u_n <= abs(u_n)$ であり、$lim_(n->oo) abs(u_n) = 0$ かつ $lim_(n->oo) -abs(u_n) = 0$ なので、再びはさみうちの原理より $lim_(n->oo) u_n = 0$ となります。
+　したがって，問39から$ lim_(n->oo) u_n = 0 $ となる．
