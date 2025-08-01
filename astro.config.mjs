@@ -15,7 +15,8 @@ import { REAL_NUMBER,
           ABOUT_MY_WEBSITE,
           HIGH_SCHOOL_MATH,
           LINEAR_ALGEBRA_KAWAKUBO,
-          MCGRAW_HILL_CALCULUS_UPPER } from './src/libs/sidebar';
+          MCGRAW_HILL_CALCULUS_UPPER,
+          OTHER_THAN_MATH } from './src/libs/sidebar';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -66,6 +67,7 @@ export default defineConfig({
       MATH_DIALY,
       HIGH_SCHOOL_MATH,
       SOFTWARE, 
+      OTHER_THAN_MATH, 
       ABOUT_MY_WEBSITE
     ]
   }), 

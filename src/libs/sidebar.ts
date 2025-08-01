@@ -79,3 +79,12 @@ export const HIGH_SCHOOL_MATH = {
     collapsed: true,
   }
 };
+
+export const OTHER_THAN_MATH = {
+  label: 'その他',
+  collapsed: true,
+  autogenerate: {
+    directory: 'other_than_math',
+    collapsed: true,
+  }
+};
