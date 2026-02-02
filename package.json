@@ -12,9 +12,9 @@
   "dependencies": {
     "@astrojs/check": "^0.9.6",
     "@astrojs/sitemap": "^3.7.0",
-    "@astrojs/starlight": "^0.37.4",
+    "@astrojs/starlight": "^0.37.5",
     "@myriaddreamin/rehype-typst": "^0.6.0",
-    "astro": "5.16.15",
+    "astro": "5.17.1",
     "astro-cloudinary": "1.3.5",
     "astro-d2": "^0.8.1",
     "astro-embed": "^0.12.0",
