@@ -3,6 +3,7 @@ import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
 import emoji from 'remark-emoji';
 import rehypeTypst from '@myriaddreamin/rehype-typst';
+import { typst } from 'astro-typst';
 import d2 from 'astro-d2';
 
 import starlightLinksValidator from 'starlight-links-validator';
@@ -72,6 +73,9 @@ export default defineConfig({
       OTHER_THAN_MATH,
       ABOUT_MY_WEBSITE
     ]
+  }),
+  typst({
+    target: (id) => "svg"
   }),
   d2(),
   sitemap()],
