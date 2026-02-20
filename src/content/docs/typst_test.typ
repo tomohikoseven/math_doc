@@ -1,10 +1,10 @@
+#import "../../libs/template.typ": template
+#show: template
+
 #metadata((
   title: "Typst Test",
   description: "Typst testing in Starlight"
 )) <frontmatter>
-
-#set text(font: "Noto Sans CJK JP", size: 11pt)
-#set par(leading: 1em, spacing: 2em, justify: true)
 
 = Typst Test
 
