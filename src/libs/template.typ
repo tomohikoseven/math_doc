@@ -14,6 +14,10 @@
     )
   }
 
+  // リンクのスタイル設定（青字・下線）
+  show link: set text(fill: blue)
+  show link: underline
+
   body
 }
 
