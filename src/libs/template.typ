@@ -14,6 +14,15 @@
     )
   }
 
+  // 見出し3：左側にアクセント線
+  show heading.where(level: 3): it => {
+    block(
+      inset: (left: 10pt, top: 4pt, bottom: 4pt),
+      stroke: (left: 3pt + rgb("#0ea5e9")), // note-box等と同じ青色
+      it
+    )
+  }
+
   // リンクのスタイル設定（青字・下線）
   show link: set text(fill: blue)
   show link: underline
