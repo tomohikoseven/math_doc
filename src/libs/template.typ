@@ -2,14 +2,14 @@
 #let template(body) = {
   set text(font: "Noto Sans CJK JP", size: 12pt)
   set page(margin: 0.5cm, height: auto)
-  set par(leading: 1em, spacing: 1.5em, justify: true)
-  show heading: set block(above: 1.4em, below: 1em)
+  set par(leading: 1.25em, spacing: 1.75em, justify: true)
+  show heading: set block(above: 1.8em, below: 1.2em)
 
   // 見出し2の下に線を引く設定
   show heading.where(level: 2): it => {
     stack(
       it,
-      v(0.7em),
+      v(0.8em),
       line(length: 100%, stroke: 0.5pt + black),
     )
   }
@@ -56,7 +56,7 @@
 #let plain-box(content) = {
   block(
     width: 100%,
-    inset: 10pt,
+    inset: 12pt,
     stroke: 0.5pt + rgb("#e5e7eb"),
     fill: rgb("#fafafa"),
     radius: 3pt,
