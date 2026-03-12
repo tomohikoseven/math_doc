@@ -1,6 +1,6 @@
 // 文書全体の基本レイアウトを設定する関数
 #let template(body) = {
-  set text(font: "Noto Sans CJK JP", size: 12pt)
+  set text(font: "Noto Sans CJK JP", size: 13pt)
   set page(margin: 0.5cm, height: auto)
   set par(leading: 1.25em, spacing: 1.75em, justify: true)
   show heading: set block(above: 1.8em, below: 1.2em)
@@ -83,7 +83,7 @@
       )
       #v(0em)
       // 内容部分：通常のテキストスタイルに戻す
-      #set text(size: 1.1em, weight: "bold", fill: rgb("#0369a1"))
+      #set text(size: 1.0em, weight: "bold", fill: rgb("#0369a1"))
       #content
     ]
   )
