@@ -1,5 +1,5 @@
-#import "../../../libs/template.typ": template, important-point, plain-box, note-box, supplement-box
-#show: template
+#import "../../../libs/theme.typ": theme, important-point, plain-box, note-box, supplement-box
+#show: theme
 
 #metadata((
   title: "（学習メモ）結果を出すための「勉強以前」の戦略：自分に合った学習法をデザインする",

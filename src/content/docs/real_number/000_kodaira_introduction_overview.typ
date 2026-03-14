@@ -1,5 +1,5 @@
-#import "../../../libs/template.typ": template, theorem-box, circ, important-point, note-box, supplement-box, plain-box
-#show: template
+#import "../../../libs/theme.typ": theme, theorem-box, circ, important-point, note-box, supplement-box, plain-box
+#show: theme
 
 #metadata((
   title: "解析入門Ⅰ（小平邦彦著）の全体像 — 「平均値の定理」へと至る論理の階梯",

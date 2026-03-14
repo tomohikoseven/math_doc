@@ -1,5 +1,5 @@
-﻿#import "../../../libs/template.typ": template, important-point, plain-box, note-box, supplement-box
-#show: template
+#import "../../../libs/theme.typ": theme, important-point, plain-box, note-box, supplement-box
+#show: theme
 
 #metadata((
   title: "（学習メモ）マーク・ミネルヴィニの成長株投資法",

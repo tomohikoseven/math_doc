@@ -1,5 +1,5 @@
-#import "../../libs/template.typ": template
-#show: template
+#import "../../libs/theme.typ": theme
+#show: theme
 
 #metadata((
   title: "Typst Test",

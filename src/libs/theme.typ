@@ -1,5 +1,5 @@
 // 文書全体の基本レイアウトを設定する関数
-#let template(body) = {
+#let theme(body) = {
   set text(font: "Noto Sans CJK JP", size: 13pt)
   set page(margin: 0.5cm, height: auto)
   set par(leading: 1.25em, spacing: 1.75em, justify: true)

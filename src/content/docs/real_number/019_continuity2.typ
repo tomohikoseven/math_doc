@@ -1,5 +1,5 @@
-#import "../../../libs/template.typ": template, theorem-box, circ, important-point, note-box, supplement-box
-#show: template
+#import "../../../libs/theme.typ": theme, theorem-box, circ, important-point, note-box, supplement-box
+#show: theme
 
 #metadata((
   title: "実数の連続性2（定理1.6）",
