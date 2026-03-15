@@ -64,6 +64,18 @@
   )
 }
 
+// ソースコードやコマンド表示用のボックス（中央揃えなし）
+#let code-box(content) = {
+  block(
+    width: 100%,
+    inset: 12pt,
+    stroke: 0.5pt + rgb("#e5e7eb"),
+    fill: rgb("#fafafa"),
+    radius: 3pt,
+    content
+  )
+}
+
 // Astroの :::note 風のデザイン（important-pointのスタイルをベースに、タイトルと内容を分離）
 #let note-box(title: [POINT], content) = {
   block(
