@@ -103,18 +103,10 @@ export const MATHEMATICS_GROUP = {
       },
     },
     {
-      label: '線形代数（理論）',
+      label: '線形代数',
       collapsed: true,
       autogenerate: {
         directory: 'linear_algebra',
-        collapsed: true,
-      },
-    },
-    {
-      label: '線形代数（演習）',
-      collapsed: true,
-      autogenerate: {
-        directory: 'linear_algebra_kawakubo',
         collapsed: true,
       },
     },
