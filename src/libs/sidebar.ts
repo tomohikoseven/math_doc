@@ -66,7 +66,7 @@ export const ABOUT_MY_WEBSITE = {
       label: 'サイトについて',
       collapsed: true,
       autogenerate: {
-        directory: 'mywebsite',
+        directory: 'about',
         collapsed: true,
       }
     };
@@ -98,7 +98,7 @@ export const MATHEMATICS_GROUP = {
       label: '実数論',
       collapsed: true,
       autogenerate: {
-        directory: 'real_number',
+        directory: 'math/real_number',
         collapsed: true,
       },
     },
@@ -106,7 +106,7 @@ export const MATHEMATICS_GROUP = {
       label: '線形代数',
       collapsed: true,
       autogenerate: {
-        directory: 'linear_algebra',
+        directory: 'math/linear_algebra',
         collapsed: true,
       },
     },
@@ -114,7 +114,7 @@ export const MATHEMATICS_GROUP = {
       label: '微積分 演習',
       collapsed: true,
       autogenerate: {
-        directory: 'McGraw_Hill_College_Exercise_Series_Calculus_Upper',
+        directory: 'math/calculus',
         collapsed: true,
       },
     },
@@ -122,7 +122,7 @@ export const MATHEMATICS_GROUP = {
       label: '高校数学',
       collapsed: true,
       autogenerate: {
-        directory: 'high_school_math',
+        directory: 'math/high_school',
         collapsed: true,
       },
     },
@@ -130,7 +130,7 @@ export const MATHEMATICS_GROUP = {
       label: '数学エッセイ',
       collapsed: true,
       autogenerate: {
-        directory: 'other',
+        directory: 'math/essays',
         collapsed: true,
       },
     },
