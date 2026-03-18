@@ -9,15 +9,10 @@ import d2 from 'astro-d2';
 import starlightLinksValidator from 'starlight-links-validator';
 import { GOOGLE_ANALYTICS } from './src/libs/head';
 import {
-  REAL_NUMBER,
-  LINEAR_ALGEBRA,
-  MATHEMATICS,
+  MATHEMATICS_GROUP,
   MATH_DIALY,
   SOFTWARE,
   ABOUT_MY_WEBSITE,
-  HIGH_SCHOOL_MATH,
-  LINEAR_ALGEBRA_KAWAKUBO,
-  MCGRAW_HILL_CALCULUS_UPPER,
   OTHER_THAN_MATH
 } from './src/libs/sidebar';
 
@@ -62,15 +57,10 @@ export default defineConfig({
       { icon: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/nagasetomohiko/' },
     ],
     sidebar: [
-      REAL_NUMBER,
-      MCGRAW_HILL_CALCULUS_UPPER,
-      LINEAR_ALGEBRA,
-      LINEAR_ALGEBRA_KAWAKUBO,
-      MATHEMATICS,
+      MATHEMATICS_GROUP,
       MATH_DIALY,
-      HIGH_SCHOOL_MATH,
-      SOFTWARE,
       OTHER_THAN_MATH,
+      SOFTWARE,
       ABOUT_MY_WEBSITE
     ]
   }),

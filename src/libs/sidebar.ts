@@ -81,10 +81,66 @@ export const HIGH_SCHOOL_MATH = {
 };
 
 export const OTHER_THAN_MATH = {
-  label: 'その他',
+  label: '読書・学習・ライフ',
   collapsed: true,
   autogenerate: {
     directory: 'other_than_math',
     collapsed: true,
   }
+};
+
+// ─── 数学カテゴリをまとめたグループ ───────────────────────────
+export const MATHEMATICS_GROUP = {
+  label: '数学',
+  collapsed: false,
+  items: [
+    {
+      label: '実数論',
+      collapsed: true,
+      autogenerate: {
+        directory: 'real_number',
+        collapsed: true,
+      },
+    },
+    {
+      label: '線形代数（理論）',
+      collapsed: true,
+      autogenerate: {
+        directory: 'linear_algebra',
+        collapsed: true,
+      },
+    },
+    {
+      label: '線形代数（演習）',
+      collapsed: true,
+      autogenerate: {
+        directory: 'linear_algebra_kawakubo',
+        collapsed: true,
+      },
+    },
+    {
+      label: '微積分 演習',
+      collapsed: true,
+      autogenerate: {
+        directory: 'McGraw_Hill_College_Exercise_Series_Calculus_Upper',
+        collapsed: true,
+      },
+    },
+    {
+      label: '高校数学',
+      collapsed: true,
+      autogenerate: {
+        directory: 'high_school_math',
+        collapsed: true,
+      },
+    },
+    {
+      label: '数学エッセイ',
+      collapsed: true,
+      autogenerate: {
+        directory: 'other',
+        collapsed: true,
+      },
+    },
+  ],
 };
