@@ -84,7 +84,7 @@ export const OTHER_THAN_MATH = {
   label: '読書・学習・ライフ',
   collapsed: true,
   autogenerate: {
-    directory: 'other_than_math',
+    directory: 'learning',
     collapsed: true,
   }
 };
