@@ -6,6 +6,7 @@ import rehypeTypst from '@myriaddreamin/rehype-typst';
 import { typst } from 'astro-typst';
 import d2 from 'astro-d2';
 
+import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightLinksValidator from 'starlight-links-validator';
 import { GOOGLE_ANALYTICS } from './src/libs/head';
 import {
@@ -32,7 +33,37 @@ export default defineConfig({
     head: [
       ...GOOGLE_ANALYTICS,
     ],
-    plugins: [starlightLinksValidator()],
+    plugins: [
+      starlightLinksValidator(),
+      starlightSidebarTopics([
+        {
+          label: '数学',
+          link: '/math/real_number/',
+          icon: 'open-book',
+          items: MATHEMATICS_GROUP.items,
+        },
+        {
+          label: '読書・学習・ライフ',
+          link: '/learning/0500_improve_memory/',
+          icon: 'sun',
+          items: [OTHER_THAN_MATH],
+        },
+        {
+          label: '数学日誌',
+          link: '/diary/202501/',
+          icon: 'pencil',
+          items: [MATH_DIALY],
+        },
+        {
+          label: 'Software',
+          link: '/software/zexample/',
+          icon: 'laptop',
+          items: [SOFTWARE],
+        }
+      ], {
+        exclude: ['/typst_test', '/typst_test_simple', '/thank_you_for_your_inquiry', '/index', '/about/**/*']
+      })
+    ],
     title: '数学の主張',
     components: {
       // オーバーライド
@@ -55,13 +86,6 @@ export default defineConfig({
       { icon: 'github', label: 'GitHub', href: 'https://github.com/tomohikoseven' },
       { icon: 'x.com', label: 'X', href: 'https://x.com/tomohikoseven' },
       { icon: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/nagasetomohiko/' },
-    ],
-    sidebar: [
-      MATHEMATICS_GROUP,
-      MATH_DIALY,
-      OTHER_THAN_MATH,
-      SOFTWARE,
-      ABOUT_MY_WEBSITE
     ]
   }),
   typst({
