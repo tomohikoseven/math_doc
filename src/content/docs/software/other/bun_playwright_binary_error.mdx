@@ -1,0 +1,89 @@
+---
+title: BunでPlaywrightをバイナリ化した際の「Cannot find package」エラーの解決策
+description: Bunの--compile機能でPlaywrightをバイナリ化した際に発生する「Cannot find package」エラーの解決策を、技術的な背景を含めて解説します。
+lastUpdated: true
+next: false
+prev: false
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Bunの `bun build --compile` 機能は、JavaScriptを実行可能な単一バイナリに固めてくれる非常に便利な機能です。しかし、PlaywrightやPuppeteerなどの複雑なライブラリを組み込み、かつ **WindowsでビルドしてLinuxで動かす（クロスコンパイル）** 場合、特有のパス解決エラーに直面することがあります。
+
+今回は、その原因と具体的な回避策を紹介します。
+
+## 1. 発生するエラー
+
+Windows上で `--target=bun-linux-x64` を指定してビルドしたバイナリをLinuxで実行した際、以下のようなエラーが発生します。
+
+<Aside type="danger" title="実行時のエラーメッセージ">
+```text
+error: Cannot find package 'C:\Users\YourName\Documents\project\node_modules\playwright-core\package.json' from '/$bunfs/root/your-binary'
+```
+</Aside>
+
+Linuxで動かしているはずなのに、なぜか **ビルドしたマシンのWindowsの絶対パス** を探しに行ってしまい、実行に失敗します。
+
+## 2. 原因：ビルド時のパスリーク
+
+この問題の原因は、主に以下の2点にあります。
+
+- **絶対パスの埋め込み**: Playwright（および `playwright-core`）は、実行時に自身の `package.json` を読み込んでバージョン確認などを行う挙動があります。Bunのコンパイラがクロスコンパイルを行う際、このパス解決が「ビルド時の絶対パス」としてバイナリ内に固定されてしまうことがあります。
+- **仮想ファイルシステム（$bunfs）の解決失敗**: 本来、Bunは依存関係をバイナリ内部の仮想ファイルシステムに閉じ込めようとしますが、一部のライブラリ（Playwrightのラッパーなど）を経由した動的な require は、この仕組みを回避してホストOSのファイルシステムを直接参照しようとしてしまいます。
+
+## 3. 解決策：外部依存化（External）
+
+最も確実な解決策は、問題となるライブラリを **バイナリに含めず、実行環境の node_modules を参照させる** ことです。
+
+<Steps>
+1. **ビルドコマンドの修正**
+
+   `package.json` のビルドスクリプトに `--external` フラグを追加し、Playwright 関連をバンドル対象から除外します。
+
+   ```json title="package.json"
+   {
+     "scripts": {
+       "build": "bun build ./index.js --compile --target=bun-linux-x64 --external playwright --external playwright-core --external electron --outfile bld/my-app"
+     }
+   }
+   ```
+
+2. **実行環境での準備**
+
+   バイナリが「外部のライブラリ」を探しに行くようになったため、実行する Linux 環境側で依存ライブラリをインストールします。
+
+   ```bash
+   # バイナリと同じディレクトリで実行
+   npm install playwright-core@1.58.2
+   ```
+
+   :::note
+   バージョンはビルド時に使用したものと合わせるのが安全です。
+   :::
+
+3. **ブラウザの用意**
+
+   Playwright が使用するブラウザ本体を、実行環境にインストールします。すでにインストール済みの場合は不要です。
+
+   ```bash
+   npx playwright install chromium
+   ```
+</Steps>
+
+<Aside type="tip" title="さらなる工夫：コードの直接参照">
+ライブラリの階層を浅くするため、コード内でも直接 `playwright-core` を呼ぶように書き換えると、Bunのバンドルがより安定します。
+
+```javascript
+// Before
+const { chromium } = require('playwright');
+
+// After
+const { chromium } = require('playwright-core');
+```
+</Aside>
+
+## まとめ
+
+Bun の `--compile` は強力ですが、ファイルシステムに深く依存する巨大なライブラリをクロスコンパイルする場合は、**「すべてを1つに固める」のではなく「コアロジックだけを固め、重いライブラリは外部に置く」** というハイブリッドな構成にすることで、パス問題をスマートに解決できます。
+
+同じエラーでお困りの方は、ぜひ `--external` フラグを試してみてください。
