@@ -13,7 +13,6 @@ import {
   MATHEMATICS_GROUP,
   MATH_DIALY,
   SOFTWARE,
-  ABOUT_MY_WEBSITE,
   OTHER_THAN_MATH
 } from './src/libs/sidebar';
 
