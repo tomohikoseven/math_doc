@@ -1,0 +1,48 @@
+---
+title: 基本的な積分の公式
+description: すべての積分計算の土台となる基本的な不定積分の公式をまとめます。
+lastUpdated: true
+---
+
+　ここでは、すべての積分計算の土台となる基本的な公式をまとめる（積分定数 $C$ は省略）。
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+<div style={{ textAlign: "left" }}>
+
+| 関数 | 積分結果 |
+| :--- | :--- |
+| $integral x^n d x$ | $display(x^(n+1)/(n+1)) quad (n != -1)$ |
+| $integral 1/x d x$ | $log abs(x)$ |
+| $integral sin x d x$ | $-cos x$ |
+| $integral cos x d x$ | $sin x$ |
+| $integral tan x d x$ | $-log abs(cos x) \ = log abs(sec x)$ |
+| $integral cot x d x$ | $log abs(sin x)$ |
+| $integral sec x d x$ | $log abs(sec x + tan x) \ = log abs(tan(display(x/2 + pi/4)))$ |
+| $integral csc x d x$ | $log abs(csc x - cot x) \ = log abs(tan(display(x/2)))$ |
+| $integral sec^2 x d x$ | $tan x$ |
+| $integral csc^2 x d x$ | $-cot x$ |
+| $integral sec x tan x d x$ | $sec x$ |
+| $integral csc x cot x d x$ | $-csc x$ |
+| $integral a^x d x$ | $display(a^x / (log a)) quad a > 0, a != 1$ |
+| $integral e^x d x$ | $e^x$ |
+| $integral sinh x d x$ | $cosh x$ |
+| $integral cosh x d x$ | $sinh x$ |
+| $integral tanh x d x$ | $log (cosh x)$ |
+| $integral coth x d x$ | $log abs(sinh x)$ |
+| $integral sech^2 x d x$ | $tanh x$ |
+| $integral csch^2 x d x$ | $-coth x$ |
+| $integral sech x tanh x d x$ | $-sech x$ |
+| $integral csch x coth x d x$ | $-csc x$ |
+| $integral display((d x) / sqrt(a^2-x^2))$ | $sin^(-1)(display(x/a))$ または $-cos^(-1)(display(x/a))$ |
+| $integral display((d x) / sqrt(x^2 plus.minus a^2))$ | $log abs(x + sqrt(x^2 plus.minus a^2))$ |
+| $integral display((d x) / (x^2+a^2))$ | $display(1/a) tan^(-1)(display(x/a))$ または $display(-1/a) cot^(-1)(display(x/a))$ |
+| $integral display((d x) / (x^2-a^2))$ | $display(1/(2a)) log abs(display((x-a)/(x+a)))$ |
+| $integral display((d x) / (x sqrt(a^2 plus.minus x^2)))$ | $display(1/a) log abs(display(x/(a + sqrt(a^2 plus.minus x^2))))$ |
+| $integral display((d x) / (x sqrt(x^2-a^2)))$ | $display(1/a) sec^(-1)(display(x/a))$ または $display(1/a) cos^(-1)(display(a/x))$ |
+| $integral sqrt(x^2 plus.minus a^2) d x$ | $display(x/2)sqrt(x^2 plus.minus a^2) plus.minus display(a^2/2)log abs(x + sqrt(x^2 plus.minus a^2))$ |
+| $integral sqrt(a^2 - x^2) d x$ | $display(x/2) sqrt(a^2-x^2) plus.minus display(a^2/2) sin^(-1)(display(x/a))$ |
+| $integral e^(a x) sin(b x) d x$ | $display(e^(a x)/(a^2+b^2)) (a sin(b x) - b cos(b x))$ |
+| $integral e^(a x) cos(b x) d x$ | $display(e^(a x)/(a^2+b^2)) (a cos(b x) + b sin(b x))$ |
+
+</div>
+</div>
