@@ -6,12 +6,11 @@
   title: "定理4.14(定積分の積分変数の変換)",
   description: "定積分における積分変数の変換が元の定積分と同等であることを示す．",
   lastUpdated: true,
-  draft: true,
 )) <frontmatter>
 
 　定積分における変数変換（置換積分）の公式を与える定理である。関数 $x = phi(t)$ によって、定積分の積分変数を $x$ から $t$ へと変換し、対応する積分範囲で計算できることを示している。
 
-#theorem-box(title: "定理4.14")[
+#theorem-box(title: "定理4.14")[ 
     $alpha, beta, alpha != beta, $ を$J$に属する2点とし，$a = phi(alpha), b = phi(beta)$ とおけば，
     $ integral_a^b f(x) d x = integral_alpha^beta f(phi(t)) phi'(t) d t $
 ]
