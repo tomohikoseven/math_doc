@@ -17,6 +17,13 @@ import {
 } from './src/libs/sidebar';
 
 import sitemap from '@astrojs/sitemap';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// .typファイルへのリンクを自動的に除外リストに登録する
+const typstExcludes = fs.readdirSync('src/content/docs', { recursive: true })
+  .filter(file => typeof file === 'string' && file.endsWith('.typ'))
+  .map(file => '/' + file.replace(/\.typ$/, '/').replace(/\\/g, '/'));
 
 // https://astro.build/config
 export default defineConfig({
@@ -33,7 +40,11 @@ export default defineConfig({
       ...GOOGLE_ANALYTICS,
     ],
     plugins: [
-      starlightLinksValidator(),
+      starlightLinksValidator({
+        exclude: [
+          ...typstExcludes
+        ]
+      }),
       starlightSidebarTopics([
         {
           label: '数学',
