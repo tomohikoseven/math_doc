@@ -3,7 +3,10 @@ name: Deploy to Ninja Homepage
 on:
   push:
     branches:
-      - main  # mainブランチにpushされたときに実行
+      - main
+  schedule:
+    - cron: '0 15 * * *' # 日本時間 0:00 (毎日実行)
+  workflow_dispatch: # 手動実行を有効化
 
 jobs:
   deploy:
@@ -41,8 +44,12 @@ jobs:
     - name: Install dependencies
       run: npm install --force
 
-    - name: Build the project
+    - name: Build with Astro
       run: npm run build
+      env:
+        GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+        PUBLIC_GOOGLE_CALENDAR_ID: ${{ secrets.PUBLIC_GOOGLE_CALENDAR_ID }}
+
 
     - name: Deploy to Ninja Homepage
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
