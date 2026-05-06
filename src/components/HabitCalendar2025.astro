@@ -22,7 +22,7 @@
     </div>
     
     <div class="calendar-scroll-wrapper">
-      <div class="month-labels" style="display: grid; grid-template-columns: repeat(53, var(--cell-size)); grid-gap: var(--cell-gap);">
+      <div class="month-labels" style="display: grid; grid-template-columns: repeat(53, var(--cell-size)); gap: var(--cell-gap);">
         <div class="month-label" style="grid-column-start: 1;">Jan</div>
         <div class="month-label" style="grid-column-start: 5;">Feb</div>
         <div class="month-label" style="grid-column-start: 9;">Mar</div>
@@ -36,7 +36,7 @@
         <div class="month-label" style="grid-column-start: 44;">Nov</div>
         <div class="month-label" style="grid-column-start: 49;">Dec</div>
       </div>
-      <div class="calendar-grid" style="display: grid; grid-template-columns: repeat(53, var(--cell-size)); grid-template-rows: repeat(7, var(--cell-size)); grid-gap: var(--cell-gap); grid-auto-flow: column;">
+      <div class="calendar-grid" style="display: grid; grid-template-columns: repeat(53, var(--cell-size)); grid-template-rows: repeat(7, var(--cell-size)); gap: var(--cell-gap); grid-auto-flow: column;">
         <div class="day-cell level-0" data-date="2024-12-29" data-time="0分"></div>
         <div class="day-cell level-0" data-date="2024-12-30" data-time="0分"></div>
         <div class="day-cell level-0" data-date="2024-12-31" data-time="0分"></div>
@@ -485,7 +485,7 @@
   .weekday-labels {
     display: grid;
     grid-template-rows: repeat(7, var(--cell-size));
-    grid-gap: var(--cell-gap);
+    gap: var(--cell-gap);
     margin-top: 18px;
     font-size: var(--label-font-size);
     color: var(--text-color);
