@@ -18,7 +18,6 @@ import {
 
 import sitemap from '@astrojs/sitemap';
 import fs from 'node:fs';
-import path from 'node:path';
 
 // .typファイルへのリンクを自動的に除外リストに登録する
 const typstExcludes = fs.readdirSync('src/content/docs', { recursive: true })
