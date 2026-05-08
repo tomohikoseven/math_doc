@@ -1,0 +1,29 @@
+---
+import { LinkButton } from '@astrojs/starlight/components';
+---
+
+<div class="bmc-container">
+  <h2>応援（Buy Me a Coffee）</h2>
+  <p>もしこのサイトのコンテンツが役に立ち，活動を応援したいと思っていただけるなら，サポートをいただけると大変励みになります．</p>
+  <div class="bmc-button">
+    <LinkButton href="https://buymeacoffee.com/tomohiko" icon="external" variant="secondary">
+      Buy Me a Coffee で応援する
+    </LinkButton>
+  </div>
+</div>
+
+<style>
+  .bmc-container {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    background-color: var(--sl-color-gray-6);
+  }
+  .bmc-container h2 {
+    margin-top: 0 !important;
+  }
+  .bmc-button {
+    margin-top: 1rem;
+  }
+</style>
