@@ -1,0 +1,45 @@
+---
+title: AstroでGitHub風の勉強ログカレンダーを作る
+description: Google Calendar APIを使用して、学習時間をGitHubの草のように可視化するコンポーネントの導入方法。
+---
+
+import HabitCalendar from '../../../../components/HabitCalendar.astro';
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+Googleカレンダーの予定から学習時間を自動で集計し、GitHubの「草」のようなカレンダー形式で表示するコンポーネントを作成しました。
+学習の記録を可視化することで、モチベーションの維持に繋げるための取り組みです。
+
+<HabitCalendar />
+
+<LinkButton href="https://github.com/tomohikoseven/HabitCalendar" icon="github">
+  GitHubでソースコードを見る
+</LinkButton>
+
+## 技術的な仕組み
+
+このカレンダーは以下の仕組みで動作しています：
+
+1.  **Astro (SSG)**: ビルド時に Google Calendar API を叩いてデータを取得し、静的なHTMLとして書き出します。
+2.  **Google Calendar API**: 特定のカレンダーから予定を取得し、日付ごとに合計時間を集計します。
+3.  **GitHub Actions**: 1日1回、深夜に自動でビルド・デプロイを実行することで、毎日最新の学習ログが反映されます。
+
+## セットアップ手順
+　詳細な手順はGithubリポジトリのREADMEを参照してください。
+
+### 1. Google Cloud Console での準備
+1.  [Google Cloud コンソール](https://console.cloud.google.com/)でプロジェクトを作成。
+2.  **Google Calendar API** を有効化。
+3.  **APIキー** を発行。
+
+### 2. Googleカレンダー側の設定
+1.  カレンダーの設定で「一般公開」を有効にする。
+2.  「カレンダー ID」をコピー。
+
+### 3. 環境変数の設定
+GitHubの **Repository secrets** または `.env` に設定します。
+
+```properties
+GOOGLE_CALENDAR_API_KEY="あなたのAPIキー"
+PUBLIC_GOOGLE_CALENDAR_ID="あなたのカレンダーID"
+```

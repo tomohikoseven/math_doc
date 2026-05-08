@@ -2,9 +2,13 @@
 /**
  * HabitCalendar.astro
  * A GitHub-style contribution calendar generated at BUILD TIME.
- * Fully static for readers, secure (API key not exposed).
  */
-import { fetchStudyTime } from "../libs/googleCalendar";
+import { 
+  fetchStudyTime, 
+  generateCalendarData, 
+  generateMonthLabels, 
+  formatStudyTime 
+} from "../libs/googleCalendar";
 
 interface Props {
   year?: number;
@@ -18,11 +22,7 @@ const {
   calendarId = import.meta.env.PUBLIC_GOOGLE_CALENDAR_ID,
 } = Astro.props;
 
-// 1. Calculate Date Range for the given year
-const startDate = new Date(`${year}-01-01T00:00:00Z`);
-const endDate = new Date(`${year}-12-31T23:59:59Z`);
-
-// 2. Fetch Study Data (Runs at BUILD TIME)
+// 1. Fetch and process data at BUILD TIME
 let studyData: Record<string, number> = {};
 let totalMinutes = 0;
 let errorMessage = "";
@@ -31,126 +31,84 @@ try {
   if (!apiKey || !calendarId) {
     throw new Error("API Key or Calendar ID is missing.");
   }
-  studyData = await fetchStudyTime(
-    apiKey,
-    calendarId,
-    startDate.toISOString(),
-    endDate.toISOString()
-  );
   
-  Object.values(studyData).forEach(mins => {
-    totalMinutes += mins;
-  });
+  const startDate = new Date(`${year}-01-01T00:00:00Z`).toISOString();
+  const endDate = new Date(`${year}-12-31T23:59:59Z`).toISOString();
+  
+  studyData = await fetchStudyTime(apiKey, calendarId, startDate, endDate);
+  totalMinutes = Object.values(studyData).reduce((sum, mins) => sum + mins, 0);
 } catch (e) {
-  console.error("HabitCalendar Build Error:", e);
+  console.error(`[HabitCalendar ${year}]`, e);
   errorMessage = e instanceof Error ? e.message : "Failed to fetch data";
 }
 
-// 3. Generate Calendar Grid Data
-const days: string[] = [];
-const d = new Date(startDate);
-// Align to the previous Sunday to match the grid layout
-while (d.getUTCDay() !== 0) {
-  d.setUTCDate(d.getUTCDate() - 1);
-}
-
-const finalEnd = new Date(endDate);
-for (let curr = new Date(d); curr <= finalEnd; curr.setUTCDate(curr.getUTCDate() + 1)) {
-  days.push(curr.toISOString().split('T')[0]);
-}
-
+// 2. Prepare grid and label data using utilities
+const days = generateCalendarData(year, studyData);
+const monthLabels = generateMonthLabels(year, days);
 const numWeeks = Math.ceil(days.length / 7);
-const totalHoursFormatted = (totalMinutes / 60).toFixed(1);
-
-// Month labels calculation
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const monthLabels: { name: string; weekIndex: number }[] = [];
-let currentMonth = -1;
-
-days.forEach((date, index) => {
-  const dateObj = new Date(date);
-  const month = dateObj.getUTCMonth();
-  const dateYear = dateObj.getUTCFullYear();
-  const weekIndex = Math.floor(index / 7) + 1;
-
-  if (dateYear === year && month !== currentMonth) {
-    monthLabels.push({ name: monthNames[month], weekIndex });
-    currentMonth = month;
-  }
-});
-
-// Helper for level
-function getLevel(mins: number) {
-  if (mins >= 240) return 4;
-  if (mins >= 120) return 3;
-  if (mins >= 60) return 2;
-  if (mins >= 30) return 1;
-  return 0;
-}
+const totalHours = (totalMinutes / 60).toFixed(1);
 ---
 
 <div class="habit-calendar-container not-content" id={`calendar-container-${year}`}>
-  <div class="calendar-header">
-    <span class="total-stats">合計勉強時間: {totalHoursFormatted} 時間 ({year}年)</span>
-  </div>
+  <header class="calendar-header">
+    <h3 class="total-stats">合計勉強時間: {totalHours} 時間 ({year}年)</h3>
+  </header>
 
-  {errorMessage ? (
-    <div class="error-message">データの取得に失敗しました: {errorMessage}</div>
-  ) : (
-    <div class="calendar-outer-wrapper">
-      <div class="weekday-labels">
-        <div class="label-day"></div>
-        <div class="label-day">Mon</div>
-        <div class="label-day"></div>
-        <div class="label-day">Wed</div>
-        <div class="label-day"></div>
-        <div class="label-day">Fri</div>
-        <div class="label-day"></div>
-      </div>
-      
-      <div class="calendar-scroll-wrapper">
-        <div class="month-labels" style={`display: grid; grid-template-columns: repeat(${numWeeks}, var(--cell-size)); gap: var(--cell-gap);`}>
-          {monthLabels.map(label => (
-            <div class="month-label" style={`grid-column-start: ${label.weekIndex};`}>{label.name}</div>
-          ))}
-        </div>
-        <div class="calendar-grid" style={`display: grid; grid-template-columns: repeat(${numWeeks}, var(--cell-size)); grid-template-rows: repeat(7, var(--cell-size)); gap: var(--cell-gap); grid-auto-flow: column;`}>
-          {days.map(date => {
-            const mins = studyData[date] || 0;
-            const hours = Math.floor(mins / 60);
-            const m = Math.round(mins % 60);
-            const timeStr = hours > 0 ? `${hours}時間${m}分` : `${m}分`;
-            return (
-              <div 
-                class={`day-cell level-${getLevel(mins)}`} 
-                data-date={date} 
-                data-time={timeStr}
-              ></div>
-            );
-          })}
-        </div>
-      </div>
+  {errorMessage && (
+    <div class="error-banner" role="alert">
+      <small>⚠️ {errorMessage}</small>
     </div>
   )}
 
-  <div class="calendar-footer">
-    <div class="legend">
-      <span>Less</span>
-      <div class="legend-cells">
-        <div class="legend-cell level-0"></div>
-        <div class="legend-cell level-1"></div>
-        <div class="legend-cell level-2"></div>
-        <div class="legend-cell level-3"></div>
-        <div class="legend-cell level-4"></div>
-      </div>
-      <span>More</span>
+  <div class="calendar-layout">
+    <div class="weekday-labels" aria-hidden="true">
+      <div></div>
+      <div>Mon</div>
+      <div></div>
+      <div>Wed</div>
+      <div></div>
+      <div>Fri</div>
+      <div></div>
     </div>
-    <div class="info-text">
-      ※ 4時間以上で最大、30分以上4時間未満は色付き
+    
+    <div class="calendar-viewport">
+      <div class="month-row" style={`grid-template-columns: repeat(${numWeeks}, var(--cell-size));`}>
+        {monthLabels.map(label => (
+          <div class="month-label" style={`grid-column-start: ${label.weekIndex};`}>
+            {label.name}
+          </div>
+        ))}
+      </div>
+      
+      <div class="calendar-grid" style={`grid-template-columns: repeat(${numWeeks}, var(--cell-size));`}>
+        {days.map(day => (
+          <div 
+            class={`day-cell level-${day.level}`} 
+            data-date={day.date} 
+            data-time={formatStudyTime(day.minutes)}
+            title={`${day.date}: ${formatStudyTime(day.minutes)}`}
+          ></div>
+        ))}
+      </div>
     </div>
   </div>
 
-  <div id={`tooltip-${year}`} class="calendar-tooltip"></div>
+  <footer class="calendar-footer">
+    <div class="legend" aria-label="学習時間のレベル凡例">
+      <span>Less</span>
+      <div class="legend-scale">
+        <div class="cell level-0"></div>
+        <div class="cell level-1"></div>
+        <div class="cell level-2"></div>
+        <div class="cell level-3"></div>
+        <div class="cell level-4"></div>
+      </div>
+      <span>More</span>
+    </div>
+    <p class="info-text">※ 4時間以上で最大、30分以上4時間未満は色付き</p>
+  </footer>
+
+  <div id={`tooltip-${year}`} class="calendar-tooltip" role="tooltip"></div>
 </div>
 
 <style>
@@ -163,7 +121,7 @@ function getLevel(mins: number) {
     --text-color: #57606a;
     --cell-size: 12px;
     --cell-gap: 3px;
-    --label-font-size: 10px;
+    --label-size: 10px;
 
     background: var(--sl-color-bg-elevated, #fff);
     border: 1px solid var(--sl-color-gray-5, #d0d7de);
@@ -175,7 +133,6 @@ function getLevel(mins: number) {
     width: max-content;
     max-width: 100%;
     box-sizing: border-box;
-    position: relative;
   }
 
   :global([data-theme="dark"]) .habit-calendar-container {
@@ -189,22 +146,19 @@ function getLevel(mins: number) {
   }
 
   .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 16px;
   }
 
   .total-stats {
+    margin: 0 !important;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1rem !important;
     color: var(--sl-color-text);
   }
 
-  .calendar-outer-wrapper {
+  .calendar-layout {
     display: flex;
     gap: 8px;
-    align-items: flex-start;
   }
 
   .weekday-labels {
@@ -212,41 +166,43 @@ function getLevel(mins: number) {
     grid-template-rows: repeat(7, var(--cell-size));
     gap: var(--cell-gap);
     margin-top: 18px;
-    font-size: var(--label-font-size);
+    font-size: var(--label-size);
     color: var(--text-color);
   }
 
-  .label-day {
+  .weekday-labels div {
     height: var(--cell-size);
-    line-height: var(--cell-size);
     display: flex;
     align-items: center;
   }
 
-  .calendar-scroll-wrapper {
+  .calendar-viewport {
     overflow-x: auto;
-    padding-bottom: 12px;
-    scrollbar-width: thin;
-    scroll-behavior: smooth;
+    padding-bottom: 8px;
     flex: 1;
+    scrollbar-width: thin;
   }
 
-  .month-labels {
-    font-size: var(--label-font-size);
-    color: var(--text-color);
+  .month-row {
+    display: grid;
+    gap: var(--cell-gap);
     margin-bottom: 6px;
     height: 12px;
-    min-width: max-content;
   }
 
   .month-label {
+    font-size: var(--label-size);
+    color: var(--text-color);
     white-space: nowrap;
+    grid-row: 1;
+    width: 0;
   }
 
   .calendar-grid {
-    min-width: max-content;
-    position: relative;
-    padding: 0;
+    display: grid;
+    grid-template-rows: repeat(7, var(--cell-size));
+    gap: var(--cell-gap);
+    grid-auto-flow: column;
   }
 
   .day-cell {
@@ -256,12 +212,11 @@ function getLevel(mins: number) {
     background-color: var(--bg-0);
     transition: transform 0.1s ease;
     cursor: pointer;
-    box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.03);
   }
 
   :global([data-theme="dark"]) .day-cell {
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.03);
   }
 
   .day-cell:hover {
@@ -278,51 +233,33 @@ function getLevel(mins: number) {
   .calendar-footer {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 8px;
     margin-top: 16px;
+    padding-left: 36px;
     font-size: 12px;
     color: var(--text-color);
-    padding-left: 36px;
   }
 
   .legend {
     display: flex;
     align-items: center;
     gap: 8px;
-    height: var(--cell-size);
   }
 
-  .legend span {
-    line-height: var(--cell-size);
-  }
-
-  .legend-cells {
+  .legend-scale {
     display: flex;
     gap: var(--cell-gap);
-    align-items: center;
   }
 
-  .legend-cell {
+  .legend-scale .cell {
     width: var(--cell-size);
     height: var(--cell-size);
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.03);
-    box-sizing: border-box;
-    display: block;
   }
-
-  :global([data-theme="dark"]) .legend-cell {
-    border: 1px solid rgba(255, 255, 255, 0.03);
-  }
-
-  .legend-cell.level-0 { background-color: var(--bg-0); }
-  .legend-cell.level-1 { background-color: var(--bg-1); }
-  .legend-cell.level-2 { background-color: var(--bg-2); }
-  .legend-cell.level-3 { background-color: var(--bg-3); }
-  .legend-cell.level-4 { background-color: var(--bg-4); }
 
   .info-text {
+    margin: 0 !important;
     opacity: 0.8;
   }
 
@@ -341,58 +278,54 @@ function getLevel(mins: number) {
     white-space: nowrap;
   }
 
-  .error-message {
+  .error-banner {
     color: #cf222e;
-    padding: 1rem;
+    margin-bottom: 1rem;
     font-style: italic;
-    font-size: 0.9rem;
   }
 </style>
 
 <script is:inline define:vars={{ year }}>
-  function initTooltip() {
+  function initHabitCalendar() {
     const container = document.getElementById(`calendar-container-${year}`);
     const tooltip = document.getElementById(`tooltip-${year}`);
-    if (!container || !tooltip || container.dataset.tooltipInitialized) return;
+    if (!container || !tooltip || container.dataset.initialized) return;
 
+    // Tooltip Logic
     container.addEventListener("mouseover", (e) => {
-      const target = e.target;
-      if (target && target.classList.contains("day-cell")) {
-        const date = target.getAttribute("data-date");
-        const time = target.getAttribute("data-time");
+      const cell = e.target;
+      if (cell?.classList.contains("day-cell")) {
+        const date = cell.getAttribute("data-date");
+        const time = cell.getAttribute("data-time");
         if (date && time) {
           tooltip.textContent = `${date}: ${time} 勉強しました`;
           tooltip.style.opacity = "1";
           
-          const rect = target.getBoundingClientRect();
-          const tooltipWidth = tooltip.offsetWidth;
-          tooltip.style.left = (rect.left - tooltipWidth / 2 + 6) + "px";
-          // We used -40 for 2026, let's keep that logic here
-          // But since this is general, let's use a safe value
-          tooltip.style.top = (rect.top - 40) + "px";
+          const rect = cell.getBoundingClientRect();
+          tooltip.style.left = `${rect.left - tooltip.offsetWidth / 2 + 6}px`;
+          tooltip.style.top = `${rect.top - 40}px`;
         }
       }
     });
 
     container.addEventListener("mouseout", (e) => {
-      if (e.target && e.target.classList.contains("day-cell")) {
+      if (e.target?.classList.contains("day-cell")) {
         tooltip.style.opacity = "0";
       }
     });
 
-    // Auto-scroll to today if it's the current year
-    const wrapper = container.querySelector(".calendar-scroll-wrapper");
+    // Today focus logic
+    const viewport = container.querySelector(".calendar-viewport");
     const today = new Date().toISOString().split("T")[0];
     const todayCell = container.querySelector(`[data-date="${today}"]`);
-    if (wrapper && todayCell) {
-      // Simple scroll logic
-      const offset = todayCell.offsetLeft - 100;
-      wrapper.scrollLeft = Math.max(0, offset);
+    if (viewport && todayCell) {
+      viewport.scrollLeft = todayCell.offsetLeft - 100;
     }
 
-    container.dataset.tooltipInitialized = "true";
+    container.dataset.initialized = "true";
   }
 
-  document.addEventListener("astro:page-load", initTooltip);
-  initTooltip();
+  // Handle Astro page transitions
+  document.addEventListener("astro:page-load", initHabitCalendar);
+  initHabitCalendar();
 </script>
