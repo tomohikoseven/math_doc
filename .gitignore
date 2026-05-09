@@ -23,3 +23,7 @@ pnpm-debug.log*
 # add by myself
 package-lock.json
 public/d2/
+
+src/scripts/gen_static_2025.js
+src/scripts/static_2025_output.txt
+src/scripts/update_calendar.js
