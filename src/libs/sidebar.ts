@@ -94,6 +94,14 @@ export const MATHEMATICS_GROUP = {
       },
     },
     {
+      label: '微分法',
+      collapsed: true,
+      autogenerate: {
+        directory: 'math/differential_method',
+        collapsed: true,
+      },
+    },
+    {
       label: '積分法',
       collapsed: true,
       autogenerate: {
