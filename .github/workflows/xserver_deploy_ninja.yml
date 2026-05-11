@@ -63,11 +63,15 @@ jobs:
 
     - name: Update sitemap 
       run: |
-         curl -X GET "http://www.google.com/ping?sitemap=https://mathdoc.ifdef.jp/sitemap-0.xml"
+        curl -X GET "http://www.google.com/ping?sitemap=https://mathdoc.ifdef.jp/sitemap-0.xml"
 
     - name: IndexNow (Manual Ping)
       run: |
-        curl -X GET "https://www.bing.com/indexnow?url=https://mathdoc.ifdef.jp/sitemap-index.xml&key=${{ secrets.INDEXNOW_KEY }}"
+        curl -i -X GET "https://www.bing.com/indexnow?url=https://mathdoc.ifdef.jp/sitemap-0.xml&key=${{ secrets.INDEXNOW_KEY }}"
+
+    # - name: IndexNow (Manual Ping)
+    #   run: |
+    #     curl -X GET "https://www.bing.com/indexnow?url=https://mathdoc.ifdef.jp/sitemap-index.xml&key=${{ secrets.INDEXNOW_KEY }}"
 
     # - name: IndexNow 
     #   uses: bojieyang/indexnow-action@v2 # v2 is the latest major version following the action-versioning.
