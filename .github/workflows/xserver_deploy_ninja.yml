@@ -61,24 +61,6 @@ jobs:
         local-dir: ./dist/
         server-dir: / 
 
-    - name: Update sitemap 
-      run: |
-        curl -X GET "http://www.google.com/ping?sitemap=https://mathdoc.ifdef.jp/sitemap-0.xml"
-
     - name: IndexNow (Manual Ping)
       run: |
         curl -i -X GET "https://www.bing.com/indexnow?url=https://mathdoc.ifdef.jp/sitemap-0.xml&key=${{ secrets.INDEXNOW_KEY }}"
-
-    # - name: IndexNow (Manual Ping)
-    #   run: |
-    #     curl -X GET "https://www.bing.com/indexnow?url=https://mathdoc.ifdef.jp/sitemap-index.xml&key=${{ secrets.INDEXNOW_KEY }}"
-
-    # - name: IndexNow 
-    #   uses: bojieyang/indexnow-action@v2 # v2 is the latest major version following the action-versioning.
-    #   with:
-    #   # The location of your sitemap must start with http(s). 
-    #   # Currently, XML Sitemap, Sitemap index, RSS and Atom formats are supported.
-    #     sitemap-location: 'https://mathdoc.ifdef.jp/sitemap-index.xml' 
-    #     key: ${{ secrets.INDEXNOW_KEY }} # The key you get from IndexNow. 
-    #     since: 10
-    #     since-unit: 'year'
