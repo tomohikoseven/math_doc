@@ -7,8 +7,16 @@ prev: false
 ---
 
 import { Aside } from "@astrojs/starlight/components";
+import image_01 from '/src/assets/learning/neural_memory_glow.png';
+import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 
-![Neural Memory Glow](../../../assets/learning/neural_memory_glow.png)
+<ImageWithCaption
+	src={image_01}
+	alt="Neural Memory Glow"	
+	width="420"
+	height="210"
+	caption=""
+	/>
 
 ## 総論
 記憶を単なる「暗記」ではなく、脳の神経回路の可塑性（LTP）をいかに引き出すかという「技術」として捉え直します。本ページでは、池谷裕二氏の知見をベースに、大人（中学生以上）の脳が効率的に情報を定着させるための「論理性」「感情」「睡眠」「出力」の4つの柱について整理・解説します。
