@@ -70,5 +70,5 @@ jobs:
       with:
       # The location of your sitemap must start with http(s). 
       # Currently, XML Sitemap, Sitemap index, RSS and Atom formats are supported.
-        sitemap-location: 'https://mathdoc.ifdef.jp/sitemap-0.xml' 
+        sitemap-location: 'https://mathdoc.ifdef.jp/sitemap-index.xml' 
         key: ${{ secrets.INDEXNOW_KEY }} # The key you get from IndexNow. 
