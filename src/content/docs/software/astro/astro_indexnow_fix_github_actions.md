@@ -64,3 +64,62 @@ A: 本サイトの検証では、`curl` 実行後5分程度でWebmaster Tools上
 ## まとめ
 IndexNowが正常に動作しない場合は、アクションの自動判定に頼らず、直接APIを叩くのが最も確実な解決策です。Actionsのログで `HTTP 200` を確認できれば、インデックス登録は正常にリクエストされています。
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "IndexNowの「No candidate urls need to submit」エラーをGitHub Actionsで解決する方法",
+      "description": "GitHub ActionsのIndexNowアクションで更新が検知されず、Bingに通知が届かない問題をcurlコマンドによる直接通知で確実に解決する方法を解説します。",
+      "author": {
+        "@type": "Person",
+        "name": "tomohikoseven"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "name": "GitHub ActionsでIndexNowを確実に実行する手順",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "IndexNowキーの配置確認",
+          "text": "サイトのルートディレクトリ（public/など）に [キー].txt を配置し、中身にキーを記述します。"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "GitHub Secretsへのキー登録",
+          "text": "GitHubリポジトリのSettings > Secrets and variables > Actions に INDEXNOW_KEY を登録します。"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "ワークフローの修正",
+          "text": "GitHub ActionsのYAMLファイルにcurlコマンドによるAPIリクエストステップを追加します。"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "手動で通知を送りすぎるとペナルティはありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "IndexNowは1日1万URLまでの制限がありますが、通常のサイトマップ通知であればペナルティの心配はありません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "通知後、いつBingに反映されますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "検証では、curl実行後5分程度でWebmaster Tools上のステータスが正常に切り替わりました。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
