@@ -143,3 +143,41 @@ export const MATHEMATICS_GROUP = {
     },
   ],
 };
+
+// ─── サイドバーのトピック設定 (starlight-sidebar-topics) ───────────
+export const SIDEBAR_TOPICS = [
+  {
+    label: '数学',
+    link: '/math/real_number/',
+    icon: 'open-book',
+    items: MATHEMATICS_GROUP.items,
+  },
+  {
+    label: '読書・学習・ライフ',
+    link: '/learning/0500_improve_memory/',
+    icon: 'sun',
+    items: [OTHER_THAN_MATH],
+  },
+  {
+    label: '数学日誌',
+    link: '/diary/202501/',
+    icon: 'pencil',
+    items: [MATH_DIALY],
+  },
+  {
+    label: 'Software',
+    link: '/software/astro/astro_components_steps/',
+    icon: 'laptop',
+    items: [SOFTWARE],
+  },
+];
+
+export const SIDEBAR_TOPICS_OPTIONS = {
+  exclude: [
+    '/typst_test',
+    '/typst_test_simple',
+    '/thank_you_for_your_inquiry',
+    '/index',
+    '/about/**/*'
+  ]
+};
