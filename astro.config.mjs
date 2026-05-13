@@ -98,7 +98,7 @@ export default defineConfig({
     ]
   }),
   typst({
-    target: (id) => "svg"
+    target: () => "svg"
   }),
   d2(),
   sitemap()],

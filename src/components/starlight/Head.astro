@@ -3,7 +3,7 @@ import Default from '@astrojs/starlight/components/Head.astro'
 import { getCldOgImageUrl } from 'astro-cloudinary/helpers'
 
 // Grab the current page entry and site title from the page data.
-const { entry } = Astro.locals.starlightRoute;
+const { entry, siteTitle } = Astro.locals.starlightRoute;
 
 // Get the URL of the generated image for the current page.
 const ogImageUrl = getCldOgImageUrl({
@@ -27,10 +27,57 @@ const ogImageUrl = getCldOgImageUrl({
     },
   ],
 })
+
+// Schema.org JSON-LD
+const baseSchema = {
+  "@type": "Article",
+  "headline": entry.data.title,
+  "description": entry.data.description,
+  "author": {
+    "@type": "Person",
+    "name": "tomohikoseven",
+    "url": "https://x.com/tomohikoseven"
+  },
+  "datePublished": entry.data.lastUpdated instanceof Date ? entry.data.lastUpdated.toISOString() : new Date().toISOString(),
+  "publisher": {
+    "@type": "Organization",
+    "name": siteTitle,
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL('/favicon.ico', Astro.site).href
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": Astro.url.href
+  }
+};
+
+let schema;
+const customSchema = entry.data.schema;
+
+if (Array.isArray(customSchema)) {
+  schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      baseSchema,
+      ...customSchema
+    ]
+  };
+} else {
+  schema = {
+    "@context": "https://schema.org",
+    ...baseSchema,
+    ...customSchema
+  };
+}
 ---
 
 <!-- Render the default <Head/> component. -->
 <Default><slot /></Default>
+
+<!-- Schema.org JSON-LD -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
 
 <!-- Render the <meta/> tags for the Open Graph images. -->
 <meta property="og:image" content={ogImageUrl} />

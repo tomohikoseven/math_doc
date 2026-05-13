@@ -4,6 +4,27 @@ description: GitHubと忍者ホームページを連携させ、コードをPush
 lastUpdated: 2025-05-13
 prev: { link: '/software/astro/astro_ninja_homepage_2/', label: '入門(2)へ' }
 next: { link: '/software/astro/astro_ninja_homepage_extra/', label: '番外編' }
+schema:
+  - "@type": TechArticle
+    dependencies: GitHub Actions, FTP
+    proficiencyLevel: Beginner
+  - "@type": FAQPage
+    mainEntity:
+      - "@type": Question
+        name: "「FTP Deploy」ステップでエラー（Error: Timeout）が出ます。"
+        acceptedAnswer:
+          "@type": Answer
+          text: "サーバー情報（ホスト名）やユーザー名・パスワードが正しいか再確認してください。また、忍者ホームページ側で一時的にFTP接続が制限されていないかもチェックしましょう。"
+      - "@type": Question
+        name: "サイトが更新されるまでどれくらい時間がかかりますか？"
+        acceptedAnswer:
+          "@type": Answer
+          text: "GitHubにPushしてから、ビルドと転送が終わるまで通常1分〜2分程度です。GitHubの「Actions」タブで進捗をリアルタイムに確認できます。"
+      - "@type": Question
+        name: "独自ドメインを使いたい場合はどうすればいいですか？"
+        acceptedAnswer:
+          "@type": Answer
+          text: "忍者ホームページでも独自ドメインの設定は可能ですが、設定手順が異なります。まずは標準のサブドメインで公開を確認することをお勧めします。"
 ---
 
 import { Steps, Aside, FileTree, Code, LinkCard, Card } from '@astrojs/starlight/components';
