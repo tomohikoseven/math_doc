@@ -1,0 +1,170 @@
+---
+title: 「完全無料」Webサイト構築入門 (2) — GitHubへの保存とリポジトリ管理
+description: ローカル環境で作成したWebサイトのソースコードをGitHubにアップロード（Push）し、世界中からアクセス・管理できる状態にする手順を解説します。
+lastUpdated: 2025-05-13
+---
+
+import { Steps, Aside, LinkCard, Card } from '@astrojs/starlight/components';
+
+<Card title="クイックステップ：本章のゴール" icon="rocket">
+  「**ローカルのコードをGitHubに保存**」することを完了させます。
+  - **必要なツール**: Git
+  - **主な作業**: GitHubリポジトリ作成 → `git add/commit` → `git push`
+  - **確認方法**: GitHubの自分のページでファイルが表示されているか確認
+</Card>
+
+ローカルPCでWebサイト表示に成功したら、次はコードを**GitHub**に保存しましょう。GitHubにアップロードすることで、プログラムのバックアップになるだけでなく、次章で解説する「自動デプロイ（Webへの公開）」が可能になります。
+
+---
+
+## 1. 事前準備：Gitをインストールする (Windows)
+
+コードをGitHubへ送信するには、**Git**というツールが必要です。Windowsには標準で搭載されていないため、まずはインストールを行いましょう。
+
+### Gitのインストール手順
+
+<Steps>
+
+1.  **公式サイトからダウンロード**
+    [Git for Windows](https://gitforwindows.org/)にアクセスし、「Download」ボタンをクリックします。
+
+2.  **インストーラーを実行**
+    ダウンロードした `.exe` ファイルを開きます。
+    - 設定項目がたくさん出てきますが、**すべてデフォルト（Next連打）で大丈夫です。**
+
+3.  **インストールを確認**
+    ターミナル（PowerShellなど）を開き、以下のコマンドを入力してバージョンが表示されればOKです。
+    ```bash
+    git --version
+    ```
+
+</Steps>
+
+### 初回設定（ユーザー名とメールアドレス）
+
+Gitを始めて使う場合、自分の名前とメールアドレスを登録する必要があります（GitHubのアカウントと同じものを推奨します）。
+
+```bash
+git config --global user.name "あなたの名前"
+git config --global user.email "あなたのメールアドレス"
+```
+
+---
+
+## 2. なぜGitHubが必要なのか？
+
+単なる保存場所としてだけでなく、以下の重要な役割があります。
+
+- **バックアップ**: PCが壊れてもコードを失いません。
+- **変更履歴の管理**: 「昨日の状態に戻したい」が簡単にできます。
+- **CI/CD** （**自動デプロイ**）: GitHubにコードを載せる（Pushする）だけで、自動的にWebサイトが更新される仕組み（GitHub Actions）が使えます。
+
+---
+
+## 3. GitHub上でリポジトリを作成する
+
+まずは、GitHub側に保存箱（リポジトリ）を用意します。
+
+<Steps>
+
+1.  **GitHubにログイン**
+    [GitHub](https://github.com/)にアクセスしてログインします（アカウントがない場合は作成してください）。
+
+2.  **新規リポジトリの作成**
+    画面右上の「+」アイコンから 「**New repository**」 を選択します。
+
+3.  **リポジトリ情報を入力**
+    - **Repository name**: `my-math-site`（入門(1)で作ったフォルダ名と同じにすると分かりやすいです）
+    - **Public / Private**: どちらでも構いませんが、Privateでよいです。
+    - **Initialize this repository with**: 何もチェックを入れないでください（空のリポジトリを作ります）。
+
+4.  「**Create repository**」をクリック
+    作成後、URL（`https://github.com/ユーザー名/my-math-site.git`）が表示されるので、これをコピーしておきます。
+
+</Steps>
+
+---
+
+## 4. 管理不要なファイルを除外する (.gitignore)
+
+コードを送信する前に、GitHubに送る必要のないファイル（自動生成される大きなファイルなど）を整理します。これを行うのが **`.gitignore`** ファイルです。
+
+Astroプロジェクトを作成した時点で、最初から用意されているはずです。
+
+### なぜ除外が必要なのか？
+例えば、以下のフォルダはGitHubに送るべきではありません。
+- **`node_modules/`**: プログラムの実行に必要な部品群（非常に重い）。
+- **`dist/`**: ビルドされた最終的なWebサイト（GitHub Actionsで自動生成するため不要）。
+
+<Aside type="tip">
+  基本的にはデフォルトのままで問題ありません。もし「重すぎてPushできない」といったトラブルが起きた場合は、このファイルを確認しましょう。
+</Aside>
+
+---
+
+## 5. ローカルのコードをGitHubへ送る（Push）
+
+作成したリポジトリに、PC上のコードを送信します。ターミナルでプロジェクトのディレクトリ（`my-math-site`）に移動し、以下の手順でコマンドを実行してください。
+
+<Steps>
+
+1.  **ファイルをステージングに追加**
+    すべてのファイルをGitの管理対象（送信待ち状態）にします。
+    ```bash
+    git add .
+    ```
+
+2.  **コミット（保存）を実行**
+    現在の状態に名前をつけて保存します。
+    ```bash
+    git commit -m "first commit"
+    ```
+
+3.  **リモートリポジトリを登録**
+    GitHub上のリポジトリと紐付けます。
+    ```bash
+    git remote add origin https://github.com/あなたのユーザー名/my-math-site.git
+    ```
+    ※コピーしたURLを使用してください。
+
+4.  **メインブランチ名を確定**
+    ```bash
+    git branch -M main
+    ```
+
+5.  **GitHubへ送信** （**Push**）
+    ```bash
+    git push -u origin main
+    ```
+
+</Steps>
+
+<Aside type="note" title="認証が必要な場合">
+  `git push` 時にユーザー名やパスワード（Personal Access Token）を求められることがあります。画面の指示に従ってログインを完了させてください。
+</Aside>
+
+---
+
+## 6. GitHub上で反映を確認する
+
+ブラウザでGitHubのリポジトリページをリロードしてみてください。
+PCの中にあった `src` フォルダや `astro.config.mjs` などのファイルが表示されていれば、**無事にクラウドへの保存が完了**です！
+
+---
+
+## FAQ：GitHub保存とGit操作のよくある質問
+
+### Q: 「git push」で認証エラーが出ます。
+**A:** GitHubのパスワードではなく「Personal Access Token」が必要な場合があります。または、GitHub Desktop等のGUIツールを使うと認証がスムーズになることがあります。
+
+### Q: 間違ったファイルをコミットしてしまいました。
+**A:** `git reset` コマンドで取り消すことができます。また、`.gitignore` が正しく設定されているか（`node_modules` が含まれていないか）を再確認してください。
+
+### Q: リポジトリを「Private」にしても無料で使えますか？
+**A:** はい、GitHubは現在 **Privateリポジトリも無料** で作成・使用可能です。コードを公開したくない場合はPrivateを選びましょう。
+
+<LinkCard
+  title="入門(3)：GitHub Actionsによる自動デプロイ設定"
+  description="GitHubと忍者ホームページを繋ぎ、コードを更新するだけでサイトが自動更新される魔法の仕組みを作りましょう。"
+  href="/software/astro/astro_ninja_homepage_3/"
+/>

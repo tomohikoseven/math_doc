@@ -1,0 +1,181 @@
+---
+title: 「完全無料」Webサイト構築入門 (3) — GitHub Actionsによる自動デプロイ設定
+description: GitHubと忍者ホームページを連携させ、コードをPushするだけで自動的にWebサイトが更新される「魔法の仕組み」を構築します。
+lastUpdated: 2025-05-13
+prev: { link: '/software/astro/astro_ninja_homepage_2/', label: '入門(2)へ' }
+next: { link: '/software/astro/astro_ninja_homepage_extra/', label: '番外編' }
+---
+
+import { Steps, Aside, FileTree, Code, LinkCard, Card } from '@astrojs/starlight/components';
+
+<Card title="クイックステップ：本章のゴール" icon="rocket">
+  「**Webサイトの自動公開**」を完了させます。
+  - **必要な情報**: 忍者ホームページのFTP情報
+  - **主な作業**: GitHub Secrets登録 → `deploy.yml` 作成 → `git push`
+  - **結果**: 指定URL（mathdoc.ifdef.jpなど）でサイトが公開される
+</Card>
+
+いよいよ本番です。GitHubにコードを保存（Push）した瞬間に、自動的にWebサイトがビルドされ、忍者ホームページへと公開される**自動デプロイ** （**CI/CD**）の仕組みを構築しましょう。
+
+---
+
+## 1. 忍者ホームページでFTP情報を確認する
+
+GitHub Actionsが忍者ホームページのサーバーにファイルを送るために、鍵となる「FTP情報」が必要です。
+
+<Steps>
+
+1.  **忍者ホームページの管理画面へ**
+    [忍者ホームページ](https://www.ninja.co.jp/hp/)にログインし、作成したWebサイトの「管理画面」を開きます。
+
+2.  **FTP情報をメモする**
+    メニューの「FTP設定」などの項目から、以下の3点を控えておきます。
+    - **FTPホスト名** （例: `ftp1.ninja-x.jp`）
+    - **FTPユーザー名**（**ID**）
+    - **FTPパスワード**
+
+</Steps>
+
+<Aside type="caution">
+  FTPパスワードは非常に強力な権限を持ちます。絶対にメールやSNSで他人に教えたり、コードの中に直接書いたりしないでください。
+</Aside>
+
+---
+
+## 2. GitHub Secretsに情報を登録する（安全な管理）
+
+先ほどメモしたFTP情報を、GitHub側に「安全な変数」として登録します。
+
+<Steps>
+
+1.  **GitHubリポジトリの「Settings」を開く**
+    作成したリポジトリ（`my-math-site`）のトップページから、右上の **Settings** タブをクリックします。
+
+2.  **Actions Secretsへ移動**
+    左メニューから **Secrets and variables** > **Actions** を選択します。
+
+3.  **3つのシークレットを登録**
+    「New repository secret」ボタンから、以下の3つを1つずつ登録します（名前は大文字で正確に）。
+    - `FTP_SERVER`: (FTPホスト名)
+    - `FTP_USERNAME`: (FTPユーザー名)
+    - `FTP_PASSWORD`: (FTPパスワード)
+
+</Steps>
+
+---
+
+## 3. 自動デプロイ設定ファイル（Workflow）の作成
+
+「何を、いつ、どうやって動かすか」という命令書を作成します。
+
+<Steps>
+
+1.  **ローカルでフォルダを作成**
+    プロジェクトのルートに `.github/workflows` という名前でフォルダを作ります。
+
+2.  **設定ファイルを作成**
+    その中に `deploy.yml` というファイルを作成し、以下のコードを貼り付けてください。
+
+    ```yaml title=".github/workflows/deploy.yml"
+    name: Deploy to Ninja Homepage
+
+    on:
+      push:
+        branches:
+          - main # mainブランチにPushされた時に起動
+
+    jobs:
+      build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+
+          - name: Install dependencies
+            run: npm install
+
+          - name: Build Astro
+            run: npm run build
+
+          - name: FTP Deploy
+            uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+            with:
+              server: ${{ secrets.FTP_SERVER }}
+              username: ${{ secrets.FTP_USERNAME }}
+              password: ${{ secrets.FTP_PASSWORD }}
+              local-dir: ./dist/ # Astroがビルドしたファイルが入る場所
+              server-dir: / # 忍者ホームページのルートディレクトリ
+    ```
+
+</Steps>
+
+---
+
+## 4. Astroの設定（サイトURLの登録）
+
+Astroが正しいリンクを生成できるように、`astro.config.mjs` を更新します。
+入門(1)で取得したサイトのURLを記載する. 本サイトで言えば、https://mathdoc.ifdef.jp/
+
+```javascript title="astro.config.mjs"
+import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
+
+export default defineConfig({
+	site: 'https://example.xxx.jp/', // 最後に / をつけること. 
+	integrations: [
+		starlight({
+			title: 'My Site',
+		}),
+	],
+});
+```
+
+---
+
+## 5. 運命のPush！世界への公開
+
+すべての準備が整いました。変更をGitHubに送信しましょう。
+
+```bash
+git add .
+git commit -m "add deployment workflow"
+git push origin main
+```
+
+<Steps>
+
+1.  **GitHubの「Actions」タブを確認**
+    リポジトリの **Actions** タブを開くと、ワークフローが動き出しているはずです。
+
+2.  **完了を待つ**
+    すべてのステップにチェックマークがついたら成功です！
+
+3.  **自分のサイトにアクセス**
+    忍者ホームページのURLを開いてみてください。あなたが作ったサイトが世界中に公開されています！
+
+</Steps>
+
+---
+
+## おわりに
+
+サーバー代もドメイン代も一切かからず、Astroの爆速なパフォーマンスとStarlightの美しいデザインを手に入れたあなたは、もう立派なモダンウェブサイトのオーナーです。ここから素晴らしいコンテンツを発信していきましょう！
+
+---
+
+## FAQ：GitHub Actionsと自動デプロイのよくある質問
+
+### Q: 「FTP Deploy」ステップでエラー（Error: Timeout）が出ます。
+**A:** サーバー情報（ホスト名）やユーザー名・パスワードが正しいか再確認してください。また、忍者ホームページ側で一時的にFTP接続が制限されていないかもチェックしましょう。
+
+### Q: サイトが更新されるまでどれくらい時間がかかりますか？
+**A:** GitHubにPushしてから、ビルドと転送が終わるまで **通常1分〜2分程度** です。GitHubの「Actions」タブで進捗をリアルタイムに確認できます。
+
+### Q: 独自ドメインを使いたい場合はどうすればいいですか？
+**A:** 忍者ホームページでも独自ドメインの設定は可能ですが、設定手順が異なります。まずは標準のサブドメインで公開を確認することをお勧めします。
+
+<LinkCard
+  title="番外編：忍者AdMaxで収益化を設定する"
+  description="せっかく作ったサイトにお小遣い稼ぎの仕組みを。忍者AdMaxの広告を貼る手順をチェックしましょう。"
+  href="/software/astro/astro_ninja_homepage_extra/"
+/>

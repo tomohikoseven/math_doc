@@ -1,25 +1,153 @@
 ---
-title: 「完全無料」で作る！Astro, GitHub, 忍者ホームページで始めるWebサイト構築入門(1)
-description: 忍者ホームページにアカウント登録して，テンプレートによるWebサイトが表示できるまでを解説する．
-lastUpdated: 2024-12-31
-draft: true
+title: 「完全無料」Webサイト構築入門 (1) — Astroプロジェクトの作成とブラウザ表示
+description: ローカル環境でAstro（Starlight）プロジェクトを立ち上げ、Webサイトの土台を構築する最初の手順を詳しく解説します。
+lastUpdated: 2025-05-13
+prev: { link: '/software/astro/astro_ninja_homepage_0/', label: '入門(0)へ' }
+next: { link: '/software/astro/astro_ninja_homepage_2/', label: '入門(2)へ' }
 ---
-　このページからWebサイトを構築する．
 
-## 忍者ホームページを準備する
-### アカウント作成
+import { Steps, Aside, FileTree, Card, LinkCard } from '@astrojs/starlight/components';
 
-## Astroで静的ページ作成する
+<Card title="クイックステップ：本章のゴール" icon="rocket">
+  「**Astroのローカル起動**」までを完了させます。
+  - **必要なツール**: Node.js (LTS版)
+  - **実行コマンド**: `npm create astro@latest`
+  - **確認方法**: ブラウザで `http://localhost:4321` にアクセス
+</Card>
 
-## 
-## Webサイト構築する．
+このページでは、Webサイトの「エンジン」となる**Astro/Starlight**をローカル環境にインストールし、ブラウザで表示（Hello World）させるまでの手順を解説します。
 
-### 忍者ホームページにアカウント登録する．
+---
 
-### AstroでWebページを作る．
+## 1. 事前準備：環境を整える
 
-### GitHubにWebページを保存する．
+構築を始める前に、以下の2点を準備してください。
 
-#### GitHub Actionsで忍者ホームページ上にWebページを送信する．
+### Node.js のインストール (Windows)
 
-#### Github Actionsのソース
+Astroを動かすには **Node.js (v18.14.1 以上)** が必須です。
+
+<Steps>
+
+1.  **公式サイトへアクセス**
+    [Node.js 公式サイト](https://nodejs.org/ja/)にアクセスします。
+
+2.  **LTS版をダウンロード**
+    「LTS」と書かれたボタン（推奨版）をクリックして、インストーラー（.msiファイル）をダウンロードします。
+
+3.  **インストーラーを実行**
+    ダウンロードしたファイルを開き、基本的にすべて「Next」で進めてインストールを完了させます。
+    - 「Tools for Native Modules」のチェックボックスが表示された場合は、チェックを入れたまま進めることを推奨します。
+
+4.  **インストールを確認**
+    ターミナル（PowerShellやコマンドプロンプト）を開き、以下のコマンドを入力してバージョンが表示されれば成功です。
+    ```bash
+    node -v
+    npm -v
+    ```
+
+</Steps>
+
+<Aside type="caution">
+  コマンドを打ってもバージョンが表示されない場合は、ターミナルを一度閉じてから開き直すか、Windowsを再起動してみてください。
+</Aside>
+
+### 忍者ホームページのアカウント作成
+
+最終的な公開先として[忍者ホームページ](https://www.ninja.co.jp/hp/)のアカウントが必要です。無料で登録できるので、今のうちに済ませておきましょう。
+- サーバー作成時、好きなドメイン名（URL）を決めることができます。
+- 詳細は、公式サイトの案内に従って進めてください。
+
+---
+
+## 2. Astroプロジェクトの初期化
+
+それでは、Webサイトの本体を作成します。ターミナルを開き、プロジェクトを作成したいディレクトリに移動してから以下のコマンドを実行してください。
+
+<Steps>
+
+1.  **プロジェクト作成コマンドを実行**
+    ```bash
+    npm create astro@latest
+    ```
+
+2.  **対話形式の質問に回答する**
+    コマンドを実行するといくつか質問されます。基本的には以下のように選択すればOKです。
+    - **Where should we create your new project?** -> `my-math-site` (任意のフォルダ名)
+    - **How would you like to start your new project?** -> `Use blog template` または `Include sample files` (Starlightを後で入れる場合はどれでも可)
+    - **Install dependencies?** -> `Yes`
+    - **Initialize a new git repository?** -> `Yes`
+    - **Do you plan to write TypeScript?** -> `Yes` (推奨)
+
+3.  **Starlightの導入** （**推奨**）
+    本サイトのような**ドキュメント形式**にする場合、Starlightを追加するのが一番の近道です。
+    ```bash
+    npx astro add starlight
+    ```
+
+</Steps>
+
+<Aside type="tip">
+  すでに構築済みのテンプレート（本サイトの構成に近いもの）を使いたい場合は、Astro公式のテンプレートギャラリーから選ぶことも可能です。
+</Aside>
+
+---
+
+## 3. プロジェクトの構造を確認
+
+作成されたフォルダ（`my-math-site`）の中身を見てみましょう。主要なファイル構成は以下のようになります。
+
+<FileTree>
+- src/
+  - content/
+    - docs/
+      - **index.mdx** (トップページ)
+      - guide.md (記事ファイル)
+  - assets/ (画像など)
+- astro.config.mjs (設定ファイル)
+- package.json (プロジェクト情報)
+</FileTree>
+
+---
+
+## 4. ローカルサーバーでブラウザで確認する
+
+いよいよブラウザで確認します。以下のコマンドを入力してください。
+
+<Steps>
+
+1.  **ディレクトリに移動**
+    ```bash
+    cd my-math-site
+    ```
+
+2.  **開発サーバーを起動**
+    ```bash
+    npm run dev
+    ```
+
+3.  **ブラウザでアクセス**
+    ターミナルに表示されたURL（通常は `http://localhost:4321/`）をブラウザで開きます。
+
+</Steps>
+
+「**Welcome to Starlight**」のような画面が表示されれば成功です！
+
+---
+
+## FAQ：Webサイト構築（ローカル編）のよくある質問
+
+### Q: Node.jsのバージョンが古いとどうなりますか？
+**A:** Astroのインストール中にエラーが発生したり、開発サーバーが起動しなかったりします。必ず **v18.14.1 以上** （**推奨はLTS版の最新**） を使用してください。
+
+### Q: 「npm create astro」でエラーが出ます。
+**A:** ネットワーク環境や、実行しているフォルダの書き込み権限を確認してください。また、`node -v` でNode.jsが正しくインストールされているか再確認しましょう。
+
+### Q: Starlight以外のテンプレートでも忍者ホームページに公開できますか？
+**A:** はい、可能です。ただし、本ガイドでは数学ドキュメントに最適な **Starlight** を前提として解説を進めます。
+
+<LinkCard
+  title="入門(2)：GitHub連携とリポジトリ管理"
+  description="作成したサイトのソースコードをGitHubで管理し、自動デプロイの準備を整えましょう。"
+  href="/software/astro/astro_ninja_homepage_2/"
+/>
