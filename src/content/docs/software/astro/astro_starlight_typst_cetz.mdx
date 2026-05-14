@@ -1,0 +1,111 @@
+---
+title: Astro + Starlight で CeTZ を安定して動かす方法 (Typst 描画環境の構築)
+description: Astro/Starlight 環境で Typst の描画ライブラリ CeTZ を導入し、エラーを回避しながら安定して動作させるための実践的なガイドである。
+schema:
+  - "@type": "HowTo"
+    "name": "Astro/Starlight環境でのCeTZ導入手順"
+    "step":
+      - "@type": "HowToStep"
+        "text": "CeTZ v0.3.2のソースコードをlibs/cetzに配置する"
+      - "@type": "HowToStep"
+        "text": "絶対パスのimportを/libs/cetz/src/へ置換パッチを適用する"
+      - "@type": "HowToStep"
+        "text": "oxifmtなどの依存パッケージをスタブ化する"
+      - "@type": "HowToStep"
+        "text": "astro.config.mjsでroot: '.'を設定する"
+  - "@type": "TechArticle"
+    "headline": "Astro + StarlightにおけるTypst描画ライブラリCeTZの安定化戦略"
+    "dependencies": "Astro, Starlight, astro-typst, CeTZ v0.3.2"
+---
+
+import { Steps, Aside, Code, LinkCard } from '@astrojs/starlight/components';
+
+数学的で美しい図表を Typst で描画したい場合、**CeTZ** は最も有力なライブラリである。しかし、Astro と Starlight を使用したドキュメントサイトではまず、CeTZライブラリが簡単には使えない。そして、最新版の WASM 依存やパス解決の仕様でビルドエラーを引き起こすことが多い。生成AIを利用して、強引にCeTZライブラリを使えるようにした。
+
+**結論として、CeTZ v0.3.2 をローカルに配置し、パス置換パッチを適用することで、安定した描画環境を構築できる。**
+
+パッチをあてた CeTZ のソースコードを GitHubの私のプロジェクトに置いたので、必要ならダウンロードしてほしい。
+<LinkCard
+  title="GitHub: astro-starlight-typst"
+  description="パッチ適用済みの CeTZ v0.3.2 ソースコードを公開しています。ルートディレクトリのlibsフォルダです。"
+  href="https://github.com/tomohikoseven/astro-starlight-typst"
+/>
+
+---
+
+## クイック・サマリー
+
+- **課題**: CeTZ v0.5 以降の WASM プラグインがビルド時に実行できない。
+  - すべてのバージョンを試したわけではないので、CeTZ v0.4系はうまく行くかもしれない。
+- **解決策**: 純粋な Typst 実装である **v0.3.2** をプロジェクト内の `libs/cetz` へコピーして使用する。
+- **必須設定**: `astro.config.mjs` で `root: "."` を指定し、絶対パスによるインポートを可能にする。
+
+---
+
+## 1. 安定版 CeTZ v0.3.2 を選ぶ理由
+
+最新の CeTZ (v0.5.x) は WASM プラグインに依存しており、SSG (静的サイト生成) のビルドプロセスでエラーが発生しやすい。これに対し、**v0.3.2** は純粋な Typst コードで構成されているため、環境を選ばず動作が安定している。ハッセ図や関数グラフなどの主要機能は v0.3.2 で十分に提供されている。
+
+---
+
+## 2. 導入手順
+一から自分でライブラリを導入するには、以下の手順が必要である。
+<Steps>
+1. ### ライブラリのローカル配置
+   プロジェクトルートに `libs/cetz` フォルダを作成し、CeTZ のソースコードを配置する。パッケージマネージャ経由（`@preview`）での利用は、ビルド環境の制限により推奨されない。
+
+2. ### パス置換パッチの適用
+   CeTZ 内部の `#import` 文を Astro のプロジェクトルートから解決できるよう、`"/src/` を `"/libs/cetz/src/` に全置換する。
+
+3. ### 依存関係のスタブ化
+   `oxifmt` 等のパッケージが利用できない場合、`libs/cetz/src/oxifmt.typ` に `#let strfmt(fmt, ..args) = fmt` というスタブを作成し、ビルドを安定させる。
+
+4. ### astro.config.mjs の設定
+   `astro-typst` に `root: "."` を設定し、`/libs/...` パスを有効化する。
+</Steps>
+
+---
+
+## 3. 実装例：ハッセ図の描画
+
+$$
+#import "/libs/cetz/src/lib.typ": canvas, draw
+
+#align(center)[
+  #canvas({
+    import draw: *
+    let node-style = (fill: white, stroke: 0.6pt)
+    
+    circle((0, 2), radius: 0.4, name: "top", ..node-style)
+    content("top", [*Max*])
+    circle((-1, 1), radius: 0.4, name: "left", ..node-style)
+    content("left", [*A*])
+    circle((1, 1), radius: 0.4, name: "right", ..node-style)
+    content("right", [*B*])
+    circle((0, 0), radius: 0.4, name: "bottom", ..node-style)
+    content("bottom", [*Min*])
+    
+    line("top", "left")
+    line("top", "right")
+    line("left", "bottom")
+    line("right", "bottom")
+  })
+]
+$$
+
+---
+
+## FAQ: CeTZ 導入のよくある質問
+
+### Q1: CeTZ v0.5 で「Plugin not found」が出るのはなぜか？
+**A1**: 最新版が WASM を使用しており、Astro のビルド環境（Vite）が Typst 内からの WASM 呼び出しを適切に処理できないためである。v0.3.2 を使用することで回避できる。
+
+### Q2: 座標解決で Panic が発生する
+**A2**: Typst のバージョンアップによる型判定の変更が原因である。`coordinate.typ` 内で `type(x)` を `repr()` と組み合わせて文字列比較するように修正することで解決する。
+
+---
+
+## 結論
+
+きれいな数学図式を描画するには、typstだけでなくCeTZのようなライブラリの導入が欠かせない。
+異なるシステムを組み合わせるときは、「**枯れたバージョンをローカルで管理し、環境に合わせたパッチを当てる**」戦略が最も効果的である。
