@@ -31,6 +31,21 @@
     "typescript": "^6.0.3"
   },
   "overrides": {
-    "astro-cloudinary": "1.3.5"
+    "astro": "$astro",
+    "@unpic/astro": {
+      "astro": "$astro"
+    },
+    "typescript": "$typescript",
+    "@astrojs/check": {
+      "typescript": "$typescript"
+    },
+    "@myriaddreamin/typst-ts-node-compiler": "$@myriaddreamin/typst-ts-node-compiler",
+    "@myriaddreamin/typst-ts-renderer": "$@myriaddreamin/typst-ts-renderer",
+    "@myriaddreamin/typst.ts": "$@myriaddreamin/typst.ts",
+    "astro-typst": {
+      "@myriaddreamin/typst-ts-node-compiler": "$@myriaddreamin/typst-ts-node-compiler",
+      "@myriaddreamin/typst-ts-renderer": "$@myriaddreamin/typst-ts-renderer",
+      "@myriaddreamin/typst.ts": "$@myriaddreamin/typst.ts"
+    }
   }
 }
