@@ -134,7 +134,15 @@ export const MATHEMATICS_GROUP = {
       },
     },
     {
-      label: '数学エッセイ',
+      label: '数学の基盤と構造',
+      collapsed: true,
+      autogenerate: {
+        directory: 'math/structures',
+        collapsed: true,
+      },
+    },
+    {
+      label: '数学エッセイ・学習法',
       collapsed: true,
       autogenerate: {
         directory: 'math/essays',
