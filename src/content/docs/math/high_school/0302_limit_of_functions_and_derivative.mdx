@@ -7,8 +7,6 @@ lastUpdated: 2025-01-22
 export const imageTxt = "【結論】関数の極限が計算できる．";
 
 import CloudinaryImage from '/src/components/CloudinaryImage.astro';
-import ImageWithCaption from "/src/components/ImageWithCaption.astro";
-import image_01 from "/src/assets/high_school_math/0302/グラフの形の近似.jpg";
 
 <CloudinaryImage txt={imageTxt} wid='900'></CloudinaryImage>
 
@@ -75,16 +73,62 @@ $$
 　では何かというと，**微分はグラフの近似を表す**．
 具体的には，ある区間のグラフの形を直角三角形の斜辺にあたる直線で近似する．
 
-<ImageWithCaption
-    src={image_01}
-    alt="グラフの近似の形"
-    width="500"
-    height="300"
-    figcaption="グラフの近似の形"
-/>
+$$
+#import "/libs/cetz/src/lib.typ": canvas, draw
+
+#align(center)[
+  #canvas(length: 1.2cm, {
+    import draw: *
+    
+    // 軸線の描画
+    line((-0.5, 0), (6, 0), stroke: 0.5pt + gray, mark: (end: ">"))
+    line((0, -0.5), (0, 4.5), stroke: 0.5pt + gray, mark: (end: ">"))
+    
+    // 軸ラベル
+    content((6, -0.3), [$x$])
+    content((-0.3, 4.5), [$y$])
+    content((-0.3, -0.3), [$O$])
+    
+    // 曲線 f(x)
+    bezier((0.5, 0.5), (5, 3.5), (2.5, 0.8), stroke: 1.2pt + blue)
+    content((5.2, 3.5), [$y = f(x)$], anchor: "west")
+    
+    // 座標の設定
+    let p1 = (1.5, 0.79)
+    let p2 = (4, 2.5)
+    
+    // 割線（近似を表す直角三角形の斜辺直線）
+    line((0.8, 0.31), (4.8, 3.05), stroke: (paint: red, thickness: 0.8pt, dash: "dashed"))
+    
+    // 点 A, B
+    circle(p1, radius: 0.08, fill: black, stroke: none)
+    circle(p2, radius: 0.08, fill: black, stroke: none)
+    
+    // 点のラベル
+    content((1.5, 0.9), [$A (a, f(a))$], anchor: "south")
+    content((4, 2.7), [$B (a + h, f(a + h))$], anchor: "south")
+    
+    // 点線による射影
+    line((1.5, 0), p1, stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
+    line((4, 0), p2, stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
+    
+    content((1.5, -0.3), [$a$])
+    content((4, -0.3), [$a + h$])
+    
+    // 直角三角形の補助線
+    line(p1, (4, 0.79), stroke: (paint: green, thickness: 0.6pt, dash: "dashed"))
+    line((4, 0.79), p2, stroke: (paint: green, thickness: 0.6pt, dash: "dashed"))
+    content((2.75, 0.5), [$h$])
+    content((4.6, 1.65), [$f(a+h) - f(a)$])
+  })
+]
+$$
 
 
 区間を小さくしよりより近似にして，それを集めて全体でみるとグラフの形が明らかになる．
+
+
+
 
 
 [^1]:いろいろな参考書は「微分は平均変化率である」という立場．微分を私のようにとらえる人は他にいるのか不明である．

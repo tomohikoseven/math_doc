@@ -5,8 +5,8 @@ import remarkMath from 'remark-math';
 import emoji from 'remark-emoji';
 import rehypeTypst from '@myriaddreamin/rehype-typst';
 import { typst } from 'astro-typst';
-import d2 from 'astro-d2';
 import fs from 'node:fs';
+import mermaid from 'astro-mermaid';
 
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightLinksValidator from 'starlight-links-validator';
@@ -34,7 +34,13 @@ function getTypstExcludes() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mathdoc.ifdef.jp/',
+  vite: {
+    build: {
+      chunkSizeWarningLimit: 1500, // 警告のしきい値を 1500 kB（1.5 MB）に引き上げる
+    }
+  },
   integrations: [
+    mermaid(),
     starlight({
       title: '数学の主張',
       favicon: '/favicon.ico',
@@ -67,7 +73,6 @@ export default defineConfig({
     typst({
       target: () => "svg"
     }),
-    d2(),
     sitemap()
   ],
   markdown: {

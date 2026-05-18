@@ -56,73 +56,29 @@ import { Card, CardGrid, Steps, Aside, LinkCard, Badge } from '@astrojs/starligh
 
 Astroで生成した静的ファイルを、GitHub Actionsを通じて忍者ホームページへ**全自動でFTP転送**する構成です。
 
-```d2
-direction: right
+```mermaid
+graph LR
+    subgraph Local["1. 開発 (Local)"]
+        me["💻 Astroコード<br>(開発環境)"]
+    end
 
-# --- 開発フェーズ ---
-Develop: {
-  label: "1. 開発 (Local)"
-  style: {
-    stroke: "#3498db"
-    stroke-width: 2
-    border-radius: 10
-  }
-  Me: {
-    label: "Astroコード\n(開発環境)"
-    shape: image
-    icon: https://icons.terrastruct.com/tech%2Fdesktop.svg
-  }
-}
+    subgraph GitHub["2. 連携 (GitHub)"]
+        repo["🐙 リポジトリ<br>(ソース管理)"]
+        actions["⚙️ GitHub Actions<br>(自動ビルド & 転送)"]
+    end
 
-# --- 管理・自動化フェーズ ---
-GitHub: {
-  label: "2. 連携 (GitHub)"
-  style: {
-    stroke: "#2dba4e"
-    stroke-width: 2
-    border-radius: 10
-  }
-  Repo: {
-    label: "リポジトリ\n(ソース管理)"
-    shape: image
-    icon: https://icons.terrastruct.com/dev%2Fgithub.svg
-  }
-  Actions: {
-    label: "GitHub Actions\n(自動ビルド & 転送)"
-    shape: image
-    icon: https://icons.terrastruct.com/essentials%2F204-settings.svg
-  }
-  Repo -> Actions: "Pushを検知"
-}
+    subgraph Hosting["3. 公開 (Hosting)"]
+        ninja["🌐 忍者ホームページ<br>(公開サーバー)"]
+    end
 
-# --- 公開フェーズ ---
-Public: {
-  label: "3. 公開 (Hosting)"
-  style: {
-    stroke: "#f39c12"
-    stroke-width: 2
-    border-radius: 10
-  }
-  Ninja: {
-    label: "忍者ホームページ\n(公開サーバー)"
-    shape: image
-    icon: https://icons.terrastruct.com/essentials%2F112-server.svg
-  }
-}
+    subgraph Reader["4. 閲覧者 (Reader)"]
+        reader["👥 読者<br>(ブラウザ)"]
+    end
 
-# --- 閲覧者 ---
-User: {
-  Reader: {
-    label: "読者"
-    shape: image
-    icon: https://icons.terrastruct.com/tech%2Fbrowser-2.svg
-  }
-}
-
-# --- データの流れ ---
-Develop.Me -> GitHub.Repo: "git push"
-GitHub.Actions -> Public.Ninja: "FTPデプロイ"
-User.Reader -> Public.Ninja: "サイトを閲覧"
+    me -->|git push| repo
+    repo -->|Pushを検知| actions
+    actions -->|FTPデプロイ| ninja
+    reader -->|サイトを閲覧| ninja
 ```
 
 ### 本構成のメリット・デメリット
