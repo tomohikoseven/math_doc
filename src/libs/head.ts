@@ -1,20 +1,3 @@
-// Adsence 審査用コード
-export const GOOGLE_SITE_VERIFICATION = {
-  tag: 'meta',
-  attrs: {
-    name: 'google-site-verification',
-    content: 'EC7D-cNrvKzXzsz8OePb5W1ZKSZ_-Bb5pTv9iMELkRE'
-  }
-};
-
-// Google Adsence
-export const GOOGLE_ADSENSE = {
-  tag: 'meta',
-  attrs: {
-    name: 'google-adsense-account',
-    content: 'ca-pub-7031713239242378'
-  }
-};
 
 // Google Analytics
 export const GOOGLE_ANALYTICS = [{
