@@ -135,6 +135,7 @@ export const MATHEMATICS_GROUP = {
     },
     {
       label: '数学の基盤と構造',
+      badge: { text: 'HOT', variant: 'danger' },
       collapsed: true,
       autogenerate: {
         directory: 'math/structures',
@@ -149,6 +150,7 @@ export const MATHEMATICS_GROUP = {
         collapsed: true,
       },
     },
+    MATH_DIALY,
   ],
 };
 
@@ -164,13 +166,8 @@ export const SIDEBAR_TOPICS = [
     label: '読書・学習・ライフ',
     link: '/learning/0500_improve_memory/',
     icon: 'sun',
+    badge: { text: 'HOT', variant: 'danger' },
     items: [OTHER_THAN_MATH],
-  },
-  {
-    label: '数学日誌',
-    link: '/diary/202501/',
-    icon: 'pencil',
-    items: [MATH_DIALY],
   },
   {
     label: 'Software',
