@@ -43,7 +43,7 @@ export default defineConfig({
     mermaid(),
     starlight({
       title: '数学の主張',
-      favicon: '/favicon.ico',
+      favicon: '/favicon.svg',
       locales: {
         root: {
           label: '日本語',

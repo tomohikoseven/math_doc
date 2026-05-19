@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Option C: Logical Deduction (Therefore) -->
+  <!-- Mathematical connection lines -->
+  <polygon points="64,36 36,88 92,88" fill="none" stroke="#94a3b8" stroke-width="4" stroke-dasharray="6,6" opacity="0.6" />
+  
+  <!-- Top Node / Assertion (Turquoise Accent #5bc8ac) -->
+  <circle cx="64" cy="36" r="16" fill="#5bc8ac" />
+  
+  <!-- Bottom-Left Node (Cobalt Blue) -->
+  <circle cx="36" cy="88" r="16" fill="#2563eb" />
+  
+  <!-- Bottom-Right Node (Slate Charcoal) -->
+  <circle cx="92" cy="88" r="16" fill="#475569" />
+</svg>
