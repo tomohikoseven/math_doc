@@ -5,6 +5,68 @@ import Default from "@astrojs/starlight/components/Footer.astro";
 ---
 
 <Default><slot /></Default>
+
+<!-- スマホ専用：記事末尾から目次を開くボタン -->
+<div class="mobile-explore-more">
+  <p class="mobile-explore-text">他の記事を探す</p>
+  <button class="open-menu-btn" onclick="document.querySelector('starlight-menu-button button')?.click()">
+    <svg aria-hidden="true" width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path>
+    </svg>
+    目次ツリーを開く
+  </button>
+</div>
+
 <hr color="#EEEEEE" />
 <!-- <AdSeihokei /> -->
 <!-- <AdMaxAllPages /> -->
+
+<style>
+.mobile-explore-more {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background-color: var(--sl-color-gray-6);
+  border-radius: 0.5rem;
+  border: 1px solid var(--sl-color-gray-5);
+}
+
+.mobile-explore-text {
+  font-size: 0.9rem;
+  color: var(--sl-color-gray-2);
+  margin-bottom: 0.8rem;
+  font-weight: bold;
+}
+
+.open-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--sl-color-accent);
+  color: var(--sl-color-black); /* アクセントカラー上の文字色 */
+  border: none;
+  border-radius: 2rem; /* 少し丸みを持たせてタップしやすく */
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.open-menu-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+
+/* PC（左サイドバーが表示される幅）ではこのボタン自体を非表示にする */
+@media (min-width: 50rem) {
+  .mobile-explore-more {
+    display: none;
+  }
+}
+</style>
