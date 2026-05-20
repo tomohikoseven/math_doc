@@ -7,12 +7,12 @@ export const imageTxt = `・第n項が計算できる．
 ・n → ∞を求めることができる．`;
 
 import { Card } from "@astrojs/starlight/components";
-import CloudinaryImage from '/src/components/CloudinaryImage.astro';
+import ArticleImage from '/src/components/ArticleImage.astro';
 
 import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/high_school_math/0301/自然数と数列の対応関係.jpg";
 
-<CloudinaryImage txt={imageTxt} wid='900'></CloudinaryImage>
+<ArticleImage txt={imageTxt} wid='900'></ArticleImage>
 
 ## 数列の極限において，基礎は何か．
 　数列の極限の学習において，最低限計算できなければならない（基礎）は以下の２つである．

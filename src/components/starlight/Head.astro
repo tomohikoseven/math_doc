@@ -1,32 +1,11 @@
 ---
 import Default from '@astrojs/starlight/components/Head.astro'
-import { getCldOgImageUrl } from 'astro-cloudinary/helpers'
 
 // Grab the current page entry and site title from the page data.
 const { entry, siteTitle } = Astro.locals.starlightRoute;
 
 // Get the URL of the generated image for the current page.
-const ogImageUrl = getCldOgImageUrl({
-  // The public ID of the image in Cloudinary.
-  src: 'blackboard_wmeehz',
-  // Text overlays to add to the image.
-  overlays: [
-    {
-      text: {
-        // Add the title of the current page as text.
-        text: entry.data.title,
-        // Style the title text.
-        color: '#FFFFFF',
-        fontFamily: 'Sawarabi Gothic',
-        fontSize: 65,
-      },
-      // Position the title with some padding.
-      crop: 'fit',
-      // position: { y: -20 },
-      width: 1100,
-    },
-  ],
-})
+const ogImageUrl = new URL('/favicon_option_a_m.svg', Astro.site).href;
 
 // Schema.org JSON-LD
 const baseSchema = {

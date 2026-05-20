@@ -10,13 +10,11 @@ export const imageTxt = `【結論】
 疑問で立ち止まってそれを解決しながら，理解を積み重ねる読み方をする．`;
 
 import { YouTube } from 'astro-embed';
-import CloudinaryImage from '/src/components/CloudinaryImage.astro';
+import ArticleImage from '/src/components/ArticleImage.astro';
 import { Card } from "@astrojs/starlight/components";
 import { Aside } from '@astrojs/starlight/components';
 
-{/*
-<CloudinaryImage txt={imageTxt} wid='800' />
-*/}
+<ArticleImage txt={imageTxt} wid='800' />
 
 ## 【結論】疑問の解決と理解の積み重ねをする読み方．
 
