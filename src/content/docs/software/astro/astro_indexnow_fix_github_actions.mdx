@@ -2,12 +2,16 @@
 title: IndexNowの「No candidate urls need to submit」エラーをGitHub Actionsで解決する方法
 description: GitHub ActionsのIndexNowアクションで更新が検知されず、Bingに通知が届かない問題をcurlコマンドによる直接通知で確実に解決する方法を解説します。
 lastUpdated: true
-prev: false
-next: false
 ---
 
-**【この記事の要約（TL;DR）】**
-GitHub ActionsのIndexNow連携で「No candidate urls need to submit」と表示され更新が通知されない問題は、サイトマップの`<lastmod>`タグが不足していることによる誤判定が原因です。解決策として、外部アクションを使わずにGitHub Actionsから直接 `curl` コマンドでBing APIを叩くことで、確実にインデックス登録を促すことができます。
+import ArticleBlock from '/src/components/ArticleBlock.astro';
+
+<ArticleBlock title="要約" wid="800">
+
+GitHub ActionsのIndexNow連携で「No candidate urls need to submit」と表示され更新が通知されない問題は、サイトマップの `<lastmod>` タグが不足していることによる誤判定が原因である。
+解決策として、外部アクションを使わずにGitHub Actionsから直接 `curl` コマンドでBing APIを叩くことで、確実にインデックス登録を促すことができる。
+
+</ArticleBlock>
 
 ---
 
@@ -64,7 +68,7 @@ A: 本サイトの検証では、`curl` 実行後5分程度でWebmaster Tools上
 ## まとめ
 IndexNowが正常に動作しない場合は、アクションの自動判定に頼らず、直接APIを叩くのが最も確実な解決策です。Actionsのログで `HTTP 200` を確認できれば、インデックス登録は正常にリクエストされています。
 
-<script type="application/ld+json">
+<script type="application/ld+json" set:html={JSON.stringify(
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -121,5 +125,5 @@ IndexNowが正常に動作しない場合は、アクションの自動判定に
     }
   ]
 }
-</script>
+)} />
 

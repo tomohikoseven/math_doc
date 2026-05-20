@@ -1,38 +1,75 @@
 ---
 title: AstroのStepsコンポーネント使用時のルール
-description: AstroのStepsコンポーネント使用時に発生するエラーの原因と解決方法を解説します。適切なインデント方法や、順序付きリストの記述ルールを詳しく紹介します。
+description: AstroのStepsコンポーネント使用時に発生するエラーの原因と解決方法を解説する。適切なインデント方法や、順序付きリストの記述ルールを詳しく紹介する。
 ---
-import { Code } from '@astrojs/starlight/components';
+import { Aside, Steps } from '@astrojs/starlight/components';
+import ArticleBlock from '/src/components/ArticleBlock.astro';
 
-**環境情報**
-- "astro": "^4.14.2"
-- "@astrojs/starlight": "^0.26.1"
+<ArticleBlock wid="800">
 
-***
+Stepsコンポーネントのエラーは、リスト項目の内容を3〜4スペースでインデントすることで解決する。
 
-　AstroのStepsコンポーネントを使用したら，下記のような意味不明なエラーに遭遇した．
+</ArticleBlock>
 
-```bash frame="none"
+
+Astro（Starlight）の `<Steps>` コンポーネントを使用する際、以下のようなエラーに遭遇することがある。
+
+<Aside type="danger" title="エラー例">
+```text
 The <Steps> component expects its content to be a single ordered list (<ol>) but found multiple child elements: <ol>, <p>, <ol>.
 ```
+</Aside>
 
-　エラーの内容はいいとして，このようなエラーが発生する原因は，`<Steps>`内の記述を**3,4個のスペースでインデントしていない**ことによる
-（順序付きリスト要素に該当する1.〜，2.〜はインデントしない．）.
+このエラーが発生する主な原因は、`<Steps>` 内のリスト項目の内容（テキストやコードブロックなど）を**適切にインデント（スペース3〜4個）していない**ことである。
+順序付きリストの番号（`1.`, `2.` など）自体はインデントせず、その下の要素をインデントする必要がある。
 
-　具体的にどうすればいいのか，[ドキュメントの例](https://starlight.astro.build/guides/components/#steps)を参考に下記に記す．
+## エラーを解決するための具体的な記述方法
 
-
-```diff title="example.mdx" lang="mdx" ins="   "
-import { Steps } from '@astrojs/starlight/components';
+[公式ドキュメントの例](https://starlight.astro.build/guides/components/#steps)を参考に、正しい記述手順を解説する。
 
 <Steps>
 
-1. Import the component into your MDX file:
+1. **コンポーネントのインポート**
 
-   ← 4つのスペースをいれて始めよ．
-   4 spaces inputs to left.
+   ファイルの先頭付近で `Steps` コンポーネントをインポートする。
 
-2. Wrap `<Steps>` around your ordered list items.
+   ```mdx
+   import { Steps } from '@astrojs/starlight/components';
+   ```
+
+2. **順序付きリストを `<Steps>` で囲み、内容をインデントする**
+
+   リスト番号の下の行は、必ずスペースでインデント（通常は4つ）する。
+
+   ```diff title="example.mdx" lang="mdx" ins="   "
+   <Steps>
+
+   1. リストの項目を記述する:
+
+      ← 4つのスペースを入れてインデントする。
+      4 spaces inputs to left.
+
+   2. 次の項目である。
+
+   </Steps>
+   ```
 
 </Steps>
-```
+
+## よくある質問 (FAQ)
+
+### 番号自体をインデントするとどうなるか？
+
+番号（`1.` など）自体をインデントすると、Markdownパーサーが意図した順序付きリストとして認識せず、別のエラーや表示崩れを引き起こす原因となる。番号はインデントせず行頭から記述し、その内容のみをインデントすることが重要である。
+
+## まとめ
+
+- `<Steps>` コンポーネント内のエラーは、不適切なインデントが原因である。
+- 順序付きリストの番号（`1.`, `2.` など）は行頭から記述する。
+- リスト項目に続くテキストやコードブロックは、必ず**3〜4個のスペースでインデント**する。
+
+---
+
+**環境情報**
+- `astro`: `^4.14.2`
+- `@astrojs/starlight`: `^0.26.1`

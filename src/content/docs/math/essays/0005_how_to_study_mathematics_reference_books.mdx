@@ -6,15 +6,16 @@ next: false
 prev: false
 draft: true
 ---
-export const imageTxt = `【結論】
-疑問で立ち止まってそれを解決しながら，理解を積み重ねる読み方をする．`;
-
 import { YouTube } from 'astro-embed';
-import ArticleImage from '/src/components/ArticleImage.astro';
+import ArticleBlock from '/src/components/ArticleBlock.astro';
 import { Card } from "@astrojs/starlight/components";
 import { Aside } from '@astrojs/starlight/components';
 
-<ArticleImage txt={imageTxt} wid='800' />
+<ArticleBlock wid="800">
+
+疑問で立ち止まってそれを解決しながら，理解を積み重ねる読み方をする．
+
+</ArticleBlock>
 
 ## 【結論】疑問の解決と理解の積み重ねをする読み方．
 

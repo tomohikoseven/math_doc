@@ -1,0 +1,10 @@
+---
+import { Aside } from "@astrojs/starlight/components";
+const { title = "結論", txt, wid = 850 } = Astro.props;
+---
+
+<div style={`max-width: ${wid}px; margin: 2rem auto;`}>
+  <Aside type="note" title={title}>
+    {txt ? txt : <slot />}
+  </Aside>
+</div>
