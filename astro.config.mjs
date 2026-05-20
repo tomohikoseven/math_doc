@@ -62,8 +62,6 @@ export default defineConfig({
       components: {
         Footer: './src/components/starlight/Footer.astro',
         Head: './src/components/starlight/Head.astro',
-        TableOfContents: './src/components/starlight/TableOfContents.astro',
-        Sidebar: './src/components/starlight/Sidebar.astro',
         MarkdownContent: './src/components/starlight/MarkdownContent.astro',
       },
       plugins: [
