@@ -22,7 +22,10 @@ export const MCGRAW_HILL_CALCULUS_UPPER = createAutoGroup('マグロウヒル大
 export const LINEAR_ALGEBRA = createAutoGroup('線形代数', 'linear_algebra');
 export const LINEAR_ALGEBRA_KAWAKUBO = createAutoGroup('線形代数学 演習', 'linear_algebra_kawakubo');
 export const MATHEMATICS = createAutoGroup('数学全般', 'other');
-export const MATH_DIALY = createAutoGroup('数学日誌', 'diary');
+export const MATH_DIALY = {
+  ...createAutoGroup('数学日誌', 'diary'),
+  badge: { text: 'Archive', class: 'badge-archive' },
+};
 export const SOFTWARE = {
   label: 'Software',
   collapsed: true,
