@@ -1,0 +1,173 @@
+---
+import { Badge } from '@astrojs/starlight/components';
+
+interface LogEntry {
+  date: string;
+  points: number;
+  sources: string[];
+}
+
+interface Props {
+  data: LogEntry[];
+}
+
+const { data } = Astro.props;
+
+const totalPoints = data.reduce((sum, entry) => sum + entry.points, 0);
+const daysWithWins = data.filter(entry => entry.points > 0).length;
+const highestWin = Math.max(...data.map(entry => entry.points));
+const avgPoints = (totalPoints / data.length).toFixed(1);
+
+function getPointVariant(points: number): "default" | "note" | "success" | "danger" | "tip" | "caution" {
+  if (points === 0) return 'default';
+  if (points < 5) return 'note';
+  if (points < 50) return 'success';
+  return 'danger'; // 100 pt over gets "danger" (usually red/orange, good for jackpot)
+}
+---
+
+<div class="kuji-summary">
+  <div class="kuji-stat">
+    <div class="kuji-stat-label">月間合計ポイント</div>
+    <div class="kuji-stat-value highlight">{totalPoints} <span>pt</span></div>
+  </div>
+  <div class="kuji-stat">
+    <div class="kuji-stat-label">当選日数 / 全体</div>
+    <div class="kuji-stat-value">{daysWithWins} <span>/ {data.length} 日</span></div>
+  </div>
+  <div class="kuji-stat">
+    <div class="kuji-stat-label">1日の最大当選</div>
+    <div class="kuji-stat-value">{highestWin} <span>pt</span></div>
+  </div>
+  <div class="kuji-stat">
+    <div class="kuji-stat-label">1日平均</div>
+    <div class="kuji-stat-value">{avgPoints} <span>pt/日</span></div>
+  </div>
+</div>
+
+<div class="kuji-log-list">
+  {data.map(entry => (
+    <div class={`kuji-row ${entry.points === 0 ? 'kuji-row-zero' : ''}`}>
+      <div class="kuji-date">{entry.date.substring(5)}</div>
+      <div class="kuji-points">
+        <Badge text={`${entry.points} pt`} variant={getPointVariant(entry.points)} size="medium" />
+      </div>
+      <div class="kuji-sources">
+        {entry.sources.length > 0 ? (
+          entry.sources.map(source => (
+            <span class="kuji-source-tag">{source}</span>
+          ))
+        ) : (
+          <span class="kuji-source-none">当選なし</span>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .kuji-summary {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .kuji-stat {
+    flex: 1;
+    min-width: 150px;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .kuji-stat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+  .kuji-stat-label {
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-3);
+    margin-bottom: 0.5rem;
+  }
+  .kuji-stat-value {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--sl-color-white);
+  }
+  .kuji-stat-value span {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--sl-color-gray-3);
+  }
+  .kuji-stat-value.highlight {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .kuji-log-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .kuji-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--sl-color-bg-nav);
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--sl-color-accent);
+    transition: background-color 0.2s;
+  }
+  .kuji-row:hover {
+    background: var(--sl-color-gray-6);
+  }
+  .kuji-row-zero {
+    border-left-color: var(--sl-color-gray-5);
+    opacity: 0.6;
+  }
+  .kuji-date {
+    font-family: var(--sl-font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--sl-color-gray-2);
+    min-width: 60px;
+  }
+  .kuji-points {
+    min-width: 70px;
+    text-align: center;
+  }
+  .kuji-sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .kuji-source-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--sl-color-black);
+    color: var(--sl-color-gray-2);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 1rem;
+  }
+  .kuji-source-none {
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-4);
+    font-style: italic;
+  }
+
+  @media (max-width: 640px) {
+    .kuji-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .kuji-date {
+      font-size: 0.875rem;
+    }
+  }
+</style>
