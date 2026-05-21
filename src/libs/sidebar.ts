@@ -1,103 +1,48 @@
-export const REAL_NUMBER = {
-  label: '実数論',
-  collapsed: true,
-  items: [{ autogenerate: { directory: 'real_number', collapsed: true } }]
-};
+/**
+ * Starlightのサイドバーとトピック設定の定義モジュール
+ * starlight-sidebar-topics プラグイン等と連携して使用します。
+ */
 
-export const MCGRAW_HILL_CALCULUS_UPPER = {
-  label: 'マグロウヒル大学演習シリーズ 微積分（上）',
-  collapsed: true,
-  items: [{ autogenerate: { directory: 'McGraw_Hill_College_Exercise_Series_Calculus_Upper', collapsed: true } }]
-};
+/**
+ * 指定されたディレクトリから自動生成されるサイドバーグループを生成するヘルパー関数
+ * @param label - サイドバーに表示されるラベル
+ * @param directory - 自動生成対象のディレクトリパス
+ * @returns StarlightのSidebarItem形式のオブジェクト
+ */
+function createAutoGroup(label: string, directory: string) {
+  return {
+    label,
+    collapsed: true,
+    items: [{ autogenerate: { directory, collapsed: true } }]
+  };
+}
 
-export const LINEAR_ALGEBRA = {
-  label: '線形代数',
-  collapsed: true,
-  items: [{ autogenerate: { directory: 'linear_algebra', collapsed: true } }]
-};
-
-export const LINEAR_ALGEBRA_KAWAKUBO = {
-  label: '線形代数学 演習',
-  collapsed: true,
-  items: [{ autogenerate: { directory: 'linear_algebra_kawakubo', collapsed: true } }]
-};
-
-export const MATHEMATICS = {
-  label: '数学全般',
-  collapsed: true,
-  items: [{ autogenerate: { directory: 'other', collapsed: true } }]
-};
-
-export const MATH_DIALY = {
-  label: '数学日誌',
-  collapsed: true,
-  items: [{ autogenerate: { directory: 'diary', collapsed: true } }]
-};
-
-export const SOFTWARE = {
-  label: 'Software',
-  collapsed: true,
-  items: [{ autogenerate: { directory: 'software', collapsed: true } }]
-};
-
-export const HIGH_SCHOOL_MATH = {
-  label: '高校数学',
-  collapsed: true,
-  items: [{ autogenerate: { directory: 'high_school_math', collapsed: true } }]
-};
-
-export const OTHER_THAN_MATH = {
-  label: '読書・学習・ライフ',
-  collapsed: true,
-  items: [{ autogenerate: { directory: 'learning', collapsed: true } }]
-};
+export const REAL_NUMBER = createAutoGroup('実数論', 'real_number');
+export const MCGRAW_HILL_CALCULUS_UPPER = createAutoGroup('マグロウヒル大学演習シリーズ 微積分（上）', 'McGraw_Hill_College_Exercise_Series_Calculus_Upper');
+export const LINEAR_ALGEBRA = createAutoGroup('線形代数', 'linear_algebra');
+export const LINEAR_ALGEBRA_KAWAKUBO = createAutoGroup('線形代数学 演習', 'linear_algebra_kawakubo');
+export const MATHEMATICS = createAutoGroup('数学全般', 'other');
+export const MATH_DIALY = createAutoGroup('数学日誌', 'diary');
+export const SOFTWARE = createAutoGroup('Software', 'software');
+export const HIGH_SCHOOL_MATH = createAutoGroup('高校数学', 'high_school_math');
+export const OTHER_THAN_MATH = createAutoGroup('読書・学習・ライフ', 'learning');
 
 // ─── 数学カテゴリをまとめたグループ ───────────────────────────
 export const MATHEMATICS_GROUP = {
   label: '数学',
   collapsed: false,
   items: [
+    createAutoGroup('実数論', 'math/real_number'),
+    createAutoGroup('微分法', 'math/differential_method'),
+    createAutoGroup('積分法', 'math/integral_method'),
+    createAutoGroup('線形代数', 'math/linear_algebra'),
+    createAutoGroup('微積分 演習', 'math/calculus'),
+    createAutoGroup('高校数学', 'math/high_school'),
     {
-      label: '実数論',
-      collapsed: true,
-      items: [{ autogenerate: { directory: 'math/real_number', collapsed: true } }],
-    },
-    {
-      label: '微分法',
-      collapsed: true,
-      items: [{ autogenerate: { directory: 'math/differential_method', collapsed: true } }],
-    },
-    {
-      label: '積分法',
-      collapsed: true,
-      items: [{ autogenerate: { directory: 'math/integral_method', collapsed: true } }],
-    },
-    {
-      label: '線形代数',
-      collapsed: true,
-      items: [{ autogenerate: { directory: 'math/linear_algebra', collapsed: true } }],
-    },
-    {
-      label: '微積分 演習',
-      collapsed: true,
-      items: [{ autogenerate: { directory: 'math/calculus', collapsed: true } }],
-    },
-    {
-      label: '高校数学',
-      collapsed: true,
-      items: [{ autogenerate: { directory: 'math/high_school', collapsed: true } }],
-    },
-    {
-      label: '数学の基盤と構造',
+      ...createAutoGroup('数学の基盤と構造', 'math/structures'),
       badge: { text: 'HOT', variant: 'danger' },
-      collapsed: true,
-      items: [{ autogenerate: { directory: 'math/structures', collapsed: true } }],
     },
-    {
-      label: '数学エッセイ・学習法',
-      collapsed: true,
-      items: [{ autogenerate: { directory: 'math/essays', collapsed: true } }],
-    },
+    createAutoGroup('数学エッセイ・学習法', 'math/essays'),
     MATH_DIALY,
   ],
 };
@@ -125,6 +70,9 @@ export const SIDEBAR_TOPICS = [
   },
 ];
 
+/**
+ * リンクチェッカー（starlight-links-validator）等で除外するパスの設定
+ */
 export const SIDEBAR_TOPICS_OPTIONS = {
   exclude: [
     '/thank_you_for_your_inquiry',
