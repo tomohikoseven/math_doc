@@ -4,14 +4,14 @@ description: GitHub ActionsのIndexNowアクションで更新が検知されず
 lastUpdated: true
 ---
 
-import ArticleBlock from '/src/components/ArticleBlock.astro';
+import ArticleTip from '/src/components/ArticleTip.astro';
 
-<ArticleBlock title="要約" wid="800">
+<ArticleTip title="要約" wid="800">
 
 GitHub ActionsのIndexNow連携で「No candidate urls need to submit」と表示され更新が通知されない問題は、サイトマップの `<lastmod>` タグが不足していることによる誤判定が原因である。
 解決策として、外部アクションを使わずにGitHub Actionsから直接 `curl` コマンドでBing APIを叩くことで、確実にインデックス登録を促すことができる。
 
-</ArticleBlock>
+</ArticleTip>
 
 ---
 
