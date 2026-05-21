@@ -31,8 +31,8 @@ export const SOFTWARE = {
   collapsed: true,
   items: [
     createAutoGroup('Astro', 'software/astro'),
-    createAutoGroup('Puppeteer', 'software/puppeteer'),
-    createAutoGroup('Rakuten', 'software/Rakuten'),
+    createAutoGroup('ブラウザ自動操作', 'software/browser_automation'),
+    createAutoGroup('楽天', 'software/Rakuten'),
     {
       ...createAutoGroup('Raspberry Pi', 'software/raspberrypi'),
       badge: { text: 'Archive', class: 'badge-archive' },
