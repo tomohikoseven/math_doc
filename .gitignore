@@ -27,3 +27,6 @@ public/d2/
 src/scripts/gen_static_2025.js
 src/scripts/static_2025_output.txt
 src/scripts/update_calendar.js
+
+.vscode/*
+.antigravity/*
