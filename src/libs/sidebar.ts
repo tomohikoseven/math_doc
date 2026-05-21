@@ -1,83 +1,55 @@
 export const REAL_NUMBER = {
   label: '実数論',
   collapsed: true,
-  autogenerate: {
-    directory: 'real_number',
-    collapsed: true,
-  }
+  items: [{ autogenerate: { directory: 'real_number', collapsed: true } }]
 };
 
 export const MCGRAW_HILL_CALCULUS_UPPER = {
   label: 'マグロウヒル大学演習シリーズ 微積分（上）',
   collapsed: true,
-  autogenerate: {
-    directory: 'McGraw_Hill_College_Exercise_Series_Calculus_Upper',
-    collapsed: true,
-  }
+  items: [{ autogenerate: { directory: 'McGraw_Hill_College_Exercise_Series_Calculus_Upper', collapsed: true } }]
 };
 
 export const LINEAR_ALGEBRA = {
   label: '線形代数',
   collapsed: true,
-  autogenerate: {
-    directory: 'linear_algebra',
-    collapsed: true,
-  }
+  items: [{ autogenerate: { directory: 'linear_algebra', collapsed: true } }]
 };
 
 export const LINEAR_ALGEBRA_KAWAKUBO = {
   label: '線形代数学 演習',
   collapsed: true,
-  autogenerate: {
-    directory: 'linear_algebra_kawakubo',
-    collapsed: true,
-  }
-
+  items: [{ autogenerate: { directory: 'linear_algebra_kawakubo', collapsed: true } }]
 };
 
 export const MATHEMATICS = {
   label: '数学全般',
   collapsed: true,
-  autogenerate: {
-    directory: 'other',
-    collapsed: true,
-  }
+  items: [{ autogenerate: { directory: 'other', collapsed: true } }]
 };
 
 export const MATH_DIALY = {
   label: '数学日誌',
   collapsed: true,
-  autogenerate: {
-    directory: 'diary',
-    collapsed: true,
-  }
+  items: [{ autogenerate: { directory: 'diary', collapsed: true } }]
 };
 
 export const SOFTWARE = {
   label: 'Software',
   collapsed: true,
-  autogenerate: {
-    directory: 'software',
-    collapsed: true,
-  }
+  items: [{ autogenerate: { directory: 'software', collapsed: true } }]
 };
 
 export const HIGH_SCHOOL_MATH = {
   label: '高校数学',
   collapsed: true,
-  autogenerate: {
-    directory: 'high_school_math',
-    collapsed: true,
-  }
+  items: [{ autogenerate: { directory: 'high_school_math', collapsed: true } }]
 };
 
 export const OTHER_THAN_MATH = {
   label: '読書・学習・ライフ',
   collapsed: true,
-  autogenerate: {
-    directory: 'learning',
-    collapsed: true,
-  }
+  items: [{ autogenerate: { directory: 'learning', collapsed: true } }]
 };
 
 // ─── 数学カテゴリをまとめたグループ ───────────────────────────
@@ -88,67 +60,43 @@ export const MATHEMATICS_GROUP = {
     {
       label: '実数論',
       collapsed: true,
-      autogenerate: {
-        directory: 'math/real_number',
-        collapsed: true,
-      },
+      items: [{ autogenerate: { directory: 'math/real_number', collapsed: true } }],
     },
     {
       label: '微分法',
       collapsed: true,
-      autogenerate: {
-        directory: 'math/differential_method',
-        collapsed: true,
-      },
+      items: [{ autogenerate: { directory: 'math/differential_method', collapsed: true } }],
     },
     {
       label: '積分法',
       collapsed: true,
-      autogenerate: {
-        directory: 'math/integral_method',
-        collapsed: true,
-      },
+      items: [{ autogenerate: { directory: 'math/integral_method', collapsed: true } }],
     },
     {
       label: '線形代数',
       collapsed: true,
-      autogenerate: {
-        directory: 'math/linear_algebra',
-        collapsed: true,
-      },
+      items: [{ autogenerate: { directory: 'math/linear_algebra', collapsed: true } }],
     },
     {
       label: '微積分 演習',
       collapsed: true,
-      autogenerate: {
-        directory: 'math/calculus',
-        collapsed: true,
-      },
+      items: [{ autogenerate: { directory: 'math/calculus', collapsed: true } }],
     },
     {
       label: '高校数学',
       collapsed: true,
-      autogenerate: {
-        directory: 'math/high_school',
-        collapsed: true,
-      },
+      items: [{ autogenerate: { directory: 'math/high_school', collapsed: true } }],
     },
     {
       label: '数学の基盤と構造',
       badge: { text: 'HOT', variant: 'danger' },
       collapsed: true,
-      autogenerate: {
-        directory: 'math/structures',
-        collapsed: true,
-      },
+      items: [{ autogenerate: { directory: 'math/structures', collapsed: true } }],
     },
     {
       label: '数学エッセイ・学習法',
       collapsed: true,
-      autogenerate: {
-        directory: 'math/essays',
-        collapsed: true,
-      },
+      items: [{ autogenerate: { directory: 'math/essays', collapsed: true } }],
     },
     MATH_DIALY,
   ],
@@ -179,8 +127,6 @@ export const SIDEBAR_TOPICS = [
 
 export const SIDEBAR_TOPICS_OPTIONS = {
   exclude: [
-    '/typst_test',
-    '/typst_test_simple',
     '/thank_you_for_your_inquiry',
     '/index',
     '/about/**/*'
