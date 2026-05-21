@@ -249,3 +249,11 @@ starlight-menu-button svg {
     font-weight: normal;
   }
 }
+/* ====================== */
+/* 独自バッジスタイル     */
+/* ====================== */
+.badge-archive {
+  background-color: transparent !important;
+  color: var(--sl-color-gray-3) !important;
+  border-color: var(--sl-color-gray-4) !important;
+}

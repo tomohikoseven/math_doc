@@ -23,7 +23,20 @@ export const LINEAR_ALGEBRA = createAutoGroup('線形代数', 'linear_algebra');
 export const LINEAR_ALGEBRA_KAWAKUBO = createAutoGroup('線形代数学 演習', 'linear_algebra_kawakubo');
 export const MATHEMATICS = createAutoGroup('数学全般', 'other');
 export const MATH_DIALY = createAutoGroup('数学日誌', 'diary');
-export const SOFTWARE = createAutoGroup('Software', 'software');
+export const SOFTWARE = {
+  label: 'Software',
+  collapsed: true,
+  items: [
+    createAutoGroup('Astro', 'software/astro'),
+    createAutoGroup('Puppeteer', 'software/puppeteer'),
+    createAutoGroup('Rakuten', 'software/Rakuten'),
+    {
+      ...createAutoGroup('Raspberry Pi', 'software/raspberrypi'),
+      badge: { text: 'Archive', class: 'badge-archive' },
+    },
+    createAutoGroup('その他', 'software/other'),
+  ]
+};
 export const HIGH_SCHOOL_MATH = createAutoGroup('高校数学', 'high_school_math');
 export const OTHER_THAN_MATH = createAutoGroup('読書・学習・ライフ', 'learning');
 
