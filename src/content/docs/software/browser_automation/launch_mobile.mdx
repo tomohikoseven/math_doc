@@ -1,0 +1,43 @@
+---
+title: PuppeteerでChromeをモバイル対応で起動する
+description: Puppeteerを使用して、Chromeブラウザをモバイル版として起動する方法を解説する。UserAgentの設定やデバイス情報の指定方法を詳しく紹介する。
+---
+import { Aside } from '@astrojs/starlight/components';
+
+Puppeteerを用いてChromeをモバイル端末としてエミュレート起動するには、単にUserAgent文字列を変更するだけでは不十分であり、`setUserAgent` メソッドのオプションで `mobile: true` を明示的に指定する必要がある。
+
+## 課題：モバイル版としての起動
+
+Puppeteerを利用してポイ活等の自動実行プログラムを作成している際、対象のWebサイトで「スマートフォンからアクセスした場合のみ表示されるボタン」を押下する必要が生じた。しかし、Puppeteerがデフォルトで起動するChromeはPC版の挙動となるため、要素が表示されずクリックできないという問題があった。
+
+単純に `page.setUserAgent()` でスマートフォンのUserAgent文字列を設定するだけでは、サイト側からモバイル端末として完全に認識されず、期待する動作にならなかった。
+
+## 解決策：モバイル版でChromeを起動するオプション
+
+完全にモバイル端末として認識させるためには、`UserAgentData` を正しく与える必要があり、最も重要な設定値が `mobile: true` である。
+
+```js {7,7}
+const browser = await puppeteer.launch({ headless: false });
+const page = await browser.newPage();
+
+// スマートフォンの標準的なUserAgent文字列を用意する
+const UA = 'Mozilla/5.0 (Linux; Android 13; A202ZT) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36';
+
+// UA文字列と共に、UserAgentDataのオプションを付与する
+await page.setUserAgent(UA, {
+  architecture: '',
+  mobile: true,        // 必須：モバイル端末として認識させる
+  model: 'A202ZT',     // 偽装する端末モデル名
+  platform: 'Android',
+  platformVersion: '13.0.0',
+});
+```
+
+<Aside type="note" title="環境情報">
+- puppeteer@22.12.1
+</Aside>
+
+## まとめ
+
+* Puppeteerでモバイル専用ページを操作する場合は、UserAgent文字列の偽装だけでは不十分な場合がある。
+* `page.setUserAgent(UA, options)` の第二引数にて、`mobile: true` や `platform` などの詳細な `UserAgentData` を付与することで、確実にモバイル版としてChromeを起動させることが可能である。

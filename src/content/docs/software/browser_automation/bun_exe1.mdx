@@ -1,0 +1,44 @@
+---
+title: "SyntaxError: Unexpected identifier 'Ay0'"
+description: "BunでPuppeteerの自動化スクリプトを実行中に発生する 'SyntaxError: Unexpected identifier 'Ay0'' エラーの原因と解決方法を解説する。module.typeの設定変更による対処法を詳しく説明する。"
+---
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Bunを用いてPuppeteerなどの自動化スクリプトを実行ファイル（exe）化する際、実行時に `SyntaxError: Unexpected identifier 'Ay0'` が発生する場合がある。これはモジュールシステムの解釈の相違によるものであり、ビルド時のオプションとして `module.type=es6` を指定することで解決可能である。
+
+## 開発環境
+
+- Windows 10
+- **Bun 1.1.21**
+- puppeteer 22.12.1
+
+## 発生した実行時エラー
+
+Bunを使ってポイ活などの自動化プログラムをexe化している最中、作成したexeを実行したところ、以下のエラーが発生して処理が中断された。
+
+```sh
+SyntaxError: Unexpected identifier 'Ay0'
+```
+
+Bunは開発途上のランタイムであるため、依存関係やモジュールのビルド時にこうした予期せぬエラーに直面することがある。
+
+## 対処方法：module.typeの変更
+
+このエラーを回避するためには、ビルド時（`bun swc`実行時）に指定する `module.type` をデフォルトの CommonJS から **ES6** に変更する必要がある。
+
+<Steps>
+
+1. ビルドコマンドのオプションに `-C module.type=es6` を追加して実行する。
+
+   ```sh
+   bun swc xxx.ts -C module.type=es6 -o xxx.js
+   ```
+
+1. 再度exe化を行い、エラーが解消されていることを確認する。
+
+</Steps>
+
+## まとめ
+
+* Bunによるexe化実行時に `SyntaxError: Unexpected identifier 'Ay0'` が発生した場合は、モジュールタイプの指定が原因である可能性が高い。
+* `bun swc` 実行時に `module.type=es6` を明示的に指定することで、このエラーを解消し正常に動作させることができる。

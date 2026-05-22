@@ -1,18 +1,40 @@
 ---
 title: "ModuleNotFoundError: No module named 'blinker._saferef'"
-description: selenium-wireと依存関係があるblinkerでエラーが発生した．対応方法を記す．
+description: selenium-wireと依存関係があるblinkerでエラーが発生した際の対応方法を記す。
 next: false
 prev: false
 ---
-　　自作の楽天ポイ活ツールを作っている．pythonのバージョンを上げて，開発環境を新たに作っていた．selenium-wireをインストール後，試しにpythonでツールを動かしてみたら，以下のようなエラーが出た．
+import { Aside } from '@astrojs/starlight/components';
+
+Pythonの環境構築において `selenium-wire` を利用した際に `ModuleNotFoundError: No module named 'blinker._saferef'` というエラーが発生する場合、依存パッケージである `blinker` のバージョン（1.8系以降）で `_saferef.py` が削除されたことが原因である。これを解決するには、`blinker` を **1.7.0** にダウングレードする必要がある。
+
+## 発生したエラー
+
+自作の楽天ポイ活ツールを開発するため、Pythonのバージョンを上げて新たな環境を構築した。`selenium-wire` をインストール後、ツールを実行したところ以下のようなエラーが出力されて起動に失敗した。
+
 ```bash
 ModuleNotFoundError: No module named 'blinker._saferef'
 ```
 
-　selenium-wireと依存関係にあるモジュールのようだ．[blinker](https://github.com/pallets-eco/blinker/releases)を見に行くと5日前にバージョンを上げていた．しかし，最終的な原因は1.8系から_saferef.pyが消えていたことだ．
+## エラーの原因
+
+このエラーは `selenium-wire` と直接的な依存関係にある `blinker` というモジュールに起因している。[blinkerのリリースノート](https://github.com/pallets-eco/blinker/releases)を確認すると、最近のバージョンアップ（1.8.x系）によって内部構造が整理され、`_saferef.py` というファイルが削除されていた。
+
+`selenium-wire` 側が古い `blinker` の内部モジュール（`_saferef`）を呼び出そうとしているため、見つからずにエラーが発生している状態である。
 
 ## 対処方法
-　1.8.xから1.7.0にダウングレードする．
+
+この問題を根本的に解決するためには、`blinker` を `_saferef.py` が存在していた最後の安定バージョンである **1.7.0** にダウングレードする。
+
 ```bash
 pip install blinker==1.7.0
 ```
+
+<Aside type="note" title="依存関係の競合に注意">
+`selenium-wire` 以外のパッケージが最新の `blinker` を要求している場合、ダウングレードによって別のエラーが生じる可能性がある。仮想環境（venv等）を分けて管理することが望ましい。
+</Aside>
+
+## まとめ
+
+* `selenium-wire` 実行時の `blinker._saferef` エラーは、`blinker` 1.8系での破壊的変更（モジュール削除）が原因である。
+* 回避策として、`pip install blinker==1.7.0` を実行し、パッケージを明示的にダウングレードすることで正常に動作するようになる。
