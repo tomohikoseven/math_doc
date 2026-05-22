@@ -1,20 +1,53 @@
 ---
-title: Astro(starlight)でrehypeKatexプラグインに引数を渡す方法．
-description: Astroでrehype-katexプラグインを使用する際、数式内の日本語に関する警告を抑制するための設定方法を解説します。astro.config.mjsファイルでのrehype-katexへの引数の渡し方を詳しく説明します。
+title: Astro(starlight)でrehypeKatexプラグインに引数を渡す方法
+description: Astroでrehype-katexプラグインを使用する際、数式内の日本語に関する警告を抑制するための設定方法を解説する。astro.config.mjsファイルでのrehype-katexへの引数の渡し方を詳しく説明する。
 ---
-　Astroを使用して，Webページを作成している．KaTeXをプラグインに利用して数式を記述しているが，数式内に日本語が混入すると警告が少々うるさい．
-例えば以下のようなもの．
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Astroプロジェクトで数式をレンダリングする `rehypeKatex` プラグインを使用する際、数式内に日本語が含まれるとターミナルに警告が表示される場合がある。これを抑制するためには、`astro.config.mjs` の設定でプラグインに `{ strict: true }` または `{ strict: false }` などの引数を明示的に渡す必要がある。
+
+## 発生する警告の内容
+
+Astroを使用してWebページを作成し、KaTeXをプラグインに利用して数式を記述している際、数式内に日本語が混入するとビルド時や開発サーバー起動時に以下のような警告が出力されることがある。
+
+<Aside type="danger" title="出力される警告例">
 ```bash
 LaTeX-incompatible input and strict mode is set to 'warn': Unicode text character "存" used in math mode [unicodeTextInMathMode]
 ```
+</Aside>
 
-　これを抑止するためには，使用しているプラグイン`rehypeKatex`に引数`{strict: true}`を渡せばよい．その方法がわかったので，記載する．
-```js {5,5}
-// astro.config.mjs
-  ...
-  markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [ [rehypeKatex, {strict: true}] ],
-  }
-  ... 
-```
+この警告は動作自体に致命的な影響は与えないが、ログが埋もれてしまうため抑制することが望ましい。
+
+## 解決策：rehypeKatexに引数を渡す
+
+この警告を抑止するためには、使用しているプラグイン `rehypeKatex` にオプション引数として `{ strict: true }` または警告レベルを無視する設定（`{ strict: false }` または `{ strict: "ignore" }` など、環境による）を渡せばよい。
+
+<Steps>
+
+1. プロジェクトのルートディレクトリにある `astro.config.mjs` を開く。
+
+1. `markdown` セクションの `rehypePlugins` 配列内で、プラグイン名とオプション引数を配列形式 `[プラグイン名, オプション]` で囲んで指定する。
+
+   ```js {5,5} title="astro.config.mjs"
+   // astro.config.mjs
+     ...
+     markdown: {
+       remarkPlugins: [remarkMath],
+       rehypePlugins: [ [rehypeKatex, { strict: true }] ],
+     }
+     ... 
+   ```
+
+1. 設定を保存し、Astroの開発サーバー（またはビルド）を再起動して警告が消えたことを確認する。
+
+</Steps>
+
+<Aside type="note" title="strictオプションの詳細">
+KaTeXの `strict` オプションは、LaTeX非互換の入力に対する挙動を制御する。`"ignore"`（無視する）、`"warn"`（警告する）、`"error"`（エラーにする）などの文字列、または真偽値を指定することができる。用途に応じて適切な値を設定すること。
+</Aside>
+
+## まとめ
+
+* Astroの `rehypeKatex` プラグイン使用時に数式内の日本語で警告が出る場合がある。
+* `astro.config.mjs` において、`rehypePlugins: [ [rehypeKatex, { strict: true }] ]` のように配列の配列で記述することでプラグインに引数を渡すことができる。
+* これにより不要な警告ログを抑制し、快適な開発環境を維持できる。

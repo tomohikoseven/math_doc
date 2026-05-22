@@ -18,18 +18,23 @@ schema:
 ---
 
 import { Steps, Aside, Code, LinkCard } from '@astrojs/starlight/components';
+import ArticleTip from '/src/components/ArticleTip.astro';
 import LimitDiagram from '../../../../assets/software/limit_diagram.typ';
 
-数学図式や関係図を Astro + Starlight で美しく描画したい場合、**Fletcher** は非常に強力なライブラリである。従来利用していた D2 などの描画ツールに比べ、Fletcher は Typst の強力な表現力をそのまま生かせるため、数式フォントやデザインがドキュメント全体と完璧に調和する。
+<ArticleTip title="結論" wid="800">
 
-**結論として、Fletcher をローカルの `libs/fletcher` に配置し、MDX 内の `$$` ブロックで呼び出すことで、D2 を完全に廃止した統一的で美しい描画環境を構築できる。**
+Fletcher をローカルの `libs/fletcher` に配置し、MDX 内の `$$` ブロックで呼び出すことで、D2 などを完全に廃止し、Typst の数式表現と調和した美しい描画環境を構築できる。
+
+</ArticleTip>
+
+数学図式や関係図を Astro + Starlight で美しく描画したい場合、**Fletcher** は非常に強力なライブラリである。従来利用していた D2 などの描画ツールに比べ、Fletcher は Typst の強力な表現力をそのまま生かせるため、数式フォントやデザインがドキュメント全体と完璧に調和する。
 
 ---
 
 ## クイックQ&A
 
-<Aside type="note" title="Q. なぜ D2 から Fletcher へ移行するのですか？">
-**A**: D2 は外部ツールや別エンジンでの描画に依存するため、数式フォントの統一や細かな位置・デザイン調整が困難であった。**Fletcher** を使用すれば、Typst のネイティブな描画能力を利用して、フォント・グリッド・線の太さ・余白に至るまで、数学ドキュメントと完全に一致した美しい図表を出力できるためである。
+<Aside type="note" title="Q. なぜ D2 から Fletcher へ移行するのか？">
+**A**: D2 は外部ツールや別エンジンでの描画に依存するため、数式フォントの統一や細かな位置・デザイン調整が困難であった。**Fletcher** を使用すれば、Typst のネイティブな描画能力を利用して、フォント・グリッド・線の太さ・余白に至るまで、数学ドキュメントと完全に一致した美しい図表を出力できるからである。
 </Aside>
 
 ---
@@ -65,44 +70,46 @@ graph TD
 Fletcher を Starlight プロジェクトに導入し、安定動作させるまでの手順を示す。
 
 <Steps>
-1. ### ライブラリのローカル配置
-   インターネット上にある通常の Fletcher をそのまま配置しただけでは、Astro 環境での絶対パス解決などの仕様によりビルドエラーが発生する。そのため、Astro / Starlight 向けにパスのパッチ適用を行っている以下の GitHub リポジトリから、`libs/fletcher` を取得してプロジェクトルートに配置する。
 
-   <LinkCard
-     title="GitHub: astro-starlight-typst"
-     description="パッチ適用済みの fletcher ソースコードを公開している。ルートディレクトリの libs フォルダを参照。"
-     href="https://github.com/tomohikoseven/astro-starlight-typst"
-   />
+1.  **ライブラリのローカル配置**
+    インターネット上にある通常の Fletcher をそのまま配置しただけでは、Astro 環境での絶対パス解決などの仕様によりビルドエラーが発生する。そのため、Astro / Starlight 向けにパスのパッチ適用を行っている以下の GitHub リポジトリから、`libs/fletcher` を取得してプロジェクトルートに配置する。
 
-2. ### astro.config.mjs のルートパス設定
-   Typst のコンパイル時に絶対パス `/libs/fletcher/...` でインポートできるよう、`astro.config.mjs` にて `astro-typst` のルートを設定する。
+    <LinkCard
+      title="GitHub: astro-starlight-typst"
+      description="パッチ適用済みの fletcher ソースコードを公開している。ルートディレクトリの libs フォルダを参照のこと。"
+      href="https://github.com/tomohikoseven/astro-starlight-typst"
+    />
 
-   ```javascript
-   // astro.config.mjs
-   import { typst } from 'astro-typst';
+2.  **astro.config.mjs のルートパス設定**
+    Typst のコンパイル時に絶対パス `/libs/fletcher/...` でインポートできるよう、`astro.config.mjs` にて `astro-typst` のルートを設定する。
 
-   export default defineConfig({
-     integrations: [
-       typst({
-         target: () => "svg"
-       }),
-     ]
-   });
-   ```
+    ```javascript title="astro.config.mjs"
+    // astro.config.mjs
+    import { typst } from 'astro-typst';
 
-3. ### MDX ファイル内でのインポートと記述
-   MDX ファイルの `$$` ブロック内で以下のようにライブラリをインポートして記述する。
+    export default defineConfig({
+      integrations: [
+        typst({
+          target: () => "svg"
+        }),
+      ]
+    });
+    ```
 
-   ```typst
-   #import "/libs/fletcher/src/exports.typ" as fletcher: diagram, node, edge
-   ```
+3.  **MDX ファイル内でのインポートと記述**
+    MDX ファイルの `$$` ブロック内で以下のようにライブラリをインポートして記述する。
+
+    ```typst
+    #import "/libs/fletcher/src/exports.typ" as fletcher: diagram, node, edge
+    ```
+
 </Steps>
 
 ---
 
 ## 3. 実装のベストプラクティス：関数の極限・連続性・微分
 
-実際に `high_school/0302_limit_of_functions_and_derivative` の関係図を D2 から移行した際の実装例をもとに、Fletcher の強力な機能と調整の工夫点を解説する。
+実際に関係図を D2 から移行した際の実装例をもとに、Fletcher の強力な機能と調整の工夫点を解説する。
 
 ### 3.1. 実際のコード
 

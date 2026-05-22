@@ -1,14 +1,34 @@
 ---
-title: Astro(Starlight)でテキストにハイライトする．
-description: Astroを使用して静的なWebページを作成する際、Markdownでテキストをハイライトする方法を解説します。.mdxファイル内で<mark>タグを使用する手順を詳しく紹介します。
+title: Astro(Starlight)でテキストにハイライトする
+description: Astroを使用して静的なWebページを作成する際、Markdownでテキストをハイライトする方法を解説する。.mdxファイル内で<mark>タグを使用する手順を詳しく紹介する。
 ---
-import { Code } from '@astrojs/starlight/components';
 
-　Astroを使って静的なWebページを作っている．Markdownを使ってテキストにハイライトするにはどうするのか，調べて試してもできなくて，1日くらい調べてやっとわかったので，結果を記す．
+import { Code, Aside } from '@astrojs/starlight/components';
+import ArticleTip from '/src/components/ArticleTip.astro';
+
+<ArticleTip title="結論" wid="800">
+
+Astro（Starlight）でテキストにハイライトを入れるには、拡張子を `.mdx` にした上で、HTMLの `<mark>` タグでハイライトしたい箇所を囲めばよい。
+
+</ArticleTip>
+
+Astroを使って静的なWebページを作成している際、Markdown文書内で特定のテキストにマーカーを引いたようなハイライト表示をしたい場合がある。標準のMarkdown記法（`==テキスト==` など）がうまく機能しないケースも多いため、確実な方法を以下に記す。
 
 ## テキストにハイライトする方法
-　`<mark>`タグを入れる．ただし，ファイルは`.mdx`にすること．
-<Code code="abc <mark>def</mark>" title="xxx.mdx" />
+
+ハイライト表示を適用するには、対象のファイル拡張子が `.mdx` であることを確認し、該当テキストを直接 HTMLの `<mark>` タグで囲む。
+
+**コードの記述例:**
+<Code code="abc <mark>def</mark>" title="xxx.mdx" lang="mdx" />
+
+**実際の表示結果:**
 abc <mark>def</mark>
 
-***
+<Aside type="note" title="ファイルの拡張子に注意">
+この手法は Astro の MDX サポート機能を利用しているため、通常の `.md` ファイルでは HTML タグが正しくレンダリングされない可能性がある。必ずファイルを `.mdx` にリネームして使用すること。
+</Aside>
+
+## まとめ
+
+* Astro（Starlight）におけるテキストハイライトには、HTMLの `<mark>` タグを使用するのが最も確実である。
+* 正常に表示させるため、ファイルの拡張子は `.mdx` に設定する必要がある。

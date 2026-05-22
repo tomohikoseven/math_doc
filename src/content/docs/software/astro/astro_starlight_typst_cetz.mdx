@@ -19,15 +19,21 @@ schema:
 ---
 
 import { Steps, Aside, Code, LinkCard } from '@astrojs/starlight/components';
+import ArticleTip from '/src/components/ArticleTip.astro';
 
-数学的で美しい図表を Typst で描画したい場合、**CeTZ** は最も有力なライブラリである。しかし、Astro と Starlight を使用したドキュメントサイトではまず、CeTZライブラリが簡単には使えない。そして、最新版の WASM 依存やパス解決の仕様でビルドエラーを引き起こすことが多い。生成AIを利用して、強引にCeTZライブラリを使えるようにした。
+<ArticleTip title="結論" wid="800">
 
-**結論として、CeTZ v0.3.2 をローカルに配置し、パス置換パッチを適用することで、安定した描画環境を構築できる。**
+CeTZ v0.3.2（WASM非依存の安定版）のソースコードをローカルの `libs/cetz` に配置し、内部パス置換パッチを適用することで、Astroビルド時のエラーを回避して安定した描画環境を構築できる。
 
-パッチをあてた CeTZ のソースコードを GitHubの私のプロジェクトに置いたので、必要ならダウンロードしてほしい。
+</ArticleTip>
+
+数学的で美しい図表を Typst で描画したい場合、**CeTZ** は最も有力なライブラリである。しかし、Astro と Starlight を使用したドキュメントサイトでは、CeTZライブラリが簡単には使えない。最新版の WASM 依存やパス解決の仕様が原因で、ビルドエラーを引き起こすことが多い。そこで、生成AIを利用して強引にCeTZライブラリを使えるようにした。
+
+パッチをあてた CeTZ のソースコードを GitHubのプロジェクトに置いたので、必要ならダウンロードしてほしい。
+
 <LinkCard
   title="GitHub: astro-starlight-typst"
-  description="パッチ適用済みの CeTZ v0.3.2 ソースコードを公開しています。ルートディレクトリのlibsフォルダです。"
+  description="パッチ適用済みの CeTZ v0.3.2 ソースコードを公開している。ルートディレクトリのlibsフォルダを参照のこと。"
   href="https://github.com/tomohikoseven/astro-starlight-typst"
 />
 
@@ -49,19 +55,23 @@ import { Steps, Aside, Code, LinkCard } from '@astrojs/starlight/components';
 ---
 
 ## 2. 導入手順
+
 一から自分でライブラリを導入するには、以下の手順が必要である。
+
 <Steps>
-1. ### ライブラリのローカル配置
-   プロジェクトルートに `libs/cetz` フォルダを作成し、CeTZ のソースコードを配置する。パッケージマネージャ経由（`@preview`）での利用は、ビルド環境の制限により推奨されない。
 
-2. ### パス置換パッチの適用
-   CeTZ 内部の `#import` 文を Astro のプロジェクトルートから解決できるよう、`"/src/` を `"/libs/cetz/src/` に全置換する。
+1.  **ライブラリのローカル配置**
+    プロジェクトルートに `libs/cetz` フォルダを作成し、CeTZ のソースコードを配置する。パッケージマネージャ経由（`@preview`）での利用は、ビルド環境の制限により推奨されない。
 
-3. ### 依存関係のスタブ化
-   `oxifmt` 等のパッケージが利用できない場合、`libs/cetz/src/oxifmt.typ` に `#let strfmt(fmt, ..args) = fmt` というスタブを作成し、ビルドを安定させる。
+2.  **パス置換パッチの適用**
+    CeTZ 内部の `#import` 文を Astro のプロジェクトルートから解決できるよう、`"/src/` を `"/libs/cetz/src/` に全置換する。
 
-4. ### astro.config.mjs の設定
-   `astro-typst` に `root: "."` を設定し、`/libs/...` パスを有効化する。
+3.  **依存関係のスタブ化**
+    `oxifmt` 等のパッケージが利用できない場合、`libs/cetz/src/oxifmt.typ` に `#let strfmt(fmt, ..args) = fmt` というスタブを作成し、ビルドを安定させる。
+
+4.  **astro.config.mjs の設定**
+    `astro-typst` に `root: "."` を設定し、`/libs/...` パスを有効化する。
+
 </Steps>
 
 ---
@@ -107,5 +117,5 @@ $$
 
 ## 結論
 
-きれいな数学図式を描画するには、typstだけでなくCeTZのようなライブラリの導入が欠かせない。
+きれいな数学図式を描画するには、TypstだけでなくCeTZのようなライブラリの導入が欠かせない。
 異なるシステムを組み合わせるときは、「**枯れたバージョンをローカルで管理し、環境に合わせたパッチを当てる**」戦略が最も効果的である。

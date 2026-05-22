@@ -1,28 +1,38 @@
 ---
 title: Astro(Starlight)でMarkdown内にTypst数式を描画する環境構築 (rehype-typst)
-description: AstroのMarkdown/MDX内でTypst構文を使って数式をSVG描画するための設定手順（rehype-typstの導入）と、SVGスタイルの不具合を解消するCSS調整方法を解説します。
+description: AstroのMarkdown/MDX内でTypst構文を使って数式をSVG描画するための設定手順（rehype-typstの導入）と、SVGスタイルの不具合を解消するCSS調整方法を解説する。
 ---
 
-Astro (Starlight) 環境において、Markdown または MDX の中で数式を記述する際、従来の LaTeX 構文ではなく **Typst** 構文を利用して描画するための環境構築手順をまとめました。
+import { Aside, Steps } from '@astrojs/starlight/components';
+import ArticleTip from '/src/components/ArticleTip.astro';
 
-本サイトでも実際に利用している `@myriaddreamin/rehype-typst` と `remark-math` を使った構築方法を解説します。
+<ArticleTip title="結論" wid="800">
+
+AstroでTypst構文の数式を描画するには `rehype-typst` と `remark-math` を導入し `astro.config.mjs` を設定する。さらに、AstroやStarlightのアイコン消失を防ぐためカスタムCSSによるSVGスタイルのリセットが必要である。
+
+</ArticleTip>
+
+Astro (Starlight) 環境において、Markdown または MDX の中で数式を記述する際、従来の LaTeX 構文ではなく **Typst** 構文を利用して描画するための環境構築手順をまとめた。
+
+本サイトでも実際に利用している `@myriaddreamin/rehype-typst` と `remark-math` を使った構築方法を解説する。
 
 ## 1. パッケージのインストール
 
-まずは数式を解釈・描画するために必要なライブラリをインストールします。Markdown内の数式ブロックをパースする `remark-math` と、それを Typst 構文として SVG にレンダリングする `rehype-typst` 関連のパッケージが必要です。
+まずは数式を解釈・描画するために必要なライブラリをインストールする。Markdown内の数式ブロックをパースする `remark-math` と、それを Typst 構文として SVG にレンダリングする `rehype-typst` 関連のパッケージが必要である。
 
 ```bash
 npm install remark-math @myriaddreamin/rehype-typst @myriaddreamin/typst-ts-node-compiler @myriaddreamin/typst-ts-renderer @myriaddreamin/typst.ts
 ```
 
-> [!NOTE]
-> Typst関連のパッケージ群はバージョンを揃える必要があるため、もしエラーが出る場合は `package.json` 側で `overrides` などを指定して `rc` バージョンなどを揃えてください。
+<Aside type="note" title="バージョンの互換性に注意">
+Typst関連のパッケージ群はバージョンを揃える必要があるため、もしエラーが出る場合は `package.json` 側で `overrides` などを指定して `rc` バージョンなどを揃えること。
+</Aside>
 
 ## 2. astro.config.mjs の設定
 
-インストールしたプラグインを Astro の Markdown 処理パイプラインに組み込みます。`astro.config.mjs` を以下のように編集してください。
+インストールしたプラグインを Astro の Markdown 処理パイプラインに組み込む。`astro.config.mjs` を以下のように編集する。
 
-```javascript {3,4,10, 15, 17}
+```javascript {3,4,10, 15, 17} title="astro.config.mjs"
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMath from 'remark-math';
@@ -44,17 +54,17 @@ export default defineConfig({
 });
 ```
 
-この設定を行うことで、Markdown内で `$a^2 + b^2 = c^2$` や `$$ \sum_{i=1}^n i $$` のように記述した箇所が Typst として評価され、SVG に変換されるようになります。
+この設定を行うことで、Markdown内で `$a^2 + b^2 = c^2$` や `$$ \sum_{i=1}^n i $$` のように記述した箇所が Typst として評価され、SVG に変換されるようになる。
 
 ## 3. CSSの調整（必須）
 
-`rehype-typst` は数式を SVG 画像として埋め込みますが、その際にHTML全体へ影響を与えかねないグローバルな `<style>`（具体的には `svg { ... }` などのルール）を出力してしまう問題があります。
+`rehype-typst` は数式を SVG 画像として埋め込むが、その際にHTML全体へ影響を与えかねないグローバルな `<style>`（具体的には `svg { ... }` などのルール）を出力してしまう問題がある。
 
-これにより、**AstroのIconやStarlightの標準アイコン（ハンバーガーメニューやSNSアイコンなど）が表示されなくなる**という不具合が起きます。
+これにより、**AstroのIconやStarlightの標準アイコン（ハンバーガーメニューやSNSアイコンなど）が表示されなくなる**という不具合が起きる。
 
-これを防ぐため、`astro.config.mjs` で指定したカスタムCSS（ここでは `src/styles/custom.css`）に以下の記述を追加し、アイコンのスタイルを元の状態に強制的に戻します。
+これを防ぐため、`astro.config.mjs` で指定したカスタムCSS（ここでは `src/styles/custom.css`）に以下の記述を追加し、アイコンのスタイルを元の状態に強制的に戻す。
 
-```css
+```css title="src/styles/custom.css"
 /* ======================================================== */
 /* Typst                                                    */
 /* ======================================================== */
@@ -88,8 +98,10 @@ starlight-menu-button svg {     /* スマホ版ハンバーガーメニュー */
 }
 ```
 
-これで、Starlight 本来のデザインを崩すことなく、数式だけを綺麗に Typst で描画できるようになります。
+これで、Starlight 本来のデザインを崩すことなく、数式だけを綺麗に Typst で描画できるようになる。
 
 ## まとめ
 
-Markdown内の数式に Typst 構文を利用することで、従来の MathJax や KaTeX（LaTeX構文）に比べて、よりモダンでシンプルな記述で数式表現が可能になります。
+* Markdown内でTypst数式を利用するには、`remark-math` と `rehype-typst` プラグインを導入する。
+* `rehype-typst` のグローバルなSVGスタイル出力による副作用でシステムアイコンが消えるため、カスタムCSSでスタイルをリセットする必要がある。
+* この環境を構築することで、従来の MathJax や KaTeX（LaTeX構文）に比べてよりモダンでシンプルな記述で数式表現が可能になる。
