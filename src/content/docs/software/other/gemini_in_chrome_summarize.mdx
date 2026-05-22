@@ -1,0 +1,34 @@
+---
+title: ChromeのURL欄からGeminiにページを要約させる方法
+description: ChromeのURLバーに「@gemini」と入力するだけで、開いているページをGeminiに要約させる方法を解説する。
+lastUpdated: true
+prev: false
+next: false
+---
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Google ChromeのURL欄（アドレスバー）に `@gemini` と入力することで、現在開いているWebページを素早くGeminiに要約させることができる。別タブでGeminiを開いてURLをコピー＆ペーストする手間が省け、非常に効率的である。
+
+## 設定・利用手順
+
+従来は複数のステップが必要であったが、現在は以下の2ステップで完結する。
+
+<Steps>
+
+1. 要約したいWebページを表示した状態で、URL欄の先頭（`https://` の手前）に `@gemini `（アットマーク + gemini + **半角スペース**）と入力する。
+
+1. **Enter キー**を押下する。
+
+</Steps>
+
+<Aside type="tip" title="入力時のポイント">
+`@gemini` の後ろには必ず**半角スペースを1つ**入れてからEnterを押すこと。スペースを省略すると、Geminiのチャット入力欄へ正しく遷移しない場合がある。
+</Aside>
+
+上記操作を行うと、Geminiのページが開き、現在開いているページの内容が自動的に要約される。
+
+## まとめ
+
+* ChromeのURL欄の先頭に `@gemini ` （最後に半角スペース）を入力してEnterを押すだけで、現在表示中のページを要約できる。
+* URLのコピー＆ペーストが不要になり、作業効率が大幅に向上する。
+* 利用にはGoogleアカウントへのログインが必要であり、環境によっては利用できない場合がある。

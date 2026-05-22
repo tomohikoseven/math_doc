@@ -1,31 +1,183 @@
 ---
 import { LinkPreview } from 'astro-embed';
+import { Card } from '@astrojs/starlight/components';
 ---
 
-<LinkPreview id="https://monitor.macromill.com/" />
+<div class="macromill-ad-container">
+  <LinkPreview id="https://monitor.macromill.com/" />
 
-<!-- <div style="text-align:center;">
-  <div style="text-align:center;"> -->
-    ▲<span style="color:#0070c0;">マクロミルアンケートモニタ</span>▼<br /><br/>
-    <span style="color:#00b050;">200万人</span>が参加のアンケートサイト！<br/>
-    <span style="color:#e46c0a;">楽しく！簡単に！ポイントが貯まる！</span><br/>
-    貯めたポイントはお小遣いに♪<br /><br />☆。,・==・,。★。,・==・,。☆<br /><br />
-    まずは無料会員登録しよう♪<br /><a href="https://monitor.macromill.com/lp/ankeitou.html?entry_kbn=240&int_id=Z41197476A" target="_blank">
-      <img src="https://monitor.macromill.com/int/banner/ankeitou_234_60.jpg" alt="" /></a><br />
-      ▼　▼　▼<br /><br />登録が完了したら、アンケートが届くよ！<br/>アンケートに答えるだけで<br />
-      <span style="color:#e46c0a;">どんどんポイントが貯まっちゃいます！</span><br />
-      ▼　▼　▼<br /><br />○貯めたポイントを交換しよう<br /><br/>
-      貯めたポイントは<br />
-      <span style="color:#00b0f0;">現金や商品、ギフトカードに交換できちゃうよ♪</span><br /><br />
-      <span style="color:#c00000;">【現金】</span><br/>
-      1P=1円、500Pから換金できちゃう<br />
-      しかも各金融機関への振込み手数料は<br/>
-      無料！<br /><br />
-      <span style="color:#c00000;">【提携プログラムのポイント】</span><br />
-      Tポイント、Gポイント、Pexポイント<br /><br />
-      <span style="color:#c00000;">【ギフトカード】</span><br />
-      Amazonギフトカード<br /><br/>＞さあ！今すぐお小遣い貯めちゃおう☆＜<br />
-      <a href="https://monitor.macromill.com/lp/ankeitou.html?entry_kbn=240&int_id=Z41197476A" target="_blank">
-        <img src="https://monitor.macromill.com/int/banner/ankeitou_234_60.jpg" alt=""/></a>
-  <!-- </div>
-</div> -->
+  <div class="mt-4">
+    <Card title="マクロミルアンケートモニタ" icon="star">
+      <div class="ad-content">
+        <p class="ad-lead">
+          <strong class="highlight-green">200万人</strong>が参加のアンケートサイト！<br />
+          <strong class="highlight-orange">楽しく！簡単に！ポイントが貯まる！</strong><br />
+          貯めたポイントはお小遣いに♪
+        </p>
+
+        <div class="ad-banner">
+          <p>まずは無料会員登録しよう♪</p>
+          <a href="https://monitor.macromill.com/lp/ankeitou.html?entry_kbn=240&int_id=Z41197476A" target="_blank" rel="noopener noreferrer">
+            <img src="https://monitor.macromill.com/int/banner/ankeitou_234_60.jpg" alt="マクロミル会員登録" />
+          </a>
+        </div>
+
+        <div class="ad-steps">
+          <p>登録が完了したら、アンケートが届くよ！<br />
+          アンケートに答えるだけで<strong class="highlight-orange">どんどんポイントが貯まっちゃいます！</strong></p>
+        </div>
+
+        <div class="ad-exchange">
+          <h3>貯めたポイントを交換しよう</h3>
+          <p class="exchange-lead">貯めたポイントは<strong class="highlight-blue">現金や商品、ギフトカードに交換できちゃうよ♪</strong></p>
+          
+          <ul class="exchange-list">
+            <li>
+              <strong class="highlight-red">【現金】</strong><br />
+              1P=1円、500Pから換金できちゃう。<br />
+              しかも各金融機関への振込み手数料は<strong>無料！</strong>
+            </li>
+            <li>
+              <strong class="highlight-red">【提携プログラムのポイント】</strong><br />
+              Tポイント、Gポイント、PeXポイントなど
+            </li>
+            <li>
+              <strong class="highlight-red">【ギフトカード】</strong><br />
+              Amazonギフトカードなど
+            </li>
+          </ul>
+        </div>
+
+        <div class="ad-footer">
+          <p>＞さあ！今すぐお小遣い貯めちゃおう☆＜</p>
+          <a href="https://monitor.macromill.com/lp/ankeitou.html?entry_kbn=240&int_id=Z41197476A" target="_blank" rel="noopener noreferrer">
+            <img src="https://monitor.macromill.com/int/banner/ankeitou_234_60.jpg" alt="マクロミル会員登録" />
+          </a>
+        </div>
+      </div>
+    </Card>
+  </div>
+</div>
+
+<style>
+  .macromill-ad-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    font-family: inherit;
+  }
+
+  .mt-4 {
+    margin-top: 1.5rem;
+  }
+
+  .ad-content {
+    text-align: center;
+  }
+
+  .ad-lead {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight-green {
+    color: #00b050;
+    font-size: 1.2em;
+  }
+
+  .highlight-orange {
+    color: #e46c0a;
+  }
+
+  .highlight-blue {
+    color: #00b0f0;
+  }
+
+  .highlight-red {
+    color: #c00000;
+  }
+
+  .ad-banner {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: var(--sl-color-gray-6);
+    border-radius: 8px;
+  }
+
+  .ad-banner img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+    margin-top: 0.5rem;
+  }
+
+  .ad-banner img:hover {
+    transform: scale(1.05);
+  }
+
+  .ad-steps {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: rgba(228, 108, 10, 0.1);
+    border: 1px solid rgba(228, 108, 10, 0.2);
+    border-radius: 8px;
+    line-height: 1.6;
+  }
+
+  .ad-exchange {
+    text-align: left;
+    background-color: var(--sl-color-gray-6);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+  }
+
+  .ad-exchange h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--sl-color-text);
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .exchange-lead {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .exchange-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .exchange-list li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--sl-color-gray-5);
+    line-height: 1.5;
+  }
+
+  .exchange-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .ad-footer {
+    margin-top: 2rem;
+    font-weight: bold;
+    color: #e46c0a;
+  }
+
+  .ad-footer img {
+    margin-top: 0.5rem;
+    transition: transform 0.2s ease;
+  }
+
+  .ad-footer img:hover {
+    transform: scale(1.05);
+  }
+</style>
