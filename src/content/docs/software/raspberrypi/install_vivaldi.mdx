@@ -1,0 +1,36 @@
+---
+title: ブラウザのvivaldiをラズパイ上にインストールする方法．
+description: Raspberry Pi 4 Model BのDietPi環境で、Vivaldiブラウザをインストールする手順を解説する。ChromiumとWaylandの相性問題を回避し、快適なブラウジング環境を構築する方法を紹介する。
+---
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Raspberry Pi（DietPi）環境において、WaylandとChromiumの相性問題に起因する日本語入力の誤変換（例：「hてぃっsう」となる現象）を回避するには、代替ブラウザとしてVivaldiを導入するのが有効である。Firefoxよりも動作が軽快であり、誤変換も発生しにくい。
+
+<Aside type="note" title="環境情報">
+- RPi 4 Model B (aarch64)
+- DietPi v9.6.1
+</Aside>
+
+## インストール手順
+
+<Steps>
+
+1. ターミナルを開き、以下のコマンドを実行してVivaldiブラウザをインストールする。
+
+   ```bash
+   sudo apt install vivaldi-stable
+   ```
+
+1. インストール完了後、アプリケーションメニューからVivaldiを起動する。
+
+</Steps>
+
+## 利用上の注意点
+
+- Vivaldi環境ではTVerなどの一部ストリーミングサイトが正常に視聴できない場合がある。視聴が必要な場合は他のブラウザと併用するなど工夫が必要である。
+
+## まとめ
+
+* Wayland環境でのChromiumの日本語入力バグを回避する手段としてVivaldiが有効である。
+* `apt` コマンドで簡単にインストールが可能である。
+* 動作は軽快だが、一部の動画サイトが視聴できない点には留意が必要である。

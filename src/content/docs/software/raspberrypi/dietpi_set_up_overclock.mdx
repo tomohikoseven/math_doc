@@ -1,0 +1,63 @@
+---
+title: ラズパイ4B+bookwormをオーバークロック.
+description: Raspberry Pi 4 Model BでDietPi（bookworm）を使用し、オーバークロックの設定手順と注意点を解説する。クロック周波数の設定方法、再起動できなくなった場合の対処法も紹介する。
+---
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Raspberry Pi 4 Model B（DietPi / bookworm環境）をオーバークロックするには、`/boot/firmware/config.txt` ファイルに `arm_freq` などの設定値を追記する。ただし、設定値によってはOSが起動しなくなるリスクがあるため注意が必要である。
+
+<Aside type="caution" title="結論: 安定性重視なら推奨しない">
+CPUの温度が70度くらいで高止まりし安定してしまったため、最終的にオーバークロックの運用はやめた。GPUの周波数を最大にしたことも温度上昇の原因の1つと考えられる。
+</Aside>
+
+## オーバークロック設定手順
+
+<Steps>
+
+1. 環境を最新化する。
+
+   ```bash
+   sudo apt update
+   sudo apt dist-upgrade
+   ```
+
+1. 設定ファイル（`/boot/firmware/config.txt`）にオーバークロックの設定値を追記する。
+
+   ```diff
+   // /boot/firmware/config.txt
+   + arm_freq=2000
+   + over_voltage=6
+   + gpu_freq=750
+   ```
+
+   <Aside type="danger" title="設定時の注意">
+   `arm_freq` を `2147` に設定したところ、再起動ができなくなった。原因は `wpa_supplicant.service` が起動できなくなったためと思われる。
+   </Aside>
+
+1. システムを再起動し、設定を反映させる。
+
+   ```bash
+   sudo reboot now
+   ```
+
+</Steps>
+
+## 再起動ができなくなった場合の対処法
+
+設定を誤りRaspberry Piが起動しなくなった場合は、以下の手順で復旧する。
+
+1. ラズパイからmicroSDカードを抜く。
+1. 別のPC（Windowsなど）にそのmicroSDカードを挿入する。
+1. カード内の `config.txt` をエディタで開き、追加した設定値を元の値に戻すか削除する。
+1. 保存後、再びラズパイにmicroSDカードを挿入して起動する。
+
+## まとめ
+
+* オーバークロックは `/boot/firmware/config.txt` の編集により行う。
+* `arm_freq` の過剰な引き上げ（例: 2147）は起動不能を招く恐れがある。
+* 発熱増大により冷却が追いつかず、CPU温度が70度以上で安定してしまうなど実運用には適さない場合がある。
+* トラブル時はSDカードを別PCで読み込み、直接設定ファイルを修正することで復旧可能である。
+
+**参考サイト**
+- [ラズパイをオーバークロックして使う（メモ）](https://wisteriahill.sakura.ne.jp/CMS/WordPress/2024/01/16/raspberry-pi-overclock/)
+- [Raspberry Pi 4+Bullseyeのオーバークロックの設定](https://raspida.com/overclock-rpi4-bullseye#index_id9)

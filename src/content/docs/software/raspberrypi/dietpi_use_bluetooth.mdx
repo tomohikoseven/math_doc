@@ -1,0 +1,50 @@
+---
+title: DietPi(bookworm)にてbluetoothを使うために．
+description: Raspberry PiのDietPi環境でBluetoothを有効にし、Bluemanを使用してデバイスを管理する方法を解説する。必要なパッケージのインストール手順や設定方法を詳しく紹介する。
+---
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Raspberry Pi（DietPi環境）でBluetoothを利用し、YouTubeやTVerなどの音声を無線イヤホンで聞くには、GUIで簡単にBluetooth機器を管理できる「Blueman（Bluetooth Manager）」を利用するのが便利である。
+
+<Aside type="caution" title="つまずきポイント">
+- Raspberry Piの標準設定ではBluetoothが無効になっている場合があるため、`dietpi-config` からBluetoothをOnにする必要がある。
+- Blueman単体だけでなく、音声を出力するために `pulseaudio-module-bluetooth` パッケージも別途インストールする必要がある。
+</Aside>
+
+## Bluemanインストール前の事前準備
+
+<Steps>
+
+1. `dietpi-config` を起動し、BluetoothをOnにする。
+   「Advanced Options」＞「Bluetooth」の項目が「On」であることを確認する。Onに変更した場合はOSを再起動する。
+   （※ `/etc/modprobe.d/dietpi-disable_bluetooth.conf` の削除や `/boot/config.txt` の編集などが自動で行われるため、必ずツールから有効化する。）
+
+1. 起動後にBluetoothを自動有効化する設定を行う。
+   BluetoothをOnにする際に「Bluetoothは自動的に有効にしますか？」というポップアップが表示されたら「はい」を選択する。
+
+</Steps>
+
+## Bluemanのインストール手順
+
+<Steps>
+
+1. 推奨パッケージである `pulseaudio-module-bluetooth` も含めてBluemanをインストールする。
+
+   ```bash
+   sudo apt install blueman --install-suggests
+   ```
+
+1. インストール後、以下のコマンドでBluemanを起動する。
+
+   ```bash
+   blueman-manager
+   ```
+   ※デスクトップ環境の「メニュー」＞「設定」＞「Bluemanマネージャー」からも起動可能である。
+
+</Steps>
+
+## まとめ
+
+* DietPi環境でのBluetooth有効化は `dietpi-config` から行う。
+* GUIで機器接続を管理するにはBluemanが便利である。
+* 音声出力には `pulseaudio-module-bluetooth` のインストールが不可欠である。

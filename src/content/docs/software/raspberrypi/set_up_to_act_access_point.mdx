@@ -1,0 +1,101 @@
+---
+title: ラズパイ4Bをアクセスポイント(2.4GHz)にする．
+description: Raspberry Pi 4Bを2.4GHz帯のWi-Fiアクセスポイントとして設定する手順を解説する。USB Wi-Fiドングル（WDC-150SU2M）を用いたDietPi環境での具体的な設定方法を紹介する。
+---
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Raspberry Pi 4 Model Bをアクセスポイント（APモード）化するには、追加のUSB Wi-Fiドングル（例: WDC-150SU2M）を接続し、専用のドライバをコンパイルして導入後、`NetworkManager` でプロファイルを作成し、IPフォワードおよびIPマスカレードを設定する。
+
+これにより、モバイルWi-Fiルーターの負荷を軽減しつつ、古いタブレットなど2.4GHz帯しか対応していない機器をラズパイ経由でインターネットに接続させることが可能となる。
+
+<Aside type="note" title="環境情報">
+- RPi 4 Model B (aarch64) / DietPi v9.6.1
+- WDC-150SU2M（タブレット接続用・2.4GHz帯）
+- モバイルWifi（インターネット側・5GHz帯でラズパイ内蔵無線LANと接続）
+</Aside>
+
+<Aside type="caution" title="注意点">
+- USB Wi-Fiドングルを付けたままラズパイを起動すると、内蔵無線LAN（`wlan0`）が自動でモバイルWifiと接続しない不具合が確認された。起動時は一時的に外すことを推奨する。
+- `wlan0` のインタフェース仮想化（VIF）によるアクセスポイント化も可能だが、内蔵無線LANが5GHz動作時はAP側も強制的に5GHz帯となり、目的（2.4GHz帯の確保）に合致しなかったため本手法を採用した。
+</Aside>
+
+## アクセスポイント構築手順
+
+<Steps>
+
+1. ドライバーインストールに向けた準備を行う。
+   必要なツール群とLinuxヘッダーをインストールする。
+
+   ```bash
+   sudo apt install git bc build-essential raspberrypi-kernel-headers
+   git clone https://github.com/ivanovborislav/rtl8188eu.git
+   ```
+
+1. Makefileをラズパイ（ARM環境）向けに修正する。
+   取得した `rtl8188eu` ディレクトリ内の `Makefile` を以下のように書き換える。
+
+   ```bash frame="none"
+   # 145行目付近:
+   CONFIG_PLATFORM_I386_PC = n
+   # 146行目または147行目付近:
+   # OSが32bitの場合: CONFIG_PLATFORM_RPI_ARM = y
+   # OSが64bitの場合: CONFIG_PLATFORM_RPI_ARM64 = y
+   ```
+
+1. ドライバーのコンパイルとインストールを実行する。
+
+   ```bash
+   cd ./rtl8188eu
+   chmod +x install.sh
+   ./install.sh -i
+   ```
+   ※実行時に `You need root permissions` と表示される場合があるが無視してよい。
+
+1. ネットワークプロファイル（SSIDとパスワード）を作成・設定する。
+   `NetworkManager` を利用してAPモードのプロファイル（`hotspot3`）を追加し、アクティベートする。
+
+   ```bash
+   sudo apt install NetworkManager
+   # 以下の "password" を任意のパスワードに変更して実行
+   sudo nmcli connection add type wifi ifname wlan1 con-name hotspot3 autoconnect yes ssid dietpi-ap3 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared ipv4.address 192.168.2.1/24 wifi-sec.key-mgmt wpa-psk wifi-sec.pairwise ccmp wifi-sec.proto rsn wifi-sec.psk "password"
+   
+   # プロファイルのアクティベート
+   nmcli con up hotspot3
+   ```
+
+1. IPフォワードとIPマスカレード（ルーティング）を設定し、永続化する。
+   これにより、接続した機器がラズパイの `wlan0` 経由でインターネットに抜けられるようになる。
+
+   ```diff
+   // /etc/sysctl.conf 内の以下の行のコメントアウトを外す
+   - # net.ipv4.ip_forward=1
+   + net.ipv4.ip_forward=1
+   ```
+
+   ```bash
+   # iptablesのインストールとマスカレード設定
+   sudo apt install iptables
+   sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+   
+   # 設定の保存と永続化
+   sudo apt install -y netfilter-persistent iptables-persistent
+   sudo netfilter-persistent save
+   ```
+
+1. 設定完了後、システムを再起動する。
+
+   ```bash
+   sudo reboot
+   ```
+
+</Steps>
+
+## まとめ
+
+* ラズパイを2.4GHzのアクセスポイントにするには外付けUSB Wi-Fiドングルが有効である。
+* ソースコードからデバイスドライバをビルドし、適切にインストールする必要がある。
+* `NetworkManager` のアクセスポイント機能と、`iptables` によるIPマスカレード設定を組み合わせることでルーター機能を実現できる。
+
+**参考サイト**
+- [Ubuntu 22.04にWDC-150SU2Mを挿し、APモードで使用する](https://lvnkae.tumblr.com/post/744059254067068928/ubuntu-2204%E3%81%ABwdc-150su2m%E3%82%92%E6%8C%BF%E3%81%97ap%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B)
+- [Raspberry Pi 5B アクセスポイント化＆ルータ化メモ](https://qiita.com/d-ebi/items/2b8e6113690f24487c3e)

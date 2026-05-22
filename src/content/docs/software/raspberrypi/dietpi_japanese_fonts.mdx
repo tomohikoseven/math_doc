@@ -1,0 +1,29 @@
+---
+title: DietPiにおける日本語フォント．
+description: Raspberry PiのDietPi環境で日本語フォントを導入する方法を解説する。必要なパッケージのインストール手順や、ロケール設定の変更手順を詳しく紹介する。
+---
+import { Steps } from '@astrojs/starlight/components';
+
+Raspberry Pi上のDietPi環境で日本語や絵文字を正しく表示させるには、日本語フォントパッケージ（`fonts-noto-cjk`）と絵文字フォントパッケージ（`fonts-noto-color-emoji`）をインストールし、システムロケールを「ja_JP.UTF-8」に設定する必要がある。
+
+ラズパイを使った環境はいつでも壊して再構築できるように運用しているため、クリアインストール後に迷わないための備忘録である。
+
+## 日本語フォント導入手順
+
+<Steps>
+
+1. 以下のコマンドを実行し、必要なフォントパッケージをインストールする。
+
+   ```bash
+   sudo apt install fonts-noto-cjk fonts-noto-color-emoji
+   ```
+
+1. パッケージのインストール完了後、システムのロケール設定を「ja_JP.UTF-8」に変更する。
+
+</Steps>
+
+## まとめ
+
+* `fonts-noto-cjk` で日本語の文字化けを解消する。
+* `fonts-noto-color-emoji` でブラウザ上の「いいね」などの絵文字を表示可能にする。
+* フォントインストール後にはロケール設定の変更を忘れずに行うこと。

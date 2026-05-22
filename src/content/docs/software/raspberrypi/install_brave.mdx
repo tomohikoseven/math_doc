@@ -1,0 +1,56 @@
+---
+title: ラズパイ4BにBraveブラウザをインストールする。
+description: Raspberry Pi 4 Model B上のDietPi環境で、Braveブラウザをインストールする手順を解説する。コマンドラインを用いたパッケージ追加方法と、導入のメリット・デメリットを紹介する。
+---
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Raspberry Pi 4Bで広告ブロック機能が標準搭載されたBraveブラウザを利用するには、公式のリポジトリを追加し、`apt` コマンドからインストールを行う。Chromiumブラウザでの広告表示が煩わしい場合の代替として有効である。
+
+<Aside type="note" title="環境情報">
+- RPi 4 Model B (aarch64)
+- DietPi v9.6.1
+</Aside>
+
+## インストール手順
+
+<Steps>
+
+1. 必要なツールである `curl` をインストールする。
+
+   ```bash
+   sudo apt install curl
+   ```
+
+1. Braveの公式GPGキーをダウンロードして配置する。
+
+   ```bash
+   sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+   ```
+
+1. Braveのリポジトリをシステムのパッケージソースに追加する。
+
+   ```bash
+   echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+   ```
+
+1. パッケージリストを更新し、Braveブラウザをインストールする。
+
+   ```bash
+   sudo apt update
+   sudo apt install brave-browser
+   ```
+
+</Steps>
+
+## 利用上のメリットとデメリット
+
+### メリット
+- YouTubeなどの動画サイトにおいて、広告なしで動画を視聴可能である（デスクトップアプリとしてインストールした場合も同様）。
+
+### デメリット
+- デフォルトの状態ではTVerなどの一部のストリーミングサービスが視聴できない場合がある（視聴には工夫が必要となる）。
+
+## まとめ
+
+* Braveブラウザは公式リポジトリを追加することで `apt` からインストール可能である。
+* 強力な広告ブロック機能によりYouTube等を快適に視聴できるが、一部サイト（TVer等）の視聴には制限がある。

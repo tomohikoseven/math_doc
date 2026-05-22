@@ -1,40 +1,58 @@
 ---
 title: "Warning: 'ozone-platform-hint' is not in the list of known options, but still passed to Electron/Chromium."
-description: Raspberry PiのWayland環境で、VSCode起動時に表示される『'ozone-platform-hint' is not in the list of known options』という警告の原因と、環境変数を用いた適切な対処法を解説します。
+description: Raspberry PiのWayland環境で、VSCode起動時に表示される警告の原因と、環境変数を用いた適切な対処法を解説する。
 next: false
 prev: false
 ---
+import { Aside, Steps } from '@astrojs/starlight/components';
 
-　ラズパイ(Wayland)とChromium系のアプリは相性が悪い．
+Raspberry PiのWayland環境とChromium系アプリケーション（VSCodeなどのElectron製アプリ）は相性が悪く、日本語入力時の誤変換などが生じやすい。これを回避するためには、起動時の設定でWaylandへの対応を明示する必要がある。
 
-　調べていくと，オプションを付けて起動するとよいことがわかった．色々サイトを見ると，`--ozone-platform-hint=wayland`を指定すればよいことが判明．
-指定してコマンドを実行すると，タイトルのとおりの警告が出て，VSCodeが起動する．オプションに`ozone-platform-hint`などないと警告．
-```bash
-code . --ozone-platform-hint=wayland
-```
-　ではどうすればいいのか調査を進めると，[環境変数に指定](https://wiki.archlinux.jp/index.php/Wayland#Electron)してやればよいとわかる．
-コマンドラインで環境変数を設定(`export ELECTRON_OZONE_PLATFORM_HINT=wayland`)して，VSCodeを起動し，試してみる．
+以前はコマンドラインオプション `--ozone-platform-hint=wayland` を付与することで対応できたが、現在はタイトルの通り「未知のオプション」として警告が表示されてしまう。そのため、現在では**環境変数**として指定するのが正しい手順である。
 
-　なんとなく誤変換が少なくなったような気がする(笑．拡張機能の`vscodevim`も誤変換に一役買っているようだ．disableにすると，もっと誤変換が少なくなった気がする(笑．
-
-**VSCodeのHelp > About**
-- Version: 1.92.1
-- Commit: eaa41d57266683296de7d118f574d0c2652e1fc4
-- Date: 2024-08-07T20:16:39.455Z
-- Electron: 30.1.2
-- ElectronBuildId: 9870757
-- Chromium: 124.0.6367.243
-- Node.js: 20.14.0
-- V8: 12.4.254.20-electron.0
+<Aside type="note" title="検証時のVSCode環境情報">
+- Version: 1.92.1 (Commit: eaa41d57266683296de7d118f574d0c2652e1fc4)
+- Electron: 30.1.2 (Chromium: 124.0.6367.243, Node.js: 20.14.0)
 - OS: Linux arm64 6.1.21-v8+
-***
-## ショートカットファイルへの追加
-　VSCodeの起動はショートカットファイルから起動することがほとんど．このときの環境変数がないといけない．[Linuxでショートカット起動時に環境変数を指定する方法
-](https://www.exceedsystem.net/2020/08/23/how-to-set-environment-variables-in-linux-shortcut/)を参考に設定する．
-```diff ins="env ELECTRON_OZONE_PLATFORM_HINT=wayland"
-// /usr/share/applications/code.desktop
-- Exec=/usr/share/code/code %F
-+ Exec=env ELECTRON_OZONE_PLATFORM_HINT=wayland /usr/share/code/code %F
+</Aside>
+
+## 環境変数の設定方法
+
+コマンドラインから一時的に起動する場合は以下のようになる。
+
+```bash
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+code .
 ```
 
+なお、VSCode拡張機能の `vscodevim` が誤変換の一因となる場合がある。環境変数の設定に加えて、必要に応じて拡張機能の無効化（disable）も試すとよい。
 
+## ショートカットファイルへの追加手順
+
+通常、VSCodeはデスクトップやアプリケーションメニューのショートカットから起動することが多い。ショートカット経由の起動時にも環境変数が適用されるよう、設定ファイル（`.desktop`）を編集する。
+
+<Steps>
+
+1. ターミナルを開き、VSCodeのショートカット定義ファイル（`/usr/share/applications/code.desktop`）をエディタ（nanoなど）で開く。
+
+1. `Exec=` で始まる行を見つけ、コマンドの直前に `env ELECTRON_OZONE_PLATFORM_HINT=wayland` を追記する。
+
+   ```diff
+   // /usr/share/applications/code.desktop
+   - Exec=/usr/share/code/code %F
+   + Exec=env ELECTRON_OZONE_PLATFORM_HINT=wayland /usr/share/code/code %F
+   ```
+
+1. ファイルを保存して閉じる。次回以降、ショートカットからの起動時にも環境変数が適用される。
+
+</Steps>
+
+## まとめ
+
+* `--ozone-platform-hint=wayland` の警告を消すには、オプションではなく環境変数 `ELECTRON_OZONE_PLATFORM_HINT=wayland` を使用する。
+* ショートカットから起動する際は `.desktop` ファイル内の `Exec` の行頭に `env <環境変数>` を追記する。
+* Wayland環境での入力トラブル低減に効果がある。
+
+**参考サイト**
+- [Wayland - ArchWiki (Electron)](https://wiki.archlinux.jp/index.php/Wayland#Electron)
+- [Linuxでショートカット起動時に環境変数を指定する方法](https://www.exceedsystem.net/2020/08/23/how-to-set-environment-variables-in-linux-shortcut/)

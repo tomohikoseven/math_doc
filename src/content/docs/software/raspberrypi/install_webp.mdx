@@ -1,0 +1,37 @@
+---
+title : webpファイルをラズパイ上で見る方法
+description : Raspberry Pi 4 Model BのDietPi環境で、WebP形式の画像ファイルを表示する方法を解説する。vwebpツールのインストール手順と、コマンドラインからの画像表示方法を詳しく紹介する。
+---
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Raspberry Pi（DietPi環境）でWebP形式の画像ファイル（`.webp`）を表示するには、`webp` パッケージをインストールし、コマンドラインから `vwebp` コマンドを使用する必要がある。初期状態のラズパイにはインストールされていないため、手動で追加する。
+
+<Aside type="note" title="環境情報">
+- RPi 4 Model B (aarch64)
+- DietPi v9.6.1
+</Aside>
+
+## インストールと利用手順
+
+<Steps>
+
+1. ターミナルを開き、以下のコマンドでWebP用のツール群をインストールする。
+
+   ```bash
+   sudo apt install webp
+   ```
+
+1. コマンドラインから `vwebp` コマンドを実行して画像を表示する。
+   （※インストール直後は拡張子の関連付けが行われていないため、GUIのダブルクリックではなくコマンドを利用する）
+
+   ```bash
+   vwebp file_name.webp
+   ```
+
+</Steps>
+
+## まとめ
+
+* WebPファイルを表示するには `webp` パッケージのインストールが必要である。
+* インストール後、コマンドラインから `vwebp <ファイル名>` で画像を表示できる。
+* ダブルクリックで表示させたい場合は別途[ファイル拡張子の関連付け](/software/raspberrypi/associate_file_with_application_on_raspi4/)を行う必要がある。

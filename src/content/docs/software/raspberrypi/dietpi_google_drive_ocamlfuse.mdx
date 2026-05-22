@@ -1,0 +1,65 @@
+---
+title: ラズパイ4Bにgoogle-drive-ocamlfuseをインストールする．
+description: Raspberry Pi 4にgoogle-drive-ocamlfuseをインストールし、Google Driveをマウントする方法を解説する。必要なパッケージのインストールから、クライアントIDとシークレットの取得、マウント手順までを詳しく説明する。
+---
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Raspberry Pi（DietPi環境など）でGoogle Driveをマウントするには、`google-drive-ocamlfuse` をインストールし、Google API Consoleで取得したクライアントIDとシークレットを用いて認証を行う。これにより、ファイルマネージャーやコマンドラインから直接Google Drive内のファイルを操作できるようになる。
+
+## インストールおよび設定手順
+
+具体的なインストールからマウントまでの手順は以下の通りである。
+
+<Steps>
+
+1. 依存関係のあるパッケージをインストールする。
+
+   ```bash
+   sudo apt install opam ocaml make libfuse-dev camlp4-extra build-essential pkg-config
+   ```
+
+1. fuseグループの作成と設定を行う。
+
+   ```bash
+   sudo groupadd fuse
+   sudo usermod -a -G fuse <ユーザ名>
+   sudo chown root:fuse /dev/fuse
+   sudo chmod 660 /dev/fuse
+   ```
+
+1. `google-drive-ocamlfuse` をインストールする。
+   `opam google-drive-ocamlfuse` の実行時には `opam-depext` のインストールも促されるため、Enterキーを押して進める。
+
+   ```bash
+   opam init
+   opam update
+   opam google-drive-ocamlfuse
+   ```
+
+1. 以下の初期化スクリプトを実行する。
+
+   ```bash frame="none"
+   . /home/<ユーザ名>/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+   ```
+
+1. クライアントIDとシークレットを取得する。
+   [Google API Console](https://console.developers.google.com/)にアクセスし、Google Driveへアクセスするための認証情報を取得する。
+   <Aside type="caution" title="認証の反映時間">
+   [参考ページ](https://help.talend.com/r/ja-JP/8.0/google-drive/how-to-access-google-drive-using-service-account-json-file-a-google)の手順通りにプロジェクトを新規作成した場合、認証がGoogleに許可されるまでに数日かかることがある。
+   </Aside>
+
+1. Google Driveをマウントする。
+   取得したクライアントIDとシークレットを用いて以下のコマンドを実行する。
+
+   ```bash
+   google-drive-ocamlfuse -id <クライアントID> -secret <シークレット> マウントするディレクトリパス
+   ```
+
+</Steps>
+
+## まとめ
+
+* `google-drive-ocamlfuse` はOPAM（OCaml Package Manager）を利用してインストールする。
+* Google API Consoleでプロジェクトを作成し、クライアントIDとシークレットを発行する必要がある。
+* マウントコマンドを実行することで、指定したディレクトリパスにGoogle Driveがマウントされる。
+* 参考サイト: [How to install from source on Debian Jessie](https://github.com/astrada/google-drive-ocamlfuse/wiki/How-to-install-from-source-on-Debian-Jessie)

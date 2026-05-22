@@ -1,0 +1,25 @@
+---
+title: DietPiのChromiumブラウザを日本語表記にする．
+description: Raspberry Pi 4 Model B上のDietPi環境で、Chromiumブラウザを日本語表示に設定する方法を解説する。設定から言語を日本語に指定しても反映されない場合の対処法として、必要なパッケージのインストール手順を紹介する。
+---
+import { Aside } from '@astrojs/starlight/components';
+
+DietPi環境のChromiumブラウザで日本語表記を有効にするには、言語パッケージである `chromium-browser-l10n` をインストールする必要がある。ブラウザ内の設定（Settings）から言語を日本語（Japanese）に指定しても反映されない場合は、このパッケージが不足していることが原因である。
+
+## インストール手順
+
+ターミナルを開き、以下のコマンドを実行して日本語化パッケージをインストールする。
+
+```bash
+sudo apt install chromium-browser-l10n
+```
+
+<Aside type="note" title="環境情報">
+- RPi 4 Model B (aarch64)
+- DietPi v9.6.1
+</Aside>
+
+## まとめ
+
+* Chromiumブラウザの設定だけでは日本語表記にならない場合がある。
+* `chromium-browser-l10n` パッケージをインストールすることで解決する。
