@@ -132,7 +132,9 @@ svg.caret,
 /* 目次および表示テーマの選択可を示す矢印(>やv)が表示されない問題を対処 */
 svg[class^=" astro-"],
 /* ハンバーガーメニューが消える問題を対処 */
-starlight-menu-button svg {
+starlight-menu-button svg,
+/* Cardコンポーネントのアイコンが表示されない問題を対処 */
+svg.icon {
   /* Iconコンポーネントが表示されない問題を対処．astroの前に半角スペースがある． */
   fill: currentColor;
 }
@@ -332,4 +334,64 @@ starlight-menu-button svg {
   background-color: transparent !important;
   color: var(--sl-color-gray-3) !important;
   border-color: var(--sl-color-gray-4) !important;
+}
+
+/* ====================== */
+/* Matrix Grid (受験マトリクス用) */
+/* ====================== */
+.matrix-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 12px;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  .matrix-grid {
+    grid-template-columns: 60px 1fr 1fr;
+    gap: 8px;
+  }
+}
+
+.matrix-header {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 6px;
+  background-color: var(--sl-color-accent-low);
+  color: var(--sl-color-accent);
+}
+
+.matrix-header.empty {
+  background-color: transparent;
+}
+
+.matrix-cell {
+  background-color: var(--sl-color-bg-nav);
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 6px;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.matrix-cell:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: var(--sl-color-accent-high);
+}
+
+.matrix-cell.text-muted {
+  color: var(--sl-color-gray-3);
+  font-style: italic;
 }
