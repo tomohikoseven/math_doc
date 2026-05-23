@@ -1,3 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  /* Material Typography */
+  --sl-font: 'Roboto', sans-serif;
+
+  /* Material Colors - Indigo primary */
+  --sl-color-accent-low: #e8eaf6;
+  --sl-color-accent: #3f51b5;
+  --sl-color-accent-high: #c5cae9;
+
+  /* Background adjustments */
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: #f8f9fa;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #1a237e;
+  --sl-color-accent: #7986cb;
+  --sl-color-accent-high: #e8eaf6;
+
+  --sl-color-bg-nav: #212121;
+  --sl-color-bg-sidebar: #121212;
+}
+
+/* Material Design specific overrides */
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4 {
+  font-weight: 500;
+}
+
+/* Cards (Elevation) */
+/* .card {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  border-radius: 8px !important;
+  border: none !important;
+  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s ease !important;
+  background-color: var(--sl-color-bg) !important;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  transform: translateY(-2px);
+} */
+
+/* Buttons */
+.action.primary {
+  border-radius: 4px !important;
+  text-transform: uppercase;
+  font-weight: 500;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.action.primary:hover {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+}
+
+.action.secondary {
+  border-radius: 4px !important;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid var(--sl-color-accent);
+  color: var(--sl-color-accent);
+}
+
+/* Header */
+header.header {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .1);
+  border-bottom: none !important;
+}
+
 /* ========= */
 /* Table     */
 /* ========= */
@@ -238,7 +312,8 @@ starlight-menu-button svg {
     align-items: center;
     justify-content: center;
     gap: 0.1rem;
-    padding: 0.3rem !important; /* ボタンの余白を詰める */
+    padding: 0.3rem !important;
+    /* ボタンの余白を詰める */
   }
 
   starlight-menu-button button::after {
@@ -249,6 +324,7 @@ starlight-menu-button svg {
     font-weight: normal;
   }
 }
+
 /* ====================== */
 /* 独自バッジスタイル     */
 /* ====================== */
