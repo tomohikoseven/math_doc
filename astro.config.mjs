@@ -4,8 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
 import emoji from 'remark-emoji';
 import rehypeTypst from '@myriaddreamin/rehype-typst';
-import { typst } from 'astro-typst';
-import fs from 'node:fs';
+
 import mermaid from 'astro-mermaid';
 
 import starlightSidebarTopics from 'starlight-sidebar-topics';
@@ -18,18 +17,7 @@ import {
   SIDEBAR_TOPICS_OPTIONS
 } from './src/libs/sidebar';
 
-/**
- * .typファイルへのリンクを自動的に除外リストに登録するためのヘルパー
- */
-function getTypstExcludes() {
-  try {
-    return fs.readdirSync('src/content/docs', { recursive: true })
-      .filter(file => typeof file === 'string' && file.endsWith('.typ'))
-      .map(file => '/' + file.replace(/\.typ$/, '/').replace(/\\/g, '/'));
-  } catch (e) {
-    return [];
-  }
-}
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -65,14 +53,9 @@ export default defineConfig({
         MarkdownContent: './src/components/starlight/MarkdownContent.astro',
       },
       plugins: [
-        starlightLinksValidator({
-          exclude: [...getTypstExcludes()]
-        }),
+        starlightLinksValidator(),
         starlightSidebarTopics(SIDEBAR_TOPICS, SIDEBAR_TOPICS_OPTIONS)
       ],
-    }),
-    typst({
-      target: () => "svg"
     }),
     sitemap()
   ],
