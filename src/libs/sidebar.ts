@@ -82,7 +82,7 @@ export const SIDEBAR_TOPICS = [
     label: 'Software',
     link: '/software/astro/astro_components_steps/',
     icon: 'laptop',
-    items: [SOFTWARE],
+    items: SOFTWARE.items,
   },
 ];
 
