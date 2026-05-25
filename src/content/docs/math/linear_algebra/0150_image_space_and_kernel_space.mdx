@@ -3,20 +3,21 @@ title: 線形写像の像空間と核空間（定義）
 description: 線形写像の像空間と核空間の定義を解説します。線形写像が対応する行列を用いて、像空間と核空間の関係を詳しく説明します。
 lastUpdated: 2024-08-24
 ---
-import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 import { LinkCard } from '@astrojs/starlight/components';
+
+import Statement from '/src/components/Statement.astro';
 
 import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/linear_algebra/0150/線形写像の像空間と核空間（定義）.webp";
 
-<Card title="定義6.3.2">
+<Statement title="定義6.3.2" variant="definition">
 　$V, W$をベクトル空間，$f colon V -> W$を線形写像とするとき，$$
 "Im" f = {f(bold(x))|bold(x) in V}
 $$を$f$の像空間という．$f(V)$とも書く．また，$$
 "Ker" f = {bold(x) in V|f(bold(x)) = bold(0)}
 $$を$f$の核空間という．
-</Card>
+</Statement>
 
 ## 定義の主張
 　通常の写像（$f$の像）と同じことを言っているが，$f$が線形写像のときは像空間と言っている．

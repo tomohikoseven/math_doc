@@ -8,6 +8,8 @@ draft: true
 ---
 import { YouTube } from 'astro-embed';
 import ArticleTip from '/src/components/ArticleTip.astro';
+import Statements from '/src/components/Statements.astro';
+import Statement from '/src/components/Statement.astro';
 import { Card } from "@astrojs/starlight/components";
 import { Aside } from '@astrojs/starlight/components';
 
@@ -34,13 +36,14 @@ $$
 これを見て「ふーん」「そうだよね」と次に進んでしまうのは立ち止まれていないことになる．
 
 　具体例なので，同じ疑問を持つ必要はまったくないが，私なら以下のような疑問を持つ．
-<dl>
-  <dt>疑問1</dt>
-  <dd>矢印ってどういうこと？なぜ矢印なの？</dd> 
-  <dt>疑問2</dt>
-  <dd>ベクトルって$(1, 2, 3)$みたいなやつだけど，長さと方向なんてどこにあるの？どういうこと？</dd> 
-</dl>
-
+<Statements>
+  <Statement title="疑問1">
+  矢印ってどういうこと？なぜ矢印なの？
+  </Statement> 
+  <Statement title="疑問2">
+  ベクトルって$(1, 2, 3)$みたいなやつだけど，長さと方向なんてどこにあるの？どういうこと？
+  </Statement> 
+</Statements>
 
 　これらの疑問に対して，これまでのページから合理的に考えれば導かれる結論なのか，そんなこと書かれていたか，
 次のページを開けば合理的な説明がされているのかなどと考えを巡らせる．

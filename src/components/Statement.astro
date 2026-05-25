@@ -1,0 +1,78 @@
+---
+interface Props {
+  title: string;
+  icon?: string;
+  variant?: 'term' | 'definition' | 'theorem' | 'example' | 'faq';
+}
+const { title, icon, variant = 'term' } = Astro.props;
+---
+<div class={`statement-item variant-${variant}`}>
+  <dt class="statement-title">
+    {icon && <span class="statement-icon" set:html={icon} />}
+    {title}
+  </dt>
+  <dd class="statement-desc">
+    <slot />
+  </dd>
+</div>
+
+<style>
+  .statement-item {
+    background-color: var(--sl-color-bg-nav);
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .statement-item.variant-term {
+    border-left: 4px solid var(--sl-color-gray-4, #9ca3af); /* Gray */
+  }
+
+  .statement-item.variant-definition {
+    border-left: 4px solid #eab308; /* Yellow */
+  }
+  
+  .statement-item.variant-theorem {
+    border-left: 4px solid var(--sl-color-green, #22c55e); /* Green */
+  }
+  
+  .statement-item.variant-example {
+    border-left: 4px solid var(--sl-color-purple, #a855f7); /* Purple */
+  }
+  
+  .statement-item.variant-faq {
+    border-left: 4px solid var(--sl-color-blue, #3b82f6); /* Blue */
+  }
+  
+  :global([data-theme="dark"]) .statement-item {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    background-color: var(--sl-color-gray-6);
+  }
+
+  .statement-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.4;
+  }
+  
+  .statement-desc {
+    margin: 0;
+    color: var(--sl-color-gray-2);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+  
+  .statement-desc :global(p) {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .statement-desc :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

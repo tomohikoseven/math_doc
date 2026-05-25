@@ -4,28 +4,33 @@ description: 基底の決定（例題）
 lastUpdated: 2024-09-02
 draft: true
 ---
-import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
+
+import Statements from '/src/components/Statements.astro';
+import Statement from '/src/components/Statement.astro';
 
 import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/linear_algebra/draft/基底の決定（例題）.webp"
 
-<Card title="例題12">
+<Statement title="例題12" variant="example">
 　線形写像$F colon bold(R)^3 --> bold(R)^2$の基底 $angle.l mat(delim: "[", 1; 1; 1), mat(delim: "[", 1; 1; 0), mat(delim: "[", 1; 0; 0) angle.r, angle.l mat(delim: "[", 1; 1), mat(delim: "[", 1; 0) angle.r$に関する表現行列が$A = mat(delim: "(", 1, - 5, - 2; - 1, 8, 3) $であるとき，その表現行列が$B = mat(delim: "(", 1, 0, 0; 0, 1, 0) $になるように$bold(R)^3$および$bold(R)^2$の基を定めよ。
-</Card>
+</Statement>
 
 ## 例題の主張
 　基底の変換行列と表現行列の関係（$B = Q^(-1) A P$）を理解しているか，また，それを応用できるかを問うている．もう一組ずつの基底が何かを問われているところに，もう一捻りして問に答える必要がある．
 
 ## 解答の考え方
-<dl>
-    <dt>(仮定A1)</dt>
-    <dd>$"線形写像" F colon R^3 --> R^2$</dd>
-    <dt>(仮定A2)</dt>
-    <dd>基底$bold(a) = angle.l mat(delim: "(", 1; 1; 1), mat(delim: "(", 1; 1; 0), mat(delim: "(", 1; 0; 0) angle.r, bold(b) = angle.l mat(delim: "(", 1; 1), mat(delim: "(", 1; 0) angle.r$に関する表現行列は，$A = mat(delim: "(", 1, - 5, - 2; - 1, 8, 3)$．</dd>
-    <dt>(結論)</dt>
-    <dd>表現行列が$B = mat(delim: "(", 1, 0, 0; 0, 1, 0)$となるような$R^3 "および" R^2$の基底は何か．</dd>
-</dl>
+<Statements>
+    <Statement title="仮定A1">
+    $"線形写像" F colon R^3 --> R^2$
+    </Statement>
+    <Statement title="仮定A2">
+    基底$bold(a) = angle.l mat(delim: "(", 1; 1; 1), mat(delim: "(", 1; 1; 0), mat(delim: "(", 1; 0; 0) angle.r, bold(b) = angle.l mat(delim: "(", 1; 1), mat(delim: "(", 1; 0) angle.r$に関する表現行列は，$A = mat(delim: "(", 1, - 5, - 2; - 1, 8, 3)$．
+    </Statement>
+    <Statement title="結論">
+    表現行列が$B = mat(delim: "(", 1, 0, 0; 0, 1, 0)$となるような$R^3 "および" R^2$の基底は何か．
+    </Statement>
+</Statements>
 ***
 　求める$R^3$の基底の組を$bold(a)^prime = angle.l bold(a)_1^prime, bold(a)_2^prime, bold(a)_3^prime angle.r$，$R^2$の基底の組を$bold(b)^prime = angle.l bold(b)_1^prime, bold(b)_2^prime angle.r$，題意の$R^3$の基底の組を$bold(a) = angle.l bold(a)_1, bold(a)_2, bold(a)_3 angle.r = angle.l mat(delim: "(", 1; 1; 1), mat(delim: "(", 1; 1; 0), mat(delim: "(", 1; 0; 0) angle.r$, $R^2$の基底の組を$bold(b) = angle.l bold(b)_1, bold(b)_2 angle.r =  angle.l mat(delim: "(", 1; 1), mat(delim: "(", 1; 0) angle.r$，ベクトル空間$R^3$の基底の組$bold(a)$に関する成分ベクトルの集合を$R_bold(a)^3$，その他同様に$R_bold(a')^3$，$R_bold(b)^3$，$R_bold(b')^3$とおく．また，$bold(a)$から$bold(a')$への基底変換行列を$P$，$bold(b)$から$bold(b')$への基底変換行列を$Q$とおく．
 

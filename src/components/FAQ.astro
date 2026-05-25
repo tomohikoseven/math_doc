@@ -1,0 +1,11 @@
+---
+import Statement from './Statement.astro';
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<Statement title={title} variant="faq">
+  <slot />
+</Statement>

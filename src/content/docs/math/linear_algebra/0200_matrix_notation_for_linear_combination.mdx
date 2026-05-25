@@ -3,13 +3,15 @@ title: 線形写像と1次結合の行列表記
 description: 線形写像と1次結合の関係を行列を用いて解説します。定理6.3.3を通じて、ベクトル空間間の線形写像と1次結合の行列表記の関係性を詳しく学びましょう。
 lastUpdated: 2024-08-30
 ---
-import { Card } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
+
+import Statements from '/src/components/Statements.astro';
+import Statement from '/src/components/Statement.astro';
 
 import ImageWithCaption from "/src/components/ImageWithCaption.astro";
 import image_01 from "/src/assets/linear_algebra/0200/線形写像と1次結合の行列表示の関係.webp";
 
-<Card title="定理6.3.3">
+<Statement title="定理6.3.3" variant="theorem">
 　$V, W$をベクトル空間，$f colon V -> W$ を線形写像とする．
 
 　$V$の $m$ 個のベクトル $bold(u)_1, dots.c, bold(u)_m$，$V$ の$n$ 個のベクトル$bold(v)_1, dots.c, bold(v)_n$ と $m times n$ 行列 $A = (a_(i j))$ が，次の関係を満たしているとする．
@@ -24,7 +26,7 @@ $$
 $$
 (f(bold(v)_1) dots.c f(bold(v)_n)) = (f(bold(u)_1) dots.c f(bold(u)_m)) A
 $$
-</Card>
+</Statement>
 
 ## 定理の主張
 　ベクトル空間 $V, W$ の間に線形写像が定義されている．このとき，$V$の2つのベクトルの組の間に行列 $A$倍の関係があれば、これらに対応する$W$の２つのベクトルの組の間にも行列$A$倍の関係がある．2つのベクトルの組が変われば，行列も変わる．
@@ -39,29 +41,24 @@ $$
 
 ## 定理の仮定と結論
 　わかりづらいので，整理する．
-<dl>
-    <dt>仮定A1</dt>
-    <dd>
-    $$
-f colon V -> W "は線形写像である"
-$$
-    </dd>
-    <dt>仮定A2</dt>
-    <dd>
-    $$
-(bold(v)_1 dots.c bold(v)_n) = (bold(u)_1 dots.c bold(u)_m) A "すなわち，" bold(v)_j = sum_(i = 1)^m a_(i j) bold(u)_i
-$$
-    </dd>
-</dl>
 
-<dl>
-    <dt>結論B</dt>
-    <dd>
+<Statements>
+  <Statement title="仮定A1">
     $$
-(f(bold(v)_1) dots.c f(bold(v)_m)) = (f(bold(u)_1) dots.c f(bold(u)_m)) A
-$$
-    </dd>
-</dl>
+    f colon V -> W "は線形写像である"
+    $$
+  </Statement>
+  <Statement title="仮定A2">
+    $$
+    (bold(v)_1 dots.c bold(v)_n) = (bold(u)_1 dots.c bold(u)_m) A "すなわち，" bold(v)_j = sum_(i = 1)^m a_(i j) bold(u)_i
+    $$
+  </Statement>
+  <Statement title="結論B">
+    $$
+    (f(bold(v)_1) dots.c f(bold(v)_m)) = (f(bold(u)_1) dots.c f(bold(u)_m)) A
+    $$
+  </Statement>
+</Statements>
 
 ## 証明の考え方
 　（結論B）は$"２つのベクトル"$が等しいことを主張している．これを示すには、成分同士が等しいことを示せばよい。すなわち、
