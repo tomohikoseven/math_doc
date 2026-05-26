@@ -37,28 +37,33 @@ $$
 3. **分母を丸ごと置いてみる**: 
    分母を $t$ と置くことで、$integral (f'(x))/(f(x)) d x = log |f(x)| + C$ の形に帰着できることが非常に多い。
 
-### 具体例
-
-**例題 1（「微分した形」を探す例）：** $integral x e^(x^2) d x$
-
-$t = x^2$ とおくと、$d t = 2x d x$ より $x d x = 1/2 d t$ である。
-$$
-integral x e^(x^2) d x = integral e^t dot 1/2 d t = 1/2 e^t + C = 1/2 e^(x^2) + C
-$$
-
-**例題 2（「中身」を置き換える例）：** $integral (3x+2)^4 d x$
-
-$t = 3x+2$ とおくと、$d t = 3 d x$ より $d x = 1/3 d t$ である。
-$$
-integral (3x+2)^4 d x = integral t^4 dot 1/3 d t = 1/15 t^5 + C = 1/15 (3x+2)^5 + C
-$$
-
-**例題 3（分母を $t$ と置く例）：** $integral x/(x^2+1) d x$
-
-$t = x^2+1$ とおくと、$d t = 2x d x$ より $x d x = 1/2 d t$ である。
-$$
-integral x/(x^2+1) d x = integral (1/2 d t)/t = 1/2 log |t| + C = 1/2 log (x^2+1) + C
-$$
+#### 具体例
+<dl>
+   <dt>**例題 1（「微分した形」を探す例）：** $integral x e^(x^2) d x$</dt>
+   <dd>
+   $t = x^2$ とおくと、$d t = 2x d x$ より $x d x = 1/2 d t$ である。
+   $$
+   integral x e^(x^2) d x = integral e^t dot 1/2 d t = 1/2 e^t + C = 1/2 e^(x^2) + C
+   $$
+   </dd>
+   <dt>**例題 2（「中身」を置き換える例）：** $integral (3x+2)^4 d x$</dt>
+   
+   <dd>
+   $t = 3x+2$ とおくと、$d t = 3 d x$ より $d x = 1/3 d t$ である。
+   $$
+   integral (3x+2)^4 d x = integral t^4 dot 1/3 d t = 1/15 t^5 + C = 1/15 (3x+2)^5 + C
+   $$
+   </dd>
+   
+   <dt>**例題 3（分母を $t$ と置く例）：** $integral x/(x^2+1) d x$</dt>
+   
+   <dd>
+   $t = x^2+1$ とおくと、$d t = 2x d x$ より $x d x = 1/2 d t$ である。
+   $$
+   integral x/(x^2+1) d x = integral (1/2 d t)/t = 1/2 log |t| + C = 1/2 log (x^2+1) + C
+   $$
+   </dd>
+</dl>
 
 ### 定理（定積分・広義積分と変数変換）の詳細と証明
 - [定理4.14 (定積分の積分変数の変換)](/math/integral_method/0401_theorem_4_14/)
@@ -89,35 +94,45 @@ $$
    $e^x sin x$ のように、複数回の手法適用によって元の積分が再び現れ、方程式として解ける場合。
 
 #### どちらを $u$ に選ぶか
-　一般的に、対数関数 (L) $arrow.r$ 多項式関数 (A) $arrow.r$ 三角関数 (T) $arrow.r$ 指数関数 (E) の順（LATEの法則）で、$u$ に選ぶと計算がスムーズになることが多い。
+　一般的に、対数関数 (L) $->$ 多項式関数 (A) $->$ 三角関数 (T) $->$ 指数関数 (E) の順（LATEの法則）で、$u$ に選ぶと計算がスムーズになることが多い。
 
-### 具体例
+#### 具体例
 
-**例題 1（種類の異なる関数の積）：** $integral x e^x d x$
+<dl>
 
-$u = x, v' = e^x$ とおくと、$u' = 1, v = e^x$ である。
-$$
-integral x e^x d x = x e^x - integral 1 dot e^x d x = x e^x - e^x + C = (x-1) e^x + C
-$$
+    <dt>**例題 1（種類の異なる関数の積）：** $integral x e^x d x$</dt>
 
-**例題 2（公式がない関数）：** $integral log x d x$
+    <dd>
+    $u = x, v' = e^x$ とおくと、$u' = 1, v = e^x$ である。
+    $$
+    integral x e^x d x = x e^x - integral 1 dot e^x d x = x e^x - e^x + C = (x-1) e^x + C
+    $$
+    </dd>
 
-$u = log x, v' = 1$ とおくと、$u' = 1/x, v = x$ である。
-$$
-integral log x d x = integral 1 dot log x d x = x log x - integral 1/x dot x d x = x log x - x + C
-$$
+    <dt>**例題 2（公式がない関数）：** $integral log x d x$</dt>
 
-**例題 3（元の形が現れるもの）：** $integral e^x sin x d x$
+    <dd>
+    $u = log x, v' = 1$ とおくと、$u' = 1/x, v = x$ である。
+    $$
+    integral log x d x = integral 1 dot log x d x = x log x - integral 1/x dot x d x = x log x - x + C
+   $$
+   </dd>
 
-$I = integral e^x sin x d x$ とおく。$u = sin x, v' = e^x$ とすると $u' = cos x, v = e^x$ より、
-$$
-I = e^x sin x - integral e^x cos x d x
-$$
-さらに、右辺の積分に対して $u = cos x, v' = e^x$ とすると $u' = -sin x, v = e^x$ より、
-$$
-I = e^x sin x - (e^x cos x - integral e^x (-sin x) d x) = e^x (sin x - cos x) - I
-$$
-これより、$2I = e^x (sin x - cos x)$ となり、積分定数を加えて $I = 1/2 e^x (sin x - cos x) + C$ を得る。
+    <dt>**例題 3（元の形が現れるもの）：** $integral e^x sin x d x$</dt>
+
+    <dd>
+    $I = integral e^x sin x d x$ とおく。$u = sin x, v' = e^x$ とすると $u' = cos x, v = e^x$ より、
+    $$
+    I = e^x sin x - integral e^x cos x d x
+    $$
+    さらに、右辺の積分に対して $u = cos x, v' = e^x$ とすると $u' = -sin x, v = e^x$ より、
+    $$
+    I = e^x sin x - (e^x cos x - integral e^x (-sin x) d x) = e^x (sin x - cos x) - I
+    $$
+    これより、$2I = e^x (sin x - cos x)$ となり、積分定数を加えて $I = 1/2 e^x (sin x - cos x) + C$ を得る。
+    </dd>
+
+</dl>
 
 ## 4. 有理関数の積分 (Partial Fraction Decomposition)
 　分母が因数分解できる有理関数 $display(P(x)/Q(x))$ は、**部分分数分解**を行うことで、対数関数や逆正接関数（$arctan$）の積分に帰着させることができる。
@@ -127,14 +142,16 @@ $$
 2. **部分分数への展開**：適切な係数 $A, B, dots$ を用いて展開する。
 3. **各項の積分**：$display(1/(x-a)^n)$ や $display((A x + B)/(x^2 + p x + q))$ の形を積分する。
 
-### 具体例
+#### 具体例
 **例題：** $integral 1/(x^2 - x) d x$
 
 1. **分母の因数分解**：
    分母を $x^2 - x = x(x-1)$ と因数分解する。
 2. **部分分数への展開**：
    $display(1/(x(x-1)) = A/x + B/(x-1))$ とおいて恒等式を解くと、$A = -1, B = 1$ となり、
-   $$ 1/(x^2 - x) = 1/(x-1) - 1/x $$
+   $$
+   1/(x^2 - x) = 1/(x-1) - 1/x
+   $$
    を得る。
 3. **各項の積分**：
    $$
@@ -151,8 +168,10 @@ sin x = display((2t)/(1+t^2)), quad cos x = display((1-t^2)/(1+t^2)), quad d x =
 $$
 
 #### 具体例
-**例題：** $integral 1/(1 + sin x) d x$
+<dl>
+<dt>**例題：** $integral display(1/(1 + sin x)) d x$</dt>
 
+<dd>
 $t = tan(display(x/2))$ と置くと、
 $$
 integral 1/(1 + sin x) d x = integral display(1/(1 + (2t)/(1+t^2))) dot display((2 d t)/(1+t^2)) = integral display((1+t^2)/(1+t)^2) dot display((2 d t)/(1+t^2)) = integral 2/(1+t)^2 d t
@@ -162,45 +181,58 @@ $$
 - 2/(1+t) + C = - 2/(1 + tan(display(x/2))) + C
 $$
 を得る。
+</dd>
+</dl>
 
 ### (2) 無理関数の積分
 　$sqrt(a x^2 + b x + c)$ を含む積分では、以下の置換が有効である。
 
 - **平方完成による基本形への帰着**：
-  - $sqrt(a^2 - x^2) quad arrow.r quad x = a sin theta$
-  - $sqrt(x^2 + a^2) quad arrow.r quad x = a tan theta$
-  - $sqrt(x^2 - a^2) quad arrow.r quad x = display(a / cos theta)$ または $x = a cosh t$
+  - $sqrt(a^2 - x^2) quad -> quad x = a sin theta$
+  - $sqrt(x^2 + a^2) quad -> quad x = a tan theta$
+  - $sqrt(x^2 - a^2) quad -> quad x = display(a / cos theta)$ または $x = a cosh t$
 - **オイラー置換 (Euler Substitution)**：
-$$ sqrt(a x^2 + b x + c) = t - sqrt(a) x quad (a > 0 " のとき") $$
+  $a > 0$ のとき、
+  $$
+  sqrt(a x^2 + b x + c) = t - sqrt(a) x
+  $$
 
 
 #### 具体例
-##### 平方完成による基本形への帰着
-**例題：** $integral 1/(sqrt(x^2 + 2x + 2)) d x$
+<dl>
+   <dt>**平方完成による基本形への帰着**</dt>
+   <dd>
+   **例題：** $integral display(1/(sqrt(x^2 + 2x + 2))) d x$
+   </dd>
+   <dd>
+   　分母の中身を平方完成すると $x^2 + 2x + 2 = (x+1)^2 + 1^2$ となる。
+   ここで $x+1 = tan theta$ と置換すると、$d x = display(1/(cos^2 theta)) d theta$ および $sqrt((x+1)^2 + 1) = display(1/(cos theta))$ より、
+   $$
+   integral 1/(sqrt(x^2 + 2x + 2)) d x = integral cos theta dot 1/(cos^2 theta) d theta = integral 1/(cos theta) d theta
+   $$
+   となり、基本形の積分に帰着できる。最終的に次を得る。
+   $$
+   log |x+1 + sqrt(x^2 + 2x + 2)| + C
+   $$
+   </dd>
 
-分母の中身を平方完成すると $x^2 + 2x + 2 = (x+1)^2 + 1^2$ となる。
-ここで $x+1 = tan theta$ と置換すると、$d x = display(1/(cos^2 theta)) d theta$ および $sqrt((x+1)^2 + 1) = display(1/(cos theta))$ より、
-$$
-integral 1/(sqrt(x^2 + 2x + 2)) d x = integral cos theta dot 1/(cos^2 theta) d theta = integral 1/(cos theta) d theta
-$$
-となり、基本形の積分に帰着できる。最終的に次を得る。
-$$
-log |x+1 + sqrt(x^2 + 2x + 2)| + C
-$$
-
-##### オイラー置換
-**例題：** $integral 1/(sqrt(x^2 + 1)) d x$
-
-$sqrt(x^2 + 1) = t - x$ と置くと、両辺を2乗して $x^2 + 1 = t^2 - 2 t x + x^2$ より $x = (t^2 - 1)/(2t)$ である。
-これを微分すると $d x = display((t^2 + 1)/(2t^2)) d t$ となり、
-また $sqrt(x^2 + 1) = t - x = display((t^2 + 1)/(2t))$ である。これらを代入すると、
-$$
-integral 1/(sqrt(x^2 + 1)) d x = integral display((2t)/(t^2 + 1)) dot display((t^2 + 1)/(2t^2)) d t = integral 1/t d t = log |t| + C
-$$
-$t = x + sqrt(x^2 + 1)$ を戻して、以下の結果を得る。
-$$
-log |x + sqrt(x^2 + 1)| + C
-$$
+   <dt>オイラー置換</dt>
+   <dd>
+   **例題：** $integral 1/(sqrt(x^2 + 1)) d x$
+   </dd>
+   <dd>
+   　$sqrt(x^2 + 1) = t - x$ と置くと、両辺を2乗して $x^2 + 1 = t^2 - 2 t x + x^2$ より $x = (t^2 - 1)/(2t)$ である。
+   これを微分すると $d x = display((t^2 + 1)/(2t^2)) d t$ となり、
+   また $sqrt(x^2 + 1) = t - x = display((t^2 + 1)/(2t))$ である。これらを代入すると、
+   $$
+   integral 1/(sqrt(x^2 + 1)) d x = integral display((2t)/(t^2 + 1)) dot display((t^2 + 1)/(2t^2)) d t = integral 1/t d t = log |t| + C
+   $$
+   $t = x + sqrt(x^2 + 1)$ を戻して、以下の結果を得る。
+   $$
+   log |x + sqrt(x^2 + 1)| + C
+   $$
+   </dd>
+</dl>
 
 
 ## まとめ
