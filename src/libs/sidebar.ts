@@ -33,11 +33,11 @@ export const SOFTWARE = {
     createAutoGroup('Astro', 'software/astro'),
     createAutoGroup('ブラウザ自動操作', 'software/browser_automation'),
     createAutoGroup('楽天', 'software/Rakuten'),
+    createAutoGroup('その他', 'software/other'),
     {
       ...createAutoGroup('Raspberry Pi', 'software/raspberrypi'),
       badge: { text: 'Archive', class: 'badge-archive' },
     },
-    createAutoGroup('その他', 'software/other'),
   ]
 };
 export const HIGH_SCHOOL_MATH = createAutoGroup('高校数学', 'high_school_math');
@@ -58,7 +58,7 @@ export const MATHEMATICS_GROUP = {
       ...createAutoGroup('数学の基盤と構造', 'math/structures'),
       badge: { text: 'HOT', variant: 'danger' },
     },
-    createAutoGroup('数学エッセイ・学習法', 'math/essays'),
+    createAutoGroup('数学エッセイ', 'math/essays'),
     MATH_DIALY,
   ],
 };
