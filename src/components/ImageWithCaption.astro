@@ -10,7 +10,21 @@ const { src, alt, width, height, figcaption } = Astro.props;
         alt={alt} 
         width={width} 
         height={height} 
-        class="img-center" 
     />
     <figcaption>{figcaption}</figcaption>
 </figure>
+
+<style>
+  img {
+    margin: auto;
+  }
+  figcaption {
+    text-align: center;
+    caption-side: bottom;
+    margin: 0 !important;
+    word-break: break-all;
+    font-size: 0.8em;
+    opacity: 0.8;
+    padding: 0 6px;
+  }
+</style>
