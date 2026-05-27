@@ -1,35 +1,38 @@
 ---
-import Default from '@astrojs/starlight/components/Head.astro'
+import Default from "@astrojs/starlight/components/Head.astro";
 
-// Grab the current page entry and site title from the page data.
+// サイトの基本情報を取得
 const { entry, siteTitle } = Astro.locals.starlightRoute;
 
-// Get the URL of the generated image for the current page.
-const ogImageUrl = new URL('/favicon_option_a_m.svg', Astro.site).href;
+// アイキャッチ画像URL
+const ogImageUrl = new URL("/favicon_option_a_m.svg", Astro.site).href;
 
 // Schema.org JSON-LD
 const baseSchema = {
   "@type": "Article",
-  "headline": entry.data.title,
-  "description": entry.data.description,
-  "author": {
+  headline: entry.data.title,
+  description: entry.data.description,
+  author: {
     "@type": "Person",
-    "name": "tomohikoseven",
-    "url": "https://x.com/tomohikoseven"
+    name: "tomohikoseven",
+    url: "https://x.com/tomohikoseven",
   },
-  "datePublished": entry.data.lastUpdated instanceof Date ? entry.data.lastUpdated.toISOString() : new Date().toISOString(),
-  "publisher": {
+  datePublished:
+    entry.data.lastUpdated instanceof Date
+      ? entry.data.lastUpdated.toISOString()
+      : new Date().toISOString(),
+  publisher: {
     "@type": "Organization",
-    "name": siteTitle,
-    "logo": {
+    name: siteTitle,
+    logo: {
       "@type": "ImageObject",
-      "url": new URL('/favicon.ico', Astro.site).href
-    }
+      url: new URL("/favicon.ico", Astro.site).href,
+    },
   },
-  "mainEntityOfPage": {
+  mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": Astro.url.href
-  }
+    "@id": Astro.url.href,
+  },
 };
 
 let schema;
@@ -38,26 +41,27 @@ const customSchema = entry.data.schema;
 if (Array.isArray(customSchema)) {
   schema = {
     "@context": "https://schema.org",
-    "@graph": [
-      baseSchema,
-      ...customSchema
-    ]
+    "@graph": [baseSchema, ...customSchema],
   };
 } else {
   schema = {
     "@context": "https://schema.org",
     ...baseSchema,
-    ...customSchema
+    ...customSchema,
   };
 }
 ---
 
-<!-- Render the default <Head/> component. -->
+<!-- Starlightのデフォルト<Head/>コンポーネント -->
 <Default><slot /></Default>
 
 <!-- Schema.org JSON-LD -->
-<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+/>
 
-<!-- Render the <meta/> tags for the Open Graph images. -->
+<!-- Open Graphのアイキャッチ画像 -->
 <meta property="og:image" content={ogImageUrl} />
 <meta name="twitter:image" content={ogImageUrl} />
