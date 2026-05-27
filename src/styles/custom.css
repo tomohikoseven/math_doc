@@ -1,5 +1,24 @@
+/*
+ * custom.css
+ * 
+ * このCSSファイルが必要な理由:
+ * 1. Starlight（Astroのドキュメントテーマ）のデフォルトスタイルを上書きし、Material Design風の見た目（タイポグラフィ、カラー、ボタン等）を適用するため。
+ * 2. rehype-typstで生成された数式SVGや、Astro/StarlightのアイコンSVGが正しく表示されない不具合を修正するため。
+ * 3. 独自のコンポーネント（問い合わせフォーム、タイトルバッジなど）のスタイリングを行うため。
+ * 4. Markdown内のテーブルや画像の中央揃えなど、細かいレイアウト調整を行うため。
+ * 
+ * ※ このファイルは今後リファクタリングの対象となります。
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+/* ====================== */
+/* Starlight テーマ変数の上書き */
+/* ====================== */
+/* 
+ * :root はWebサイト全体（デフォルトのライトテーマ）で有効なCSS変数を定義します。
+ * ここでは、Starlightが使用する変数を上書きし、Material Design風のフォントや配色を適用しています。
+ */
 :root {
   /* Material Typography */
   --sl-font: 'Roboto', sans-serif;
@@ -14,6 +33,10 @@
   --sl-color-bg-sidebar: #f8f9fa;
 }
 
+/* 
+ * :root[data-theme='dark'] は、ユーザーがダークテーマを選択した際に有効になる変数を定義します。
+ * ダークモードに合わせて、背景色を暗くし、アクセントカラーも調整しています。
+ */
 :root[data-theme='dark'] {
   --sl-color-accent-low: #1a237e;
   --sl-color-accent: #7986cb;
@@ -31,21 +54,9 @@
   font-weight: 500;
 }
 
-/* Cards (Elevation) */
-/* .card {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-  border-radius: 8px !important;
-  border: none !important;
-  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s ease !important;
-  background-color: var(--sl-color-bg) !important;
-}
-
-.card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
-  transform: translateY(-2px);
-} */
-
-/* Buttons */
+/* ====================== */
+/* Buttons マテリアルデザイン */
+/* ====================== */
 .action.primary {
   border-radius: 4px !important;
   text-transform: uppercase;
@@ -337,66 +348,6 @@ svg.icon {
 }
 
 /* ====================== */
-/* Matrix Grid (受験マトリクス用) */
-/* ====================== */
-.matrix-grid {
-  display: grid;
-  grid-template-columns: 80px 1fr 1fr;
-  grid-template-rows: auto auto auto;
-  gap: 12px;
-  margin: 2rem 0;
-  text-align: center;
-}
-
-@media screen and (max-width: 480px) {
-  .matrix-grid {
-    grid-template-columns: 60px 1fr 1fr;
-    gap: 8px;
-  }
-}
-
-.matrix-header {
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  border-radius: 6px;
-  background-color: var(--sl-color-accent-low);
-  color: var(--sl-color-accent);
-}
-
-.matrix-header.empty {
-  background-color: transparent;
-}
-
-.matrix-cell {
-  background-color: var(--sl-color-bg-nav);
-  border: 1px solid var(--sl-color-hairline);
-  border-radius: 6px;
-  padding: 1.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.matrix-cell:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border-color: var(--sl-color-accent-high);
-}
-
-.matrix-cell.text-muted {
-  color: var(--sl-color-gray-3);
-  font-style: italic;
-}
-
-/* ====================== */
 /* Title Badge (HTMLで直接バッジを描画するため) */
 /* ====================== */
 .title-badge {
@@ -414,14 +365,17 @@ svg.icon {
   background-color: var(--sl-color-green-low);
   border-color: var(--sl-color-green);
 }
+
 .title-badge.note {
   background-color: var(--sl-color-blue-low);
   border-color: var(--sl-color-blue);
 }
+
 .title-badge.danger {
   background-color: var(--sl-color-red-low);
   border-color: var(--sl-color-red);
 }
+
 .title-badge.caution {
   background-color: var(--sl-color-orange-low);
   border-color: var(--sl-color-orange);
@@ -430,12 +384,15 @@ svg.icon {
 :root[data-theme='light'] .title-badge.success {
   background-color: var(--sl-color-green-high);
 }
+
 :root[data-theme='light'] .title-badge.note {
   background-color: var(--sl-color-blue-high);
 }
+
 :root[data-theme='light'] .title-badge.danger {
   background-color: var(--sl-color-red-high);
 }
+
 :root[data-theme='light'] .title-badge.caution {
   background-color: var(--sl-color-orange-high);
 }
