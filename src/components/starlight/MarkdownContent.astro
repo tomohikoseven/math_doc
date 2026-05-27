@@ -1,8 +1,29 @@
 ---
-import Default from '@astrojs/starlight/components/MarkdownContent.astro';
-import AdSeihokei from '../Ad/AdSeihokei.astro';
+import Default from "@astrojs/starlight/components/MarkdownContent.astro";
+import AdSeihokei from "../Ad/AdSeihokei.astro";
 ---
 
 <AdSeihokei />
-<Default><slot /></Default>
+<div class="material-content-card">
+  <Default><slot /></Default>
+</div>
 <AdSeihokei />
+
+<style>
+  .material-content-card {
+    background-color: var(--sl-color-bg-nav);
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.15),
+      0 2px 8px rgba(0, 0, 0, 0.12);
+    /* border-radius: 12px; */
+    padding: 2.5rem 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+    transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  .material-content-card:hover {
+    box-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.2),
+      0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+</style>
