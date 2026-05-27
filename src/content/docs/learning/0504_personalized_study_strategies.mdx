@@ -5,6 +5,7 @@ lastUpdated: true
 ---
 import ArticleTip from "/src/components/ArticleTip.astro";
 import { Badge, Card, CardGrid } from '@astrojs/starlight/components';
+import BadgeCard from '/src/components/BadgeCard.astro';
 import Statements from '/src/components/Statements.astro';
 import Statement from '/src/components/Statement.astro';
 import FAQ from '/src/components/FAQ.astro';
@@ -52,20 +53,20 @@ import FAQ from '/src/components/FAQ.astro';
 　自分の対象（科目やスキル）を以下の4象限に分類する。下記はサイト運営者の場合。
 
 <CardGrid>
-  <Card title="<span class='title-badge success'>好き × 得意</span>" icon="star">
+  <BadgeCard badgeType="success" title="好き × 得意" icon="star">
     数学
-  </Card>
-  <Card title="<span class='title-badge note'>好き × 苦手</span>" icon="pencil">
+  </BadgeCard>
+  <BadgeCard badgeType="note" title="好き × 苦手" icon="pencil">
     コンピュータ・サイエンス<br/>
     ブログ・ドキュメント作成<br/>
     システム構築
-  </Card>
-  <Card title="<span class='title-badge danger'>嫌い × 苦手</span>" icon="warning">
+  </BadgeCard>
+  <BadgeCard badgeType="danger" title="嫌い × 苦手" icon="warning">
     英語
-  </Card>
-  <Card title="<span class='title-badge caution'>嫌い × 得意</span>" icon="setting">
+  </BadgeCard>
+  <BadgeCard badgeType="caution" title="嫌い × 得意" icon="setting">
     <span style={{ color: 'gray', fontStyle: 'italic' }}>（特になし）</span>
-  </Card>
+  </BadgeCard>
 </CardGrid>
 
 ### 各タイプ別の学習戦略
@@ -73,18 +74,18 @@ import FAQ from '/src/components/FAQ.astro';
 それぞれの象限で、学習戦略は異なる。
 
 <CardGrid>
-  <Card title="<span class='title-badge success'>好き × 得意</span>" icon="star">
+  <BadgeCard badgeType="success" title="好き × 得意" icon="star">
     自分のペースで自由に深掘りすればよい。
-  </Card>
-  <Card title="<span class='title-badge note'>好き × 苦手</span>" icon="pencil">
+  </BadgeCard>
+  <BadgeCard badgeType="note" title="好き × 苦手" icon="pencil">
     **目的・目標の再設定**：最優先で努力すべき。方向性を修正する。
-  </Card>
-  <Card title="<span class='title-badge danger'>嫌い × 苦手</span>" icon="warning">
+  </BadgeCard>
+  <BadgeCard badgeType="danger" title="嫌い × 苦手" icon="warning">
     **仕組み化・習慣化**：意志力に頼らず、続くシステムを作る。
-  </Card>
-  <Card title="<span class='title-badge caution'>嫌い × 得意</span>" icon="setting">
+  </BadgeCard>
+  <BadgeCard badgeType="caution" title="嫌い × 得意" icon="setting">
     **効率化・アウトプット**：時間をかけず、最小努力で成果を出す。
-  </Card>
+  </BadgeCard>
 </CardGrid>
 
 

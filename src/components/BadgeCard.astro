@@ -1,0 +1,68 @@
+---
+import { Card } from '@astrojs/starlight/components';
+
+interface Props {
+  badgeType: 'success' | 'note' | 'danger' | 'caution';
+  title: string;
+  icon?: any;
+}
+
+const { badgeType, title, icon } = Astro.props;
+const titleHtml = `<span class="title-badge ${badgeType}">${title}</span>`;
+---
+
+<Card title={titleHtml} icon={icon}>
+  <slot />
+</Card>
+
+<style is:global>
+/* ====================== */
+/* Title Badge (HTMLで直接バッジを描画するため) */
+/* ====================== */
+.title-badge {
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  font-family: var(--sl-font-system-mono);
+  font-size: var(--sl-text-sm);
+  padding: 0.175rem 0.35rem;
+  color: #fff !important;
+  line-height: normal;
+}
+
+.title-badge.success {
+  background-color: var(--sl-color-green-low);
+  border-color: var(--sl-color-green);
+}
+
+.title-badge.note {
+  background-color: var(--sl-color-blue-low);
+  border-color: var(--sl-color-blue);
+}
+
+.title-badge.danger {
+  background-color: var(--sl-color-red-low);
+  border-color: var(--sl-color-red);
+}
+
+.title-badge.caution {
+  background-color: var(--sl-color-orange-low);
+  border-color: var(--sl-color-orange);
+}
+
+:root[data-theme='light'] .title-badge.success {
+  background-color: var(--sl-color-green-high);
+}
+
+:root[data-theme='light'] .title-badge.note {
+  background-color: var(--sl-color-blue-high);
+}
+
+:root[data-theme='light'] .title-badge.danger {
+  background-color: var(--sl-color-red-high);
+}
+
+:root[data-theme='light'] .title-badge.caution {
+  background-color: var(--sl-color-orange-high);
+}
+</style>
