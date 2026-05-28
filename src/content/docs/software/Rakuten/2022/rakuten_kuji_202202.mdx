@@ -1,0 +1,44 @@
+---
+sidebar:
+  label: 2月
+title: 【2022年2月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2022年2月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2022/02/01', points: 1, sources: ["【楽天toto】楽天totoラッキーくじ"] },
+  { date: '2022/02/02', points: 0, sources: [] },
+  { date: '2022/02/03', points: 0, sources: [] },
+  { date: '2022/02/04', points: 3, sources: ["InfoseekNewsラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）","楽天トラベル ラッキーくじ"] },
+  { date: '2022/02/05', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/02/06', points: 1, sources: ["【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）"] },
+  { date: '2022/02/07', points: 1, sources: ["Rakuten Link限定ラッキースロット 第4弾"] },
+  { date: '2022/02/08', points: 2, sources: ["InfoseekNewsラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）"] },
+  { date: '2022/02/09', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/02/10', points: 2, sources: ["マネ活ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）"] },
+  { date: '2022/02/11', points: 0, sources: [] },
+  { date: '2022/02/12', points: 2, sources: ["マネ活ラッキーくじ","【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/02/13', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2022/02/14', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/02/15', points: 2, sources: ["楽天Edyラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/02/16', points: 10, sources: ["LINE限定 毎日引けるくじ"] },
+  { date: '2022/02/17', points: 11, sources: ["LINE限定 毎日引けるくじ","マネ活ラッキーくじ"] },
+  { date: '2022/02/18', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/02/19', points: 1, sources: ["楽天Edyラッキーくじ"] },
+  { date: '2022/02/20', points: 1, sources: ["Rakuten Link限定ラッキースロット 第4弾"] },
+  { date: '2022/02/21', points: 1, sources: ["【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/02/22', points: 3, sources: ["【楽天ブックス】facebookラッキーくじ","楽天トラベル ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）"] },
+  { date: '2022/02/23', points: 2, sources: ["【楽天ブックス】facebookラッキーくじ","楽天カードラッキーくじ"] },
+  { date: '2022/02/24', points: 1, sources: ["【楽天×宝くじ】最大1000ポイントが当たる！楽天×宝くじラッキーくじ"] },
+  { date: '2022/02/25', points: 1, sources: ["【楽天×宝くじ】最大1000ポイントが当たる！楽天×宝くじラッキーくじ"] },
+  { date: '2022/02/26', points: 0, sources: [] },
+  { date: '2022/02/27', points: 2, sources: ["【楽天くじ広場】ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）"] },
+  { date: '2022/02/28', points: 3, sources: ["【楽天ブックス】facebookラッキーくじ","楽天トラベル ラッキーくじ","【楽天×宝くじ】最大1000ポイントが当たる！楽天×宝くじラッキーくじ "] }
+];
+
+<RakutenKujiLog data={kujiData} />

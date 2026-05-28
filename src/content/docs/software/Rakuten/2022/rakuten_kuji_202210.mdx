@@ -1,0 +1,47 @@
+---
+sidebar:
+  label: 10月
+title: 【2022年10月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2022年10月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2022/10/01', points: 3, sources: ["楽天トラベル ラッキーくじ","ニュースラッキーくじ","楽天ペイアプリ ラッキーくじ"] },
+  { date: '2022/10/02', points: 4, sources: ["楽天Edy スマホ ラッキーくじ","Rakuten TV ラッキーくじ","楽天トラベル ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2022年9月～11月通常版）"] },
+  { date: '2022/10/03', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2022/10/04', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2022/10/05', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/10/06', points: 0, sources: [] },
+  { date: '2022/10/07', points: 0, sources: [] },
+  { date: '2022/10/08', points: 0, sources: [] },
+  { date: '2022/10/09', points: 3, sources: ["楽天トラベル ラッキーくじ","楽天リワード ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2022年9月～11月通常版）"] },
+  { date: '2022/10/10', points: 2, sources: ["楽天不動産ラッキーくじ","【くじ広場】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/10/11', points: 0, sources: [] },
+  { date: '2022/10/12', points: 1, sources: ["楽天Edy スマホ ラッキーくじ"] },
+  { date: '2022/10/13', points: 2, sources: ["楽天カレンダーラッキーくじ","楽天ペイアプリ ラッキーくじ"] },
+  { date: '2022/10/14', points: 1, sources: ["【楽天ポイント活動部】ラッキーくじ（2022年9月～11月通常版）"] },
+  { date: '2022/10/15', points: 2, sources: ["楽天トラベル ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2022/10/16', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/10/17', points: 0, sources: [] },
+  { date: '2022/10/18', points: 2, sources: ["楽天トラベル ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2022/10/19', points: 3, sources: ["楽天トラベル ラッキーくじ","【くじ広場】最大1000ポイントが当たる！ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2022/10/20', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2022/10/21', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天レシピ】ラッキーくじ"] },
+  { date: '2022/10/22', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/10/23', points: 0, sources: [] },
+  { date: '2022/10/24', points: 0, sources: [] },
+  { date: '2022/10/25', points: 2, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2022年9月～11月通常版）"] },
+  { date: '2022/10/26', points: 1, sources: ["楽天不動産ラッキーくじ"] },
+  { date: '2022/10/27', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/10/28', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/10/29', points: 4, sources: ["楽天カレンダーラッキーくじ","【楽天×宝くじ】最大1000ポイントが当たる！ラッキーくじ","楽天ペイアプリ ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2022年9月～11月通常版）"] },
+  { date: '2022/10/30', points: 3, sources: ["楽天ブログ ラッキーくじ ","楽天×ぐるなび ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2022/10/31', points: 1, sources: ["Rakuten TV ラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />

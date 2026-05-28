@@ -1,0 +1,47 @@
+---
+sidebar:
+  label: 6月
+title: 【2022年6月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2022年6月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+Googleのプログラム不具合により、くじを引く数が低下しました。
+
+export const kujiData = [
+  { date: '2022/06/01', points: 10, sources: ["LINE限定 毎日引けるくじ"] },
+  { date: '2022/06/02', points: 3, sources: ["楽天保険の総合窓口ラッキーくじ","毎日ラッキーくじ","楽天ブログ ラッキーくじ"] },
+  { date: '2022/06/03', points: 2, sources: ["【楽天ブックス】facebookラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/06/04', points: 0, sources: [] },
+  { date: '2022/06/05', points: 1, sources: ["【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/06/06', points: 1, sources: ["Rakuten Link限定ラッキースロット 第5弾"] },
+  { date: '2022/06/07', points: 0, sources: [] },
+  { date: '2022/06/08', points: 0, sources: [] },
+  { date: '2022/06/09', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天×宝くじ】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/06/10', points: 0, sources: [] },
+  { date: '2022/06/11', points: 1, sources: ["毎日ラッキーくじ"] },
+  { date: '2022/06/12', points: 0, sources: [] },
+  { date: '2022/06/13', points: 1, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/06/14', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/06/15', points: 2, sources: ["Rakuten Link限定ラッキースロット 第5弾","【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/06/16', points: 12, sources: ["マネ活ラッキーくじ","楽天ブログ ラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2022/06/17', points: 0, sources: [] },
+  { date: '2022/06/18', points: 0, sources: [] },
+  { date: '2022/06/19', points: 0, sources: [] },
+  { date: '2022/06/20', points: 0, sources: [] },
+  { date: '2022/06/21', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/06/22', points: 0, sources: [] },
+  { date: '2022/06/23', points: 2, sources: ["Rakuten Link限定ラッキースロット 第5弾","楽天リワード ラッキーくじ"] },
+  { date: '2022/06/24', points: 0, sources: [] },
+  { date: '2022/06/25', points: 0, sources: [] },
+  { date: '2022/06/26', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2022/06/27', points: 1, sources: ["Rakuten Link限定ラッキースロット 第5弾"] },
+  { date: '2022/06/28', points: 1, sources: ["楽天リワード ラッキーくじ"] },
+  { date: '2022/06/29', points: 0, sources: [] },
+  { date: '2022/06/30', points: 1, sources: ["マネ活ラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />

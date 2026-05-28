@@ -1,0 +1,47 @@
+---
+sidebar:
+  label: 1月
+title: 【2022年1月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2022年1月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2022/01/01', points: 2, sources: ["楽天ブログ ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/02', points: 2, sources: ["【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）","楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/03', points: 2, sources: ["Rakuten Link限定ラッキースロット 第3弾","マネ活ラッキーくじ"] },
+  { date: '2022/01/04', points: 1, sources: ["【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）"] },
+  { date: '2022/01/05', points: 10, sources: ["LINE限定 毎日引けるくじ"] },
+  { date: '2022/01/06', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2022/01/07', points: 0, sources: [] },
+  { date: '2022/01/08', points: 3, sources: ["Rakuten Link限定ラッキースロット 第3弾","マネ活ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/09', points: 1, sources: ["【楽天toto】楽天totoラッキーくじ"] },
+  { date: '2022/01/10', points: 3, sources: ["楽天トラベル ラッキーくじ","【楽天くじ広場】ラッキーくじ","Rakuten TV ラッキーくじ"] },
+  { date: '2022/01/11', points: 4, sources: ["【福袋・初売り特集2022】新春おみくじ　 PC＆スマホ版","Rakuten Link限定ラッキースロット 第3弾","【楽天toto】楽天totoラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/12', points: 1, sources: ["楽天カードラッキーくじ"] },
+  { date: '2022/01/13', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/14', points: 1, sources: ["Rakuten Link限定ラッキースロット 第3弾"] },
+  { date: '2022/01/15', points: 4, sources: ["【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）","楽天ブックス・ラッキーくじ","【楽天×宝くじ】最大1000ポイントが当たる！楽天×宝くじラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/16', points: 1, sources: ["ニュースラッキーくじ"] },
+  { date: '2022/01/17', points: 3, sources: ["楽天Edyラッキーくじ","マネ活ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/18', points: 0, sources: [] },
+  { date: '2022/01/19', points: 1, sources: ["Rakuten Link限定ラッキースロット 第3弾"] },
+  { date: '2022/01/20', points: 2, sources: ["楽天トラベル ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2022/01/21', points: 2, sources: ["楽天リワード ラッキーくじ","【楽天くじ広場】ラッキーくじ&nbsp;"] },
+  { date: '2022/01/22', points: 3, sources: ["【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）","楽天カードラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/23', points: 3, sources: ["マネ活ラッキーくじ","楽天リワード ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/24', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/25', points: 2, sources: ["ニュースラッキーくじ","楽天カードラッキーくじ"] },
+  { date: '2022/01/26', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/27', points: 5, sources: ["【楽天くじ広場】ラッキーくじ ","楽天トラベル ラッキーくじ","【楽天toto】楽天totoラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2021年11月～2月通常版）","楽天リワード ラッキーくじ"] },
+  { date: '2022/01/28', points: 1, sources: ["Rakuten Link限定ラッキースロット 第3弾"] },
+  { date: '2022/01/29', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/01/30', points: 0, sources: [] },
+  { date: '2022/01/31', points: 1, sources: ["InfoseekNewsラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />

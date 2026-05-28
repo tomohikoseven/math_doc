@@ -1,0 +1,47 @@
+---
+sidebar:
+  label: 3月
+title: 【2022年3月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2022年3月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2022/03/01', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/03/02', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/03/03', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/03/04', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/03/05', points: 0, sources: [] },
+  { date: '2022/03/06', points: 0, sources: [] },
+  { date: '2022/03/07', points: 0, sources: [] },
+  { date: '2022/03/08', points: 3, sources: ["Rakuten Link限定ラッキースロット 第5弾","マネ活ラッキーくじ","楽天不動産ラッキーくじ"] },
+  { date: '2022/03/09', points: 1, sources: ["楽天リワード ラッキーくじ"] },
+  { date: '2022/03/10', points: 1, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/03/11', points: 2, sources: ["スマートフォン限定 楽天ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/03/12', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/03/13', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2022/03/14', points: 1, sources: ["【楽天×宝くじ】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/03/15', points: 1, sources: ["Rakuten Link限定ラッキースロット 第5弾"] },
+  { date: '2022/03/16', points: 3, sources: ["マネ活ラッキーくじ","【楽天レシピ】ラッキーくじ","【楽天toto】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/03/17', points: 2, sources: ["マネ活ラッキーくじ","【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/03/18', points: 2, sources: ["マネ活ラッキーくじ","Rakuten TV ラッキーくじ"] },
+  { date: '2022/03/19', points: 0, sources: [] },
+  { date: '2022/03/20', points: 3, sources: ["楽天Edyラッキーくじ","マネ活ラッキーくじ","【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/03/21', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/03/22', points: 3, sources: ["楽天ラクマのラッキーくじ","【楽天レシピ】ラッキーくじ","楽天カレンダーラッキーくじ"] },
+  { date: '2022/03/23', points: 3, sources: ["マネ活ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2022年3月～5月通常版）","楽天トラベル ラッキーくじ"] },
+  { date: '2022/03/24', points: 1, sources: ["楽天Edyラッキーくじ"] },
+  { date: '2022/03/25', points: 2, sources: ["楽天Edyラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/03/26', points: 1, sources: ["楽天Edyラッキーくじ"] },
+  { date: '2022/03/27', points: 2, sources: ["【楽天×宝くじ】最大1000ポイントが当たる！ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/03/28', points: 0, sources: [] },
+  { date: '2022/03/29', points: 1, sources: ["Rakuten TV ラッキーくじ"] },
+  { date: '2022/03/30', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/03/31', points: 1, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />

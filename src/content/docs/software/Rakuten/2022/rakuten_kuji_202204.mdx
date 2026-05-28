@@ -1,0 +1,46 @@
+---
+sidebar:
+  label: 4月
+title: 【2022年4月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2022年4月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2022/04/01', points: 1, sources: ["【楽天ポイント活動部】ラッキーくじ（2022年3月～5月通常版）"] },
+  { date: '2022/04/02', points: 1, sources: ["【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/04/03', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/04/04', points: 0, sources: [] },
+  { date: '2022/04/05', points: 0, sources: [] },
+  { date: '2022/04/06', points: 0, sources: [] },
+  { date: '2022/04/07', points: 2, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2022/04/08', points: 1, sources: ["Rakuten Link限定ラッキースロット 第5弾"] },
+  { date: '2022/04/09', points: 1, sources: ["【楽天×宝くじ】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/04/10', points: 2, sources: ["楽天ブログ ラッキーくじ","Rakuten Link限定ラッキースロット 第5弾"] },
+  { date: '2022/04/11', points: 2, sources: ["【楽天ブックス】facebookラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2022/04/12', points: 1, sources: ["【楽天×宝くじ】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/04/13', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/04/14', points: 1, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/04/15', points: 1, sources: ["【楽天ブックス】facebookラッキーくじ "] },
+  { date: '2022/04/16', points: 0, sources: [] },
+  { date: '2022/04/17', points: 2, sources: ["【楽天×宝くじ】最大1000ポイントが当たる！ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2022/04/18', points: 11, sources: ["楽天トラベル ラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2022/04/19', points: 2, sources: ["楽天トラベル ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2022/04/20', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/04/21', points: 0, sources: [] },
+  { date: '2022/04/22', points: 11, sources: ["楽天トラベル ラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2022/04/23', points: 1, sources: ["【楽天ポイント活動部】ラッキーくじ（2022年3月～5月通常版）"] },
+  { date: '2022/04/24', points: 11, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2022/04/25', points: 2, sources: ["Rakuten TV ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/04/26', points: 2, sources: ["楽天カレンダーラッキーくじ","スマートフォン限定 楽天ラッキーくじ"] },
+  { date: '2022/04/27', points: 1, sources: ["Rakuten Link限定ラッキースロット 第5弾"] },
+  { date: '2022/04/28', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/04/29', points: 1, sources: ["楽天ブックス・ラッキーくじ"] },
+  { date: '2022/04/30', points: 1, sources: ["楽天Car車検 ラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />

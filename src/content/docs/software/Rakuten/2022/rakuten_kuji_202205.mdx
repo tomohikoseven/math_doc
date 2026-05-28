@@ -1,0 +1,47 @@
+---
+sidebar:
+  label: 5月
+title: 【2022年5月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2022年5月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2022/05/01', points: 2, sources: ["【楽天ブックス】facebookラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/05/02', points: 0, sources: [] },
+  { date: '2022/05/03', points: 12, sources: [" 【楽天ブックス】facebookラッキーくじ","楽天トラベル ラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2022/05/04', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/05/05', points: 1, sources: ["Rakuten Link限定ラッキースロット 第5弾"] },
+  { date: '2022/05/06', points: 2, sources: ["楽天トラベル ラッキーくじ","楽天ブログ ラッキーくじ"] },
+  { date: '2022/05/07', points: 1, sources: ["スマートフォン限定 楽天ラッキーくじ"] },
+  { date: '2022/05/08', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/05/09', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/05/10', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/05/11', points: 1, sources: ["楽天Edyラッキーくじ"] },
+  { date: '2022/05/12', points: 1, sources: ["【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/05/13', points: 11, sources: ["楽天トラベル ラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2022/05/14', points: 1, sources: ["【楽天×宝くじ】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/05/15', points: 10, sources: ["LINE限定 毎日引けるくじ"] },
+  { date: '2022/05/16', points: 2, sources: ["Rakuten TV ラッキーくじ","Rakuten Link限定ラッキースロット 第5弾"] },
+  { date: '2022/05/17', points: 1, sources: ["【楽天レシピ】ラッキーくじ"] },
+  { date: '2022/05/18', points: 1, sources: ["【楽天レシピ】ラッキーくじ"] },
+  { date: '2022/05/19', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/05/20', points: 0, sources: [] },
+  { date: '2022/05/21', points: 11, sources: ["楽天カレンダーラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2022/05/22', points: 1, sources: ["楽天リワード ラッキーくじ"] },
+  { date: '2022/05/23', points: 0, sources: [] },
+  { date: '2022/05/24', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/05/25', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/05/26', points: 1, sources: ["【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/05/27', points: 0, sources: [] },
+  { date: '2022/05/28', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/05/29', points: 1, sources: ["Rakuten Link限定ラッキースロット 第5弾"] },
+  { date: '2022/05/30', points: 0, sources: [] },
+  { date: '2022/05/31', points: 10, sources: ["LINE限定 毎日引けるくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />

@@ -1,0 +1,48 @@
+---
+sidebar:
+  label: 7月
+title: 【2022年7月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2022年7月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+Googleのプログラム不具合により、くじを引く数が低下しました。
+
+export const kujiData = [
+  { date: '2022/07/01', points: 0, sources: [] },
+  { date: '2022/07/02', points: 1, sources: ["楽天Edyラッキーくじ"] },
+  { date: '2022/07/03', points: 0, sources: [] },
+  { date: '2022/07/04', points: 1, sources: ["楽天ブログ ラッキーくじ"] },
+  { date: '2022/07/05', points: 0, sources: [] },
+  { date: '2022/07/06', points: 0, sources: [] },
+  { date: '2022/07/07', points: 0, sources: [] },
+  { date: '2022/07/08', points: 0, sources: [] },
+  { date: '2022/07/09', points: 0, sources: [] },
+  { date: '2022/07/10', points: 0, sources: [] },
+  { date: '2022/07/11', points: 0, sources: [] },
+  { date: '2022/07/12', points: 0, sources: [] },
+  { date: '2022/07/13', points: 0, sources: [] },
+  { date: '2022/07/14', points: 0, sources: [] },
+  { date: '2022/07/15', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/07/16', points: 0, sources: [] },
+  { date: '2022/07/17', points: 0, sources: [] },
+  { date: '2022/07/18', points: 0, sources: [] },
+  { date: '2022/07/19', points: 0, sources: [] },
+  { date: '2022/07/20', points: 0, sources: [] },
+  { date: '2022/07/21', points: 0, sources: [] },
+  { date: '2022/07/22', points: 0, sources: [] },
+  { date: '2022/07/23', points: 0, sources: [] },
+  { date: '2022/07/24', points: 0, sources: [] },
+  { date: '2022/07/25', points: 0, sources: [] },
+  { date: '2022/07/26', points: 0, sources: [] },
+  { date: '2022/07/27', points: 0, sources: [] },
+  { date: '2022/07/28', points: 2, sources: ["スタート1000_宝箱探しくじ(2022/07)","【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2022/07/29', points: 1, sources: ["楽天リワード ラッキーくじ"] },
+  { date: '2022/07/30', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2022/07/31', points: 1, sources: ["マネ活ラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />

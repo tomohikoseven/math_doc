@@ -1,0 +1,47 @@
+---
+sidebar:
+  label: 8月
+title: 【2022年8月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2022年8月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2022/08/01', points: 0, sources: [] },
+  { date: '2022/08/02', points: 0, sources: [] },
+  { date: '2022/08/03', points: 0, sources: [] },
+  { date: '2022/08/04', points: 0, sources: [] },
+  { date: '2022/08/05', points: 0, sources: [] },
+  { date: '2022/08/06', points: 0, sources: [] },
+  { date: '2022/08/07', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/08', points: 2, sources: ["【楽天ポイント活動部】ラッキーくじ（2022年6月～8月通常版）","マネ活ラッキーくじ"] },
+  { date: '2022/08/09', points: 12, sources: ["楽天ペイアプリ ラッキーくじ","マネ活ラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2022/08/10', points: 2, sources: ["楽天ブログ ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/11', points: 1, sources: ["Rakuten TV ラッキーくじ"] },
+  { date: '2022/08/12', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/13', points: 0, sources: [] },
+  { date: '2022/08/14', points: 2, sources: ["楽天ペイアプリ ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2022/08/15', points: 3, sources: ["マネ活ラッキーくじ","スマートフォン限定 楽天ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/16', points: 13, sources: ["マネ活ラッキーくじ","LINE限定 毎日引けるくじ","【楽天toto】最大1000ポイントが当たる！ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/17', points: 3, sources: ["マネ活ラッキーくじ","【楽天×宝くじ】最大1000ポイントが当たる！ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/18', points: 1, sources: ["楽天Edyラッキーくじ"] },
+  { date: '2022/08/19', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/20', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/21', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/22', points: 2, sources: ["楽天ブログ ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/23', points: 3, sources: ["楽天Edy スマホ ラッキーくじ","ニュースラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/24', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/25', points: 13, sources: ["LINE限定 毎日引けるくじ","楽天カレンダーラッキーくじ","楽天トラベル ラッキーくじ","楽天不動産ラッキーくじ"] },
+  { date: '2022/08/26', points: 12, sources: ["楽天ペイアプリ ラッキーくじ","マネ活ラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2022/08/27', points: 1, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2022/08/28', points: 3, sources: ["楽天ペイアプリ ラッキーくじ","マネ活ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2022/08/29', points: 0, sources: [] },
+  { date: '2022/08/30', points: 0, sources: [] },
+  { date: '2022/08/31', points: 0, sources: [] }
+];
+
+<RakutenKujiLog data={kujiData} />
