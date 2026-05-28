@@ -1,0 +1,47 @@
+---
+sidebar:
+  label: 5月
+title: 【2021年5月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2021年5月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2021/05/01', points: 0, sources: [] },
+  { date: '2021/05/02', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天toto】楽天totoラッキーくじ"] },
+  { date: '2021/05/03', points: 5, sources: ["楽天PointClubアプリ　ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2021年3月～5月通常版）","楽天カレンダーラッキーくじ","InfoseekNewsラッキーくじ","リワード特集ページ ラッキーくじ"] },
+  { date: '2021/05/04', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2021/05/05', points: 4, sources: ["【楽天ブックス】facebookラッキーくじ","【楽天カード】じゃんけん勝者限定くじ","リワード特集ページ ラッキーくじ","アプリ限定 楽天ラッキーくじ"] },
+  { date: '2021/05/06', points: 11, sources: ["LINE限定 毎日引けるくじ","リワード特集ページ ラッキーくじ "] },
+  { date: '2021/05/07', points: 1, sources: ["楽天PointClubアプリ　ラッキーくじ"] },
+  { date: '2021/05/08', points: 0, sources: [] },
+  { date: '2021/05/09', points: 13, sources: ["楽天トラベル ラッキーくじ","【楽天カード】じゃんけん勝者限定くじ","LINE限定 毎日引けるくじ","リワード特集ページ ラッキーくじ"] },
+  { date: '2021/05/10', points: 1, sources: ["【楽天ポイント活動部】ラッキーくじ（2021年3月～5月通常版）"] },
+  { date: '2021/05/11', points: 23, sources: ["楽天Edy スマホ ラッキーくじ","マラソンスロット PC＆SP版","リワード特集ページ ラッキーくじ","楽天PointClubアプリ　ラッキーくじ"] },
+  { date: '2021/05/12', points: 3, sources: ["楽天トラベル ラッキーくじ","【楽天レシピ】ラッキーくじ ","リワード特集ページ ラッキーくじ"] },
+  { date: '2021/05/13', points: 1, sources: ["【楽天くじ広場】ラッキーくじ "] },
+  { date: '2021/05/14', points: 21, sources: ["マラソンスロット PC＆SP版","楽天トラベル ラッキーくじ"] },
+  { date: '2021/05/15', points: 1, sources: ["リワード特集ページ ラッキーくじ"] },
+  { date: '2021/05/16', points: 0, sources: [] },
+  { date: '2021/05/17', points: 3, sources: ["楽天ブログ ラッキーくじ","毎日ラッキーくじ ","楽天トラベル ラッキーくじ"] },
+  { date: '2021/05/18', points: 0, sources: [] },
+  { date: '2021/05/19', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2021/05/20', points: 0, sources: [] },
+  { date: '2021/05/21', points: 0, sources: [] },
+  { date: '2021/05/22', points: 2, sources: ["リワード特集ページ ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2021年3月～5月通常版）"] },
+  { date: '2021/05/23', points: 1, sources: ["楽天ブックス・ラッキーくじ"] },
+  { date: '2021/05/24', points: 0, sources: [] },
+  { date: '2021/05/25', points: 10, sources: ["LINE限定 毎日引けるくじ"] },
+  { date: '2021/05/26', points: 1, sources: ["【楽天くじ広場】ラッキーくじ"] },
+  { date: '2021/05/27', points: 3, sources: ["楽天カードスマホじゃんけん勝者限定くじ","【楽天×宝くじ】最大1000ポイントが当たる！楽天×宝くじラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2021/05/28', points: 2, sources: ["【楽天ポイント活動部】ラッキーくじ（2021年3月～5月通常版）","【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2021/05/29', points: 5, sources: ["リワード特集ページ ラッキーくじ","【楽天toto】楽天totoラッキーくじ","楽天トラベル ラッキーくじ","【楽天くじ広場】ラッキーくじ","Rakuten TV ラッキーくじ"] },
+  { date: '2021/05/30', points: 0, sources: [] },
+  { date: '2021/05/31', points: 2, sources: ["楽天カードラッキーくじ","【楽天×宝くじ】最大1000ポイントが当たる！楽天×宝くじラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />

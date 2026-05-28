@@ -1,0 +1,46 @@
+---
+sidebar:
+  label: 9月
+title: 【2021年9月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2021年9月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2021/09/01', points: 0, sources: [] },
+  { date: '2021/09/02', points: 1, sources: ["楽天Edy スマホ ラッキーくじ"] },
+  { date: '2021/09/03', points: 3, sources: ["マネ活ラッキーくじ","楽天カードスマホじゃんけん勝者限定くじ","【楽天toto】楽天totoラッキーくじ"] },
+  { date: '2021/09/04', points: 0, sources: [] },
+  { date: '2021/09/05', points: 3, sources: ["【楽天カード】じゃんけん勝者限定くじ","リワード特集ページ ラッキーくじ","楽天Car車検 ラッキーくじ"] },
+  { date: '2021/09/06', points: 4, sources: ["マネ活ラッキーくじ","【楽天×宝くじ】最大1000ポイントが当たる！楽天×宝くじラッキーくじ","楽天トラベル ラッキーくじ","【楽天くじ広場】ラッキーくじ"] },
+  { date: '2021/09/07', points: 3, sources: ["楽天Edyラッキーくじ","楽天カードスマホラッキーくじ","楽天カードラッキーくじ"] },
+  { date: '2021/09/08', points: 2, sources: ["Rakuten Link限定ラッキースロット 第1弾","楽天トラベル ラッキーくじ"] },
+  { date: '2021/09/09', points: 4, sources: ["マネ活ラッキーくじ","楽天カードスマホラッキーくじ","【楽天カード】じゃんけん勝者限定くじ","楽天トラベル ラッキーくじ"] },
+  { date: '2021/09/10', points: 1, sources: ["リワード特集ページ ラッキーくじ"] },
+  { date: '2021/09/11', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天×宝くじ】最大1000ポイントが当たる！楽天×宝くじラッキーくじ"] },
+  { date: '2021/09/12', points: 2, sources: ["楽天ブログ ラッキーくじ","楽天カードスマホラッキーくじ"] },
+  { date: '2021/09/13', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2021/09/14', points: 3, sources: ["マネ活ラッキーくじ","スマートフォン限定 楽天ラッキーくじ","楽天×ぐるなび ラッキーくじ"] },
+  { date: '2021/09/15', points: 14, sources: ["Rakuten Link限定ラッキースロット 第1弾","マネ活ラッキーくじ","楽天ブログ ラッキーくじ","LINE限定 毎日引けるくじ","【楽天ブックス】facebookラッキーくじ"] },
+  { date: '2021/09/16', points: 1, sources: ["Rakuten Link限定ラッキースロット 第1弾"] },
+  { date: '2021/09/17', points: 2, sources: ["【楽天ブックス】facebookラッキーくじ","スマートフォン限定 楽天ラッキーくじ"] },
+  { date: '2021/09/18', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天くじ広場】ラッキーくじ"] },
+  { date: '2021/09/19', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2021/09/20', points: 0, sources: [] },
+  { date: '2021/09/21', points: 1, sources: ["【楽天ポイント活動部】ラッキーくじ（2021年9月～11月通常版）"] },
+  { date: '2021/09/22', points: 0, sources: [] },
+  { date: '2021/09/23', points: 2, sources: ["毎日ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2021年9月～11月通常版）"] },
+  { date: '2021/09/24', points: 0, sources: [] },
+  { date: '2021/09/25', points: 1, sources: ["【楽天ポイント活動部】ラッキーくじ（2021年9月～11月通常版）"] },
+  { date: '2021/09/26', points: 1, sources: ["楽天ブックス・ラッキーくじ"] },
+  { date: '2021/09/27', points: 0, sources: [] },
+  { date: '2021/09/28', points: 2, sources: ["楽天トラベル ラッキーくじ","楽天ブログ ラッキーくじ"] },
+  { date: '2021/09/29', points: 2, sources: ["Rakuten Link限定ラッキースロット 第1弾","楽天トラベル ラッキーくじ"] },
+  { date: '2021/09/30', points: 1, sources: ["楽天トラベル ラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />
