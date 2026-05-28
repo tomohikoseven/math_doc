@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
-import emoji from 'remark-emoji';
 import rehypeTypst from '@myriaddreamin/rehype-typst';
 
 import mermaid from 'astro-mermaid';
@@ -60,7 +59,7 @@ export default defineConfig({
     sitemap()
   ],
   markdown: {
-    remarkPlugins: [remarkMath, emoji],
+    remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeTypst],
   }
 });
