@@ -2,83 +2,10 @@
  * custom.css
  * 
  * このCSSファイルが必要な理由:
- * 1. Starlight（Astroのドキュメントテーマ）のデフォルトスタイルを上書きし、Material Design風の見た目（タイポグラフィ、カラー、ボタン等）を適用するため。
- * 2. rehype-typstで生成された数式SVGや、Astro/StarlightのアイコンSVGが正しく表示されない不具合を修正するため。
- * 3. Markdown内のテーブルや画像の中央揃えなど、細かいレイアウト調整を行うため。
+ * 1. rehype-typstで生成された数式SVGや、Astro/StarlightのアイコンSVGが正しく表示されない不具合を修正するため。
+ * 2. Markdown内のテーブルや画像の中央揃えなど、細かいレイアウト調整を行うため。
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
-/* ====================== */
-/* Starlight テーマ変数の上書き */
-/* ====================== */
-/* 
- * :root はWebサイト全体（デフォルトのライトテーマ）で有効なCSS変数を定義します。
- * ここでは、Starlightが使用する変数を上書きし、Material Design風のフォントや配色を適用しています。
- */
-:root {
-  /* Material Typography */
-  --sl-font: 'Roboto', sans-serif;
-
-  /* Material Colors - Indigo primary */
-  --sl-color-accent-low: #e8eaf6;
-  --sl-color-accent: #3f51b5;
-  --sl-color-accent-high: #c5cae9;
-
-  /* Background adjustments */
-  --sl-color-bg-nav: #ffffff;
-  --sl-color-bg-sidebar: #f8f9fa;
-}
-
-/* 
- * :root[data-theme='dark'] は、ユーザーがダークテーマを選択した際に有効になる変数を定義します。
- * ダークモードに合わせて、背景色を暗くし、アクセントカラーも調整しています。
- */
-:root[data-theme='dark'] {
-  --sl-color-accent-low: #1a237e;
-  --sl-color-accent: #7986cb;
-  --sl-color-accent-high: #e8eaf6;
-
-  --sl-color-bg-nav: #212121;
-  --sl-color-bg-sidebar: #121212;
-}
-
-/* Material Design specific overrides */
-.sl-markdown-content h1,
-.sl-markdown-content h2,
-.sl-markdown-content h3,
-.sl-markdown-content h4 {
-  font-weight: 500;
-}
-
-/* ====================== */
-/* Buttons マテリアルデザイン */
-/* ====================== */
-.action.primary {
-  border-radius: 4px !important;
-  text-transform: uppercase;
-  font-weight: 500;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-.action.primary:hover {
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
-}
-
-.action.secondary {
-  border-radius: 4px !important;
-  text-transform: uppercase;
-  font-weight: 500;
-  border: 1px solid var(--sl-color-accent);
-  color: var(--sl-color-accent);
-}
-
-/* Header */
-header.header {
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .1);
-  border-bottom: none !important;
-}
 
 /* ========= */
 /* Table     */
