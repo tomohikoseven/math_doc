@@ -23,20 +23,3 @@ export const GOOGLE_ANALYTICS = [
     `
   }
 ];
-
-/** Buy Me a Coffee ウィジェット用のスクリプトタグ設定 */
-export const BUY_ME_A_COFFEE = {
-  tag: 'script',
-  attrs: {
-    'data-name': 'BMC-Widget',
-    'data-cfasync': 'false',
-    src: 'https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js',
-    'data-id': 'tomohiko',
-    'data-description': 'Support me on Buy me a coffee!',
-    'data-message': '',
-    'data-color': '#5F7FFF',
-    'data-position': 'Right',
-    'data-x_margin': '18',
-    'data-y_margin': '18',
-  }
-};
