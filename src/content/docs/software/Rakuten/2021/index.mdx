@@ -6,8 +6,10 @@ sidebar:
   order: 1
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid } from '@astrojs/starlight/components';
 import ArticleTip from '/src/components/ArticleTip.astro';
+import RakutenKujiAnnualTotal from '/src/components/RakutenKujiAnnualTotal.astro';
+import RakutenKujiMonthlyCard from '/src/components/RakutenKujiMonthlyCard.astro';
 
 <ArticleTip title="結論" wid="800">
 
@@ -17,24 +19,21 @@ import ArticleTip from '/src/components/ArticleTip.astro';
 
 自動プログラムを利用して毎日引いている楽天ラッキーくじの2021年の獲得結果をまとめた。
 
+<RakutenKujiAnnualTotal year="2021" total={1072} note="12ヶ月分" />
+
 ## 月別獲得ポイント一覧
 
-各月の獲得ポイントは以下の通りである。
-
-| 年月 | 獲得ポイント | 備考 |
-| :--- | :--- | :--- |
-| **2021年1月** | 86 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202101) |
-| **2021年2月** | 76 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202102) |
-| **2021年3月** | 117 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202103) |
-| **2021年4月** | 81 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202104) |
-| **2021年5月** | 117 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202105) |
-| **2021年6月** | 125 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202106) |
-| **2021年7月** | 118 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202107) |
-| **2021年8月** | 132 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202108) |
-| **2021年9月** | 59 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202109) |
-| **2021年10月** | 64 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202110) |
-| **2021年11月** | 54 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202111) |
-| **2021年12月** | 43 pt | [詳細はこちら](/software/rakuten/2021/rakuten_kuji_202112) |
-| **年間合計** | **1072 pt** | （※12ヶ月分） |
-
----
+<CardGrid>
+  <RakutenKujiMonthlyCard year="2021" month={1} points={86} />
+  <RakutenKujiMonthlyCard year="2021" month={2} points={76} />
+  <RakutenKujiMonthlyCard year="2021" month={3} points={117} />
+  <RakutenKujiMonthlyCard year="2021" month={4} points={81} />
+  <RakutenKujiMonthlyCard year="2021" month={5} points={117} />
+  <RakutenKujiMonthlyCard year="2021" month={6} points={125} />
+  <RakutenKujiMonthlyCard year="2021" month={7} points={118} />
+  <RakutenKujiMonthlyCard year="2021" month={8} points={132} />
+  <RakutenKujiMonthlyCard year="2021" month={9} points={59} />
+  <RakutenKujiMonthlyCard year="2021" month={10} points={64} />
+  <RakutenKujiMonthlyCard year="2021" month={11} points={54} />
+  <RakutenKujiMonthlyCard year="2021" month={12} points={43} />
+</CardGrid>

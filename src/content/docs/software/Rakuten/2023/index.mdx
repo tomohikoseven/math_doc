@@ -6,8 +6,10 @@ sidebar:
   order: 1
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid } from '@astrojs/starlight/components';
 import ArticleTip from '/src/components/ArticleTip.astro';
+import RakutenKujiAnnualTotal from '/src/components/RakutenKujiAnnualTotal.astro';
+import RakutenKujiMonthlyCard from '/src/components/RakutenKujiMonthlyCard.astro';
 
 <ArticleTip title="結論" wid="800">
 
@@ -17,24 +19,21 @@ import ArticleTip from '/src/components/ArticleTip.astro';
 
 自動プログラムを利用して毎日引いている楽天ラッキーくじの2023年の獲得結果をまとめた。
 
+<RakutenKujiAnnualTotal year="2023" total={1096} note="12ヶ月分" />
+
 ## 月別獲得ポイント一覧
 
-各月の獲得ポイントは以下の通りである。
-
-| 年月 | 獲得ポイント | 備考 |
-| :--- | :--- | :--- |
-| **2023年1月** | 92 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202301) |
-| **2023年2月** | 45 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202302) |
-| **2023年3月** | 91 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202303) |
-| **2023年4月** | 157 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202304) |
-| **2023年5月** | 84 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202305) |
-| **2023年6月** | 95 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202306) |
-| **2023年7月** | 62 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202307) |
-| **2023年8月** | 84 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202308) |
-| **2023年9月** | 163 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202309) |
-| **2023年10月** | 57 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202310) |
-| **2023年11月** | 33 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202311) |
-| **2023年12月** | 133 pt | [詳細はこちら](/software/rakuten/2023/rakuten_kuji_202312) |
-| **年間合計** | **1096 pt** | （※12ヶ月分） |
-
----
+<CardGrid>
+  <RakutenKujiMonthlyCard year="2023" month={1} points={92} />
+  <RakutenKujiMonthlyCard year="2023" month={2} points={45} />
+  <RakutenKujiMonthlyCard year="2023" month={3} points={91} />
+  <RakutenKujiMonthlyCard year="2023" month={4} points={157} />
+  <RakutenKujiMonthlyCard year="2023" month={5} points={84} />
+  <RakutenKujiMonthlyCard year="2023" month={6} points={95} />
+  <RakutenKujiMonthlyCard year="2023" month={7} points={62} />
+  <RakutenKujiMonthlyCard year="2023" month={8} points={84} />
+  <RakutenKujiMonthlyCard year="2023" month={9} points={163} />
+  <RakutenKujiMonthlyCard year="2023" month={10} points={57} />
+  <RakutenKujiMonthlyCard year="2023" month={11} points={33} />
+  <RakutenKujiMonthlyCard year="2023" month={12} points={133} />
+</CardGrid>

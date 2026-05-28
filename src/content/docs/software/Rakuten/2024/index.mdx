@@ -6,34 +6,32 @@ sidebar:
   order: 1
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid } from '@astrojs/starlight/components';
 import ArticleTip from '/src/components/ArticleTip.astro';
+import RakutenKujiAnnualTotal from '/src/components/RakutenKujiAnnualTotal.astro';
+import RakutenKujiMonthlyCard from '/src/components/RakutenKujiMonthlyCard.astro';
 
 <ArticleTip title="結論" wid="800">
 
-2024年の楽天ラッキーくじによる年間獲得ポイントは **合計 443 ポイント** であった。
+2024年の楽天ラッキーくじによる年間獲得ポイントは **合計 438 ポイント** であった。
 
 </ArticleTip>
 
 自動プログラムを利用して毎日引いている楽天ラッキーくじの2024年の獲得結果をまとめた。
 （抜けている月は、更新するのが面倒でサボりました。）
 
+<RakutenKujiAnnualTotal year="2024" total={438} note="6ヶ月分" />
+
 ## 月別獲得ポイント一覧
 
-各月の獲得ポイントは以下の通りである。スーパーSALE開催月（9月、12月）は獲得ポイントが大きく伸びる傾向がある。
-
-| 年月 | 獲得ポイント | 備考 |
-| :--- | :--- | :--- |
-| **2024年1月** | 90 pt | [詳細はこちら](/software/rakuten/2024/rakuten_kuji_202401) |
-| **2024年2月** | 27 pt | [詳細はこちら](/software/rakuten/2024/rakuten_kuji_202402) |
-| **2024年9月** | 106 pt | [詳細はこちら](/software/rakuten/2024/rakuten_kuji_202409) |
-| **2024年10月** | 43 pt | [詳細はこちら](/software/rakuten/2024/rakuten_kuji_202410) |
-| **2024年11月** | 43 pt | [詳細はこちら](/software/rakuten/2024/rakuten_kuji_202411) |
-| **2024年12月** | 134 pt | [詳細はこちら](/software/rakuten/2024/rakuten_kuji_202412) |
-| **年間合計** | **443 pt** | （※1〜2月、9月〜12月の6ヶ月分） |
-
----
-
+<CardGrid>
+  <RakutenKujiMonthlyCard year="2024" month={1} points={90} />
+  <RakutenKujiMonthlyCard year="2024" month={2} points={27} />
+  <RakutenKujiMonthlyCard year="2024" month={9} points={100} />
+  <RakutenKujiMonthlyCard year="2024" month={10} points={43} />
+  <RakutenKujiMonthlyCard year="2024" month={11} points={43} />
+  <RakutenKujiMonthlyCard year="2024" month={12} points={135} />
+</CardGrid>
 ## 2024年の傾向と分析
 
 <CardGrid>

@@ -1,0 +1,36 @@
+---
+import { Card } from '@astrojs/starlight/components';
+
+interface Props {
+  year: number | string;
+  month: number | string;
+  points: number | string;
+}
+
+const { year, month, points } = Astro.props;
+const monthStr = month.toString().padStart(2, '0');
+const link = `/software/rakuten/${year}/rakuten_kuji_${year}${monthStr}`;
+---
+
+<Card title={`${year}年${month}月`} icon="star">
+  <div class="monthly-points">
+    {points} pt
+  </div>
+  <a href={link} class="monthly-link">詳細はこちら ➔</a>
+</Card>
+
+<style>
+  .monthly-points {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--sl-color-text-accent);
+    margin-bottom: 0.5rem;
+  }
+  .monthly-link {
+    text-decoration: none;
+    color: var(--sl-color-text-accent);
+  }
+  .monthly-link:hover {
+    text-decoration: underline;
+  }
+</style>

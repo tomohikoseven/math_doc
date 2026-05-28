@@ -8,6 +8,8 @@ sidebar:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import ArticleTip from '/src/components/ArticleTip.astro';
+import RakutenKujiAnnualTotal from '/src/components/RakutenKujiAnnualTotal.astro';
+import RakutenKujiMonthlyCard from '/src/components/RakutenKujiMonthlyCard.astro';
 
 <ArticleTip title="結論" wid="800">
 
@@ -17,18 +19,19 @@ import ArticleTip from '/src/components/ArticleTip.astro';
 
 自動プログラムを利用して毎日引いている楽天ラッキーくじの2026年の獲得結果をまとめた。現在は5月までの途中経過となっている。
 
+<RakutenKujiAnnualTotal year="2026" total={1234} note="5月途中までの暫定値" />
+
 ## 月別獲得ポイント一覧
 
 各月の獲得ポイントは以下の通りである。
 
-| 年月 | 獲得ポイント | 備考 |
-| :--- | :--- | :--- |
-| **2026年1月** | 559 pt | [詳細はこちら](/software/rakuten/2026/rakuten_kuji_202601) |
-| **2026年2月** | 149 pt | [詳細はこちら](/software/rakuten/2026/rakuten_kuji_202602) |
-| **2026年3月** | 63 pt | [詳細はこちら](/software/rakuten/2026/rakuten_kuji_202603) |
-| **2026年4月** | 217 pt | [詳細はこちら](/software/rakuten/2026/rakuten_kuji_202604) |
-| **2026年5月** | 246 pt | [詳細はこちら](/software/rakuten/2026/rakuten_kuji_202605)（※集計中） |
-| **暫定合計** | **1234 pt** | |
+<CardGrid>
+  <RakutenKujiMonthlyCard year="2026" month={1} points={559} />
+  <RakutenKujiMonthlyCard year="2026" month={2} points={149} />
+  <RakutenKujiMonthlyCard year="2026" month={3} points={63} />
+  <RakutenKujiMonthlyCard year="2026" month={4} points={217} />
+  <RakutenKujiMonthlyCard year="2026" month={5} points={246} />
+</CardGrid>
 
 ---
 

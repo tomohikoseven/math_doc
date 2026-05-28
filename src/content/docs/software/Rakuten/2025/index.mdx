@@ -8,6 +8,8 @@ sidebar:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import ArticleTip from '/src/components/ArticleTip.astro';
+import RakutenKujiAnnualTotal from '/src/components/RakutenKujiAnnualTotal.astro';
+import RakutenKujiMonthlyCard from '/src/components/RakutenKujiMonthlyCard.astro';
 
 <ArticleTip title="結論" wid="800">
 
@@ -17,25 +19,26 @@ import ArticleTip from '/src/components/ArticleTip.astro';
 
 自動プログラムを利用して毎日引いている楽天ラッキーくじの2025年の獲得結果をまとめた。
 
+<RakutenKujiAnnualTotal year="2025" total={761} note="1月〜12月の12ヶ月分" />
+
 ## 月別獲得ポイント一覧
 
 各月の獲得ポイントは以下の通りである。スーパーSALE開催月（3月、6月、9月、12月）は獲得ポイントが大きく伸びる傾向がある。
 
-| 年月 | 獲得ポイント | 備考 |
-| :--- | :--- | :--- |
-| **2025年1月** | 31 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202501) |
-| **2025年2月** | 14 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202502) |
-| **2025年3月** | 82 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202503) |
-| **2025年4月** | 42 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202504) |
-| **2025年5月** | 50 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202505) |
-| **2025年6月** | 118 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202506) |
-| **2025年7月** | 52 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202507) |
-| **2025年8月** | 62 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202508) |
-| **2025年9月** | 100 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202509) |
-| **2025年10月** | 38 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202510) |
-| **2025年11月** | 69 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202511) |
-| **2025年12月** | 103 pt | [詳細はこちら](/software/rakuten/2025/rakuten_kuji_202512) |
-| **年間合計** | **761 pt** | （1月〜12月の12ヶ月分） |
+<CardGrid>
+  <RakutenKujiMonthlyCard year="2025" month={1} points={31} />
+  <RakutenKujiMonthlyCard year="2025" month={2} points={14} />
+  <RakutenKujiMonthlyCard year="2025" month={3} points={82} />
+  <RakutenKujiMonthlyCard year="2025" month={4} points={42} />
+  <RakutenKujiMonthlyCard year="2025" month={5} points={50} />
+  <RakutenKujiMonthlyCard year="2025" month={6} points={118} />
+  <RakutenKujiMonthlyCard year="2025" month={7} points={52} />
+  <RakutenKujiMonthlyCard year="2025" month={8} points={62} />
+  <RakutenKujiMonthlyCard year="2025" month={9} points={100} />
+  <RakutenKujiMonthlyCard year="2025" month={10} points={38} />
+  <RakutenKujiMonthlyCard year="2025" month={11} points={69} />
+  <RakutenKujiMonthlyCard year="2025" month={12} points={103} />
+</CardGrid>
 
 ---
 
