@@ -61,7 +61,7 @@ svg.icon {
 /* ====================== */
 /* スマホ版メニューボタンの改善 */
 /* ====================== */
-@media (max-width: 50rem) {
+/* @media (max-width: 50rem) {
   starlight-menu-button button {
     display: flex !important;
     flex-direction: column;
@@ -69,17 +69,18 @@ svg.icon {
     justify-content: center;
     gap: 0.1rem;
     padding: 0.3rem !important;
-    /* ボタンの余白を詰める */
-  }
-
-  starlight-menu-button button::after {
-    content: "Menu";
-    font-size: 0.65rem;
-    margin-left: 0;
-    line-height: 1;
-    font-weight: normal;
-  }
 }
+
+starlight-menu-button button::after {
+  content: "Menu";
+  font-size: 0.65rem;
+  margin-left: 0;
+  line-height: 1;
+  font-weight: normal;
+}
+} */
+
+
 
 /* ====================== */
 /* 独自バッジスタイル     */
