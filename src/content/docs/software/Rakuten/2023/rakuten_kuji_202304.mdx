@@ -1,0 +1,46 @@
+---
+sidebar:
+  label: 4月
+title: 【2023年4月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2023年4月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2023/04/01', points: 1, sources: ["楽天Edyラッキーくじ"] },
+  { date: '2023/04/02', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2023/04/03', points: 2, sources: ["楽天ブックス・ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2023年3月～2023年5月通常版）"] },
+  { date: '2023/04/04', points: 12, sources: ["【楽天ポイント活動部】ラッキーくじ（2023年3月～2023年5月通常版）","【くじ広場】最大1000ポイントが当たる！ラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2023/04/05', points: 12, sources: ["楽天トラベル ラッキーくじ","LINE限定 毎日引けるくじ","マネ活ラッキーくじ"] },
+  { date: '2023/04/06', points: 2, sources: ["楽天トラベル ラッキーくじ","スマートフォン限定 楽天ラッキーくじ"] },
+  { date: '2023/04/07', points: 0, sources: [] },
+  { date: '2023/04/08', points: 2, sources: ["楽天トラベル ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2023/04/09', points: 4, sources: ["楽天ウェブ検索 ラッキーくじ","Rakuten TV ラッキーくじ","楽天トラベル ラッキーくじ","楽天ブログ ラッキーくじ"] },
+  { date: '2023/04/10', points: 2, sources: ["楽天Edyラッキーくじ","【2023年4月】特別ラッキーくじ（オリヒロ健康食品ショップ タイアップ版）"] },
+  { date: '2023/04/11', points: 1, sources: ["楽天ペイアプリ ラッキーくじ"] },
+  { date: '2023/04/12', points: 21, sources: ["楽天トラベル ラッキーくじ","マラソンスロット PC＆SP版"] },
+  { date: '2023/04/13', points: 30, sources: ["LINE限定 毎日引けるくじ","マラソンスロット PC＆SP版"] },
+  { date: '2023/04/14', points: 0, sources: [] },
+  { date: '2023/04/15', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2023/04/16', points: 11, sources: ["LINE限定 毎日引けるくじ","楽天ブックス・ラッキーくじ"] },
+  { date: '2023/04/17', points: 2, sources: ["【楽天ポイント活動部】ラッキーくじ（2023年3月～2023年5月通常版）","マネ活ラッキーくじ"] },
+  { date: '2023/04/18', points: 0, sources: [] },
+  { date: '2023/04/19', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2023/04/20', points: 2, sources: ["楽天トラベル ラッキーくじ","楽天ペイアプリ ラッキーくじ"] },
+  { date: '2023/04/21', points: 3, sources: ["楽天トラベル ラッキーくじ","楽天ペイアプリ ラッキーくじ","【くじ広場】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2023/04/22', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2023年3月～2023年5月通常版）"] },
+  { date: '2023/04/23', points: 0, sources: [] },
+  { date: '2023/04/24', points: 2, sources: ["【楽天ブックス】facebookラッキーくじ","【くじ広場】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2023/04/25', points: 1, sources: ["楽天ブックス・ラッキーくじ"] },
+  { date: '2023/04/26', points: 31, sources: ["LINE限定 毎日引けるくじ","マネ活ラッキーくじ","マラソンスロット PC＆SP版"] },
+  { date: '2023/04/27', points: 0, sources: [] },
+  { date: '2023/04/28', points: 10, sources: ["LINE限定 毎日引けるくじ"] },
+  { date: '2023/04/29', points: 0, sources: [] },
+  { date: '2023/04/30', points: 1, sources: ["楽天保険の総合窓口ラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />

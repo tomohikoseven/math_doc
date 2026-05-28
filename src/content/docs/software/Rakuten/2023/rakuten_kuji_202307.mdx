@@ -1,0 +1,47 @@
+---
+sidebar:
+  label: 7月
+title: 【2023年7月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2023年7月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2023/07/01', points: 2, sources: ["毎日おトクくじ","マネ活ラッキーくじ"] },
+  { date: '2023/07/02', points: 0, sources: [] },
+  { date: '2023/07/03', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2023/07/04', points: 2, sources: ["楽天トラベル ラッキーくじ","楽天Edyラッキーくじ"] },
+  { date: '2023/07/05', points: 0, sources: [] },
+  { date: '2023/07/06', points: 2, sources: ["楽天トラベル ラッキーくじ","楽天ペイアプリ ラッキーくじ"] },
+  { date: '2023/07/07', points: 1, sources: ["楽天証券ラッキー「カブ」くじ"] },
+  { date: '2023/07/08', points: 1, sources: ["楽天ペイアプリ ラッキーくじ"] },
+  { date: '2023/07/09', points: 1, sources: ["楽天Edyラッキーくじ"] },
+  { date: '2023/07/10', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2023/07/11', points: 2, sources: ["楽天ペイアプリ ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2023/07/12', points: 2, sources: ["楽天トラベル ラッキーくじ","スマートフォン限定 楽天ラッキーくじ"] },
+  { date: '2023/07/13', points: 2, sources: ["マネ活ラッキーくじ","楽天ブラウザ ラッキーくじ"] },
+  { date: '2023/07/14', points: 2, sources: ["毎日おトクくじ","【楽天ポイント活動部】ラッキーくじ（2023年6月～2023年8月通常版）"] },
+  { date: '2023/07/15', points: 12, sources: ["楽天Edy スマホ ラッキーくじ","LINE限定 毎日引けるくじ","楽天ブラウザ ラッキーくじ"] },
+  { date: '2023/07/16', points: 1, sources: ["楽天ブラウザ ラッキーくじ"] },
+  { date: '2023/07/17', points: 1, sources: ["楽天ブラウザ ラッキーくじ"] },
+  { date: '2023/07/18', points: 1, sources: ["【楽天×宝くじ】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2023/07/19', points: 1, sources: ["楽天ブラウザ ラッキーくじ"] },
+  { date: '2023/07/20', points: 1, sources: ["楽天ブラウザ ラッキーくじ"] },
+  { date: '2023/07/21', points: 0, sources: [] },
+  { date: '2023/07/22', points: 2, sources: ["楽天トラベル ラッキーくじ","楽天ブラウザ ラッキーくじ"] },
+  { date: '2023/07/23', points: 3, sources: ["楽天カレンダーラッキーくじ","楽天トラベル ラッキーくじ","楽天×ぐるなび ラッキーくじ"] },
+  { date: '2023/07/24', points: 1, sources: ["楽天ブラウザ ラッキーくじ"] },
+  { date: '2023/07/25', points: 1, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2023/07/26', points: 1, sources: ["楽天Edyラッキーくじ"] },
+  { date: '2023/07/27', points: 10, sources: ["LINE限定 毎日引けるくじ"] },
+  { date: '2023/07/28', points: 2, sources: ["毎日おトクくじ","マネ活ラッキーくじ"] },
+  { date: '2023/07/29', points: 3, sources: ["Rakuten TV ラッキーくじ","楽天トラベル ラッキーくじ","楽天ブラウザ ラッキーくじ"] },
+  { date: '2023/07/30', points: 2, sources: ["楽天Edyラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2023年6月～2023年8月通常版）"] },
+  { date: '2023/07/31', points: 1, sources: ["楽天保険の総合窓口ラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />

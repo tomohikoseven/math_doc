@@ -1,0 +1,44 @@
+---
+sidebar:
+  label: 2月
+title: 【2023年2月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2023年2月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2023/02/01', points: 0, sources: [] },
+  { date: '2023/02/02', points: 0, sources: [] },
+  { date: '2023/02/03', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2023/02/04', points: 1, sources: ["マネ活ラッキーくじ"] },
+  { date: '2023/02/05', points: 1, sources: ["楽天Edyラッキーくじ"] },
+  { date: '2023/02/06', points: 3, sources: ["楽天トラベル ラッキーくじ","【楽天toto】最大1000ポイントが当たる！ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2023/02/07', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2022年12月～2023年2月通常版）"] },
+  { date: '2023/02/08', points: 0, sources: [] },
+  { date: '2023/02/09', points: 2, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ","マネ活ラッキーくじ"] },
+  { date: '2023/02/10', points: 2, sources: ["楽天トラベル ラッキーくじ","【くじ広場】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2023/02/11', points: 1, sources: ["【楽天ポイント活動部】ラッキーくじ（2022年12月～2023年2月通常版）"] },
+  { date: '2023/02/12', points: 0, sources: [] },
+  { date: '2023/02/13', points: 3, sources: ["Rakuten TV ラッキーくじ","楽天トラベル ラッキーくじ","楽天ペイアプリ ラッキーくじ"] },
+  { date: '2023/02/14', points: 3, sources: ["楽天トラベル ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2022年12月～2023年2月通常版）","マネ活ラッキーくじ"] },
+  { date: '2023/02/15', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2023/02/16', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2023/02/17', points: 0, sources: [] },
+  { date: '2023/02/18', points: 3, sources: ["楽天トラベル ラッキーくじ","【楽天ブックス】facebookラッキーくじ","【楽天レシピ】ラッキーくじ"] },
+  { date: '2023/02/19', points: 3, sources: ["楽天トラベル ラッキーくじ","【楽天ブックス】facebookラッキーくじ","【くじ広場】最大1000ポイントが当たる！ラッキーくじ"] },
+  { date: '2023/02/20', points: 1, sources: ["【楽天ポイント活動部】ラッキーくじ（2022年12月～2023年2月通常版）"] },
+  { date: '2023/02/21', points: 2, sources: ["【くじ広場】最大1000ポイントが当たる！ラッキーくじ","楽天ペイアプリ ラッキーくじ"] },
+  { date: '2023/02/22', points: 12, sources: ["【楽天ブックス】facebookラッキーくじ","楽天ペイアプリ ラッキーくじ","LINE限定 毎日引けるくじ"] },
+  { date: '2023/02/23', points: 0, sources: [] },
+  { date: '2023/02/24', points: 0, sources: [] },
+  { date: '2023/02/25', points: 2, sources: ["楽天トラベル ラッキーくじ","【楽天ポイント活動部】ラッキーくじ（2022年12月～2023年2月通常版）"] },
+  { date: '2023/02/26', points: 0, sources: [] },
+  { date: '2023/02/27', points: 0, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2023/02/28', points: 1, sources: ["【楽天toto】最大1000ポイントが当たる！ラッキーくじ"] }
+];
+
+<RakutenKujiLog data={kujiData} />
