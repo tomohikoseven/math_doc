@@ -1,0 +1,38 @@
+---
+import RakutenKujiDailyCard from './RakutenKujiDailyCard.astro';
+
+interface LogEntry {
+  date: string;
+  points: number;
+  sources: string[];
+}
+interface Props {
+  data: LogEntry[];
+}
+const { data } = Astro.props;
+---
+
+<div class="kuji-daily-grid">
+  {
+    data.map((entry) => (
+      <RakutenKujiDailyCard
+        date={entry.date}
+        points={entry.points}
+        sources={entry.sources}
+      />
+    ))
+  }
+</div>
+
+<style>
+  /* StarlightのMarkdownデフォルトの隣接マージン(margin-top)を打ち消す */
+  .kuji-daily-grid > * {
+    margin-top: 0 !important;
+  }
+
+  .kuji-daily-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+</style>

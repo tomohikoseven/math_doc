@@ -1,0 +1,79 @@
+---
+import { Badge } from "@astrojs/starlight/components";
+
+interface Props {
+  date: string;
+  points: number;
+  sources: string[];
+}
+
+const { date, points, sources } = Astro.props;
+
+function getPointVariant(
+  points: number,
+): "default" | "note" | "success" | "danger" | "tip" | "caution" {
+  if (points === 0) return "default";
+  if (points < 5) return "note";
+  if (points < 50) return "success";
+  return "danger";
+}
+---
+
+<div class={`kuji-daily-card ${points === 0 ? "kuji-row-zero" : ""}`}>
+  <div class="kuji-daily-header">
+    <span class="kuji-date">{date.substring(5)}</span>
+    <Badge
+      text={`${points} pt`}
+      variant={getPointVariant(points)}
+      size="medium"
+    />
+  </div>
+  <div class="kuji-daily-body">
+    {sources.length > 0 ? (
+      sources.join("、")
+    ) : (
+      <span class="kuji-source-none">当選なし</span>
+    )}
+  </div>
+</div>
+
+<style>
+  /* StarlightのMarkdownデフォルトの隣接マージン(margin-top)を打ち消す */
+  .kuji-daily-card > * {
+    margin-top: 0 !important;
+  }
+
+  .kuji-daily-card {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .kuji-daily-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed var(--sl-color-gray-5);
+    padding-bottom: 0.5rem;
+  }
+  .kuji-daily-body {
+    font-size: 0.9rem;
+    color: var(--sl-color-gray-2);
+    line-height: 1.4;
+  }
+  .kuji-row-zero {
+    opacity: 0.6;
+  }
+  .kuji-date {
+    font-family: var(--sl-font-mono);
+    font-weight: bold;
+    color: var(--sl-color-white);
+  }
+  .kuji-source-none {
+    color: var(--sl-color-gray-4);
+    font-style: italic;
+  }
+</style>

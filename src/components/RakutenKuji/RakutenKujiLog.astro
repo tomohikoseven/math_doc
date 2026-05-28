@@ -1,0 +1,19 @@
+---
+import RakutenKujiSummary from './RakutenKujiSummary.astro';
+import RakutenKujiDailyGrid from './RakutenKujiDailyGrid.astro';
+
+interface LogEntry {
+  date: string;
+  points: number;
+  sources: string[];
+}
+
+interface Props {
+  data: LogEntry[];
+}
+
+const { data } = Astro.props;
+---
+
+<RakutenKujiSummary data={data} />
+<RakutenKujiDailyGrid data={data} />
