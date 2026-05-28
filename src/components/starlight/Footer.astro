@@ -1,5 +1,8 @@
 ---
-import Default from "@astrojs/starlight/components/Footer.astro";
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Footer.astro';
+import { Icon } from '@astrojs/starlight/components';
+
 const hasSidebar = Astro.locals.starlightRoute?.hasSidebar ?? Astro.props.hasSidebar;
 ---
 
@@ -14,15 +17,7 @@ const hasSidebar = Astro.locals.starlightRoute?.hasSidebar ?? Astro.props.hasSid
         class="open-menu-btn"
         onclick="document.querySelector('starlight-menu-button button')?.click()"
       >
-        <svg
-          aria-hidden="true"
-          width="1.2em"
-          height="1.2em"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path>
-        </svg>
+        <Icon name="list-format" size="1.2em" />
         目次ツリーを開く
       </button>
     </div>
