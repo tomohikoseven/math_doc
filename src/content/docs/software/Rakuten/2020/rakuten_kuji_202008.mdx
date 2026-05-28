@@ -1,0 +1,47 @@
+---
+sidebar:
+  label: 8月
+title: 【2020年8月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2020年8月)。
+lastUpdated: 2024-10-01
+---
+import RakutenKujiLog from '/src/components/RakutenKujiLog.astro';
+import NoteRakutenKuji from '/src/components/NoteRakutenKuji.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2020/08/01', points: 0, sources: [] },
+  { date: '2020/08/02', points: 1, sources: ["楽天車検"] },
+  { date: '2020/08/03', points: 0, sources: [] },
+  { date: '2020/08/04', points: 2, sources: ["楽天くじ広場","楽天×宝くじ"] },
+  { date: '2020/08/05', points: 1, sources: ["楽天トラベル"] },
+  { date: '2020/08/06', points: 2, sources: ["楽天デリバリー","楽天カード"] },
+  { date: '2020/08/07', points: 2, sources: ["楽天デリバリー","楽天トラベル"] },
+  { date: '2020/08/08', points: 0, sources: [] },
+  { date: '2020/08/09', points: 1, sources: ["楽天トラベル"] },
+  { date: '2020/08/10', points: 0, sources: [] },
+  { date: '2020/08/11', points: 3, sources: ["楽天ブログ","楽天トラベル","楽天×宝くじ"] },
+  { date: '2020/08/12', points: 2, sources: ["楽天トラベル","楽天くじ広場"] },
+  { date: '2020/08/13', points: 4, sources: ["Infoseek ポイナビ","楽天デリバリーPC","楽天デリバリーSP","楽天PointClub"] },
+  { date: '2020/08/14', points: 2, sources: ["Infoseek ポイナビ","楽天トラベル"] },
+  { date: '2020/08/15', points: 3, sources: ["楽天Edy","楽天デリバリー","楽天トラベル"] },
+  { date: '2020/08/16', points: 0, sources: [] },
+  { date: '2020/08/17', points: 1, sources: ["楽天くじ広場"] },
+  { date: '2020/08/18', points: 2, sources: [] },
+  { date: '2020/08/19', points: 0, sources: [] },
+  { date: '2020/08/20', points: 1, sources: ["Infoseek ポイナビ"] },
+  { date: '2020/08/21', points: 1, sources: ["楽天×宝くじ"] },
+  { date: '2020/08/22', points: 3, sources: ["楽天トラベル","楽天×宝くじ","リワード特集ページ"] },
+  { date: '2020/08/23', points: 6, sources: ["楽天×宝くじ","楽天PointClubアプリ","【楽天カード】じゃんけん勝者限定くじ","リワード特集ページ","楽天PointClubアプリ","【楽天ブックス】facebook"] },
+  { date: '2020/08/24', points: 3, sources: ["楽天トラベル","リワード特集ページ","スマートフォン限定 楽天ラッキーくじ"] },
+  { date: '2020/08/25', points: 1, sources: ["リワード特集ページ"] },
+  { date: '2020/08/26', points: 2, sources: ["【楽天レシピ】スマートフォン","楽天ポイント活動部"] },
+  { date: '2020/08/27', points: 4, sources: ["楽天PointClubアプリ　ラッキーくじ","楽天トラベル ラッキーくじ","【楽天くじ広場】ラッキーくじ","InfoseekNewsラッキーくじ（SP）"] },
+  { date: '2020/08/28', points: 1, sources: ["楽天トラベル ラッキーくじ"] },
+  { date: '2020/08/29', points: 3, sources: ["スマートフォン限定 楽天ラッキーくじ","楽天PointClubアプリ ラッキーくじ","楽天トラベル ラッキーくじ"] },
+  { date: '2020/08/30', points: 2, sources: ["楽天PointClubアプリ　ラッキーくじ","リワード特集ページ ラッキーくじ"] },
+  { date: '2020/08/31', points: 6, sources: ["【楽天くじ広場】ラッキーくじ","リワード特集ページ ラッキーくじ","楽天カードラッキーくじ","楽天トラベル ラッキーくじ"," 楽天デリバリー ラッキーくじ","InfoseekNewsラッキーくじ（SP）"] }
+];
+
+<RakutenKujiLog data={kujiData} />
