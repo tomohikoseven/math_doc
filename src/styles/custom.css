@@ -17,6 +17,15 @@ figure>table {
   margin: 0 auto;
 }
 
+table td svg {
+  min-width: 2rem;
+  height: auto;
+}
+
+figure>figcaption {
+  text-align: center;
+}
+
 
 /* ====================== */
 /* Typst     */

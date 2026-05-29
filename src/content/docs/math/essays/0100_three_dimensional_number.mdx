@@ -19,68 +19,15 @@ import { Icon } from '@astrojs/starlight/components';
 ## 四元数，八元数との違いについて
 　四元数，八元数はある．それらとこの三元数はどう違うのかを表で示す．
 
-<table>
-  <thead>
-    <tr valign="middle">
-      <th rowspan="2"></th> 
-      <th rowspan="2">加法</th> 
-      <th rowspan="2">減法</th> 
-      <th rowspan="2">乗法</th> 
-      <th colspan="2">交換法則</th>
-      <th colspan="2">結合法則</th>
-      <th colspan="2">分配法則</th>
-    </tr> 
-    <tr> 
-      <th>加法</th> 
-      <th>乗法</th> 
-      <th>加法</th> 
-      <th>乗法</th> 
-      <th>左</th> 
-      <th>右</th> 
-    </tr> 
-  </thead>
-  <tbody align="center" >
-    <tr>
-      <th scope="row">四元数</th> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td>
-      <td><Icon name="approve-check-circle" size="2rem" /></td>
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="close" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-    </tr> 
-    <tr>
-      <th scope="row" style="text-align:center;">八元数</th> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td>
-      <td><Icon name="approve-check-circle" size="2rem" /></td>
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="close" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="close" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-    </tr> 
-    <tr> 
-      <th scope="row">三元数</th> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td>
-      <td><Icon name="approve-check-circle" size="2rem" /></td>
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="close" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-      <td><Icon name="close" size="2rem" /></td> 
-      <td><Icon name="close" size="2rem" /></td> 
-      <td><Icon name="approve-check-circle" size="2rem" /></td> 
-    </tr> 
-  </tbody>
-  <caption style="caption-side: bottom;">
-    四元数，八元数と三元数の違い. 
-  </caption>
-</table>
+| | 加法 | 減法 | 乗法 | 交換法則(加法) | 交換法則(乗法) | 結合法則(加法) | 結合法則(乗法) | 分配法則(左) | 分配法則(右) |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **四元数** | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="close" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> |
+| **八元数** | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="close" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="close" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> |
+| **三元数** | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="close" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> | <Icon name="close" size="2rem" /> | <Icon name="close" size="2rem" /> | <Icon name="approve-check-circle" size="2rem" /> |
+
+<div style="text-align: center; font-size: 0.9em; margin-top: 0.5rem; color: var(--sl-color-gray-3);">
+  四元数，八元数と三元数の違い. 
+</div>
 
 
 ## 三元数を構成する．

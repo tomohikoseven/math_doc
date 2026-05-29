@@ -17,51 +17,29 @@ import { Steps } from '@astrojs/starlight/components';
 （$"max"B$, $"min"B'$は最大値，最小値を意味する．）
 
 <figure>
-    <table>
-        <thead>
-            <tr>
-                <th></th> <th>$"max"B$</th> <th>$"min"B'$</th> <th></th>
-            </tr>
-        </thead>
-        <tr>
-            <td>(1)</td> <td>有</td> <td>有</td> <td>実数の切断の定義より，ありえない．</td>
-        </tr>
-        <tr>
-            <td>(2)</td> <td>有</td> <td>無</td> <td>可能性あり．</td>
-        </tr>
-        <tr>
-            <td>(3)</td> <td>無</td> <td>有</td> <td>可能性あり．</td>
-        </tr>
-        <tr>
-            <td>(4)</td> <td>無</td> <td>無</td> <td>可能性あり．</td>
-        </tr>
-    </table>
-    <figcaption>実数の切断における最大／最小値の可能性を整理．</figcaption> 
+
+| | $"max"B$ | $"min"B'$ | |
+|---|---|---|---|
+| (1) | 有 | 有 | 実数の切断の定義より，ありえない． |
+| (2) | 有 | 無 | 可能性あり． |
+| (3) | 無 | 有 | 可能性あり． |
+| (4) | 無 | 無 | 可能性あり． |
+
+<figcaption>実数の切断における最大／最小値の可能性を整理．</figcaption>
 </figure>
 
 　**本定理は，(2),(3)のいずれかであり，(4)ではないことを主張している**．有理数の切断($angle.l A, A' angle.r$)と有理数が連続でない（すき間がある）関係を考えるとわかりやすい．
 
 <figure>
-    <table>
-        <thead>
-            <tr>
-                <th></th> <th>$"max"A$</th> <th>$"min"A'$</th> <th></th>
-            </tr>
-        </thead>
-        <tr>
-            <td>(1)'</td> <td>有</td> <td>有</td> <td>有理数の切断の定義より，ありえない．</td>
-        </tr>
-        <tr>
-            <td>(2)'</td> <td>有</td> <td>無</td> <td>有理数の切断の定義より，ありえない．</td>
-        </tr>
-        <tr>
-            <td>(3)'</td> <td>無</td> <td>有</td> <td>有理数と同値．</td>
-        </tr>
-        <tr>
-            <td>(4)'</td> <td>無</td> <td>無</td> <td>無理数．有理直線上のすき間．</td>
-        </tr>
-    </table> 
-    <figcaption>有理数の切断における最大／最小値の整理．</figcaption> 
+
+| | $"max"A$ | $"min"A'$ | |
+|---|---|---|---|
+| (1)' | 有 | 有 | 有理数の切断の定義より，ありえない． |
+| (2)' | 有 | 無 | 有理数の切断の定義より，ありえない． |
+| (3)' | 無 | 有 | 有理数と同値． |
+| (4)' | 無 | 無 | 無理数．有理直線上のすき間． | 
+
+<figcaption>有理数の切断における最大／最小値の整理．</figcaption>
 </figure>
 
 　有理数の切断を考えた場合，(4)'はすき間があるということだった．
