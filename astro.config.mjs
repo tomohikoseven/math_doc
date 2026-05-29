@@ -61,6 +61,7 @@ export default defineConfig({
     sitemap()
   ],
   markdown: {
+    // @ts-ignore
     remarkPlugins: [remarkGfm, remarkSmartypants, remarkMath],
     rehypePlugins: [rehypeTypst],
   }
