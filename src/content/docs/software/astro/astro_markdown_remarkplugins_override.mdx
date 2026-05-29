@@ -1,0 +1,67 @@
+---
+title: AstroのremarkPlugins追加で脚注(GFM)が動かなくなる問題と解決策
+description: remark-math等のカスタムプラグインを導入した際に、デフォルトのremark-gfmが無効化されてしまう問題と、その正しい設定方法について解説します。
+lastUpdated: 2026-05-29
+---
+import ArticleTip from '/src/components/ArticleTip.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<ArticleTip wid='800'>
+
+Astroでカスタムの `remarkPlugins` を設定する際は、念のため `remark-gfm` と `remark-smartypants` も明示的に追加しておくと安全である。
+
+</ArticleTip>
+
+AstroやStarlightで数式を表示するために `remark-math` などのカスタムプラグインを導入したところ、これまで使えていた**脚注（`[^1]`）やテーブルが突然機能しなくなる**という現象に遭遇しました。
+
+この記事では、その原因と正しい設定方法、そしてビルド環境によるエラーの差異についてまとめます。
+
+## 原因：デフォルトプラグインの上書き
+
+Astroは標準で、以下の2つの便利なMarkdownプラグインを内蔵しています。
+- **GitHub-flavored Markdown (GFM)**：脚注やテーブル、取り消し線などをサポート
+- **SmartyPants**：引用符やダッシュなどの記号を綺麗に組版
+
+しかし、`astro.config.mjs` でカスタムプラグイン（例：`remark-math`）を配列で直接指定すると、Astro（特にMDXやStarlightの環境下）が「ユーザーが独自の完全なプラグイン構成を上書き設定した」とみなし、**これら2つのデフォルトプラグインがオフになってしまう**ことがあります。
+
+結果として、脚注の記法である `[^1]: 注釈内容` がただのテキストリンクとしてパースされてしまい、想定通りに機能しなくなります。
+
+## 解決策：明示的な追加
+
+この問題を解決するには、デフォルトで有効になっていたはずの `remark-gfm` と `remark-smartypants` を手動でインストールし、配列の中に明示的に追加します。
+
+```sh
+npm install remark-gfm remark-smartypants
+```
+
+```javascript
+// astro.config.mjs
+import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm';
+import remarkSmartypants from 'remark-smartypants';
+
+export default defineConfig({
+  markdown: {
+    // デフォルト機能も明示的に配列へ入れる
+    remarkPlugins: [remarkGfm, remarkSmartypants, remarkMath],
+  }
+});
+```
+
+<Aside type="note" title="順序の重要性">
+Astroの最近のバージョンでは、裏側で `extendDefaultPlugins: true` （既存のものに追記する設定）がデフォルトになりつつあります。しかし、数式のパース（`remark-math`）とGFMの機能が競合しないようにするには、**プラグインの実行順序が極めて重要**になります。<br/>
+上記のように明示的に配列に並べることで、環境に依存せず意図した順序でのパースを確実に行うことができます。この仕様は今後のAstroアップデートでより賢く解決される（自動で順序調整やマージが行われる）可能性がありますが、現状では明示的追加が公式にも推奨されるベストプラクティスです。
+</Aside>
+
+## 余談：ローカルとCI（GitHub Actions）での挙動の違い
+
+この脚注パースの失敗に気づくきっかけとなったのが、Starlightのリンク切れチェッカーである `starlight-links-validator` でした。
+
+脚注が正常にパースされず `[^1]:` という謎のテキストリンク扱いになった結果、**GitHub Actions上のビルド（Linux環境）では「リンク切れ」としてエラー**になりました。
+しかし不思議なことに、**ローカル（Windows環境）でのビルドは成功**していました。
+
+この差異の理由は、プラグインのバグによるものです。
+- **Windows環境**：ファイルパスにバックスラッシュ（`\`）が使われるため、リンクチェッカーの照合ロジック（スラッシュ `/` 前提）がうまく働かず、エラーを「見逃して」いた。
+- **Linux環境 (GitHub Actions)**：ファイルパスがスラッシュ（`/`）のため、照合が完璧に機能し、正しくエラーを検知してビルドを落とした。
+
+このように、プラグインによるデフォルト機能の消失と、OS間のパス区切り文字の違いが重なることで、トラブルシューティングが少しややこしくなっていました。
