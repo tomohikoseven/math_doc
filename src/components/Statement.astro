@@ -18,35 +18,48 @@ const { title, icon, variant = 'term' } = Astro.props;
 
 <style>
   .statement-item {
-    background-color: var(--sl-color-bg-nav);
-    border-radius: 0 0.5rem 0.5rem 0;
-    padding: 1rem 1.25rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .statement-item.variant-term {
-    border-left: 4px solid var(--sl-color-gray-4, #9ca3af); /* Gray */
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    border-left-width: 4px; /* 左側だけ太くする */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 
-  .statement-item.variant-definition {
-    border-left: 4px solid #eab308; /* Yellow */
+  .statement-item:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
   }
   
-  .statement-item.variant-theorem {
-    border-left: 4px solid var(--sl-color-green, #22c55e); /* Green */
-  }
-  
-  .statement-item.variant-example {
-    border-left: 4px solid var(--sl-color-purple, #a855f7); /* Purple */
-  }
-  
-  .statement-item.variant-faq {
-    border-left: 4px solid var(--sl-color-blue, #3b82f6); /* Blue */
-  }
-  
+  /* ダークモードの上書き（全辺の border-color を設定） */
   :global([data-theme="dark"]) .statement-item {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    background-color: var(--sl-color-gray-6);
+    background-color: #18181b; /* Zinc 900 */
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  :global([data-theme="dark"]) .statement-item:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* --- バリアント（左線の色） --- */
+  /* 詳細度を高くすることで、ダークモードの border-color に負けないようにする */
+  :global(:root) .statement-item.variant-term {
+    border-left-color: var(--sl-color-gray-4, #9ca3af);
+  }
+  :global(:root) .statement-item.variant-definition {
+    border-left-color: #eab308;
+  }
+  :global(:root) .statement-item.variant-theorem {
+    border-left-color: var(--sl-color-green, #22c55e);
+  }
+  :global(:root) .statement-item.variant-example {
+    border-left-color: var(--sl-color-purple, #a855f7);
+  }
+  :global(:root) .statement-item.variant-faq {
+    border-left-color: var(--sl-color-blue, #3b82f6);
   }
 
   .statement-title {

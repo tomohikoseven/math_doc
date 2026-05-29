@@ -51,6 +51,11 @@ svg.typst-doc {
   padding-top: 1rem;
 }
 
+/* ダークモード時に数式(SVG)の色を反転させる */
+:root[data-theme='dark'] svg.typst-doc {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 
 /* rehype-typstが数式を画像にするときに一緒にビルドするHTML内のCSSのsvg {...}が原因． */
 .starlight-aside__icon,
@@ -100,6 +105,57 @@ starlight-menu-button button::after {
 /* ====================== */
 /* 独自バッジスタイル     */
 /* ====================== */
+/* ====================== */
+/* Unified Canvas & Glass Components */
+/* ====================== */
+:root {
+  /* ライトモード: 統一された白いキャンバス */
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #f8fafc; /* サイドバーはごく僅かにグレーがかった白 */
+}
+
+:root[data-theme='dark'] {
+  /* ダークモード: ナビ/目次とツリー/記事でコントラストをつける */
+  --sl-color-bg: #09090b !important; /* ツリー・記事（黒） */
+  --sl-color-bg-nav: #131316 !important; /* ナビ・目次（わずかに明るい黒） */
+  --sl-color-black: #09090b !important; 
+}
+
+/* サイドバー領域（左右）はヘッダー（ナビ）と同じ背景色で統一する */
+.sidebar-pane,
+.right-sidebar-pane {
+  background-color: var(--sl-color-bg-nav) !important;
+}
+
+/* --- Premium Cards (Layer 2) --- */
+.card,
+.sl-link-card {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.card:hover,
+.sl-link-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+:root[data-theme='dark'] .card,
+:root[data-theme='dark'] .sl-link-card {
+  background-color: #18181b !important; /* Zinc 900 */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+:root[data-theme='dark'] .card:hover,
+:root[data-theme='dark'] .sl-link-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
 .badge-archive {
   background-color: transparent !important;
   color: var(--sl-color-gray-3) !important;
