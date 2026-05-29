@@ -9,6 +9,7 @@ import mermaid from 'astro-mermaid';
 
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightLinksValidator from 'starlight-links-validator';
+import remarkSmartypants from 'remark-smartypants';
 
 import { GOOGLE_ANALYTICS } from './src/libs/head';
 import { SOCIAL_LINKS } from './src/libs/social';
@@ -60,7 +61,7 @@ export default defineConfig({
     sitemap()
   ],
   markdown: {
-    remarkPlugins: [remarkGfm, remarkMath],
+    remarkPlugins: [remarkGfm, remarkSmartypants, remarkMath],
     rehypePlugins: [rehypeTypst],
   }
 });
