@@ -5,6 +5,17 @@ import { glob, type LoaderContext } from 'astro/loaders';
 import { execSync } from 'child_process';
 import fs from 'fs';
 
+/**
+ * Starlight 用のカスタムドキュメントローダー
+ * 
+ * Astro標準の glob ローダーをラップし、各ファイルの Git コミット履歴から
+ * 「作成日」と「更新日」を取得します。
+ * 取得した日時に基づき、以下の条件でフロントマターの sidebar.badge を自動付与します：
+ * - 作成から2週間以内: 'NEW' バッジ (緑色)
+ * - 更新から2週間以内 (作成は2週間より前): 'UPD' バッジ (青色)
+ * 
+ * ※ Git コマンドが失敗した場合や Git 管理外の環境では、ファイルシステムのメタデータにフォールバックします。
+ */
 const myDocsLoader = () => {
 	// Astro標準のglobローダーを利用してファイル探索とMarkdownのパースを任せる
 	const baseLoader = glob({
