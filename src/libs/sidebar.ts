@@ -58,7 +58,10 @@ export const MATHEMATICS_GROUP = {
       ...createAutoGroup('数学の基盤と構造', 'math/structures'),
       badge: { text: 'HOT', variant: 'danger' },
     },
-    createAutoGroup('数学エッセイ', 'math/essays'),
+    {
+      ...createAutoGroup('数学エッセイ', 'math/essays'),
+      badge: { text: 'HOT', variant: 'danger' },
+    },
     MATH_DIALY,
   ],
 };
