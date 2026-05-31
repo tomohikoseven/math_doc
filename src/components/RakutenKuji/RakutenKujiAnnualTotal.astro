@@ -1,5 +1,5 @@
 ---
-import { Card } from '@astrojs/starlight/components';
+import RakutenKujiStatBox from "./RakutenKujiStatBox.astro";
 
 interface Props {
   year: number | string;
@@ -10,27 +10,16 @@ interface Props {
 const { year, total, note } = Astro.props;
 ---
 
-<Card title={`${year}年 年間獲得ポイント合計`} icon="star">
-  <div class="annual-total-points">
-    {total} pt
-  </div>
+<RakutenKujiStatBox
+  label={`${year}年 年間獲得ポイント合計`}
+  value={total}
+  unit="pt"
+  size="large"
+  wrapperClass="my-8"
+>
   {note && (
-    <div class="annual-total-note">
+    <div class="text-sm text-[var(--sl-color-gray-3)] mt-4">
       （※{note}）
     </div>
   )}
-</Card>
-
-<style>
-  .annual-total-points {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: center;
-    color: var(--sl-color-text-accent);
-  }
-  .annual-total-note {
-    text-align: center;
-    color: var(--sl-color-gray-3);
-    margin-top: 0.5rem;
-  }
-</style>
+</RakutenKujiStatBox>

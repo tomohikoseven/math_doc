@@ -1,5 +1,5 @@
 ---
-import { Card } from '@astrojs/starlight/components';
+import RakutenKujiBaseCard from "./RakutenKujiBaseCard.astro";
 
 interface Props {
   year: number | string;
@@ -10,27 +10,29 @@ interface Props {
 const { year, month, points } = Astro.props;
 const monthStr = month.toString().padStart(2, '0');
 const link = `/software/rakuten/${year}/rakuten_kuji_${year}${monthStr}`;
+
+const numPoints = Number(points) || 0;
+
+function getPointVariant(
+  pts: number,
+): "default" | "note" | "success" | "danger" | "tip" | "caution" {
+  if (pts === 0) return "default";
+  if (pts < 50) return "note";
+  if (pts < 100) return "success";
+  if (pts < 200) return "caution";
+  return "danger";
+}
 ---
 
-<Card title={`${year}年${month}月`} icon="star">
-  <div class="monthly-points">
-    {points} pt
+<RakutenKujiBaseCard
+  title={`${year}年${month}月`}
+  points={points}
+  badgeVariant={getPointVariant(numPoints)}
+  opacityLow={numPoints === 0}
+>
+  <div class="text-[0.9rem] text-[var(--sl-color-gray-2)] leading-[1.4] text-right mt-2">
+    <a href={link} class="no-underline text-[var(--sl-color-text-accent)] hover:underline">
+      詳細はこちら ➔
+    </a>
   </div>
-  <a href={link} class="monthly-link">詳細はこちら ➔</a>
-</Card>
-
-<style>
-  .monthly-points {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--sl-color-text-accent);
-    margin-bottom: 0.5rem;
-  }
-  .monthly-link {
-    text-decoration: none;
-    color: var(--sl-color-text-accent);
-  }
-  .monthly-link:hover {
-    text-decoration: underline;
-  }
-</style>
+</RakutenKujiBaseCard>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  label: string;
+  value: number | string;
+  unit?: string;
+  size?: "large" | "medium";
+  wrapperClass?: string;
+}
+
+const { label, value, unit = "", size = "medium", wrapperClass = "" } = Astro.props;
+
+const isLarge = size === "large";
+---
+
+<div class={`bg-[var(--sl-color-bg-nav)] border border-[var(--sl-color-gray-5)] rounded-xl text-center shadow-md ${isLarge ? "py-8 px-5" : "p-5"} ${wrapperClass}`}>
+  <div class="text-sm text-[var(--sl-color-gray-3)] border-b border-dashed border-[var(--sl-color-gray-5)] pb-2 mb-3">
+    {label}
+  </div>
+  <div class={`${isLarge ? "text-[3rem]" : "text-[1.75rem]"} font-bold ${isLarge ? "text-[var(--sl-color-text-accent)]" : "text-[var(--sl-color-white)]"}`}>
+    {value} {unit && <span class="text-base font-normal text-[var(--sl-color-gray-3)]">{unit}</span>}
+  </div>
+  <slot />
+</div>

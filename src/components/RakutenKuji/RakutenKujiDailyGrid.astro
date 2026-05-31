@@ -12,7 +12,7 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-<div class="kuji-daily-grid">
+<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 [&>*]:!mt-0">
   {
     data.map((entry) => (
       <RakutenKujiDailyCard
@@ -23,16 +23,3 @@ const { data } = Astro.props;
     ))
   }
 </div>
-
-<style>
-  /* StarlightのMarkdownデフォルトの隣接マージン(margin-top)を打ち消す */
-  .kuji-daily-grid > * {
-    margin-top: 0 !important;
-  }
-
-  .kuji-daily-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-  }
-</style>

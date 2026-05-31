@@ -23,7 +23,7 @@ import RakutenKujiMonthlyCard from '/src/components/RakutenKuji/RakutenKujiMonth
 
 ## 月別獲得ポイント一覧
 
-<CardGrid>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 [&>*]:!mt-0">
   <RakutenKujiMonthlyCard year="2023" month={1} points={92} />
   <RakutenKujiMonthlyCard year="2023" month={2} points={45} />
   <RakutenKujiMonthlyCard year="2023" month={3} points={91} />
@@ -36,4 +36,4 @@ import RakutenKujiMonthlyCard from '/src/components/RakutenKuji/RakutenKujiMonth
   <RakutenKujiMonthlyCard year="2023" month={10} points={57} />
   <RakutenKujiMonthlyCard year="2023" month={11} points={33} />
   <RakutenKujiMonthlyCard year="2023" month={12} points={133} />
-</CardGrid>
+</div>

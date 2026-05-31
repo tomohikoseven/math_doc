@@ -25,13 +25,13 @@ import RakutenKujiMonthlyCard from '/src/components/RakutenKuji/RakutenKujiMonth
 
 各月の獲得ポイントは以下の通りである。
 
-<CardGrid>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 [&>*]:!mt-0">
   <RakutenKujiMonthlyCard year="2026" month={1} points={559} />
   <RakutenKujiMonthlyCard year="2026" month={2} points={149} />
   <RakutenKujiMonthlyCard year="2026" month={3} points={63} />
   <RakutenKujiMonthlyCard year="2026" month={4} points={217} />
   <RakutenKujiMonthlyCard year="2026" month={5} points={246} />
-</CardGrid>
+</div>
 
 ---
 

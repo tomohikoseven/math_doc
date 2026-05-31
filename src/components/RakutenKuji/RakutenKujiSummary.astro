@@ -1,4 +1,6 @@
 ---
+import RakutenKujiStatBox from "./RakutenKujiStatBox.astro";
+
 interface LogEntry {
   date: string;
   points: number;
@@ -15,86 +17,28 @@ const highestWin = Math.max(...data.map((entry) => entry.points));
 const avgPoints = (totalPoints / data.length).toFixed(1);
 ---
 
-<div class="kuji-summary-container">
-  <div class="kuji-stat kuji-stat-total">
-    <div class="kuji-stat-label">月間合計ポイント</div>
-    <div class="kuji-stat-value highlight">{totalPoints} <span>pt</span></div>
-  </div>
-  <div class="kuji-summary-sub">
-    <div class="kuji-stat">
-      <div class="kuji-stat-label">当選日数 / 全体</div>
-      <div class="kuji-stat-value">
-        {daysWithWins}
-        <span>/ {data.length} 日</span>
-      </div>
-    </div>
-    <div class="kuji-stat">
-      <div class="kuji-stat-label">1日の最大当選</div>
-      <div class="kuji-stat-value">{highestWin} <span>pt</span></div>
-    </div>
-    <div class="kuji-stat">
-      <div class="kuji-stat-label">1日平均</div>
-      <div class="kuji-stat-value">{avgPoints} <span>pt/日</span></div>
-    </div>
+<div class="flex flex-col gap-4 mb-8 [&>*]:!mt-0">
+  <RakutenKujiStatBox
+    label="月間合計ポイント"
+    value={totalPoints}
+    unit="pt"
+    size="large"
+  />
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 [&>*]:!mt-0">
+    <RakutenKujiStatBox
+      label="当選日数 / 全体"
+      value={daysWithWins}
+      unit={`/ ${data.length} 日`}
+    />
+    <RakutenKujiStatBox
+      label="1日の最大当選"
+      value={highestWin}
+      unit="pt"
+    />
+    <RakutenKujiStatBox
+      label="1日平均"
+      value={avgPoints}
+      unit="pt/日"
+    />
   </div>
 </div>
-
-<style>
-  /* StarlightのMarkdownデフォルトの隣接マージン(margin-top)を打ち消す */
-  .kuji-summary-container > *,
-  .kuji-summary-sub > * {
-    margin-top: 0 !important;
-  }
-
-  .kuji-summary-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  .kuji-summary-sub {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  @media (max-width: 640px) {
-    .kuji-summary-sub {
-      grid-template-columns: 1fr;
-    }
-  }
-  .kuji-stat {
-    background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-gray-5);
-    border-radius: 0.75rem;
-    padding: 1.25rem;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  }
-  .kuji-stat-total {
-    flex: unset;
-    padding: 2rem 1.25rem;
-  }
-  .kuji-stat-total .kuji-stat-value {
-    font-size: 3rem;
-  }
-  .kuji-stat-label {
-    font-size: 0.875rem;
-    color: var(--sl-color-gray-3);
-    border-bottom: 1px dashed var(--sl-color-gray-5);
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.75rem;
-  }
-  .kuji-stat-value {
-    font-size: 1.75rem;
-    font-weight: bold;
-    color: var(--sl-color-white);
-  }
-  .kuji-stat-value span {
-    font-size: 1rem;
-    font-weight: normal;
-    color: var(--sl-color-gray-3);
-  }
-  .kuji-stat-value.highlight {
-    color: var(--sl-color-text-accent);
-  }
-</style>

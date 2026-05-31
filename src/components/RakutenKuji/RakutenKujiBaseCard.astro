@@ -1,0 +1,24 @@
+---
+import { Badge } from '@astrojs/starlight/components';
+
+interface Props {
+  title: string;
+  points: number | string;
+  badgeVariant: "default" | "note" | "success" | "danger" | "tip" | "caution";
+  opacityLow?: boolean;
+}
+
+const { title, points, badgeVariant, opacityLow = false } = Astro.props;
+---
+
+<div class={`bg-[var(--sl-color-bg-nav)] border border-[var(--sl-color-gray-5)] rounded-lg p-4 flex flex-col gap-2 [&>*]:!mt-0 ${opacityLow ? "opacity-60" : ""}`}>
+  <div class="flex justify-between items-center border-b border-dashed border-[var(--sl-color-gray-5)] pb-2">
+    <span class="font-mono font-bold text-[var(--sl-color-white)]">{title}</span>
+    <Badge
+      text={`${points} pt`}
+      variant={badgeVariant}
+      size="medium"
+    />
+  </div>
+  <slot />
+</div>

@@ -25,7 +25,7 @@ import RakutenKujiMonthlyCard from '/src/components/RakutenKuji/RakutenKujiMonth
 
 各月の獲得ポイントは以下の通りである。スーパーSALE開催月（3月、6月、9月、12月）は獲得ポイントが大きく伸びる傾向がある。
 
-<CardGrid>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 [&>*]:!mt-0">
   <RakutenKujiMonthlyCard year="2025" month={1} points={31} />
   <RakutenKujiMonthlyCard year="2025" month={2} points={14} />
   <RakutenKujiMonthlyCard year="2025" month={3} points={82} />
@@ -38,7 +38,7 @@ import RakutenKujiMonthlyCard from '/src/components/RakutenKuji/RakutenKujiMonth
   <RakutenKujiMonthlyCard year="2025" month={10} points={38} />
   <RakutenKujiMonthlyCard year="2025" month={11} points={69} />
   <RakutenKujiMonthlyCard year="2025" month={12} points={103} />
-</CardGrid>
+</div>
 
 ---
 
