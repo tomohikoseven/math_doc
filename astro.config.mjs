@@ -20,19 +20,13 @@ import {
 
 
 
-import tailwindcss from '@tailwindcss/vite';
-
-
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mathdoc.ifdef.jp/',
   vite: {
     build: {
       chunkSizeWarningLimit: 1500, // 警告のしきい値を 1500 kB（1.5 MB）に引き上げる
-    },
-
-    plugins: [tailwindcss()]
+    }
   },
   integrations: [
     mermaid(),
