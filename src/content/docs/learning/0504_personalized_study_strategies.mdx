@@ -8,6 +8,8 @@ import { Badge, Card, CardGrid } from '@astrojs/starlight/components';
 import BadgeCard from '/src/components/BadgeCard.astro';
 import Statements from '/src/components/Statements.astro';
 import Statement from '/src/components/Statement.astro';
+import TermList from '/src/components/TermList.astro';
+import Term from '/src/components/Term.astro';
 import FAQ from '/src/components/FAQ.astro';
 
 
@@ -23,18 +25,18 @@ import FAQ from '/src/components/FAQ.astro';
 努力が結果につながらないのは、無駄な努力をしているからである。
 </ArticleTip>
 
-<Statements>
-  <Statement title="無駄な努力">
+<TermList>
+  <Term title="無駄な努力">
     自分を理解していないことによる、目的と手段が乖離した努力のこと。
-  </Statement>
-  <Statement title="自分を理解していない状態">
+  </Term>
+  <Term title="自分を理解していない状態">
     すべて同じ勉強法で学習している状態のこと。<br/>
     好きな科目・嫌いな科目、得意な科目・苦手な科目で勉強の仕方が異なるはずである。
-  </Statement>
-  <Statement title="目的と手段が乖離している状態">
+  </Term>
+  <Term title="目的と手段が乖離している状態">
     本来たどり着きたいゴール（目的）を忘れ、そのための道具やステップ（手段）をこなすこと自体が目的になってしまっている状態。
-  </Statement>
-</Statements>
+  </Term>
+</TermList>
 
 :::note[目的と手段が乖離している例]
 - **ノートをきれいに写す・色分けする**
@@ -111,14 +113,14 @@ import FAQ from '/src/components/FAQ.astro';
 - **二重目標の設定**
   - <u>最低目標</u>（納得できるライン）と<u>最高目標</u>（理想のライン）に幅を持たせ、挫折を防ぐ。
 
-<Statements>
-  <Statement title="結果にコミットする">
+<TermList>
+  <Term title="結果にコミットする">
 　目標達成に対して責任を持ち、**全力を尽くして結果を出すことに専念する**こと。仮に不合格であっても、全力を尽くして専念できたのなら、コミットできたことになる。これを誤って認識している人は多い。話はズレるが、特にSIer（ブログ著者の意見）。彼らSIerは、**期限までにすべて終わらせることがコミット**だと誤認している。しかし、それは**納期を守る**という意味であり、結果にコミットすることとは異なる。
-  </Statement> 
-  <Statement title="「機能的に考える」思考法"> 
+  </Term> 
+  <Term title="「機能的に考える」思考法"> 
 　物事の本質的な役割（機能）に焦点を当て、形式にとらわれず論理的に解決策を導き出す思考法。例えば、「**この勉強はどの試験のどの問題を解くためにやっているのか？**」と常に問う。
-  </Statement>
-</Statements>
+  </Term>
+</TermList>
 
 
 ## 第2章：嫌い × 苦手の戦略（仕組み化）

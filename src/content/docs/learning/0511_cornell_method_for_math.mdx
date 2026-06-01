@@ -6,6 +6,8 @@ lastUpdated: 2026-05-30
 import { Aside, Steps } from '@astrojs/starlight/components'
 import Statements from '/src/components/Statements.astro'
 import Statement from '/src/components/Statement.astro'
+import TermList from '/src/components/TermList.astro'
+import Term from '/src/components/Term.astro'
 import ArticleTip from "/src/components/ArticleTip.astro"
 import FAQ from '/src/components/FAQ.astro'
 
@@ -35,15 +37,17 @@ import FAQ from '/src/components/FAQ.astro'
   </div>
 </div>
 
-- **ノート欄（右側・広い）**
-
+<TermList>
+  <Term title="ノート欄（右側・広い）">
     事実、定義、例、図、数式、講義内容などを通常通りに記録するメインの場所である。
-- **キュー欄（左側）**
-
+  </Term>
+  <Term title="キュー欄（左側）">
     要点、キーワード、疑問、「なぜ？」といったテスト用質問などを書く欄である。
-- **サマリー欄（下）**
-
+  </Term>
+  <Term title="サマリー欄（下）">
     「このページは何を言っていたか」「本質は何か」「どういう構造か」など、ページ全体を数行でまとめる欄である。
+  </Term>
+</TermList>
 
 ### 各欄の利用タイミング（使い方の手順）
 
