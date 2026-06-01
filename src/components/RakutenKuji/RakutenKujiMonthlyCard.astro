@@ -9,7 +9,7 @@ interface Props {
 
 const { year, month, points } = Astro.props;
 const monthStr = month.toString().padStart(2, '0');
-const link = `/software/rakuten/${year}/rakuten_kuji_${year}${monthStr}`;
+const link = `/software/rakuten/${year}/rakuten_kuji_${year}${monthStr}/`;
 
 const numPoints = Number(points) || 0;
 
