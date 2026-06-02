@@ -4,11 +4,15 @@ interface Props {
 }
 const { title } = Astro.props;
 ---
-<div class="flex flex-col bg-white dark:bg-zinc-900 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.4)] border border-slate-200 dark:border-white/10 overflow-hidden transition-all duration-300 ease-out hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] hover:-translate-y-0.5">
-  <dt class="bg-slate-50 dark:bg-zinc-800 py-5 px-6 border-b border-slate-200 dark:border-white/5 flex items-center">
-    <div class="font-semibold text-[color:var(--sl-color-white)] text-[1.05rem] leading-snug">{title}</div>
+<div class="group flex flex-col">
+  <dt class="font-semibold text-[color:var(--sl-color-white)] text-[1.05rem] mb-2 flex items-center gap-2 transition-colors duration-300 group-hover:text-[color:var(--sl-color-accent-high)]">
+    <span class="w-[6px] h-[6px] rounded-full bg-slate-300 dark:bg-white/20 group-hover:bg-[color:var(--sl-color-accent)] transition-colors duration-300"></span>
+    {title}
   </dt>
-  <dd class="m-0 py-5 px-6 text-[color:var(--sl-color-gray-2)] leading-relaxed text-[0.95rem] [&>p]:mt-0 [&>p]:mb-2 [&>p:last-child]:mb-0">
+  <dd class="relative m-0 ml-[2px] pl-4 py-0.5 text-[color:var(--sl-color-gray-2)] leading-relaxed text-[0.95rem] [&>p]:mt-0 [&>p]:mb-2 [&>p:last-child]:mb-0">
+    <div class="absolute left-0 top-0 bottom-0 w-[2px] bg-slate-200 dark:bg-white/10 overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-full bg-[color:var(--sl-color-accent)] origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out"></div>
+    </div>
     <slot />
   </dd>
 </div>
