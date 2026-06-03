@@ -1,0 +1,18 @@
+---
+sidebar :
+  label: 6月
+title: 【2026年6月】楽天ラッキーくじの当選を整理する。
+description: 自動プログラムによる楽天ラッキーくじ当選結果を整理する(2026年6月)。
+lastUpdated: true
+---
+import NoteRakutenKuji from '/src/components/RakutenKuji/NoteRakutenKuji.astro';
+import RakutenKujiLog from '/src/components/RakutenKuji/RakutenKujiLog.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2026/06/01', points: 1, sources: ['【常時開催】毎日チャンス！その場で最大1000ポイント当たる！ラッキーくじ'] },
+  { date: '2026/06/02', points: 1, sources: ['楽天トラベル ラッキーくじ'] },
+];
+
+<RakutenKujiLog data={kujiData} />
