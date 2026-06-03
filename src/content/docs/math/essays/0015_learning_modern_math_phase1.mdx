@@ -8,7 +8,6 @@ import { Steps } from '@astrojs/starlight/components';
 import FAQ from '/src/components/FAQ.astro';
 import Statements from '/src/components/Statements.astro';
 import FlatList from '/src/components/FlatList.astro';
-import FlatItem from '/src/components/FlatItem.astro';
 
 現代数学の第1段階では、すべての数学的記述の基礎となる「**命題・述語論理**」の扱い方と、「**素朴集合論（集合・写像・同値関係）**」の概念を学ぶ必要がある。本記事では、大学数学特有の「証明」が読めるようになるための具体的な学習ステップを解説する。
 
@@ -23,15 +22,12 @@ import FlatItem from '/src/components/FlatItem.astro';
    まずは、「真（正しい）」か「偽（誤り）」かが明確に定まる文章である「命題」の扱い方に慣れる必要がある。
 
    <FlatList>
-     <FlatItem title="論理演算子">
+     - **論理演算子**：
        「かつ (AND)」「または (OR)」「否定 (NOT)」の真理値表を理解し、ド・モルガンの法則などを自在に使えるようにする。
-     </FlatItem>
-     <FlatItem title="「ならば」と「同値」">
+     - **「ならば」と「同値」**：
        数学において最も重要な「$P -> Q$（PならばQ）」の論理構造を正確に理解する。日常言語の「ならば」とは意味が異なる点に注意が必要である。
-     </FlatItem>
-     <FlatItem title="対偶法と背理法">
+     - **対偶法と背理法**：
        直接証明するのが難しい命題に対して、「対偶（$not Q -> not P$）」を利用する証明や、「結論を否定して矛盾を導く（背理法）」証明のパターンを身につける。
-     </FlatItem>
    </FlatList>
 
 2. ### Step 2: 述語論理（全称記号と存在記号）の理解
@@ -39,15 +35,12 @@ import FlatItem from '/src/components/FlatItem.astro';
    大学数学で多くの初学者がつまずく最大の要因が、この「述語論理」である。ここを乗り越えられるかが最初の関門となる。
 
    <FlatList>
-     <FlatItem title="全称記号（すべて）">
+     - **全称記号（すべて）**：
        「任意の $x$ について〜」を表す記号（$forall$）の使い方を学ぶ。
-     </FlatItem>
-     <FlatItem title="存在記号（存在する）">
+     - **存在記号（存在する）**：
        「ある $x$ が存在して〜」を表す記号（$exists$）の使い方を学ぶ。
-     </FlatItem>
-     <FlatItem title="記号の順序と否定">
+     - **記号の順序と否定**：
        「$forall x, exists y$」と「$exists y, forall x$」で意味が全く異なることを理解する。また、これらの記号を含む命題の否定（例：「すべての人がりんごを好き」の否定は「りんごが好きではない人が少なくとも1人存在する」）を正確に作れるようにする。
-     </FlatItem>
    </FlatList>
 
 3. ### Step 3: 素朴集合論の基礎
@@ -55,12 +48,10 @@ import FlatItem from '/src/components/FlatItem.astro';
    論理の言葉を身につけたら、次は数学の対象をまとめる「集合（Set）」という枠組みを学ぶ。
 
    <FlatList>
-     <FlatItem title="集合と元">
+     - **集合と元**：
        対象が集合に属していること（$x in A$）や、部分集合（$A subset B$）の定義を理解する。2つの集合が等しい（$A = B$）ことを証明するには、「$A subset B$ かつ $B subset A$」を示すという基本動作を習得する。
-     </FlatItem>
-     <FlatItem title="集合の演算">
+     - **集合の演算**：
        和集合（$A union B$）、共通部分（$A sect B$）、補集合、差集合などの概念をベン図で直感的に理解した上で、Step 1で学んだ論理記号を使って厳密に定義・証明できるようにする。
-     </FlatItem>
    </FlatList>
 
 4. ### Step 4: 写像と同値関係
@@ -68,12 +59,10 @@ import FlatItem from '/src/components/FlatItem.astro';
    集合と並んで極めて重要なのが、集合間の関係性を記述するツールである。
 
    <FlatList>
-     <FlatItem title="写像（Mapping）">
+     - **写像（Mapping）**：
        高校までの「関数」を一般化した「写像」の概念を学ぶ。「単射（1対1）」「全射（値域が終域に一致する）」「全単射（逆写像が存在する）」の定義を正確に暗記し、具体例で判定できるようにする。
-     </FlatItem>
-     <FlatItem title="同値関係と商集合">
+     - **同値関係と商集合**：
        「等しさ」という概念を一般化した「同値関係」を学ぶ。ある性質において「同じ」とみなせるものをグループ化して新たな集合を作る「同値類」と「商集合」の概念は、代数学（剰余群）や位相幾何学（貼り合わせ）など、あらゆる分野で使われる強力なツールである。
-     </FlatItem>
    </FlatList>
 
 </Steps>
@@ -96,15 +85,12 @@ import FlatItem from '/src/components/FlatItem.astro';
 現代数学の共通言語を習得するためのポイントは以下の通りである。
 
 <FlatList>
-  <FlatItem title="論理を正確に扱う">
+  - **論理を正確に扱う**：
     日常言語の曖昧さを捨て、「ならば」や「全称・存在（$forall$, $exists$）」を数学的に厳密に解釈・操作できるようにする。
-  </FlatItem>
-  <FlatItem title="対象を集合で捉える">
+  - **対象を集合で捉える**：
     数の計算から離れ、概念を「集合」と「写像」という箱と矢印の関係で記述する習慣をつける。
-  </FlatItem>
-  <FlatItem title="証明の型を覚える">
+  - **証明の型を覚える**：
     「部分集合の証明」「単射の証明」「同値関係の証明」など、よく出てくる証明の「型（書き出しと結び）」を体に染み込ませる。
-  </FlatItem>
 </FlatList>
 
 この第1段階をクリアすれば、代数学や解析学の専門書を開いたときに「何が書かれているか全く読めない」という事態を避けることができ、その後の学習が圧倒的にスムーズになる。

@@ -10,6 +10,8 @@ import TermList from '/src/components/TermList.astro'
 import Term from '/src/components/Term.astro'
 import ArticleTip from "/src/components/ArticleTip.astro"
 import FAQ from '/src/components/FAQ.astro'
+import FlatList from "/src/components/FlatList.astro"
+import CornellDiagram from "/src/components/CornellDiagram.astro"
 
 　本記事は、情報を構造化し、数学などの学習効率を飛躍的に高めるノート術「コーネルメソッド」について解説する。
 
@@ -22,20 +24,7 @@ import FAQ from '/src/components/FAQ.astro'
 
 ページを大きく3つのスペースに分けて使用する。
 
-<div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', border: '1px solid var(--sl-color-gray-5)', borderRadius: '8px', textAlign: 'center', margin: '2rem 0', overflow: 'hidden' }}>
-  <div style={{ padding: '24px 8px', borderRight: '1px solid var(--sl-color-gray-5)', borderBottom: '1px solid var(--sl-color-gray-5)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-    <span style={{ fontSize: '1.1em', fontWeight: 'bold', color: 'var(--sl-color-white)' }}>キュー欄</span>
-    <span style={{ fontSize: '0.85em', color: 'var(--sl-color-gray-3)', marginTop: '4px' }}>（要点・質問）</span>
-  </div>
-  <div style={{ padding: '48px 8px', borderBottom: '1px solid var(--sl-color-gray-5)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-    <span style={{ fontSize: '1.1em', fontWeight: 'bold', color: 'var(--sl-color-white)' }}>ノート欄</span>
-    <span style={{ fontSize: '0.85em', color: 'var(--sl-color-gray-3)', marginTop: '4px' }}>（授業内容）</span>
-  </div>
-  <div style={{ gridColumn: '1 / -1', padding: '16px 8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-    <span style={{ fontSize: '1.1em', fontWeight: 'bold', color: 'var(--sl-color-white)' }}>サマリー欄</span>
-    <span style={{ fontSize: '0.85em', color: 'var(--sl-color-gray-3)', marginTop: '4px' }}>（まとめ）</span>
-  </div>
-</div>
+<CornellDiagram />
 
 <TermList>
   <Term title="ノート欄（右側・広い）">
@@ -139,9 +128,11 @@ import FAQ from '/src/components/FAQ.astro'
 
 コーネルメソッドの本質を一言で表すなら、「**知識を受け取るだけでなく、再構成するノート術**」である。
 
+<FlatList>
 - **情報を構造化する**：ノート・キュー・サマリーの3分割により、知識が整理される。
 - **想起練習を促す**：左欄（キュー）を見て右欄（ノート）を思い出す訓練が、記憶の定着を助ける。
 - **抽象化と思考の訓練**：何が本質か、どう関係するかを常に考えるため、数学的思考とも相性が良い。
+</FlatList>
 
 「書く」「整理する」「問う」「要約する」「思い出す」という学習の基本サイクルを、一つのフォーマットの中で効果的に回すことができる。
 
