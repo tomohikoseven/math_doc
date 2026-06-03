@@ -14,8 +14,9 @@ hero:
 lastUpdated: 2025-04-29
 ---
 
-import { CardGrid, LinkCard, Badge } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard, Badge } from '@astrojs/starlight/components';
 import BuyMeACoffeeCard from '../../components/BuyMeACoffeeCard.astro';
+import LinkList from '../../components/LinkList.astro';
 
 ## 現在のトレンド <Badge text="HOT" variant="danger" size="large" />
 
@@ -45,61 +46,29 @@ import BuyMeACoffeeCard from '../../components/BuyMeACoffeeCard.astro';
 
 ## 数学
 
-### 解析学
 <CardGrid>
-	<LinkCard
-		title="実数論"
-		description="有理数の切断として実数を定義し，その性質をまとめます．"
-		href="/math/real_number/"
-	/>
-	<LinkCard
-		title="微分法"
-		description="微分法の核心部分と本質的な構造について整理します．"
-		href="/math/differential_method/0000_introduction/"
-	/>
-	<LinkCard
-		title="積分法"
-		description="積分法の公式や定理・性質をまとめます．"
-		href="/math/integral_method/000_introduction/"
-	/>
-	<LinkCard
-		title="微積分 演習"
-		description="マグロウヒル大学演習シリーズ 微積分（上）の問題解答集です．"
-		href="/math/calculus/"
-	/>
-</CardGrid>
-
-### 代数学
-<CardGrid>
-	<LinkCard
-		title="線形代数"
-		description="線形写像・ベクトル空間・ジョルダン標準形など，線形代数の理論を整理します．"
-		href="/math/linear_algebra/"
-	/>
-	<LinkCard
-		title="線形代数（演習）"
-		description="川久保勝夫著「線形代数学」の演習問題解答集です．"
-		href="/math/linear_algebra/exercises/"
-	/>
-</CardGrid>
-
-### その他
-<CardGrid>
-	<LinkCard
-		title="数学の基盤と構造"
-		description="現代数学を形作る「構造」という視点と，その基盤となる集合・写像・論理を解説します．"
-		href="/math/structures/0009_what_is_structure/"
-	/>
-	<LinkCard
-		title="高校数学"
-		description="高校数学IIIの極限・微分・積分を中心に整理します．"
-		href="/math/high_school/"
-	/>
-	<LinkCard
-		title="数学エッセイ"
-		description="数学全般に関するエッセイです．"
-		href="/math/essays/0001_how_to_study_math/"
-	/>
+	<Card title="解析学" icon="open-book">
+		<LinkList>
+			- [**実数論**](/math/real_number/)  
+			- [**微分法**](/math/differential_method/0000_introduction/)  
+			- [**積分法**](/math/integral_method/000_introduction/)  
+			- [**微積分 演習**](/math/calculus/)  
+		</LinkList>
+	</Card>
+	
+	<Card title="代数学" icon="document">
+		<LinkList>
+			- [**線形代数**](/math/linear_algebra/)
+			- [**線形代数（演習）**](/math/linear_algebra/exercises/)
+		</LinkList>
+	</Card>
+	<Card title="その他" icon="puzzle">
+		<LinkList>
+			- [**数学の基盤と構造**](/math/structures/0009_what_is_structure/)
+			- [**高校数学**](/math/high_school/)
+			- [**数学エッセイ**](/math/essays/0001_how_to_study_math/)
+		</LinkList>
+	</Card>
 </CardGrid>
 
 ---
@@ -166,32 +135,25 @@ import BuyMeACoffeeCard from '../../components/BuyMeACoffeeCard.astro';
 ## アーカイブ
 
 <CardGrid>
-	<LinkCard
-		title="数学日誌"
-		description="日々の数学学習の記録です（現在更新停止中）．"
-		href="/diary/202501/"
-	/>
-	<LinkCard
-		title="Raspberry Pi"
-		description="Raspberry Piの構築・設定メモです．（現在更新停止中）"
-		href="/software/raspberrypi/associate_file_with_application_on_raspi4/"
-	/>
+	<Card title="過去の記事（現在更新停止中）" icon="document">
+		<LinkList>
+			- [**数学日誌**](/diary/202501/)
+			- [**Raspberry Pi**](/software/raspberrypi/associate_file_with_application_on_raspi4/)
+		</LinkList>
+	</Card>
 </CardGrid>
 
 ## サイトについて
 
 <CardGrid>
-	<LinkCard
-		title="プライバシーポリシー"
-		href="/about/0001_privacy_policy/"
-	/>
-	<LinkCard
-		title="免責事項・著作権"
-		href="/about/0002_disclaimer_copyright/"
-	/>
-	<LinkCard
-		title="お問い合わせ"
-		href="/about/0004_inquiry/"
-	/>
+	<Card title="各種ご案内" icon="information">
+		<LinkList>
+			- [**プライバシーポリシー**](/about/0001_privacy_policy/)
+			- [**免責事項・著作権**](/about/0002_disclaimer_copyright/)
+			- [**お問い合わせ**](/about/0004_inquiry/)
+		</LinkList>
+	</Card>
 </CardGrid>
+
+
 
