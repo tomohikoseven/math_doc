@@ -6,6 +6,11 @@ lastUpdated: 2026-06-03
 import Statement from "/src/components/Statement.astro";
 import Statements from "/src/components/Statements.astro";
 import FlatList from "/src/components/FlatList.astro";
+import { LinkCard, Aside } from '@astrojs/starlight/components';
+
+<Aside type="note" title="シリーズ記事（後編）">
+この記事は「数学の全体像」シリーズの**後編**です。前編の「数学の全体像マップ」をまだお読みでない方は、そちらを先にご覧ください。
+</Aside>
 
 これまで、「集合・写像・論理が現代数学の基盤」「構造とは何か」「現代数学の視点で再構成したい」「集合とはなにか」「証明とは何か」といったテーマを考えてきたが、今回は**現代数学者が頭の中で見ている数学の地図**として全体像を説明する。
 
@@ -219,3 +224,10 @@ graph LR
 - **写像の重視**: 対象同士を関連付ける写像（準同型、連続写像など）を調べることで、対象の本質的な同一性が理解できる。
 - **統一的な視点**: 異なる分野（代数・幾何・解析）も、「集合に構造を入れ、写像で比較する」という同一の原理の上に成り立っている。
 </FlatList>
+
+<br />
+<LinkCard
+  title="前の記事に戻る（前編）：数学の全体像"
+  description="現代数学の主要な分野と、それらの関係性についての全体像（マップ）を紹介しています。"
+  href="/math/structures/0013_mathematics_overview/"
+/>
