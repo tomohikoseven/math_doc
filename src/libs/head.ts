@@ -8,12 +8,16 @@ export const GOOGLE_ANALYTICS = [
   {
     tag: `script`,
     attrs: {
+      type: 'text/partytown',
       async: true,
       src: 'https://www.googletagmanager.com/gtag/js?id=G-GLTH0LBWDY',
     }
   },
   {
     tag: 'script',
+    attrs: {
+      type: 'text/partytown',
+    },
     content: `
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

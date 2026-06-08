@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeTypst from '@myriaddreamin/rehype-typst';
 
 import mermaid from 'astro-mermaid';
+import partytown from '@astrojs/partytown';
 
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightLinksValidator from 'starlight-links-validator';
@@ -30,6 +31,11 @@ export default defineConfig({
   },
   integrations: [
     mermaid(),
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
+      },
+    }),
     starlight({
       title: '数学の主張',
       logo: {
