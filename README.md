@@ -13,6 +13,7 @@
   - 実数論
   - 微分積分 (McGraw-Hill Calculus など)
   - 線形代数 (川久保線形代数 など)
+  - 数学の構造
   - 高校数学
   - 数学日記
 - **ソフトウェア系:**
@@ -27,13 +28,22 @@
 
 - **フレームワーク:** [Astro](https://astro.build/)
 - **テーマ (ドキュメント):** [Starlight (by Astro)](https://starlight.astro.build/)
+  - **スタイリング:** [Tailwind CSS](https://tailwindcss.com/)
 - **数式・PDF組版連携:** [Typst](https://typst.app/) (`rehype-typst`, `astro-typst`)
-- **図解・ダイアグラム:** [D2](https://d2lang.com/) (`astro-d2`)
+- **図解・ダイアグラム:** [Mermaid](https://mermaid.js.org/) (`astro-mermaid`)
+
+
+## 🚀 ローカルでの実行方法
+
+1. リポジトリをクローン
+2. 依存関係のインストール: `npm install`
+3. 開発サーバーの起動: `npm run dev`
+4. ブラウザで `http://localhost:4321` にアクセス
 
 
 ## 👤 リンク
 
-サイト運営者のSNS等のリンクです。皆様にとって有益となる情報は発信しておりません．完全プライベート用です．
+サイト運営者のSNS等のリンクです。個人的な発信がメインとなります。
 
 - [GitHub (@tomohikoseven)](https://github.com/tomohikoseven)
 - [X (@tomohikoseven)](https://x.com/tomohikoseven)
