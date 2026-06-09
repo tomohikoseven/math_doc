@@ -161,3 +161,12 @@ starlight-menu-button button::after {
   color: var(--sl-color-gray-3) !important;
   border-color: var(--sl-color-gray-4) !important;
 }
+
+/* ====================== */
+/* 左側ツリー（サイドバー）のホバーエフェクト */
+/* ====================== */
+.sidebar-pane a:not([aria-current="page"]):hover,
+.sidebar-pane summary:hover {
+  background-color: rgba(128, 128, 128, 0.15) !important;
+  border-radius: 0.25rem;
+}
