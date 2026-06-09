@@ -41,7 +41,15 @@ export const SOFTWARE = {
   ]
 };
 export const HIGH_SCHOOL_MATH = createAutoGroup('高校数学', 'high_school_math');
-export const OTHER_THAN_MATH = createAutoGroup('読書・学習・ライフ', 'learning');
+export const OTHER_THAN_MATH = {
+  label: '読書・学習・ライフ',
+  collapsed: true,
+  items: [
+    createAutoGroup('読書', 'learning/readbook'),
+    createAutoGroup('学習', 'learning/study'),
+    createAutoGroup('生活', 'learning/life'),
+  ]
+};
 
 // ─── 数学カテゴリをまとめたグループ ───────────────────────────
 export const MATHEMATICS_GROUP = {
@@ -76,10 +84,10 @@ export const SIDEBAR_TOPICS = [
   },
   {
     label: '読書・学習・ライフ',
-    link: '/learning/0500_improve_memory/',
+    link: '/learning/study/0500_improve_memory/',
     icon: 'sun',
     badge: { text: 'HOT', variant: 'danger' },
-    items: [OTHER_THAN_MATH],
+    items: OTHER_THAN_MATH.items,
   },
   {
     label: 'Software',
