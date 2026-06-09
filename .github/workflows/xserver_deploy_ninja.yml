@@ -54,13 +54,10 @@ jobs:
 
 
     - name: Deploy to Ninja Homepage
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ${{ secrets.FTP_SERVER_NINJA }}
-        username: ${{ secrets.FTP_USERNAME_NINJA }}
-        password: ${{ secrets.FTP_PASSWORD_NINJA }}
-        local-dir: ./dist/
-        server-dir: / 
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y lftp
+        lftp -c "set ftp:ssl-allow no; open -u ${{ secrets.FTP_USERNAME_NINJA }},${{ secrets.FTP_PASSWORD_NINJA }} ${{ secrets.FTP_SERVER_NINJA }}; mirror -R --parallel=10 ./dist/ /" 
 
     - name: IndexNow (Manual Ping)
       run: |
