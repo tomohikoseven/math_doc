@@ -5,9 +5,9 @@
  * 1. rehype-typstで生成された数式SVGや、Astro/StarlightのアイコンSVGが正しく表示されない不具合を修正するため。
  * 2. Markdown内のテーブルや画像の中央揃えなど、細かいレイアウト調整を行うため。
  */
-
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+@import '@fontsource/noto-sans-jp/400.css';
+@import '@fontsource/noto-sans-jp/500.css';
+@import '@fontsource/noto-sans-jp/700.css';
 
 :root {
   --sl-font: 'Noto Sans JP', "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;

@@ -5,7 +5,7 @@ import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import rehypeTypst from '@myriaddreamin/rehype-typst';
 
-import mermaid from 'astro-mermaid';
+import rehypeMermaid from 'rehype-mermaid';
 import partytown from '@astrojs/partytown';
 
 import starlightSidebarTopics from 'starlight-sidebar-topics';
@@ -29,8 +29,8 @@ export default defineConfig({
       chunkSizeWarningLimit: 1500, // 警告のしきい値を 1500 kB（1.5 MB）に引き上げる
     }
   },
+  prefetch: true,
   integrations: [
-    mermaid(),
     partytown({
       config: {
         forward: ['dataLayer.push'],
@@ -73,6 +73,6 @@ export default defineConfig({
   markdown: {
     // @ts-ignore
     remarkPlugins: [remarkGfm, remarkSmartypants, remarkMath],
-    rehypePlugins: [rehypeTypst],
+    rehypePlugins: [rehypeMermaid, rehypeTypst],
   }
 });
