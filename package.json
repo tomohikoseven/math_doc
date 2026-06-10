@@ -44,6 +44,7 @@
       "astro": "$astro"
     },
     "typescript": "$typescript",
+    "@astrojs/markdown-satteri": "$@astrojs/markdown-satteri",
     "@astrojs/check": {
       "typescript": "$typescript"
     },
