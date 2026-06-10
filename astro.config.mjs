@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
@@ -71,8 +72,9 @@ export default defineConfig({
     sitemap()
   ],
   markdown: {
-    // @ts-ignore
-    remarkPlugins: [remarkGfm, remarkSmartypants, remarkMath],
-    rehypePlugins: [rehypeMermaid, rehypeTypst],
+    processor: unified({
+      remarkPlugins: [remarkGfm, remarkSmartypants, remarkMath],
+      rehypePlugins: [rehypeMermaid, rehypeTypst],
+    })
   }
 });
