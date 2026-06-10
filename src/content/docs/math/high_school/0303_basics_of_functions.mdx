@@ -1,0 +1,124 @@
+---
+title: 数学Ⅲにおける関数の基礎は何か．
+description: 高校数学Ⅲで学ぶ「関数」の基礎概念について解説します。分数関数・無理関数、合成関数、逆関数といった新しい関数の概念がなぜ重要なのか、その本質に迫ります。
+lastUpdated: 2026-06-10
+---
+import FlatList from '/src/components/FlatList.astro';
+import ArticleTip from '/src/components/ArticleTip.astro';
+import Statements from '/src/components/Statements.astro';
+import Statement from '/src/components/Statement.astro';
+import FAQ from '/src/components/FAQ.astro';
+import { Steps } from '@astrojs/starlight/components';
+
+<ArticleTip title="数学Ⅲの関数の基礎は、新しい関数の「部品」と「操作」を理解することである。">
+　数学Ⅲの関数分野における基礎は、<b>「分数関数・無理関数という新しいグラフの形（部品）」</b>を知ることと、<b>「関数を組み合わせる（合成関数）、逆向きにたどる（逆関数）という関数の操作方法」</b>を習得することの2点である。
+</ArticleTip>
+
+　数学Ⅰ・Ⅱにおいて、私たちは一次関数、二次関数、三角関数、指数・対数関数など、様々な関数を学んできた。数学Ⅲの初めに学ぶ「関数」の単元では、それらをさらに拡張し、より複雑な事象を表現するための準備を行う。
+
+　ここでの学びは大きく分けて「新しい関数の習得」と「関数の新しい操作方法の習得」の2つに分類できる。
+
+## 新しい関数の部品：分数関数と無理関数
+
+　数学Ⅲでは、これまで扱えなかった新しい形の関数が登場する。それが「分数関数」と「無理関数」である。
+
+<Statements>
+<Statement title="分数関数" variant="example">
+　$display(y = k / (x - p) + q)$ のような、変数 $x$ が分母にある関数。双曲線を描き、決して交わらない「漸近線（ぜんきんせん）」を持つことが最大の特徴である。
+
+$$
+#import "/libs/cetz/src/lib.typ": canvas, draw
+
+#align(center)[
+  #canvas({
+    import draw: *
+    
+    // Axes
+    line((-2, 0), (4, 0), mark: (end: ">"), stroke: 0.5pt)
+    content((4.2, 0), [$x$])
+    line((0, -2), (0, 4), mark: (end: ">"), stroke: 0.5pt)
+    content((0, 4.2), [$y$])
+    content((-0.2, -0.2), [$O$])
+    
+    // Asymptotes
+    line((1, -2), (1, 4), stroke: (dash: "dashed", paint: gray))
+    line((-2, 1), (4, 1), stroke: (dash: "dashed", paint: gray))
+    
+    // y = 1 / (x - 1) + 1
+    let pts1 = range(-20, 7).map(x => (x/10, 1/(x/10 - 1) + 1))
+    line(..pts1, stroke: blue + 1pt)
+    let pts2 = range(14, 41).map(x => (x/10, 1/(x/10 - 1) + 1))
+    line(..pts2, stroke: blue + 1pt)
+    
+    content((3.5, 2.5), text(fill: blue)[$display(y = 1/(x-1) + 1)$])
+  })
+]
+$$
+</Statement>
+<Statement title="無理関数" variant="example">
+　$y = sqrt(a x + b)$ のような、変数 $x$ が根号（ルート）の中にある関数。放物線を横に倒して半分にしたような形をしており、定義域（ルートの中身が0以上）に制限があるのが特徴である。
+
+$$
+#import "/libs/cetz/src/lib.typ": canvas, draw
+
+#align(center)[
+  #canvas({
+    import draw: *
+    
+    // Axes
+    line((-1, 0), (4, 0), mark: (end: ">"), stroke: 0.5pt)
+    content((4.2, 0), [$x$])
+    line((0, -1), (0, 3), mark: (end: ">"), stroke: 0.5pt)
+    content((0, 3.2), [$y$])
+    content((-0.2, -0.2), [$O$])
+    
+    // y = sqrt(2x - 1)
+    let pts = range(5, 41).map(x => (x/10, calc.sqrt(2 * x/10 - 1)))
+    line(..pts, stroke: red + 1pt)
+    
+    content((2.0, 2.7), text(fill: red)[$y = sqrt(2x - 1)$])
+  })
+]
+$$
+</Statement>
+</Statements>
+
+　これらを学ぶ意義は、<b>「新しいグラフが書けるようになること」だけではない</b>。世の中の物理現象や自然現象の多くは、反比例（分数関数）や平方根に比例する関係（無理関数）で表される。これらの関数の形と性質（漸近線や定義域・値域）を直感的に捉えられるようになることが、今後の極限や微分の計算において不可欠な土台となるのである。
+
+## 関数の新しい操作：合成関数と逆関数
+
+　数学Ⅲの関数分野のもう一つの重要なテーマが、既存の関数を「操作」して新しい関数を作り出すことである。
+
+<Steps>
+
+1. <b>関数をつなげる：合成関数</b>
+
+   　2つの関数 $f(x)$ と $g(x)$ があるとき、ある関数の出力（結果）をそのまま別の関数の入力にする操作を「合成」といい、$y = f(g(x))$ と表す。
+   　例えば、$y = sqrt(x^2 + 1)$ という関数は、$g(x) = x^2 + 1$ と $f(x) = sqrt(x)$ を合成したものである。複雑な関数を「単純な関数の合成」として分解して見れるようになることが、後の「合成関数の微分法」で必須のスキルとなる。
+
+2. <b>関数を逆回しにする：逆関数</b>
+
+   　関数が「入力 $x$ から出力 $y$ を決めるルール」であるなら、逆に関数の「出力 $y$ から元の入力 $x$ を逆算するルール」が「逆関数」であり、$y = f^(-1)(x)$ と表す。
+   　例えば、$y = x^2$ （$x >= 0$）の逆関数は $y = sqrt(x)$ である。逆関数のグラフは、元のグラフと直線 $y = x$ に関して対称になるという美しい幾何学的な性質を持つ。
+
+</Steps>
+
+## よくある質問（FAQ）
+
+<Statements>
+<FAQ title="Q. なぜ数学Ⅲで急に合成関数や逆関数を学ぶのですか？">
+　**最大の理由は「微分積分」のための準備です**。数学Ⅲのメインテーマである微積分では、非常に複雑な式を扱います。その際、複雑な式を「簡単な関数の合成」と見なすことで計算をシンプルにするテクニック（合成関数の微分）を頻繁に使います。
+
+　また、関数とその逆関数の微分には密接な関係（逆関数の微分法）があり、これを理解するために逆関数の概念が欠かせないからです。
+</FAQ>
+</Statements>
+
+## まとめ
+
+数学Ⅲの関数分野の基礎については以下の通りである。
+<FlatList>
+- 分数関数と無理関数という新しいグラフ（部品）の形と性質（漸近線・定義域など）をマスターする。
+- 複数の関数をつなぎ合わせる「合成関数」の概念を理解し、複雑な式を分解できる視点を持つ。
+- 入力と出力を逆転させる「逆関数」の性質（直線 $y = x$ について対称など）を理解する。
+- これらの概念はすべて、後に続く極限や「微分積分」を自在に操るための重要な準備（ツール）である。
+</FlatList>
