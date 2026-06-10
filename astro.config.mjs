@@ -62,7 +62,7 @@ export default defineConfig({
       components: {
         Footer: './src/components/starlight/Footer.astro',
         Head: './src/components/starlight/Head.astro',
-        MarkdownContent: './src/components/starlight/MarkdownContent.astro',
+        PageFrame: './src/components/starlight/PageFrame.astro',
       },
       plugins: [
         starlightLinksValidator(),
