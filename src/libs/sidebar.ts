@@ -56,7 +56,21 @@ export const MATHEMATICS_GROUP = {
   label: '数学',
   collapsed: false,
   items: [
-    createAutoGroup('高校数学', 'math/high_school'),
+    {
+      label: '高校数学',
+      collapsed: true,
+      items: [
+        'math/high_school/0104_basics_of_combinatorics',
+        'math/high_school/0310_complex_number_plane',
+        'math/high_school/0400_math3c_integral_calculus',
+        'math/high_school',
+        {
+          label: '数学Ⅲ',
+          collapsed: true,
+          items: [{ autogenerate: { directory: 'math/high_school/math3', collapsed: true } }]
+        }
+      ]
+    },
     {
       label: '大学数学・専門',
       collapsed: true,
