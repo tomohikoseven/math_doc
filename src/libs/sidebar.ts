@@ -56,21 +56,33 @@ export const MATHEMATICS_GROUP = {
   label: '数学',
   collapsed: false,
   items: [
-    createAutoGroup('実数論', 'math/real_number'),
-    createAutoGroup('微分法', 'math/differential_method'),
-    createAutoGroup('積分法', 'math/integral_method'),
-    createAutoGroup('線形代数', 'math/linear_algebra'),
-    createAutoGroup('微積分 演習', 'math/calculus'),
     createAutoGroup('高校数学', 'math/high_school'),
     {
-      ...createAutoGroup('数学の基盤と構造', 'math/structures'),
-      badge: { text: 'HOT', variant: 'danger' },
+      label: '大学数学・専門',
+      collapsed: true,
+      items: [
+        {
+          ...createAutoGroup('数学の基盤と構造', 'math/structures'),
+          badge: { text: 'HOT', variant: 'danger' },
+        },
+        createAutoGroup('実数論', 'math/real_number'),
+        createAutoGroup('微分法', 'math/differential_method'),
+        createAutoGroup('積分法', 'math/integral_method'),
+        createAutoGroup('線形代数', 'math/linear_algebra'),
+        createAutoGroup('微積分 演習', 'math/calculus'),
+      ]
     },
     {
-      ...createAutoGroup('数学エッセイ', 'math/essays'),
-      badge: { text: 'HOT', variant: 'danger' },
-    },
-    MATH_DIALY,
+      label: 'エッセイ・記録',
+      collapsed: true,
+      items: [
+        {
+          ...createAutoGroup('数学エッセイ', 'math/essays'),
+          badge: { text: 'HOT', variant: 'danger' },
+        },
+        MATH_DIALY,
+      ]
+    }
   ],
 };
 
@@ -78,7 +90,7 @@ export const MATHEMATICS_GROUP = {
 export const SIDEBAR_TOPICS = [
   {
     label: '数学',
-    link: '/math/real_number/',
+    link: '/math/',
     icon: 'open-book',
     items: MATHEMATICS_GROUP.items,
   },
