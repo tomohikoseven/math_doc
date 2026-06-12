@@ -7,7 +7,7 @@ import { Card } from "@astrojs/starlight/components";
 
 <Card title="問69">
 $$
-abs(u_n) <= abs(v_n) "かつ" lim_(n->oo) v_n = 0" ならば，" lim_(n->oo) u_n = 0 "であることを証明せよ．"
+abs(u_n) <= abs(v_n) "かつ" lim_(n->infinity) v_n = 0" ならば，" lim_(n->infinity) u_n = 0 "であることを証明せよ．"
 $$
 </Card>
 
@@ -18,12 +18,12 @@ $$
 ## 解答
 　はさみうちの原理を使って示します．
 
-　まず，問の仮定から $ -abs(v_n) <= u_n <= abs(v_n) $ となります．よって，$lim_(n->oo) abs(v_n) = 0$ であればよいです．
+　まず，問の仮定から $ -abs(v_n) <= u_n <= abs(v_n) $ となります．よって，$lim_(n->infinity) abs(v_n) = 0$ であればよいです．
 
-　$ lim_(n->oo) v_n = 0$ から $lim_(n->oo) abs(v_n) = 0$ は示せます．
+　$ lim_(n->infinity) v_n = 0$ から $lim_(n->infinity) abs(v_n) = 0$ は示せます．
 $$
 abs(abs(v_n) -0) = abs(abs(v_n)) = abs(v_n) = abs(v_n -0) < epsilon
 $$
 だからです（簡単にですが，示せました）．
 
-　極限の加法から，$lim_(n->oo) -abs(v_n) = lim_(n->oo) (-1)*lim_(n->oo) abs(v_n) = -1 * 0 = 0$．したがって，はさみうちの原理より，$lim_(n->oo) u_n = 0$．
+　極限の加法から，$lim_(n->infinity) -abs(v_n) = lim_(n->infinity) (-1)*lim_(n->infinity) abs(v_n) = -1 * 0 = 0$．したがって，はさみうちの原理より，$lim_(n->infinity) u_n = 0$．

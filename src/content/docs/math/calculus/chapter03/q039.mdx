@@ -6,7 +6,7 @@ lastUpdated: 2025-07-30
 import { Card } from "@astrojs/starlight/components";
 
 <Card title="問39">
-$lim_(n->oo) abs(u_n) = 0$ ならば $lim_(n->oo) u_n = 0$ を証明せよ．逆は真であるか．
+$lim_(n->infinity) abs(u_n) = 0$ ならば $lim_(n->infinity) u_n = 0$ を証明せよ．逆は真であるか．
 </Card>
 
 ## 証明の方針
@@ -21,11 +21,11 @@ n > N => abs(abs(u_n) - 0) < epsilon
 $$
 となる．
 
-　$abs(abs(u_n) -0) = abs(abs(u_n)) = abs(u_n)$ なので，$abs(u_n) < epsilon$ ということになる．これは $lim_(n->oo) u_n = 0$ そのままである．よって示せた．
+　$abs(abs(u_n) -0) = abs(abs(u_n)) = abs(u_n)$ なので，$abs(u_n) < epsilon$ ということになる．これは $lim_(n->infinity) u_n = 0$ そのままである．よって示せた．
 
 ### 逆は真か
 <Card title="逆">
-$lim_(n->oo) u_n = 0$ ならば $lim_(n->oo) abs(u_n) = 0$．
+$lim_(n->infinity) u_n = 0$ ならば $lim_(n->infinity) abs(u_n) = 0$．
 </Card>
 
 　真である．
@@ -33,5 +33,5 @@ $lim_(n->oo) u_n = 0$ ならば $lim_(n->oo) abs(u_n) = 0$．
 　$abs(abs(u_n) - 0) < epsilon$ を示す．三角不等式($abs(abs(a)-abs(b)) <= abs(a-b)$)より，$abs(abs(u_n) -0) <= abs(u_n -0)$ である．書くほどではないが $abs(u_n -0) = abs(u_n)$ から，$abs(abs(u_n) -0) <= abs(u_n)$．仮定より，$abs(u_n) < epsilon$ なので，合わせると $abs(abs(u_n)-0) < epsilon$ となる．（面倒なので，定義から書き下していない．）したがって，逆は真である．
 
 ## まとめ
-- $lim_(n->oo) u_n = 0$ ならば $lim_(n->oo) abs(u_n) = 0$ は真．
-- $lim_(n->oo) abs(u_n) = 0$ ならば $lim_(n->oo) u_n = 0$ も真．
+- $lim_(n->infinity) u_n = 0$ ならば $lim_(n->infinity) abs(u_n) = 0$ は真．
+- $lim_(n->infinity) abs(u_n) = 0$ ならば $lim_(n->infinity) u_n = 0$ も真．
