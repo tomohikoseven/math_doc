@@ -1,0 +1,87 @@
+---
+title: 論理命題の同値変形問題
+description: 命題「(P or Q) => R」と同値である命題を探す論理学の問題について、ド・モルガンの法則や分配法則などの同値変形を用いた解法を解説する。論理式の変形過程を一つずつ段階的に示し、最終的に「(P => R) and (Q => R)」と同値であることを導き出す。
+lastUpdated: 2026-06-15
+---
+
+import FlatList from '/src/components/FlatList.astro';
+import Statements from '/src/components/Statements.astro';
+import Statement from '/src/components/Statement.astro';
+
+この記事では、命題 $(P or Q) => R$ と同値な命題を求める問題の解法を解説する。
+結論から述べると、同値な命題は $(P => R) and (Q => R)$ である。
+
+## 問題
+
+このセクションでは、書籍『集合・写像・論理 数学の基本を学ぶ』(中島匠一 著)に掲載されている論理命題の問題（問題5.3）の内容を提示する。
+
+
+<Statements>
+<Statement title="問題5.3" variant="term">
+
+$P, Q, R$ は命題だとする。このとき、命題「$(P or Q) => R$」と同値である命題は次のうちどれか。
+
+<FlatList>
+- (1) $(P => R) or (Q => R)$
+- (2) $(P => R) and (Q => R)$
+- (3) $(P and R) => not Q$
+- (4) $P => (R or not Q)$
+</FlatList>
+
+</Statement>
+</Statements>
+
+## 解法
+
+このセクションでは、論理学における同値変形を用いて問題の命題を段階的に変形し、正解を導く手順を解説する。
+
+### 1. 含意の解消
+
+まず、含意を論理積や論理和などの基本演算子のみで表現する。
+
+命題 $A => B$ は、論理学的に $not A or B$ と同値である。
+これを用いて、与えられた命題を変形する。
+
+$$
+(P or Q) => R equiv not(P or Q) or R
+$$
+
+### 2. ド・モルガンの法則
+
+次に、ド・モルガンの法則を用いて否定のスコープを小さくする。
+
+ド・モルガンの法則 $not(A or B) equiv not A and not B$ を適用する。
+
+$$
+not(P or Q) or R equiv (not P and not Q) or R
+$$
+
+### 3. 分配法則
+
+続いて、論理和を分配して式を展開する。
+
+分配法則 $(A and B) or C equiv (A or C) and (B or C)$ を適用する。
+
+$$
+(not P and not Q) or R equiv (not P or R) and (not Q or R)
+$$
+
+### 4. 含意への再変換
+
+最後に、変形した各項を再び含意の形に戻す。
+
+<FlatList>
+- $not P or R equiv P => R$
+- $not Q or R equiv Q => R$
+</FlatList>
+
+よって、次のように同値変形できる。
+
+$$
+(not P or R) and (not Q or R) equiv (P => R) and (Q => R)
+$$
+
+## 結論
+
+以上の変形により、$(P or Q) => R$ は $(P => R) and (Q => R)$ と同値であることが示された。
+したがって、<u><b>正解の選択肢は (2)</b></u> である。
