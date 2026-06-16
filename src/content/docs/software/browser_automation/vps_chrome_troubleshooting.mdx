@@ -1,0 +1,315 @@
+---
+title: go-rodを使ってLinux VPS(VNC)上でChromeのGUIを起動するまでの激闘と解決策
+description: Go言語のブラウザ自動化ライブラリであるgo-rodを使い、Linux VPS上でChromeのGUIを立ち上げる際に遭遇した画面非表示やゾンビプロセスのトラブルシューティングと最終的な解決策をまとめた備忘録。
+lastUpdated: 2026-06-17
+---
+
+import FlatList from '/src/components/FlatList.astro';
+
+Go言語のブラウザ自動化ライブラリである `go-rod` を使い、Linux VPS（VNC環境）上でChromeの画面（GUI）を立ち上げようとしたところ、数々の罠に遭遇した。
+本記事では、画面が表示されない問題から、ゾンビプロセスのエラーに至るまでの実際のトラブルシューティングの過程と、最終的な解決策（完全なコード付き）を備忘録としてまとめる。
+
+## 構成・やりたいこと
+
+本記事の前提となる環境構成と達成したい目的を以下に示す。
+
+<FlatList>
+- <b>環境</b>：XServer VPS, Ubuntu系Linux, VNCによるデスクトップ環境（VNCコンソールでログイン）
+- <b>言語/ライブラリ</b>：Go + `go-rod` v0.116.2
+- <b>目的</b>：普段はヘッドレス（画面なし）で自動化処理を回すが、初回だけ手動ログイン（Cookie保存）をするためにGUI付きでChromeを立ち上げる。
+</FlatList>
+
+> <b>ポイント</b>：VNCコンソール（デスクトップ環境）は存在している。Chromeのアイコンをクリックすれば普通にブラウザが立ち上がる。ところが、プログラム（go-rod）や端末からコマンドで起動しようとすると画面が出ない——という非常にやっかいな問題である。
+
+## 遭遇した問題と解決策
+
+VPS上でGUI表示を行う際に発生した5つの主要な罠と、それらの解決策を順に解説する。
+
+### 罠1：プログラム終了と同時にブラウザが消滅する
+
+<b>【現象】</b>
+`--allLogin` オプションを付けてプログラムを実行すると、ターミナルにログだけが出て、一瞬で処理が終わり画面が表示されない。（Windows環境では正常に動作していた）
+
+```
+モッピーのログイン画面を開きます。ログイン後、手動でブラウザを閉じてください。
+楽天のログイン画面を開きます。ログイン後、手動でブラウザを閉じてください。
+ECナビのログイン画面を開きます。ログイン後、手動でブラウザを閉じてください。
+アメフリのログイン画面を開きます。ログイン後、手動でブラウザを閉じてください。
+```
+
+<b>【原因】</b>
+VNCコンソールからLinux環境に接続して実行した場合、親プロセスであるGoのプログラムが終了すると、連動して子プロセスのChromeも強制終了（kill）されてしまっていた。Windowsではこの挙動が異なるため、同じコードでも動作に差が出ていた。
+
+<b>【解決策】</b>
+ログイン処理が終わるまでGoプログラムを終了させないよう、`bufio.NewReader(os.Stdin).ReadBytes('\n')` を使って「Enterキーが押されるまで待機する」処理を追加した。
+
+### 罠2：端末からChromeコマンドを叩いてもブラウザが表示されない
+
+<b>【現象】</b>
+ターミナルから `google-chrome` と打っても、VNCの画面上にブラウザが全く表示されない。コンソールには以下のようなエラーが延々と出力される。
+
+```
+libva error: /usr/lib/x86_64-linux-gnu/dri/virtio_gpu_drv_video.so init failed
+[2756:2756:ERROR:media/gpu/vaapi/vaapi_wrapper.cc:1658] vaInitialize failed: resource allocation failed
+[2717:2741:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+```
+
+<b>【原因の切り分け】</b>
+ここで重要な発見があった。<b>VNCデスクトップにあるChromeのアイコンをクリックすると、ブラウザが正常に立ち上がる</b>のである。
+「アイコンからは動くのに、端末からのコマンドでは動かない」——この差はどこにあるのか？
+VNCのアプリランチャーが実際に呼び出しているコマンドを調べると、以下であった。
+
+```bash
+/usr/bin/google-chrome-stable --flag-switches-begin --flag-switches-end --ozone-platform=x11
+```
+
+<b>【原因】</b>
+`--ozone-platform=x11` というオプションがポイントである。VPSのVNC環境はX11ベースの描画システムを使っているが、ChromeはデフォルトでX11以外の描画モードを試みてしまい、結果として画面が不可視化（もしくは描画失敗）していた。
+なお、`libva error` や `vaInitialize failed` といったエラーは「VPSに物理GPU（グラフィックカード）がない」という環境起因の無害な警告であり、画面が表示されない直接の原因ではない。これに惑わされてしまうのがこの問題の難しいところである。
+
+<b>【解決策】</b>
+Chromeの起動オプションに `--ozone-platform=x11` を付与して、描画エンジンを強制的にX11に指定する。これで端末からのコマンドでもブラウザ画面が立ち上がるようになった。
+
+### 罠3：go-rodが裏で付与する大量の隠しオプション
+
+<b>【現象】</b>
+手動コマンドで `--ozone-platform=x11` を付けると画面が出るようになったので、go-rodのコードにも同じオプションを追加した。
+
+```go
+launcher.New().Set("ozone-platform", "x11")
+```
+
+ところが、それでもgo-rod経由で起動するとブラウザ画面が表示されない。`DevTools listening on ws://...` という起動成功のログは出ているのに、画面が一切出ない謎の状態である。
+
+<b>【原因】</b>
+`launcher.New()` を使うと、go-rodは自動化を安定させるために裏側で数十個の独自起動オプション（ヘッドレス関連、`--disable-gpu` など）を自動付与する。これらが `--ozone-platform=x11` と競合してしまい、描画に失敗していた。
+
+<b>【解決策】</b>
+`launcher.New()` の代わりに <b>`launcher.NewUserMode()`</b> を使用する。これはgo-rod側の自動付与オプションを一切付けない「まっさらな起動モード」である。ここに必要なオプションだけを自分で足していく形にする。
+
+```go
+launcher.NewUserMode().
+    Set("ozone-platform", "x11").
+    // ...他のオプション
+```
+
+### 罠4：launcher.LookPath()がSnap版のChromeを掴んでしまう
+
+<b>【現象】</b>
+`NewUserMode()` に切り替えてもまだ不安定。ログを確認すると `[Info] 起動するブラウザのパス:` が `/usr/bin/google-chrome-stable` を指していない。
+
+<b>【原因】</b>
+go-rodの `launcher.LookPath()` は、内部的に以下のような検索順でブラウザを探す。
+
+`"google-chrome"` → `"chromium"` → `"chromium-browser"` → `"google-chrome-stable"` → ...
+
+UbuntuなどのLinux環境では、公式の `.deb` インストール版 `google-chrome-stable` が見つかる前に、権限が厳しく制限された <b>Snap版の `chromium`</b> が先にヒットしてしまうことがある。Snap版はサンドボックス制限が強く、VNC環境での描画が正常に動作しないなどの問題を引き起こす。
+端末から `/usr/bin/google-chrome-stable` と<b>フルパスで指定した場合は動いた</b>のは、まさにこれが原因であった。
+
+<b>【解決策】</b>
+Goのコード側で、OSがLinuxの場合に `/usr/bin/google-chrome-stable` が存在すれば強制的にそのパスを使うように記述する。
+
+```go
+if runtime.GOOS == "linux" {
+    if _, err := os.Stat("/usr/bin/google-chrome-stable"); err == nil {
+        path = "/usr/bin/google-chrome-stable"
+    }
+}
+```
+
+これにより、VNCデスクトップのアイコンクリックと100%同じ実行ファイルがプログラムから呼ばれることが保証される。
+
+### 罠5：ゾンビプロセスによるセッションロック
+
+<b>【現象】</b>
+ついに起動に成功！　ところが、ブラウザを閉じて再度プログラムを実行すると以下のいずれかのエラーが出て起動できなくなる。
+
+```
+ブラウザ起動に失敗しました: [launcher] Failed to get the debug url: 既存のブラウザ セッションで開いています。
+```
+
+または、複数のURLをShellコマンドで同時に渡した際に：
+
+```
+[ERROR:chrome/app/chrome_main.cc:171] Multiple targets are not supported in headless mode.
+```
+
+<b>【原因】</b>
+Chromeには「<b>同じ `UserDataDir`（ユーザーデータフォルダ）を使えるプロセスは、同時に1つだけ</b>」という絶対ルールがある。
+
+エラーや `Ctrl+C` による強制終了の際に、Chromeのウィンドウが閉じてもバックグラウンドプロセスが生き残る（ゾンビ化）ことがある。この状態で新しいChromeを起動しようとすると、新しいプロセスが「先輩（ゾンビ）がいる」と判断して即時終了する。go-rodはその自滅を「起動失敗」として検知し、エラーを出す。
+
+`Multiple targets are not supported in headless mode.` が出たのも同じ原因で、既存のゾンビプロセスが存在したため、新しく起動しようとしたChromeが自動的にHeadlessモードに切り替わり、その状態では複数URLの同時処理ができないと自爆したものである。
+
+<b>【解決策（3段構え）】</b>
+
+<FlatList>
+- 1. <b>まずゾンビを一掃する（その場の応急処置）</b>：
+   ```bash
+   killall chrome chromium chromium-browser google-chrome-stable google-chrome
+   ```
+- 2. <b>Chromeがバックグラウンドに残り続ける仕様を無効化する（起動オプション）</b>：
+   ```go
+   Set("disable-background-mode")
+   ```
+- 3. <b>プログラム終了時に確実にCloseする（Goのコード側）</b>：
+   `defer browser.Close()` をブラウザ生成直後に宣言し、どんな終了ルートを通っても確実にブラウザを閉じる。
+</FlatList>
+
+### おまけ：VPS向けの軽量化と日本語化
+
+VPSはメモリやCPUリソースが限られているため、自動化に不要な機能をオフにする軽量化オプションも合わせて追加した。
+
+| オプション | 効果 |
+|---|---|
+| `--disable-extensions` | 拡張機能を無効化（メモリ大幅削減） |
+| `--disable-sync` | Googleアカウント自動同期を無効化 |
+| `--disable-background-networking` | 裏でのアップデート通信を無効化 |
+| `--disable-default-apps` | デフォルトアプリの読み込みを無効化 |
+| `--no-first-run` | 初回起動セットアップをスキップ |
+| `--no-default-browser-check` | デフォルトブラウザの確認をスキップ |
+| `--lang=ja` / `--accept-lang=ja,en-US,en` | 表示言語を日本語に固定 |
+
+## 最終的な実装コード
+
+これまでの罠を回避した、最終的な実装コードを紹介する。
+
+これらすべての罠を回避した、最終的な `getLauncher()` 関数と `HandleAllLogin()` 関数のコードである。
+
+```go
+package browser
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"path/filepath"
+	"runtime"
+
+	"github.com/go-rod/rod"
+	"github.com/go-rod/rod/lib/launcher"
+)
+
+const userDataDirName = "rod-user-data-gmail"
+
+func getLauncher(display bool) *launcher.Launcher {
+	cwd, _ := os.Getwd()
+	userDataDir := filepath.Join(cwd, ".tmp", userDataDirName)
+
+	// システムにインストールされているChrome（またはEdge）のパスを自動検索
+	path, _ := launcher.LookPath()
+
+	// 罠4対策：Linux環境でSnap版Chromiumが優先されてクラッシュするのを防ぐため、
+	// 安定版の google-chrome-stable が存在する場合は強制的にそちらを使う
+	if runtime.GOOS == "linux" {
+		if _, err := os.Stat("/usr/bin/google-chrome-stable"); err == nil {
+			path = "/usr/bin/google-chrome-stable"
+		}
+	}
+
+	fmt.Printf("[Info] 起動するブラウザのパス: %s\n", path)
+
+	// 罠3対策：go-rodの隠しオプションをリセットする NewUserMode() を使用
+	l := launcher.NewUserMode().
+		Bin(path).
+		UserDataDir(userDataDir).
+		Set("remote-debugging-port", "0"). // go-rodとの通信に必須
+		Set("ozone-platform", "x11").      // 罠2対策：VNC/Linux環境で必須の描画エンジン指定
+		// 日本語化
+		Set("lang", "ja").
+		Set("accept-lang", "ja,en-US,en").
+		// 軽量化・罠5対策（ゾンビ化防止）
+		Set("disable-extensions").
+		Set("disable-sync").
+		Set("disable-background-networking").
+		Set("disable-background-mode"). // バックグラウンド処理を完全に無効化してゾンビ化を防ぐ
+		Set("disable-default-apps").
+		Set("no-first-run").
+		Set("no-default-browser-check").
+		Logger(os.Stdout)
+
+	// 画面なし（自動化）で動かす時の設定
+	if !display {
+		l = l.Headless(true)
+	}
+
+	return l
+}
+
+// HandleAllLogin はすべてのログイン画面を別タブで起動します
+func HandleAllLogin() {
+	fmt.Println("ログイン画面を開くためのブラウザを起動しています...")
+
+	u, err := getLauncher(true).Launch()
+	if err != nil {
+		fmt.Printf("ブラウザ起動に失敗しました: %v\n", err)
+		return
+	}
+
+	browser := rod.New().ControlURL(u).MustConnect()
+	// 罠5対策：プログラム終了時（Enter押下時）に確実にブラウザとプロセスをキルする
+	defer browser.Close()
+
+	loginSites := []struct {
+		Name string
+		URL  string
+	}{
+		{"モッピー", "https://ssl.pc.moppy.jp/login/"},
+		{"楽天", "https://login.account.rakuten.com/sso/authorize?..."},
+		{"ECナビ", "https://ecnavi.jp/login/"},
+		{"アメフリ", "https://amefri.net/login"},
+	}
+
+	for _, site := range loginSites {
+		fmt.Printf("%sのログイン画面を開きます。\n", site.Name)
+		page := browser.MustPage()
+		err := page.Navigate(site.URL)
+		if err != nil {
+			fmt.Printf("  -> URLの表示に失敗しました: %v\n", err)
+		} else {
+			page.WaitLoad()
+		}
+	}
+
+	// 罠1対策：Goプログラムが終了するとブラウザも道連れになるため、Enterキーまで待機する
+	fmt.Println("\n=======================================================")
+	fmt.Println("すべてのログイン画面を開きました。")
+	fmt.Println("手動でログイン作業を行ってください。")
+	fmt.Println("作業が完了したら、この画面で Enter キーを押してプログラムを終了してください。")
+	fmt.Println("（終了時に裏で動いているブラウザプロセスもすべて綺麗に消去されます）")
+	fmt.Println("=======================================================")
+	bufio.NewReader(os.Stdin).ReadBytes('\n')
+}
+```
+
+## 起動できない時の確認チェックリスト
+
+起動に失敗する場合に確認すべき手順をまとめる。
+
+もし `既存のブラウザ セッションで開いています。` などのエラーが出た場合、以下の手順を実行する。
+
+<FlatList>
+- 1. <b>ゾンビプロセスを確認・一掃する</b>
+   ```bash
+   ps aux | grep chrome
+   killall google-chrome-stable
+   ```
+- 2. <b>UserDataDirのロックファイルを削除する</b>（必要な場合のみ）
+   ```bash
+   rm -rf .tmp/rod-user-data-gmail/SingletonLock
+   ```
+- 3. <b>それでもダメな場合はUserDataDirを初期化する</b>（Cookieは失われる）
+   ```bash
+   rm -rf .tmp/rod-user-data-gmail
+   ```
+</FlatList>
+
+## まとめ
+
+VPSのVNC環境でのブラウザ自動化における主要な要点と解決策を整理する。
+
+<FlatList>
+- 「LinuxのGUI仕様（X11/Wayland）」「Chromeのバックグラウンド挙動とゾンビ化」「go-rodの隠し起動オプション」「Snap版Chromiumの優先問題」の4つが複雑に絡み合って、非常にデバッグが困難な問題であった。
+- <b>解決への最大の突破口</b>は、「VNCデスクトップのアイコンクリックで起動するChromeのコマンドを調べる」ことであった。アイコンに設定された起動コマンド `/usr/bin/google-chrome-stable --ozone-platform=x11` を発見したことで、「どのパスのどのバイナリを、どのオプションで起動すればよいか」という正解が判明し、そこからコードに逆移植する形で解決できた。
+- 同様の構成（Linux VPS + go-rod等）でGUIが出ない、セッションエラーに悩まされている場合の参考として活用できる。
+</FlatList>
