@@ -118,6 +118,9 @@ export const collections = {
 		schema: docsSchema({
 			extend: z.object({
 				schema: z.union([z.any(), z.array(z.any())]).optional(),
+				// OKF (Open Knowledge Format) fields
+				type: z.string().optional(),
+				resource: z.string().optional(),
 			}),
 		}),
 	}),
