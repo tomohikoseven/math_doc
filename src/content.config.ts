@@ -23,17 +23,18 @@ const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000;
  */
 function getFileTimestamps(filePath: string, now: number): { mtimeMs: number, ctimeMs: number } {
 	const twoWeeksAgoSec = Math.floor((now - TWO_WEEKS_MS) / 1000);
+	const gitPath = filePath.replace(/\\/g, '/');
 
 	try {
 		// 過去2週間以内のコミット履歴を新しい順に取得
-		const recentOutput = execSync(`git log --since="@${twoWeeksAgoSec}" --format="%ct" -- "${filePath}"`, { encoding: 'utf-8' }).trim();
+		const recentOutput = execSync(`git log --since="@${twoWeeksAgoSec}" --format="%ct" -- "${gitPath}"`, { encoding: 'utf-8' }).trim();
 		
 		if (recentOutput) {
 			const recentLines = recentOutput.split('\n');
 			const mtimeMs = parseInt(recentLines[0], 10) * 1000;
 			
 			// 過去2週間より前のコミットが存在するかチェック (1件見つかれば十分なので-1)
-			const oldOutput = execSync(`git log -1 --before="@${twoWeeksAgoSec}" --format="%ct" -- "${filePath}"`, { encoding: 'utf-8' }).trim();
+			const oldOutput = execSync(`git log -1 --before="@${twoWeeksAgoSec}" --format="%ct" -- "${gitPath}"`, { encoding: 'utf-8' }).trim();
 			if (oldOutput) {
 				// 過去2週間より前にもコミットがある -> 新規作成ではない（ctimeは2週間より前になる適当な値でよい）
 				return { mtimeMs, ctimeMs: now - TWO_WEEKS_MS - 1000 };
@@ -43,7 +44,7 @@ function getFileTimestamps(filePath: string, now: number): { mtimeMs: number, ct
 			}
 		} else {
 			// 過去2週間以内にコミットがない場合、そもそも履歴があるかチェック (1件)
-			const anyOutput = execSync(`git log -1 --format="%ct" -- "${filePath}"`, { encoding: 'utf-8' }).trim();
+			const anyOutput = execSync(`git log -1 --format="%ct" -- "${gitPath}"`, { encoding: 'utf-8' }).trim();
 			if (anyOutput) {
 				// コミットはあるが全て2週間より前 -> NEWでもUPDでもない
 				const timeMs = now - TWO_WEEKS_MS - 1000;
@@ -53,6 +54,7 @@ function getFileTimestamps(filePath: string, now: number): { mtimeMs: number, ct
 		}
 	} catch (e) {
 		// gitコマンド失敗時などはファイルシステムにフォールバック
+		console.warn(`[content.config.ts] git command failed for ${gitPath}:`, e);
 	}
 
 	// Git履歴から取得できない場合のフォールバック（ファイルシステム）
