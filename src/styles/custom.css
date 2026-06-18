@@ -104,41 +104,6 @@ svg.icon {
   background-color: var(--sl-color-bg-nav) !important;
 }
 
-/* --- Premium Cards (Layer 2) --- */
-/* .card,
-.sl-link-card {
-  background-color: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
-  border-radius: 12px !important;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-}
-
-.card:hover,
-.sl-link-card:hover {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
-  transform: translateY(-2px);
-}
-
-:root[data-theme='dark'] .card,
-:root[data-theme='dark'] .sl-link-card {
-  background-color: #18181b !important;
-  // Zinc 900
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
-}
-
-:root[data-theme='dark'] .card:hover,
-:root[data-theme='dark'] .sl-link-card:hover {
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-}
-
-.badge-archive {
-  background-color: transparent !important;
-  color: var(--sl-color-gray-3) !important;
-  border-color: var(--sl-color-gray-4) !important;
-} */
 
 /* ====================== */
 /* 左側ツリー（サイドバー）のホバーエフェクト */
