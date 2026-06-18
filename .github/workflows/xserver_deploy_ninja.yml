@@ -1,8 +1,5 @@
 name: Deploy to Ninja Homepage
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 on:
   push:
     branches:
@@ -18,12 +15,12 @@ jobs:
 
     steps:
     - name: Check out the repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
     - name: Set up Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: 24
 
@@ -37,7 +34,7 @@ jobs:
         sudo fc-cache -fv # フォントキャッシュを更新 
 
     - name: Set up Typst
-      uses: typst-community/setup-typst@v4
+      uses: typst-community/setup-typst@v5
       with:
         typst-version: 0.14.2
 
