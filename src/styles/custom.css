@@ -76,32 +76,6 @@ svg.icon {
 }
 
 
-
-
-/* ====================== */
-/* スマホ版メニューボタンの改善 */
-/* ====================== */
-/* @media (max-width: 50rem) {
-  starlight-menu-button button {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.1rem;
-    padding: 0.3rem !important;
-}
-
-starlight-menu-button button::after {
-  content: "Menu";
-  font-size: 0.65rem;
-  margin-left: 0;
-  line-height: 1;
-  font-weight: normal;
-}
-} */
-
-
-
 /* ====================== */
 /* 独自バッジスタイル     */
 /* ====================== */
@@ -111,14 +85,17 @@ starlight-menu-button button::after {
 :root {
   /* ライトモード: 統一された白いキャンバス */
   --sl-color-bg: #ffffff;
-  --sl-color-bg-nav: #f8fafc; /* サイドバーはごく僅かにグレーがかった白 */
+  --sl-color-bg-nav: #f8fafc;
+  /* サイドバーはごく僅かにグレーがかった白 */
 }
 
 :root[data-theme='dark'] {
   /* ダークモード: ナビ/目次とツリー/記事でコントラストをつける */
-  --sl-color-bg: #09090b !important; /* ツリー・記事（黒） */
-  --sl-color-bg-nav: #131316 !important; /* ナビ・目次（わずかに明るい黒） */
-  --sl-color-black: #09090b !important; 
+  --sl-color-bg: #09090b !important;
+  /* ツリー・記事（黒） */
+  --sl-color-bg-nav: #131316 !important;
+  /* ナビ・目次（わずかに明るい黒） */
+  --sl-color-black: #09090b !important;
 }
 
 /* サイドバー領域（左右）はヘッダー（ナビ）と同じ背景色で統一する */
@@ -128,7 +105,7 @@ starlight-menu-button button::after {
 }
 
 /* --- Premium Cards (Layer 2) --- */
-.card,
+/* .card,
 .sl-link-card {
   background-color: #ffffff !important;
   border: 1px solid #e2e8f0 !important;
@@ -145,7 +122,8 @@ starlight-menu-button button::after {
 
 :root[data-theme='dark'] .card,
 :root[data-theme='dark'] .sl-link-card {
-  background-color: #18181b !important; /* Zinc 900 */
+  background-color: #18181b !important;
+  // Zinc 900
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4) !important;
 }
@@ -160,7 +138,7 @@ starlight-menu-button button::after {
   background-color: transparent !important;
   color: var(--sl-color-gray-3) !important;
   border-color: var(--sl-color-gray-4) !important;
-}
+} */
 
 /* ====================== */
 /* 左側ツリー（サイドバー）のホバーエフェクト */

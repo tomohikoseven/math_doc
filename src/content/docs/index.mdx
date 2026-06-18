@@ -14,7 +14,8 @@ hero:
 lastUpdated: 2025-04-29
 ---
 
-import { Card, CardGrid, LinkCard, Badge, Aside } from '@astrojs/starlight/components';
+import { Card, CardGrid, Badge, Aside } from '@astrojs/starlight/components';
+import { ShowcaseText } from 'starlight-showcases';
 import BuyMeACoffeeCard from '../../components/BuyMeACoffeeCard.astro';
 import LinkList from '../../components/LinkList.astro';
 
@@ -28,23 +29,25 @@ import LinkList from '../../components/LinkList.astro';
 
 
 
-<CardGrid>
-	<LinkCard
-		title="数学の基盤と構造"
-		description="現代数学を形作る「構造」という視点と，その基盤となる集合・写像・論理を解説します。"
-		href="/math/structures/0009_what_is_structure/"
-	/>
-	<LinkCard
-		title="数学エッセイ"
-		description="数学全般に関するエッセイです．"
-		href="/math/essays/0001_how_to_study_math/"
-	/>
-	<LinkCard
-		title="読書・学習・ライフ"
-		description="読書メモ・学習法・ライフスタイルに関する記事です。"
-		href="/learning/study/0500_improve_memory/"
-	/>
-</CardGrid>
+<ShowcaseText
+	entries={[
+		{
+			title: "数学の基盤と構造",
+			description: "現代数学を形作る「構造」という視点と，その基盤となる集合・写像・論理を解説します。",
+			href: "/math/structures/0009_what_is_structure/"
+		},
+		{
+			title: "数学エッセイ",
+			description: "数学全般に関するエッセイです．",
+			href: "/math/essays/0001_how_to_study_math/"
+		},
+		{
+			title: "読書・学習・ライフ",
+			description: "読書メモ・学習法・ライフスタイルに関する記事です。",
+			href: "/learning/study/0500_improve_memory/"
+		}
+	]}
+/>
 
 ---
 
@@ -79,62 +82,68 @@ import LinkList from '../../components/LinkList.astro';
 
 ## 読書・学習・ライフ
 
-<CardGrid>
-	<LinkCard
-		title="読書"
-		description="読書メモや書評に関する記事です。"
-		href="/learning/readbook/0501_the_7_habits_1/"
-	/>
-	<LinkCard
-		title="学習"
-		description="学習法や学びに関する記事です。"
-		href="/learning/study/0500_improve_memory/"
-	/>
-	<LinkCard
-		title="生活"
-		description="ライフスタイルや健康など、生活に関する記事です。"
-		href="/learning/life/0506_breathwork_brain_switch/"
-	/>
-</CardGrid>
+<ShowcaseText
+	entries={[
+		{
+			title: "読書",
+			description: "読書メモや書評に関する記事です。",
+			href: "/learning/readbook/0501_the_7_habits_1/"
+		},
+		{
+			title: "学習",
+			description: "学習法や学びに関する記事です。",
+			href: "/learning/study/0500_improve_memory/"
+		},
+		{
+			title: "生活",
+			description: "ライフスタイルや健康など、生活に関する記事です。",
+			href: "/learning/life/0506_breathwork_brain_switch/"
+		}
+	]}
+/>
 
 ---
 
 ## ソフトウェア
 
-<CardGrid>
-	<LinkCard
-		title="Astro"
-		description="Astroフレームワークに関する技術メモです．"
-		href="/software/astro/astro_components_steps/"
-	/>
-	<LinkCard
-		title="ブラウザ自動操作"
-		description="ブラウザの自動操作に関する技術メモです．"
-		href="/software/browser_automation/adb_intro_blog/"
-	/>
-	<LinkCard
-		title="楽天"
-		description="自作プログラムによる楽天ラッキーくじの当選をまとめています．"
-		href="/software/rakuten/2024/"
-	/>
-	<LinkCard
-		title="その他"
-		description="その他のソフトウェア・技術に関するメモです．"
-		href="/software/other/program_structure/"
-	/>
-</CardGrid>
+<ShowcaseText
+	entries={[
+		{
+			title: "Astro",
+			description: "Astroフレームワークに関する技術メモです．",
+			href: "/software/astro/astro_components_steps/"
+		},
+		{
+			title: "ブラウザ自動操作",
+			description: "ブラウザの自動操作に関する技術メモです．",
+			href: "/software/browser_automation/adb_intro_blog/"
+		},
+		{
+			title: "楽天",
+			description: "自作プログラムによる楽天ラッキーくじの当選をまとめています．",
+			href: "/software/rakuten/2024/"
+		},
+		{
+			title: "その他",
+			description: "その他のソフトウェア・技術に関するメモです．",
+			href: "/software/other/program_structure/"
+		}
+	]}
+/>
 
 ---
 
 ## パートナーサイト
 
-<CardGrid>
-	<LinkCard
-		title="New Current"
-		description="「次の波を捉える」をテーマに、最新のIT技術やトレンドを分かりやすく解説するメディア。AIの活用術や最新のIT動向など、一歩先の情報をいち早くキャッチできます。"
-		href="https://asset-inc.jp/newcurrent/"
-	/>
-</CardGrid>
+<ShowcaseText
+	entries={[
+		{
+			title: "New Current",
+			description: "「次の波を捉える」をテーマに、最新のIT技術やトレンドを分かりやすく解説するメディア。AIの活用術や最新のIT動向など、一歩先の情報をいち早くキャッチできます。",
+			href: "https://asset-inc.jp/newcurrent/"
+		}
+	]}
+/>
 
 ---
 
