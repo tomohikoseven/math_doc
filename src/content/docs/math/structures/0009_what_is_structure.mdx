@@ -71,25 +71,81 @@ $$
 
 あらゆる物事は「要素 ＋ 関係」という同じルールで読み解くことができる。
 
+<Card title="5冊の本の山（遠山啓『現代数学入門』より）" icon="document">
+遠山啓の著書『現代数学入門』では、机の上に散らばった5冊の本と、積み重なった5冊の本を比較して「構造」を説明している。
+
+$$
+#align(center)[
+  #grid(
+    columns: 3,
+    gutter: 1.5em,
+    align(center)[
+      *ただの「集合」*\
+      （散らばった本）\
+      #v(1em)
+      #box(inset: 4pt, stroke: 0.5pt)[本A] #h(0.5em) #box(inset: 4pt, stroke: 0.5pt)[本B]\
+      #v(0.5em)
+      #box(inset: 4pt, stroke: 0.5pt)[本C] #h(0.5em) #box(inset: 4pt, stroke: 0.5pt)[本D] #h(0.5em) #box(inset: 4pt, stroke: 0.5pt)[本E]
+    ],
+    align(center)[
+      *構造を持った集合*\
+      （5冊の山）\
+      #v(1em)
+      #align(center)[
+        #grid(
+          columns: 1,
+          gutter: 0em,
+          box(width: 4.5em, inset: 4pt, stroke: 0.5pt, align(center)[本E]),
+          box(width: 4.5em, inset: 4pt, stroke: 0.5pt, align(center)[本D]),
+          box(width: 4.5em, inset: 4pt, stroke: 0.5pt, align(center)[本C]),
+          box(width: 4.5em, inset: 4pt, stroke: 0.5pt, align(center)[本B]),
+          box(width: 4.5em, inset: 4pt, stroke: 0.5pt, align(center)[本A])
+        )
+      ]
+    ],
+    align(center)[
+      *別の構造*\
+      （3冊と2冊の山）\
+      #v(1em)
+      #align(center)[
+        #grid(
+          columns: 2,
+          gutter: 1em,
+          align(bottom)[
+            #grid(
+              columns: 1,
+              gutter: 0em,
+              box(width: 4em, inset: 4pt, stroke: 0.5pt, align(center)[本C]),
+              box(width: 4em, inset: 4pt, stroke: 0.5pt, align(center)[本B]),
+              box(width: 4em, inset: 4pt, stroke: 0.5pt, align(center)[本A])
+            )
+          ],
+          align(bottom)[
+            #grid(
+              columns: 1,
+              gutter: 0em,
+              box(width: 4em, inset: 4pt, stroke: 0.5pt, align(center)[本E]),
+              box(width: 4em, inset: 4pt, stroke: 0.5pt, align(center)[本D])
+            )
+          ]
+        )
+      ]
+    ]
+  )
+]
+$$
+
+<FlatList>
+- <b>要素</b>：5冊の本
+- <b>関係</b>：「◯◯の上に△△が乗っている」という上下の関係（順序）
+- <b>ポイント</b>：バラバラに置かれた本はただの「集合」だが、積み重なることで「構造」を持つ。さらに、同じ要素（5冊の本）でも「5冊が1つの山になる」場合と「3冊と2冊の山に分かれる」場合では、本の積まれ方（関係）が異なるため、<b>数学的には全く異なる構造</b>として区別される。
+</FlatList>
+</Card>
 <Card title="家（建築）" icon="random">
 <FlatList>
 - <b>要素</b>：屋根、柱、壁、床
 - <b>関係</b>：柱が床を支え、屋根を乗せる
 - <b>ポイント</b>：部品を地面に置いただけでは家にならない。「つながり方」が家を作る。
-</FlatList>
-</Card>
-<Card title="レゴブロック" icon="puzzle">
-<FlatList>
-- <b>要素</b>：同じ形のプラスチックブロック
-- <b>関係</b>：どの突起をどの穴にはめるか
-- <b>ポイント</b>：同じ要素でも、「関係」を変えるだけで車にもロボットにもなる。
-</FlatList>
-</Card>
-<Card title="人体" icon="heart">
-<FlatList>
-- <b>要素</b>：骨、筋肉、臓器
-- <b>関係</b>：骨が支え、筋肉が動かし、心臓が循環させる
-- <b>ポイント</b>：各パーツが固有の役割（関係）を果たすことで生命が維持される。
 </FlatList>
 </Card>
 <Card title="数学（幾何学）" icon="pencil">
