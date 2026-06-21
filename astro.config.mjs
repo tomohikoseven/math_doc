@@ -13,7 +13,7 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightLinksValidator from 'starlight-links-validator';
 import remarkSmartypants from 'remark-smartypants';
 
-import { GOOGLE_ANALYTICS } from './src/libs/head';
+import { GOOGLE_ANALYTICS, MICROSOFT_CLARITY } from './src/libs/head';
 import { SOCIAL_LINKS } from './src/libs/social';
 import {
   SIDEBAR_TOPICS,
@@ -50,7 +50,7 @@ export default defineConfig({
           lang: 'ja',
         },
       },
-      head: [...GOOGLE_ANALYTICS],
+      head: [...GOOGLE_ANALYTICS, ...MICROSOFT_CLARITY],
       social: SOCIAL_LINKS,
       customCss: [
         './src/styles/global.css',
