@@ -13,6 +13,18 @@
   --sl-font: 'Noto Sans JP', "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
 }
 
+/* ====================== */
+/* 見出し調整 */
+/* ====================== */
+/* Starlightは見出しの横にアンカーリンク(#)を配置するため、
+   h2単体ではなくラッパー要素(.sl-heading-wrapper)に対して下線を引くのが最適です。 */
+.sl-markdown-content .sl-heading-wrapper.level-h2 {
+  border-bottom: 3px solid var(--sl-color-hairline-shade);
+  padding-bottom: 0.5rem;
+  margin-top: 2.0rem;
+  margin-bottom: 0.25rem;
+}
+
 /* ========= */
 /* Table     */
 /* ========= */
