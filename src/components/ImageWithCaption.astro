@@ -1,4 +1,8 @@
 ---
+/**
+ * 画像とそのキャプション（説明文）をセットで表示するためのコンポーネント。
+ * AstroのImageコンポーネントをラップし、figure/figcaptionタグでセマンティックにマークアップする。
+ */
 import { Image } from 'astro:assets';
 
 const { src, alt, width, height, figcaption } = Astro.props;

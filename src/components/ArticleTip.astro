@@ -1,4 +1,9 @@
 ---
+/**
+ * StarlightのAsideコンポーネントをカスタマイズしたコンポーネント。
+ * 主に記事冒頭での結論を明示するために使用する。
+ * 「結論」などの見出しとともに、幅を調整して中央寄せで表示するために使用する。
+ */
 import { Aside } from "@astrojs/starlight/components";
 const { title = "結論", txt, wid = 850, icon } = Astro.props;
 ---

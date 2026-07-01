@@ -1,13 +1,15 @@
 ---
 /**
- * HabitCalendar.astro
- * A GitHub-style contribution calendar generated at BUILD TIME.
+ * Google Calendarの予定データから学習時間などの実績を収集し、
+ * GitHubの草（コントリビューションカレンダー）のようなヒートマップ形式で
+ * 1年間の活動記録を可視化するためのコンポーネント。
+ * ※ビルド時にデータを取得して静的に生成される。
  */
-import { 
-  fetchStudyTime, 
-  generateCalendarData, 
-  generateMonthLabels, 
-  formatStudyTime 
+import {
+  fetchStudyTime,
+  generateCalendarData,
+  generateMonthLabels,
+  formatStudyTime,
 } from "../libs/googleCalendar";
 
 interface Props {
@@ -18,7 +20,8 @@ interface Props {
 
 const {
   year = 2026,
-  apiKey = import.meta.env.GOOGLE_CALENDAR_API_KEY || import.meta.env.PUBLIC_GOOGLE_CALENDAR_API_KEY,
+  apiKey = import.meta.env.GOOGLE_CALENDAR_API_KEY ||
+    import.meta.env.PUBLIC_GOOGLE_CALENDAR_API_KEY,
   calendarId = import.meta.env.PUBLIC_GOOGLE_CALENDAR_ID,
 } = Astro.props;
 
@@ -31,10 +34,10 @@ try {
   if (!apiKey || !calendarId) {
     throw new Error("API Key or Calendar ID is missing.");
   }
-  
+
   const startDate = new Date(`${year}-01-01T00:00:00Z`).toISOString();
   const endDate = new Date(`${year}-12-31T23:59:59Z`).toISOString();
-  
+
   studyData = await fetchStudyTime(apiKey, calendarId, startDate, endDate);
   totalMinutes = Object.values(studyData).reduce((sum, mins) => sum + mins, 0);
 } catch (e) {
@@ -49,16 +52,21 @@ const numWeeks = Math.ceil(days.length / 7);
 const totalHours = (totalMinutes / 60).toFixed(1);
 ---
 
-<div class="habit-calendar-container not-content" id={`calendar-container-${year}`}>
+<div
+  class="habit-calendar-container not-content"
+  id={`calendar-container-${year}`}
+>
   <header class="calendar-header">
     <h3 class="total-stats">合計勉強時間: {totalHours} 時間 ({year}年)</h3>
   </header>
 
-  {errorMessage && (
-    <div class="error-banner" role="alert">
-      <small>⚠️ {errorMessage}</small>
-    </div>
-  )}
+  {
+    errorMessage && (
+      <div class="error-banner" role="alert">
+        <small>⚠️ {errorMessage}</small>
+      </div>
+    )
+  }
 
   <div class="calendar-layout">
     <div class="weekday-labels" aria-hidden="true">
@@ -70,25 +78,38 @@ const totalHours = (totalMinutes / 60).toFixed(1);
       <div>Fri</div>
       <div></div>
     </div>
-    
+
     <div class="calendar-viewport">
-      <div class="month-row" style={`grid-template-columns: repeat(${numWeeks}, var(--cell-size));`}>
-        {monthLabels.map(label => (
-          <div class="month-label" style={`grid-column-start: ${label.weekIndex};`}>
-            {label.name}
-          </div>
-        ))}
+      <div
+        class="month-row"
+        style={`grid-template-columns: repeat(${numWeeks}, var(--cell-size));`}
+      >
+        {
+          monthLabels.map((label) => (
+            <div
+              class="month-label"
+              style={`grid-column-start: ${label.weekIndex};`}
+            >
+              {label.name}
+            </div>
+          ))
+        }
       </div>
-      
-      <div class="calendar-grid" style={`grid-template-columns: repeat(${numWeeks}, var(--cell-size));`}>
-        {days.map(day => (
-          <div 
-            class={`day-cell level-${day.level}`} 
-            data-date={day.date} 
-            data-time={formatStudyTime(day.minutes)}
-            title={`${day.date}: ${formatStudyTime(day.minutes)}`}
-          ></div>
-        ))}
+
+      <div
+        class="calendar-grid"
+        style={`grid-template-columns: repeat(${numWeeks}, var(--cell-size));`}
+      >
+        {
+          days.map((day) => (
+            <div
+              class={`day-cell level-${day.level}`}
+              data-date={day.date}
+              data-time={formatStudyTime(day.minutes)}
+              title={`${day.date}: ${formatStudyTime(day.minutes)}`}
+            />
+          ))
+        }
       </div>
     </div>
   </div>
@@ -226,10 +247,18 @@ const totalHours = (totalMinutes / 60).toFixed(1);
     opacity: 0.8;
   }
 
-  .level-1 { background-color: var(--bg-1); }
-  .level-2 { background-color: var(--bg-2); }
-  .level-3 { background-color: var(--bg-3); }
-  .level-4 { background-color: var(--bg-4); }
+  .level-1 {
+    background-color: var(--bg-1);
+  }
+  .level-2 {
+    background-color: var(--bg-2);
+  }
+  .level-3 {
+    background-color: var(--bg-3);
+  }
+  .level-4 {
+    background-color: var(--bg-4);
+  }
 
   .calendar-footer {
     display: flex;
@@ -301,7 +330,7 @@ const totalHours = (totalMinutes / 60).toFixed(1);
         if (date && time) {
           tooltip.textContent = `${date}: ${time} 勉強しました`;
           tooltip.style.opacity = "1";
-          
+
           const rect = cell.getBoundingClientRect();
           tooltip.style.left = `${rect.left - tooltip.offsetWidth / 2 + 6}px`;
           tooltip.style.top = `${rect.top - 40}px`;
