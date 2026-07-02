@@ -10,7 +10,7 @@ import {
   generateCalendarData,
   generateMonthLabels,
   formatStudyTime,
-} from "../libs/googleCalendar";
+} from "../../libs/googleCalendar";
 
 interface Props {
   year?: number;
@@ -85,7 +85,7 @@ const totalHours = (totalMinutes / 60).toFixed(1);
         style={`grid-template-columns: repeat(${numWeeks}, var(--cell-size));`}
       >
         {
-          monthLabels.map((label) => (
+          monthLabels.map((label: any) => (
             <div
               class="month-label"
               style={`grid-column-start: ${label.weekIndex};`}
@@ -101,7 +101,7 @@ const totalHours = (totalMinutes / 60).toFixed(1);
         style={`grid-template-columns: repeat(${numWeeks}, var(--cell-size));`}
       >
         {
-          days.map((day) => (
+          days.map((day: any) => (
             <div
               class={`day-cell level-${day.level}`}
               data-date={day.date}
