@@ -1,0 +1,15 @@
+---
+/**
+ * PreferredSourceBadge
+ * Google 検索でユーザーがサイトを「優先ソース」として選択するよう促すバッジを表示するコンポーネントです。
+ * サイトのダークモード・ライトモードの切り替えに応じて自動で画像が切り替わります。
+ */
+---
+<!-- Google 優先ソース表示用バッジ -->
+<div class="mt-8 text-center p-6 bg-[var(--sl-color-gray-6)] rounded-lg border border-[var(--sl-color-gray-5)]">
+  <p class="text-sm text-[var(--sl-color-gray-2)] mb-3 font-bold">Google検索で優先ソースに設定する</p>
+  <a href="https://google.com/preferences/source?q=mathdoc.ifdef.jp" target="_blank" rel="noopener noreferrer" class="inline-block hover:opacity-80 transition-opacity">
+    <img src="/images/google_preferred_source_badge_light_JA.png" srcset="/images/google_preferred_source_badge_light_JA@2x.png 2x" alt="Google 検索で優先ソースとして表示" class="inline-block dark:hidden max-w-full h-auto" width="200" />
+    <img src="/images/google_preferred_source_badge_dark_JA.png" srcset="/images/google_preferred_source_badge_dark_JA@2x.png 2x" alt="Google 検索で優先ソースとして表示" class="hidden dark:inline-block max-w-full h-auto" width="200" />
+  </a>
+</div>

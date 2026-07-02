@@ -2,11 +2,14 @@
 import type { StarlightRouteData as Props } from '@astrojs/starlight/route-data';
 import Default from '@astrojs/starlight/components/Footer.astro';
 import { Icon } from '@astrojs/starlight/components';
+import PreferredSourceBadge from '../widgets/PreferredSourceBadge.astro';
 
 const hasSidebar = Astro.locals.starlightRoute?.hasSidebar ?? Astro.props.hasSidebar;
 ---
 
 <Default><slot /></Default>
+
+<PreferredSourceBadge />
 
 {hasSidebar && (
   <>
@@ -50,9 +53,9 @@ const hasSidebar = Astro.locals.starlightRoute?.hasSidebar ?? Astro.props.hasSid
     justify-content: center;
     gap: 0.5rem;
     background-color: var(--sl-color-accent);
-    color: var(--sl-color-black); /* アクセントカラー上の文字色 */
+    color: #ffffff; /* アクセント背景色に対して常に白色を指定 */
     border: none;
-    border-radius: 2rem; /* 少し丸みを持たせてタップしやすく */
+    border-radius: 2rem;
     padding: 0.8rem 2rem;
     font-size: 1rem;
     font-weight: bold;
@@ -76,4 +79,5 @@ const hasSidebar = Astro.locals.starlightRoute?.hasSidebar ?? Astro.props.hasSid
       display: none;
     }
   }
+
 </style>
