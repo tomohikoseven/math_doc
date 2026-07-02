@@ -20,7 +20,21 @@ schema:
 import { Steps, Aside, Code, LinkCard } from '@astrojs/starlight/components';
 import ArticleTip from '/src/components/ArticleTip.astro';
 
-<ArticleTip title="結論" wid="800">
+<ArticleTip title="【2026年 追記】Astro v7 での公式パッケージ対応" wid="800">
+
+**現在は、本記事の「ローカル配置」というハックは不要になりました！**
+Astro v7 へのアップグレードと、`astro-typst` の最新化により、WASM や絶対パス解決の問題が完全に解消されました。
+現在は以下の通り、Typst の公式パッケージマネージャを直接呼び出すだけで（`@preview/fletcher:0.5.8`など）、WASM 依存の最新版も含めて **完全かつ安定して** 動作します。
+
+```typst
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+```
+
+（※ 以下は過去のバージョンのAstro / Typst環境でエラーを回避するための歴史的な記録として残しています）
+
+</ArticleTip>
+
+<ArticleTip title="当時の結論（過去の回避策）" wid="800">
 
 Fletcher をローカルの `libs/fletcher` に配置し、MDX 内の `$$` ブロックで呼び出すことで、D2 などを完全に廃止し、Typst の数式表現と調和した美しい描画環境を構築できる。
 
