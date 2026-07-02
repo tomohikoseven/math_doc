@@ -58,6 +58,8 @@ jobs:
         sudo apt-get install -y lftp
         lftp -c "set ftp:ssl-allow no; open -u ${{ secrets.FTP_USERNAME_NINJA }},${{ secrets.FTP_PASSWORD_NINJA }} ${{ secrets.FTP_SERVER_NINJA }}; mirror -R --parallel=10 ./dist/ /" 
 
-    - name: IndexNow (Manual Ping)
-      run: |
-        curl -i -X GET "https://www.bing.com/indexnow?url=https://mathdoc.ifdef.jp/sitemap-0.xml&key=${{ secrets.INDEXNOW_KEY }}"
+    - name: IndexNow Action
+      uses: bojieyang/indexnow-action@v2
+      with:
+        sitemap-location: 'https://mathdoc.ifdef.jp/sitemap-0.xml'
+        key: ${{ secrets.INDEXNOW_KEY }}

@@ -1,26 +1,26 @@
+// Astro Core & Integrations
 import { defineConfig } from 'astro/config';
-import { unified } from '@astrojs/markdown-remark';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
-import remarkMath from 'remark-math';
-import remarkGfm from 'remark-gfm';
-import rehypeTypst from '@myriaddreamin/rehype-typst';
-
-import rehypeMermaid from 'rehype-mermaid';
 import partytown from '@astrojs/partytown';
 
+// Starlight Plugins
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightLinksValidator from 'starlight-links-validator';
-import remarkSmartypants from 'remark-smartypants';
 
+// Markdown & MDX Plugins
+import { unified } from '@astrojs/markdown-remark';
+import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm';
+import remarkSmartypants from 'remark-smartypants';
+import rehypeTypst from '@myriaddreamin/rehype-typst';
+import rehypeMermaid from 'rehype-mermaid';
+
+// Local Libs
 import { GOOGLE_ANALYTICS, MICROSOFT_CLARITY } from './src/libs/head';
 import { SOCIAL_LINKS } from './src/libs/social';
-import {
-  SIDEBAR_TOPICS,
-  SIDEBAR_TOPICS_OPTIONS
-} from './src/libs/sidebar';
-
-
+import { SIDEBAR_TOPICS, SIDEBAR_TOPICS_OPTIONS } from './src/libs/sidebar';
+import { getLastModifiedDateFromGit } from './src/libs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -69,7 +69,16 @@ export default defineConfig({
         starlightSidebarTopics(SIDEBAR_TOPICS, SIDEBAR_TOPICS_OPTIONS)
       ],
     }),
-    sitemap()
+    sitemap({
+      serialize(item) {
+        // サイトマップの各URLに対して、IndexNow用に最終更新日(<lastmod>)を付与する
+        const lastmod = getLastModifiedDateFromGit(item.url);
+        if (lastmod) {
+          item.lastmod = lastmod;
+        }
+        return item;
+      }
+    })
   ],
   markdown: {
     processor: unified({
