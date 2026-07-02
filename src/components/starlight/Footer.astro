@@ -3,6 +3,7 @@ import type { StarlightRouteData as Props } from '@astrojs/starlight/route-data'
 import Default from '@astrojs/starlight/components/Footer.astro';
 import { Icon } from '@astrojs/starlight/components';
 import PreferredSourceBadge from '../widgets/PreferredSourceBadge.astro';
+import MobileExploreButton from '../widgets/MobileExploreButton.astro';
 
 const hasSidebar = Astro.locals.starlightRoute?.hasSidebar ?? Astro.props.hasSidebar;
 ---
@@ -13,71 +14,7 @@ const hasSidebar = Astro.locals.starlightRoute?.hasSidebar ?? Astro.props.hasSid
 
 {hasSidebar && (
   <>
-    <!-- スマホ専用：記事末尾から目次を開くボタン -->
-    <div class="mobile-explore-more">
-      <p class="mobile-explore-text">他の記事を探す</p>
-      <button
-        class="open-menu-btn"
-        onclick="document.querySelector('starlight-menu-button button')?.click()"
-      >
-        <Icon name="list-format" size="1.2em" />
-        目次ツリーを開く
-      </button>
-    </div>
-
+    <MobileExploreButton />
     <hr color="#EEEEEE" />
   </>
 )}
-
-<style>
-  .mobile-explore-more {
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    background-color: var(--sl-color-gray-6);
-    border-radius: 0.5rem;
-    border: 1px solid var(--sl-color-gray-5);
-  }
-
-  .mobile-explore-text {
-    font-size: 0.9rem;
-    color: var(--sl-color-gray-2);
-    margin-bottom: 0.8rem;
-    font-weight: bold;
-  }
-
-  .open-menu-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background-color: var(--sl-color-accent);
-    color: #ffffff; /* アクセント背景色に対して常に白色を指定 */
-    border: none;
-    border-radius: 2rem;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    max-width: 320px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-    transition:
-      opacity 0.2s,
-      transform 0.1s;
-  }
-
-  .open-menu-btn:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-  }
-
-  /* PC（左サイドバーが表示される幅）ではこのボタン自体を非表示にする */
-  @media (min-width: 50rem) {
-    .mobile-explore-more {
-      display: none;
-    }
-  }
-
-</style>

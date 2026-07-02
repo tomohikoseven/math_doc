@@ -1,0 +1,14 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+---
+<!-- スマホ専用：記事末尾から目次を開くボタン -->
+<div class="mt-12 mb-4 text-center py-6 px-4 bg-[var(--sl-color-gray-6)] rounded-lg border border-[var(--sl-color-gray-5)] min-[50rem]:hidden">
+  <p class="text-[0.9rem] text-[var(--sl-color-gray-2)] mb-3 font-bold">他の記事を探す</p>
+  <button
+    class="inline-flex items-center justify-center gap-2 bg-[var(--sl-color-accent)] text-white border-none rounded-full py-3 px-8 text-base font-bold cursor-pointer w-full max-w-[320px] shadow-[0_4px_6px_rgba(0,0,0,0.15)] transition-[opacity,transform] duration-200 active:translate-y-[2px] active:shadow-[0_2px_3px_rgba(0,0,0,0.1)]"
+    onclick="document.querySelector('starlight-menu-button button')?.click()"
+  >
+    <Icon name="list-format" size="1.2em" />
+    目次ツリーを開く
+  </button>
+</div>
