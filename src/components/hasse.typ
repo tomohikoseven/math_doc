@@ -1,4 +1,4 @@
-#import "/libs/cetz/src/lib.typ": canvas, draw
+#import "@preview/cetz:0.5.2": canvas, draw
 
 #let hasse-diamond(top, left, right, bottom) = align(center)[
   #canvas({

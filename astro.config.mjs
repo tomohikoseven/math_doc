@@ -28,6 +28,10 @@ export default defineConfig({
   vite: {
     build: {
       chunkSizeWarningLimit: 1500, // 警告のしきい値を 1500 kB（1.5 MB）に引き上げる
+      rollupOptions: {
+        // @ts-ignore
+        checks: { preferBuiltinFeature: false }
+      }
     }
   },
   prefetch: true,

@@ -99,7 +99,7 @@ Fletcher を Starlight プロジェクトに導入し、安定動作させるま
     MDX ファイルの `$$` ブロック内で以下のようにライブラリをインポートして記述する。
 
     ```typst
-    #import "/libs/fletcher/src/exports.typ" as fletcher: diagram, node, edge
+    #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
     ```
 
 </Steps>
@@ -116,7 +116,7 @@ Fletcher を Starlight プロジェクトに導入し、安定動作させるま
 
 ```typst
 $$
-#import "/libs/fletcher/src/exports.typ" as fletcher: diagram, node, edge
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 
 #align(center)[
   #diagram(
@@ -156,7 +156,7 @@ $$
 上記コードによって実際に描画されるダイアグラムは以下の通りである。
 
 $$
-#import "/libs/fletcher/src/exports.typ" as fletcher: diagram, node, edge
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 
 #align(center)[
   #diagram(

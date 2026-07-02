@@ -38,7 +38,7 @@ import { Steps } from '@astrojs/starlight/components';
 $display(y = k / (x - p) + q)$ のような、変数 $x$ が分母にある関数。双曲線を描き、決して交わらない「漸近線（ぜんきんせん）」を持つことが最大の特徴である。
 
 $$
-#import "/libs/cetz/src/lib.typ": canvas, draw
+#import "@preview/cetz:0.5.2": canvas, draw
 
 #align(center)[
   #canvas({
@@ -70,7 +70,7 @@ $$
 $y = sqrt(a x + b)$ のような、変数 $x$ が根号（ルート）の中にある関数。放物線を横に倒して半分にしたような形をしており、定義域（ルートの中身が0以上）に制限があるのが特徴である。
 
 $$
-#import "/libs/cetz/src/lib.typ": canvas, draw
+#import "@preview/cetz:0.5.2": canvas, draw
 
 #align(center)[
   #canvas({
