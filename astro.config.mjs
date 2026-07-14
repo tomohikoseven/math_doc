@@ -13,6 +13,8 @@ import { unified } from '@astrojs/markdown-remark';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import remarkSmartypants from 'remark-smartypants';
+import remarkCjkFriendly from 'remark-cjk-friendly';
+import remarkCjkFriendlyStrikethrough from 'remark-cjk-friendly-gfm-strikethrough';
 import rehypeTypst from '@myriaddreamin/rehype-typst';
 import rehypeMermaid from 'rehype-mermaid';
 
@@ -86,7 +88,7 @@ export default defineConfig({
   ],
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkGfm, remarkSmartypants, remarkMath],
+      remarkPlugins: [remarkGfm, remarkSmartypants, remarkMath, remarkCjkFriendly, remarkCjkFriendlyStrikethrough],
       rehypePlugins: [rehypeMermaid, rehypeTypst],
     })
   }
