@@ -1,5 +1,5 @@
 ---
-title: "Warning: 'ozone-platform-hint' is not in the list of known options, but still passed to Electron/Chromium."
+title: "VSCode警告: 'ozone-platform-hint' の対処法"
 description: Raspberry PiのWaylandディスプレイ環境下でVSCodeを起動した際に表示されるウィンドウシステム関連の警告メッセージの原因と、環境変数を用いてこの警告を抑制するための適切な対処方法を詳しく解説します。
 next: false
 prev: false
@@ -8,7 +8,13 @@ import { Aside, Steps } from '@astrojs/starlight/components';
 
 Raspberry PiのWayland環境とChromium系アプリケーション（VSCodeなどのElectron製アプリ）は相性が悪く、日本語入力時の誤変換などが生じやすい。これを回避するためには、起動時の設定でWaylandへの対応を明示する必要がある。
 
-以前はコマンドラインオプション `--ozone-platform-hint=wayland` を付与することで対応できたが、現在はタイトルの通り「未知のオプション」として警告が表示されてしまう。そのため、現在では**環境変数**として指定するのが正しい手順である。
+以前はコマンドラインオプション `--ozone-platform-hint=wayland` を付与することで対応できたが、現在は以下のように「未知のオプション」として警告が表示されてしまう。
+
+```text
+Warning: 'ozone-platform-hint' is not in the list of known options, but still passed to Electron/Chromium.
+```
+
+そのため、現在では**環境変数**として指定するのが正しい手順である。
 
 <Aside type="note" title="検証時のVSCode環境情報">
 - Version: 1.92.1 (Commit: eaa41d57266683296de7d118f574d0c2652e1fc4)
