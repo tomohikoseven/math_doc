@@ -1,0 +1,21 @@
+---
+sidebar :
+  label: 8月
+title: 【2026年8月】楽天ラッキーくじの当選を整理する。
+description: 自作プログラムで自動実行している「楽天ラッキーくじ」の2026年8月の当選結果をまとめた運用記録です。自動化によるポイ活が実際にどの程度の成果をもたらすのか、日別の獲得ポイント数や当選傾向をデータとして蓄積し、技術活用による継続的なポイント獲得のリアルな実績を公開しています。
+lastUpdated: true
+---
+import NoteRakutenKuji from '/src/components/widgets/RakutenKuji/NoteRakutenKuji.astro';
+import RakutenKujiLog from '/src/components/widgets/RakutenKuji/RakutenKujiLog.astro';
+
+<NoteRakutenKuji></NoteRakutenKuji>
+
+export const kujiData = [
+  { date: '2026/08/01', points: 3, sources: ['【常時開催】毎日チャンス！その場で最大1000ポイント当たる！ラッキーくじ','楽天トラベル ラッキーくじ','カードonペイラッキーくじ（2026/07/01-2026/08/31）']},
+  { date: '2026/08/02', points: 4, sources: ['楽天リワード 当選本数増加 ラッキーくじ','Infoseekラッキーくじ_02','カードonペイラッキーくじ（2026/07/01-2026/08/31）','【常時開催】毎日チャンス！その場で最大1000ポイント当たる！ラッキーくじ']},
+  { date: '2026/08/03', points: 3, sources: ['カードonペイラッキーくじ（2026/07/01-2026/08/31）','Infoseekラッキーくじ_02','＜楽天ブックス＞ラッキーくじ']},
+  { date: '2026/08/04', points: 3, sources: ['リワード特集ページ ラッキーくじ','カードonペイラッキーくじ（2026/07/01-2026/08/31）','【常時開催】毎日チャンス！その場で最大1000ポイント当たる！ラッキーくじ']},
+  { date: '2026/08/05', points: 2, sources: ['【常時開催】毎日チャンス！その場で最大1000ポイント当たる！ラッキーくじ','	カードonペイラッキーくじ（2026/07/01-2026/08/31）']},
+];
+
+<RakutenKujiLog data={kujiData} />
