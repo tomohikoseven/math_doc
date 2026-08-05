@@ -64,6 +64,7 @@ export const MATHEMATICS_GROUP = {
           ...createAutoGroup('数学の基盤と構造', 'math/structures'),
           badge: { text: 'HOT', variant: 'danger' },
         },
+        createAutoGroup('論理学', 'math/logic'),
         createAutoGroup('実数論', 'math/real_number'),
         createAutoGroup('微分法', 'math/differential_method'),
         createAutoGroup('積分法', 'math/integral_method'),
