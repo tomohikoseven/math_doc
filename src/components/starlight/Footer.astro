@@ -1,20 +1,40 @@
 ---
-import type { StarlightRouteData as Props } from '@astrojs/starlight/route-data';
-import Default from '@astrojs/starlight/components/Footer.astro';
+import type { StarlightRouteData as Props } from "@astrojs/starlight/route-data";
+import Default from "@astrojs/starlight/components/Footer.astro";
 
-import PreferredSourceBadge from '../widgets/PreferredSourceBadge.astro';
-import MobileExploreButton from '../widgets/MobileExploreButton.astro';
+import PreferredSourceBadge from "../widgets/PreferredSourceBadge.astro";
+import MobileExploreButton from "../widgets/MobileExploreButton.astro";
 
-const hasSidebar = Astro.locals.starlightRoute?.hasSidebar ?? Astro.props.hasSidebar;
+const hasSidebar =
+  Astro.locals.starlightRoute?.hasSidebar ?? Astro.props.hasSidebar;
 ---
 
 <Default><slot /></Default>
 
 <PreferredSourceBadge />
 
-{hasSidebar && (
-  <>
-    <MobileExploreButton />
-    <hr color="#EEEEEE" />
-  </>
-)}
+{
+  hasSidebar && (
+    <>
+      <MobileExploreButton />
+      <hr color="#EEEEEE" />
+    </>
+  )
+}
+
+<!-- 忍者ツールズ アクセス解析用タグ ここから -->
+<!--shinobi1-->
+<script is:inline type="text/javascript" src="//xa.shinobi.jp/ufo/192325300"
+></script><noscript
+  ><a href="//xa.shinobi.jp/bin/gg?192325300" target="_blank"
+    ><img src="//xa.shinobi.jp/bin/ll?192325300" style="border:0" /></a
+  ><br /><span style="font-size:9px"
+    ><img
+      style="margin:0;vertical-align:text-bottom;"
+      src="//img.shinobi.jp/tadaima/fj.gif"
+      width="19"
+      height="11"
+    />
+  </span></noscript
+><!--shinobi2-->
+<!-- 忍者ツールズ アクセス解析用タグ ここまで -->
