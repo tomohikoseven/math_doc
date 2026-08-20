@@ -54,30 +54,42 @@ export async function fetchStudyTime(
   url.searchParams.append('singleEvents', 'true');
   url.searchParams.append('orderBy', 'startTime');
 
-  const response = await fetch(url.toString());
-  if (!response.ok) {
-    const errorData = await response.json().catch(() => ({}));
-    throw new Error(`Google Calendar API Error: ${errorData.error?.message || response.statusText}`);
-  }
+  const studyData: Record<string, number> = {};
+  let pageToken: string | undefined;
 
-  const data = await response.json();
-  const items = data.items || [];
-  
-  return items.reduce((acc: Record<string, number>, item: any) => {
-    const start = item.start?.dateTime || item.start?.date;
-    const end = item.end?.dateTime || item.end?.date;
-    
-    if (start && end) {
-      const startDate = new Date(start);
-      const endDate = new Date(end);
-      const durationMinutes = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60));
-
-      const dateKey = startDate.toISOString().split('T')[0];
-      acc[dateKey] = (acc[dateKey] || 0) + durationMinutes;
+  do {
+    const pageUrl = new URL(url);
+    if (pageToken) {
+      pageUrl.searchParams.set('pageToken', pageToken);
     }
-    
-    return acc;
-  }, {});
+
+    const response = await fetch(pageUrl.toString());
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(`Google Calendar API Error: ${errorData.error?.message || response.statusText}`);
+    }
+
+    const data = await response.json();
+    const items = data.items || [];
+
+    items.forEach((item: any) => {
+      const start = item.start?.dateTime || item.start?.date;
+      const end = item.end?.dateTime || item.end?.date;
+
+      if (start && end) {
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+        const durationMinutes = Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60));
+
+        const dateKey = startDate.toISOString().split('T')[0];
+        studyData[dateKey] = (studyData[dateKey] || 0) + durationMinutes;
+      }
+    });
+
+    pageToken = data.nextPageToken;
+  } while (pageToken);
+
+  return studyData;
 }
 
 /**
