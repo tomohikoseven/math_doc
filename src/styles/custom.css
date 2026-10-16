@@ -68,6 +68,12 @@ svg.typst-doc {
   filter: invert(1) hue-rotate(180deg);
 }
 
+/* rehype-typstのテキスト選択レイヤー（2重表示・はみ出し防止） */
+svg.typst-doc foreignObject,
+svg.typst-doc .tsel {
+  display: none !important;
+}
+
 
 /* rehype-typstが数式を画像にするときに一緒にビルドするHTML内のCSSのsvg {...}が原因． */
 .starlight-aside__icon,
