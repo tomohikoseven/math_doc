@@ -1,0 +1,38 @@
+---
+title: 命題論理とは何か
+description: 命題論理を単なる記号操作として捉えず、正しい理解を持って前に進むために整理したもの
+type: "concept"
+tags: ["数学", "論理学", "命題論理"]
+lastUpdated: 2026-10-28
+---
+import FlatList from "/src/components/FlatList.astro";
+import Statements from "/src/components/Statements.astro";
+import Statement from "/src/components/Statement.astro";
+
+## 命題論理とは何か
+　命題論理とは、**情報として与えられた主張の間にどのような論理関係があるのか明らかにすること**である。例えば、以下のような主張(情報)が与えられたとする。
+
+<Statements>
+<Statement variant="example">
+私は数学好きな無職の一般男性です。
+</Statement>
+</Statements>
+
+　命題論理ではこの主張を分解し、分解された主張間の関係を記述する。つまり、
+<Statements>
+<Statement variant="example">
+私は数学好きである。かつ、私は無職である。かつ、私は一般男性である。
+</Statement>
+である。
+</Statements>
+
+
+　この「私は数学好きな無職の一般男性です。」という主張には実は3つの主張が含まれている。それは、
+<FlatList>
+- 私は数学好きである
+- 私は無職である
+- 私は一般男性である
+</FlatList>
+である。そして、この3つの主張の間の論理関係は、私に関する3つの事実がすべて同時に成り立つ可能性がある関係である。それを「かつ」で表現している。
+
+　この例えを使ってまとめると、**与えられた主張(3つ)があって、主張間の論理関係は同時に成り立つ可能性(かつ)があるということを明らかにした**。これが命題論理である。
