@@ -8,6 +8,47 @@ lastUpdated: true
 import Statements from '/src/components/Statements.astro';
 import Statement from '/src/components/Statement.astro';
 
+### P14
+
+<Statements>
+    <Statement title="24行目">
+    誤：$[(3 <= pi) or (3 eq pi)] and (pi < 4 )$
+    
+    正：$[(3 < pi) or (3 eq pi)] and (pi < 4)$
+    </Statement>
+</Statements>
+
+### P23
+
+<Statements>
+    <Statement title="例題1.2.4 問題文"> 
+    誤：$not (P and Q), #h(1em) not (P and not Q), #h(1em) not P or not Q$
+
+    正：$not (P and Q), #h(1em) not P and not Q, #h(1em) not P or not Q$
+    
+    </Statement>
+</Statements>
+
+### P31
+
+<Statements>
+    <Statement title="25行目">
+    誤：各分は真か偽のどちらかなので文全体の真理値
+
+    正：各文は真か偽のどちらかなので文全体の真理値
+    </Statement>
+</Statements>
+
+### P36
+
+<Statements>
+    <Statement title="5行目">
+    誤：$y in A$ は $P(x)$ と同じ
+
+    正：$y in A$ は $P(y)$ と同じ
+    </Statement>
+</Statements>
+
 ### P66
 
 <Statements>
